@@ -1,0 +1,16 @@
+
+
+#loginFormContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 300px;
+    width: 450px;
+    background-color: blue;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    /* background-color: pink; */
+
+}

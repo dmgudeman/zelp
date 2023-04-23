@@ -1,0 +1,50 @@
+
+
+#navContainer {  
+    width: 100vw;
+    height: 50px; 
+    display: flex;
+    align-items: space-between;
+   
+}
+
+.nav-link {
+    /* display: flex;
+    color: white;
+    font-weight: 700;
+    align-items: center;
+     */
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    background-color: #5cb9ff;
+    height: 100%;
+    align-items: center;  
+}
+
+#logoContainer{
+    display: flex;
+    justify-content: center;
+    background-color: yellow;
+    width: 150px
+
+}
+
+#searchBarContainer {
+    background-color: green;
+    flex: 1;
+
+}
+
+#buttonsContainer {
+    background-color: yellowgreen;
+     width: 40%;
+
+} 
