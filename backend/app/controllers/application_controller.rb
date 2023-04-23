@@ -7,7 +7,8 @@ class ApplicationController < ActionController::API
 
   def test
     if params.has_key?(:login)
-      login!(User.find_by_id(12))
+       login!(User.first)
+      # login!(User.find_by_id(12))
     elsif params.has_key?(:logout)
       logout!
     end
