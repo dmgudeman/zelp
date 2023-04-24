@@ -1,0 +1,28 @@
+
+
+#businessCardContainer {
+    display: flex;
+    width: min(40%, 400px);
+    /* height: max(50%, 120px); */
+    height: 175px; 
+    margin: 20px;
+     /* width:400px; */
+
+  
+    /* background-color: brown; */
+}
+
+#imageContainer {
+    width: 30%;
+    height: 100%;
+  
+    background-color: blue;
+
+}
+
+#reviewContainer {
+    flex: 1;
+    height: 100%;
+    background-color: blueviolet;
+
+}

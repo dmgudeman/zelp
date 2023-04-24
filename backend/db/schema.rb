@@ -10,9 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_21_230753) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_175050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "phone", null: false
+    t.string "email", null: false
+    t.string "website"
+    t.string "cost", null: false
+    t.decimal "lat", null: false
+    t.decimal "lng", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_businesses_on_name", unique: true
+  end
+
+  create_table "businesses_tags", id: false, force: :cascade do |t|
+    t.bigint "business_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_businesses_tags_on_business_id"
+    t.index ["tag_id"], name: "index_businesses_tags_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag"], name: "index_tags_on_tag", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { signup } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import Navigation from "../Navigation";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import "./SignupFormPage.css";
 
 import DemoUserForm from "../DemoUserForm";
@@ -84,6 +84,12 @@ const SignupFormPage = (props) => {
                     </ul>
                 </form>
                 <DemoUserForm />
+                <h1>
+                    Already a Zelp user?{" "}
+                    <NavLink className="nav-link" to="/login">
+                        Log In
+                    </NavLink>
+                </h1>
             </div>
         </>
     );

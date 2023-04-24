@@ -17,8 +17,8 @@ ApplicationRecord.transaction do
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
     User.create!(
-      username: 'Demo-lition', 
-      email: 'demo@user.io', 
+      username: 'Demo-lition',
+      email: 'demo@user.io',
       password: 'password'
     )
   
@@ -29,8 +29,32 @@ ApplicationRecord.transaction do
         email: Faker::Internet.unique.email,
         password: 'password'
       }) 
-    end
-  
+      end
+      puts "Creating businesses..."
+    Business.create!(
+      name: 'Bubbas Shrimp',
+      address: '1234 Main Street AnyTown, USA 99999',
+      phone: '555-555-5555',
+      email: 'bs@bs.com',
+      website: 'www.bs.com',
+      cost: '$',
+      lat: 40.00,
+      lng: 40.00
+    )
+
+    10.times do 
+      Business.create!({
+        name: Faker::Company.name,
+        address: Faker::Address.street_address,
+        phone: Faker::PhoneNumber.phone_number,
+        email: Faker::Internet.email,
+        website: Faker::Internet.url(host: 'example.com'),
+        cost: '$',
+        lat: Faker::Address.latitude.to_f.round(6),
+        lng: Faker::Address.longitude.to_f.round(6)
+      }) 
+      end
+   
     puts "Done!"
   end
   

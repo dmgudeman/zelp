@@ -5,8 +5,8 @@ import "./DemoUserForm.css";
 
 const DemoUserForm = (props) => {
     const dispatch = useDispatch();
-    const [credential, setCredential] = useState("dog");
-    const [password, setPassword] = useState("dddddd");
+    const [credential, setCredential] = useState("Demo-lition");
+    const [password, setPassword] = useState("password");
 
     const submitHandler = (e) => {
         e.preventDefault();

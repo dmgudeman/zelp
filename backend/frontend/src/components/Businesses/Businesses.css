@@ -1,0 +1,23 @@
+
+
+#businessContainer {
+    display: flex;
+    flex-direction: column;
+    width: min(900px, 100%);
+    height: 100vh;
+    margin: 100px 300px 300px 300px;
+    flex-wrap: wrap;
+    background-color:pink;
+}
+
+#bannerContainer {
+    width: 100%;
+    background-color: brown;
+}
+
+#cardContainer {
+   display: flex;
+   flex-direction: column;
+   background-color: aquamarine;
+
+}
