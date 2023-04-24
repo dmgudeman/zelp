@@ -8,8 +8,8 @@ import "./LoginFormPage.css";
 const LoginFormPage = (props) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(getCurrentUser);
-    const [credential, setCredential] = useState("username or email");
-    const [password, setPassword] = useState("password");
+    const [credential, setCredential] = useState('');
+    const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
@@ -40,12 +40,14 @@ const LoginFormPage = (props) => {
                     <input
                         type="text"
                         value={credential}
+                        placeholder="username or email"
                         onChange={(e) => setCredential(e.target.value)}
                     />
 
                     <input
                         type="text"
                         value={password}
+                        placeholder = "password"
                         onChange={(e) => setPassword(e.target.value)}
                     />
 

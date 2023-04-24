@@ -4516,3 +4516,75 @@ Processing by Api::SessionsController#create as JSON
 Completed 200 OK in 275ms (Views: 0.3ms | ActiveRecord: 4.4ms | Allocations: 5979)
 
 
+Started POST "/api/session" for 127.0.0.1 at 2023-04-23 19:16:08 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"dog", "password"=>"[FILTERED]", "session"=>{"credential"=>"dog", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dog"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "dog"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "d@d.com"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-04-24 02:16:08.300034"], ["id", 12]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 176)
+Completed 200 OK in 271ms (Views: 0.4ms | ActiveRecord: 2.9ms | Allocations: 5934)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-04-23 19:17:52 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"dog", "password"=>"[FILTERED]", "session"=>{"credential"=>"dog", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dog"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_by_credentials'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "dog"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "d@d.com"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-04-24 02:17:52.445742"], ["id", 12]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 176)
+Completed 200 OK in 272ms (Views: 0.4ms | ActiveRecord: 3.5ms | Allocations: 5973)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2023-04-23 19:18:08 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"d@d.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"d@d.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "d@d.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `block in generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "dog"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "d@d.com"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2023-04-24 02:18:09.178507"], ["id", 12]]
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:24:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 176)
+Completed 200 OK in 277ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 6077)
+
+
