@@ -5,7 +5,8 @@ button {
     padding: 3px;
     border-radius: 5px;
     color: white;
-    background-color: rgb(102, 102, 174);
+    /* background-color: rgb(102, 102, 174); */
+    background-color: #5cb9ff;
 }
 
 #container {
