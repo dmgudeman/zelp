@@ -17,7 +17,7 @@ const SignupFormPage = (props) => {
     const [errors, setErrors] = useState([]);
     console.log("SIGNUP FORM MOUNTED");
 
-    // if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Redirect to="/" />;
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -42,9 +42,7 @@ const SignupFormPage = (props) => {
 
     return (
         <>
-        <h2>SIGNUP</h2>
             <div id="signupFormContainer">
-               
                 <h2>Signup Form Page</h2>
                 <form onSubmit={submitHandler}>
                     <input
