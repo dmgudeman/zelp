@@ -21,30 +21,36 @@ img {
     width: 50px;
 }
 
-ul {
-    display: flex;
-    justify-content: space-around;
-    background-color: #5cb9ff;
-    height: 100%;
-    align-items: center;  
-}
+
 
 #logoContainer{
     display: flex;
     justify-content: center;
-    background-color: yellow;
+    align-items: center;
+    /* background-color: yellow; */
+    background-color: transparent;
     width: 150px
 
 }
 
+#logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+
+}
+
 #searchBarContainer {
-    background-color: green;
+    /* background-color: green; */
+    background-color: transparent;
     flex: 1;
 
 }
 
 #buttonsContainer {
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
+    background-color: transparent;
      width: 40%;
 
 } 
+

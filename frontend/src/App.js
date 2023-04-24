@@ -6,15 +6,16 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage/index";
 import Navigation from "./components/Navigation";
 import { Route, Switch, Redirect } from "react-router-dom";
+import './App.css'
 
 function App() {
 
   let sessionUser = useSelector(getCurrentUser);
   console.log('sessionUser', sessionUser);
-  
+
     return (
         <>
-            <Navigation/>
+        
            
             <Switch>
               
