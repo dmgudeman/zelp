@@ -4,7 +4,7 @@ class Api::BusinessesController < ApplicationController
   def index
 
     @businesses = Business.all
-    # debugger
+  
   end
 
   private
