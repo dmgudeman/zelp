@@ -57,3 +57,18 @@ input:not(#submit) {
  .nav-link {
    text-decoration: none !important;
 }
+
+#app-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+   
+    /* z-index: 100; */
+}
+
+ul {
+    color: red;
+    font-style: italic;
+    padding-left: 20px;
+}

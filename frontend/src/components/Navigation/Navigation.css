@@ -2,7 +2,7 @@
 
 #navContainer {  
     width: 100vw;
-    height: 50px; 
+    height: 75px; 
     display: flex;
     align-items: space-between;
    
@@ -33,12 +33,7 @@ img {
 
 }
 
-#logo {
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
 
-}
 
 #searchBarContainer {
     /* background-color: green; */

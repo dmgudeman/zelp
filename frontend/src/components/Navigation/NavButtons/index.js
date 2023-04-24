@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCurrentUser, removeSessionUser } from "../../../store/session";
-import ProfileButton from "../ProfileButton/ProfileButton";
+import ProfileButton from "./ProfileButton/ProfileButton";
 import "./NavButtons.css";
 
 const NavButtons = (props) => {
     const dispatch = useDispatch();
     let sessionUser = useSelector(getCurrentUser);
+    console.log("sessionUser", sessionUser)
 
     const withoutSessionUser = (
         <div id="container">

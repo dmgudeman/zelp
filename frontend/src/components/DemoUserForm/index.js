@@ -17,8 +17,8 @@ const DemoUserForm = (props) => {
     return (
         <>
             <div id="demoUserFormContainer">
-                <h2>Demo User</h2>
                 <form onSubmit={submitHandler}>
+                    <h2>Demo User</h2>
                     <input id="submit" type="submit" value="Demo User" />
                 </form>
             </div>

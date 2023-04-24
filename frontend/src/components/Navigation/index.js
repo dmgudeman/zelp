@@ -1,26 +1,27 @@
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/session";
-import { NavLink, Link } from "react-router-dom";
-import logo from "../../assets/logo.jpg";
-import ProfileButton from "./ProfileButton/ProfileButton";
 import NavButtons from "./NavButtons";
+import NavLogo from "./NavLogo";
 import "./Navigation.css";
 
-const Navigation = (props) => {
-    const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
-
+const Navigation = ({ showFull }) => {
     return (
         <>
-            <div id="navContainer">
-                <div id="logoContainer">
-                    <img id="logo" src={logo} alt="Logo" />
+            {showFull ? (
+                <div id="navContainer">
+                    <div id="logoContainer">
+                        <NavLogo />
+                    </div>
+                    <div id="searchBarContainer"></div>
+                    <div id="buttonsContainer">
+                        <NavButtons />
+                    </div>
                 </div>
-                <div id="searchBarContainer"></div>
-                <div id="buttonsContainer">
-                    <NavButtons />
+            ) : (
+                <div id="navContainer">
+                    <div id="logoContainer">
+                        <NavLogo />
+                    </div>
                 </div>
-            </div>
+            )}
         </>
     );
 };

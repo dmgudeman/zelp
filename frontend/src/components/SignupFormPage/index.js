@@ -21,7 +21,10 @@ const SignupFormPage = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         setErrors([]);
-        if (confirmPassword === password) {
+
+        if (confirmPassword !== password) {
+            setErrors(["passwords do not match"]);
+        } else {
             return dispatch(signup({ username, password, email })).catch(
                 async (res) => {
                     let data;
@@ -41,9 +44,10 @@ const SignupFormPage = (props) => {
 
     return (
         <>
+            <Navigation id="app-nav" showFull={false} />
             <div id="signupFormContainer">
-                <h2>Sign Up for Zelp</h2>
                 <form onSubmit={submitHandler}>
+                    <h2>Sign Up for Zelp</h2>
                     <input
                         type="text"
                         value={username}
@@ -73,6 +77,11 @@ const SignupFormPage = (props) => {
                     />
 
                     <input id="submit" type="submit" value="Sign Up" />
+                    <ul>
+                        {errors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
                 </form>
                 <DemoUserForm />
             </div>
