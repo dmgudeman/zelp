@@ -23,7 +23,6 @@ const LoginFormPage = (props) => {
             try {
                 // .clone()  essentially allows you to read the response body twice
                 data = await res.clone().json();
-                console.log('error data', data)
             } catch {
                 data = await res.text(); // Will hit this case if the server is down
             }

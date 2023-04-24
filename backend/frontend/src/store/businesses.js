@@ -15,7 +15,6 @@ export const getBusinesses = (state) => {
 export const fetchBusinesses = () => async (dispatch) => {
     const res = await csrfFetch("/api/businesses");
     const data = await res.json();
-    console.log('data', data)
     dispatch(receiveBusinesses(data));
     return res;
 };

@@ -7,7 +7,6 @@ import "./NavButtons.css";
 const NavButtons = (props) => {
     const dispatch = useDispatch();
     let sessionUser = useSelector(getCurrentUser);
-    console.log("sessionUser", sessionUser)
 
     const withoutSessionUser = (
         <div id="container">
