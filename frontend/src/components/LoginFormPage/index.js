@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
-import { login, setSessionUser } from "../../store/session";
+import { login, getCurrentUser} from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import {Redirect} from 'react-router-dom';
+import Navigation from "../Navigation";
 import './LoginFormPage.css';
 
 const LoginFormPage = (props) => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state=>state.session.user);
+    const sessionUser = useSelector(getCurrentUser);
     const [credential, setCredential] = useState('username or email');
     const [password, setPassword] = useState('password');
     const [errors, setErrors] = useState([]);
    
-    // if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Redirect to="/" />;
+
+
+
     const submitHandler = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -32,6 +36,7 @@ const LoginFormPage = (props) => {
        
     return (
         <div id="loginFormContainer">
+            {/* <Navigation/> */}
             <h2>Sign Up for Zelp</h2>
             <form onSubmit={submitHandler}>
                 <label>

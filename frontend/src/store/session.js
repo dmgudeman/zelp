@@ -15,9 +15,10 @@ export const removeSessionUser = () => {
     };
 };
 
-// export const getCurrentUser = (state) => {
-//     return state.session?.user ? state.session.user.credential : {};
-// };
+export const getCurrentUser = (state) => {
+   
+    return state.session?.user ? state.session.user.email : null;
+};
 
 export const login = (user) => async (dispatch) => {
     const { credential, password } = user;

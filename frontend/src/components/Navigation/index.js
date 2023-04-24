@@ -20,29 +20,29 @@ const Navigation = (props) => {
 
                 </div>
                 <div id="buttonsContainer">
-                    {/* <NavButtons/> */}
-                    <Link to="/login"><button>Log In</button></Link>
-            {/* <Link to="/signup"><button onClick={()=> console.log('sign up')}>Sign Up</button></Link> */}
-            <NavLink className='nav-link' to="/signup">Signup</NavLink>
+                    <NavButtons/>
+                    {/* <Link to="/login"><button>Log In</button></Link>
+            <Link to="/signup"><button onClick={()=> console.log('sign up')}>Sign Up</button></Link>
+             <NavLink className='nav-link' to="/signup">Signup</NavLink> */}
 
-                </div>
+                </div> 
          
-                {/* <ul>
-                <img src={logo} alt="Logo" />
-                    <NavLink className='nav-link' to="/">Home</NavLink>
+                {/* <ul> */}
+                {/* <img src={logo} alt="Logo" /> */}
+                    {/* <NavLink className='nav-link' to="/">Home</NavLink> */}
 
-                    {sessionUser ? (
+                    {/* {sessionUser ? (
                         <ProfileButton />
                     ) : (
                         <>
-                            <NavLink className='nav-link' to="/login">Login</NavLink>
-                            <NavLink className='nav-link' to="/signup">Signup</NavLink>
+                            <Link className='nav-link' to="/login">Login</Link>
+                            <Link className='nav-link' to="/signup">Signup</Link>
                         </>
-                    )}
-                    <div>
+                    )} */}
+                    {/* <div>
                         <button onClick={()=>dispatch(logout())}>Logout</button>
-                    </div>
-                </ul> */}
+                    </div> */}
+                {/* </ul> */}
                 
             </div>
         </>

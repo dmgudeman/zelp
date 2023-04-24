@@ -13,8 +13,7 @@ const DemoUserForm = (props) => {
     const [password, setPassword] = useState("dddddd");
     // const [email, setEmail] = useState("demo@user.io");
     // const [errors, setErrors] = useState([]);
-   
-    if (sessionUser) return <Redirect to="/" />;
+
     const submitHandler = (e) => {
         e.preventDefault();
         // setErrors([]);
