@@ -8531,3 +8531,12 @@ Processing by Api::BusinessesController#index as JSON
 Completed 200 OK in 28ms (Views: 28.1ms | ActiveRecord: 11.5ms | Allocations: 6112)
 
 
+Started GET "/api/session" for ::1 at 2023-04-24 16:05:07 -0700
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 428)
+Completed 200 OK in 41ms (Views: 1.2ms | ActiveRecord: 21.4ms | Allocations: 11836)
+
+
