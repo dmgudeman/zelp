@@ -11,13 +11,15 @@
 }
 
 #bannerContainer {
+    flex-direction: row;
+    align-items: center;
     width: 100%;
     background-color: brown;
 }
 
 #cardContainer {
-   display: flex;
-   flex-direction: column;
+  
+   flex-direction: row;
    background-color: aquamarine;
 
 }
