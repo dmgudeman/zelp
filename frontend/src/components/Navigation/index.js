@@ -4,9 +4,12 @@ import SearchBar from "../SearchBar";
 import "./Navigation.css";
 
 const Navigation = ({ showFull }) => {
-    return (
-        <>
-            {showFull ? (
+
+    let content;
+
+    switch( showFull) {
+        case true:
+          return  content = (
                 <div id="navContainer">
                     <div id="logoContainer">
                         <NavLogo />
@@ -18,13 +21,27 @@ const Navigation = ({ showFull }) => {
                         <NavButtons />
                     </div>
                 </div>
-            ) : (
-                <div id="navContainer">
-                    <div id="logoContainer">
-                        <NavLogo />
-                    </div>
-                </div>
-            )}
+            ) 
+        case false:
+        return content = (
+            <div id="navContainer">
+            <div id="logoContainer">
+                <NavLogo />
+            </div>
+        </div>
+        )
+    }
+   
+   
+   
+   
+    return (
+       
+       
+       
+       
+       <>
+            {content}
         </>
     );
 };
