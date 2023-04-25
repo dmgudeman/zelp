@@ -1,25 +1,28 @@
 
 
-#businessContainer {
+.businessContainer {
+    
     display: flex;
     flex-direction: column;
     width: min(900px, 100%);
     height: 100vh;
     margin: 100px 300px 300px 300px;
-    flex-wrap: wrap;
     background-color:pink;
 }
 
-#bannerContainer {
+.bannerContainer {
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     width: 100%;
     background-color: brown;
 }
 
-#cardContainer {
-  
-   flex-direction: row;
-   background-color: aquamarine;
+.cardContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: aquamarine;
 
 }
+

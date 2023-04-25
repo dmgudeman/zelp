@@ -2,7 +2,6 @@ import Home from "./components/home";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage/index";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 import Businesses from "./components/Businesses";
 
 function App() {
