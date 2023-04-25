@@ -8540,3 +8540,21 @@ Processing by Api::SessionsController#show as JSON
 Completed 200 OK in 41ms (Views: 1.2ms | ActiveRecord: 21.4ms | Allocations: 11836)
 
 
+Started GET "/api/session" for ::1 at 2023-04-25 03:21:07 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 691)
+Completed 200 OK in 21ms (Views: 4.8ms | ActiveRecord: 7.7ms | Allocations: 12649)
+
+
+Started GET "/logout" for ::1 at 2023-04-25 03:35:27 -0700
+Processing by StaticPagesController#frontend as HTML
+  Parameters: {"path"=>"logout"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 8ms (Views: 5.1ms | Allocations: 895)
+
+
