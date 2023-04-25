@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../store/businesses";
 import BusinessCard from "./BusinessCard";
 import Navigation from "../Navigation";
+import SearchBar from '../SearchBar';
 import "./Businesses.css";
 
 const Businesses = (props) => {
@@ -19,17 +20,28 @@ const Businesses = (props) => {
             <div className="background">
                 <div className="businessContainer">
                     <div className="bannerContainer">
-                        <h2>Find a business to review</h2>
-                        <p>
-                            Review anything from your favorite patios spot to
-                            your local flower shop
-                        </p>
-                        <div>Visited one of these places recently?</div>
+                        <div className="topBanner">
+                            <div className="leftBanner">
+                                <h2>Find a business to review</h2>
+                                <p className="secondLine">
+                                    Review anything from your favorite patios
+                                    spot to your local flower shop.
+                                </p>
+                                <SearchBar/>
+                            </div>
+                            <div className="rightBanner">
+                                <p>IMAGE</p>
+                            </div>
+                        </div>
+
+                        <div className="bottomBanner">
+                            <div>Visited one of these places recently?</div>
+                        </div>
                     </div>
                     <div className="cardContainer">
                         {businesses.map((business, idx) => {
-                            if(idx < cardTotal ){
-                           return  <BusinessCard business={business} />
+                            if (idx < cardTotal) {
+                                return <BusinessCard business={business} />;
                             }
                         })}
                     </div>
