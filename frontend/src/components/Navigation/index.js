@@ -1,5 +1,6 @@
 import NavButtons from "./NavButtons";
 import NavLogo from "./NavLogo";
+import SearchBar from "../SearchBar";
 import "./Navigation.css";
 
 const Navigation = ({ showFull }) => {
@@ -10,7 +11,9 @@ const Navigation = ({ showFull }) => {
                     <div id="logoContainer">
                         <NavLogo />
                     </div>
-                    <div id="searchBarContainer"></div>
+                    <div id="searchBarContainer">
+                        <SearchBar/>
+                    </div>
                     <div id="buttonsContainer">
                         <NavButtons />
                     </div>

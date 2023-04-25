@@ -12760,3 +12760,63 @@ Processing by Api::BusinessesController#index as JSON
 Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 3260)
 
 
+Started GET "/api/businesses" for 127.0.0.1 at 2023-04-25 08:59:20 -0700
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.6ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:3
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.2ms | Allocations: 111)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.3ms | Allocations: 23)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 22)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 24)
+  Rendered api/businesses/index.json.jbuilder (Duration: 22.5ms | Allocations: 5655)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 9.3ms | Allocations: 6120)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-04-25 08:59:23 -0700
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:3
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 111)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 23)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 22)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/index.json.jbuilder (Duration: 2.7ms | Allocations: 2788)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 3251)
+
+
+Started GET "/api/businesses" for 127.0.0.1 at 2023-04-25 08:59:59 -0700
+Processing by Api::BusinessesController#index as JSON
+  Rendering api/businesses/index.json.jbuilder
+  [1m[36mBusiness Load (0.3ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  ↳ app/views/api/businesses/index.json.jbuilder:3
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.1ms | Allocations: 111)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 23)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 22)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/_business.json.jbuilder (Duration: 0.0ms | Allocations: 24)
+  Rendered api/businesses/index.json.jbuilder (Duration: 2.4ms | Allocations: 2788)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 3266)
+
+

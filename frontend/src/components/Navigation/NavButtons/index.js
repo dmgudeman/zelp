@@ -10,8 +10,9 @@ const NavButtons = (props) => {
 
     const withoutSessionUser = (
         <div id="container">
-            <button id="review-button">Write a Review</button>
-
+            <Link to="/businesses">
+                <button id="review-button">Write a Review</button>
+            </Link>
             <Link to="/login">
                 <button id="login-button">Log In</button>
             </Link>
@@ -24,7 +25,9 @@ const NavButtons = (props) => {
 
     const withSessionUser = (
         <div id="container">
-            <button id="review-button">Write a Review</button>
+            <Link to="/businesses">
+                <button id="review-button">Write a Review</button>
+            </Link>
 
             <Link to="/logout">
                 <button onClick={() => dispatch(removeSessionUser())}>
