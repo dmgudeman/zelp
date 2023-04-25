@@ -11,6 +11,7 @@
 }
 
 .bannerContainer {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -19,7 +20,9 @@
 }
 
 .cardContainer {
+    display: flex;
     flex-direction: row;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
     background-color: aquamarine;
