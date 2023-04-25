@@ -1,5 +1,5 @@
 import "./BusinessCard.css";
-import DisplayReview from "../../Reviews/DisplayReview";
+import DisplayReview from "../../Reviews/DisplayRating";
 
 const BusinessCard = ({ business }) => {
     return (

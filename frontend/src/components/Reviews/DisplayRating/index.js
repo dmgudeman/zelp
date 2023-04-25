@@ -1,6 +1,6 @@
-import "./DisplayReview.css";
+import "./DisplayRating.css";
 
-const DisplayReview = ({rating}) => {
+const DisplayRating = ({rating}) => {
     let activeRating = rating || 3
     return (
         <>
@@ -25,6 +25,6 @@ const DisplayReview = ({rating}) => {
     );
 };
 
-export default DisplayReview;
+export default DisplayRating;
 
 
