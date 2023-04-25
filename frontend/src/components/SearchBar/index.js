@@ -3,18 +3,24 @@ import "./SearchBar.css";
 const SearchBar = (props) => {
     return (
         <>
-            <div className="searchBarContainer">
-                <div className="leftSearchBar">
-                    <p>left</p>
+            <form className="searchBarContainer">
+                <div >
+                    <input 
+                    className="leftSearchBar" 
+                    type="text" 
+                    placeholder="Try lunch, yoga studio, plumber"
+                    />
                 </div>
                 <div className="rightSearchBar">
-                    <p>right</p>
+                <input 
+                className="rightSearchBar" 
+                type="text" 
+                placeholder="San Francisco, CA"/>
                 </div>
                 <div className="searchButton">
                     <i className="fa-solid fa-magnifying-glass"></i>
-                 
                 </div>
-            </div>
+            </form>
         </>
     );
 };
