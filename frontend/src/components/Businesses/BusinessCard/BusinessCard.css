@@ -2,10 +2,12 @@
 
 #businessCardContainer {
     display: flex;
-    width: min(40%, 400px);
+    width: min(48%, 400px);
     /* height: max(50%, 120px); */
-    height: 175px; 
-    margin: 20px;
+    height: 120px; 
+    margin: 20px 0px;
+    border: solid 2px transparent;
+    border-radius: 7px;
      /* width:400px; */
 
   
@@ -13,14 +15,32 @@
 }
 
 #imageContainer {
+    display:flex;
     width: 30%;
     height: 100%;
-    background-color: blue;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px 0px 0px 6px;
+    background-color:#5cb9ff;
 }
 
 #reviewContainer {
+    display: flex;
+    flex-direction: column;
     flex: 1;
+    box-sizing: border-box;
     height: 100%;
-    background-color: blueviolet;
+    background-color: white;
+    border-radius: 0 6px 6px 0;
+    padding: 20px;
 
+}
+
+.firstLine {
+    display: flex;
+    justify-content: space-between;
+}
+
+#x {
+    color: gray;
 }

@@ -1,20 +1,25 @@
-import './BusinessCard.css'
+import "./BusinessCard.css";
+import DisplayReview from "../../Reviews/DisplayReview";
 
-const BusinessCard = ({business}) => {
+const BusinessCard = ({ business }) => {
     return (
         <>
-           <div id="businessCardContainer">
-               <div id="imageContainer">
-                   <p>{business.cost}</p>
-               </div>
-               <div id="reviewContainer">
-                   <p>{business.name}</p>
-
-               </div>
-           </div>
-        
+            <div id="businessCardContainer">
+                <div id="imageContainer">
+                    <p>IMAGE</p>
+                </div>
+                <div id="reviewContainer">
+                    <div className="firstLine">
+                        <p>{business.name}</p>
+                        <p>
+                            <i id="x" className="fa-solid fa-x"></i>
+                        </p>
+                    </div>
+                    <DisplayReview rating={business.rating} />
+                </div>
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default BusinessCard;

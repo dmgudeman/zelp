@@ -8,6 +8,7 @@ import "./Businesses.css";
 const Businesses = (props) => {
     const dispatch = useDispatch();
     let businesses = useSelector(getBusinesses);
+    const [cardTotal, setCardTotal] = useState(6);
 
     useEffect(() => {
         dispatch(fetchBusinesses());
@@ -15,14 +16,23 @@ const Businesses = (props) => {
     return (
         <>
             <Navigation />
-            <div className="businessContainer">
-                <div className="bannerContainer">
-                    <h2>Business Index</h2>
-                </div>
-                <div className="cardContainer">
-                    {businesses.map((business) => (
-                        <BusinessCard business={business} />
-                    ))}
+            <div className="background">
+                <div className="businessContainer">
+                    <div className="bannerContainer">
+                        <h2>Find a business to review</h2>
+                        <p>
+                            Review anything from your favorite patios spot to
+                            your local flower shop
+                        </p>
+                        <div>Visited one of these places recently?</div>
+                    </div>
+                    <div className="cardContainer">
+                        {businesses.map((business, idx) => {
+                            if(idx < cardTotal ){
+                           return  <BusinessCard business={business} />
+                            }
+                        })}
+                    </div>
                 </div>
             </div>
         </>

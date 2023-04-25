@@ -1,0 +1,16 @@
+
+
+.ratingsContainer {
+    display:flex;
+    margin: 10px 0px;
+    
+}
+
+.colored-in {
+    color: blue;
+
+}
+
+.not-colored-in {
+   color: gray;
+}
