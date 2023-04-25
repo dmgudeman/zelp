@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../store/businesses";
 import BusinessCard from "./BusinessCard";
 import Navigation from "../Navigation";
-import './Businesses.css';
+import "./Businesses.css";
 
 const Businesses = (props) => {
     const dispatch = useDispatch();
@@ -15,18 +15,14 @@ const Businesses = (props) => {
     return (
         <>
             <Navigation />
-            <div id="businessContainer">
-                <div id="bannerContainer">
+            <div className="businessContainer">
+                <div className="bannerContainer">
                     <h2>Business Index</h2>
                 </div>
-                <div id="businessCardContiner">
-                   
-                        {businesses.map((business) => (
-                         
-                                <BusinessCard business={business} />
-                         
-                        ))}
-                   
+                <div className="cardContainer">
+                    {businesses.map((business) => (
+                        <BusinessCard business={business} />
+                    ))}
                 </div>
             </div>
         </>
