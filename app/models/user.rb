@@ -12,6 +12,9 @@ class User < ApplicationRecord
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { in: 6..255 }, allow_nil: true
 
+  has_many :reviews,
+  dependent: :destroy
+
   before_validation :ensure_session_token
 
   def self.find_by_credentials(credential, password)

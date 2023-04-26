@@ -44,9 +44,9 @@ const SignupFormPage = (props) => {
 
     return (
         <>
-            <Navigation id="app-nav" showFull={false} />
+            <Navigation id="app-nav" showFlag={false} />
             <div id="signupFormContainer">
-                <form onSubmit={submitHandler}>
+                <form id="inputForm" onSubmit={submitHandler}>
                     <h2>Sign Up for Zelp</h2>
                     <input
                         type="text"

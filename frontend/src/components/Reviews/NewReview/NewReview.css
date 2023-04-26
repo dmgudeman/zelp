@@ -1,0 +1,55 @@
+
+
+#newReviewContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+}
+
+#leftGutter {
+    display: flex;
+    width: 700px;
+    /* background-color: pink; */
+ }
+#center {
+    display: flex;
+    flex-direction: column;
+    width: min(800px, 40%);
+    height: 100vh;
+    /* background-color: bisque;   */
+    
+}
+.title {
+    padding: 20px 0px;
+}
+.textareaLarge {
+    /* height: min(600px, 60%); */
+    height: 300px;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 12pt;
+}
+
+#rightGutter {
+    display: flex;
+    width: max(700px, 100%);
+    /* background-color: pink; */
+    
+}
+
+.button {
+    height: 35px;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    /* background-color: rgb(102, 102, 174); */
+    background-color: #5cb9ff;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 35%;
+}
+
+
+
+

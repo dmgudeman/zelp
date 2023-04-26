@@ -20,7 +20,7 @@ h2 {
     color: #5cb9ff;
     background-color: white;  
 }
-form {
+f#inputForm {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

@@ -7,6 +7,27 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 ApplicationRecord.transaction do 
+
+    require "open-uri"
+    Business.first(3).each_with_index do |business, index|
+      business.photo.attach(
+        # The string passed to URI.open should be the URL of the image in its bucket.
+        # This sample assumes the bucket name is `benchbnb-seeds`.
+        io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/business_#{index + 1}.jpg"),
+        filename: "business_#{index + 1}.jpg"
+      )
+    end
+
+
+
+
+
+
+
+
+
+
+
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all

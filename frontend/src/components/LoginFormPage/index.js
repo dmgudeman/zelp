@@ -35,7 +35,7 @@ const LoginFormPage = (props) => {
 
     return (
         <>
-         <Navigation id="app-nav" showFull={false}/>
+         <Navigation id="app-nav" showFlag={false}/>
             <div id="loginFormContainer">
                
                 <h2>Log in to Zelp</h2>
@@ -45,7 +45,7 @@ const LoginFormPage = (props) => {
                         Sign Up
                     </NavLink>
                 </h1>
-                <form onSubmit={submitHandler}>
+                <form id="inputForm" onSubmit={submitHandler}>
                    
                     <input
                         type="text"

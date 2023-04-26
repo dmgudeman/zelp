@@ -1,5 +1,6 @@
+@businesses.each do |business|
+    json.set! business.id do 
+      json.partial! 'api/businesses/business', business: business
+    end
 
-
-json.array! @businesses do |business|
-    json.partial! 'api/businesses/business', business: business
-  end
+end
