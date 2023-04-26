@@ -28,3 +28,7 @@ hosting/*
 
 /public
 public
+
+/log
+log
+log/development.log
