@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../store/businesses";
 import BusinessCard from "./BusinessCard";
 import Navigation from "../Navigation";
-import SearchBar from "../SearchBar";
+import SearchBar from '../SearchBar';
 import "./Businesses.css";
 
 const Businesses = (props) => {
@@ -16,7 +16,7 @@ const Businesses = (props) => {
     }, [dispatch]);
     return (
         <>
-            <Navigation showFlag={"index"} />
+            <Navigation />
             <div className="background">
                 <div className="businessContainer">
                     <div className="bannerContainer">
@@ -27,7 +27,7 @@ const Businesses = (props) => {
                                     Review anything from your favorite patios
                                     spot to your local flower shop.
                                 </p>
-                                <SearchBar />
+                                <SearchBar/>
                             </div>
                             <div className="rightBanner">
                                 <p>IMAGE</p>
