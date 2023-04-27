@@ -16,13 +16,26 @@ export const receiveReview = (review) => {
     };
 };
 
-
 export const getReview =(reviewId) => (state)=> {
-  
     return state.reviews ? state.reviews[reviewId] : {};
 }
 
+export const getReviews = state => {
+    console.log('getReviews, state', state)
+    return state.reviews ? Object.values(state.reviews) : [];
+}
 
+export const fetchReviews = () => async (dispatch) => {   
+        const res = await csrfFetch("/api/reviews");
+        if(res.ok){
+            console.log('reviews in fetchReviews',res)
+            const data = await res.json();
+            dispatch(receiveReviews(data));
+        } else {
+            console.error('fecthReviews failed')
+        }
+      
+}
 
 export const fetchReview = (reviewId) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews/${reviewId}`);
@@ -38,10 +51,7 @@ export const fetchReview = (reviewId) => async (dispatch) => {
 export const createReview = (review) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews`,{
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(review)
+        body: review
     });
     const data = await res.json(); 
     if(res.ok){
@@ -52,7 +62,8 @@ export const createReview = (review) => async (dispatch) => {
     }
 };
 
-const businessesReducer = (state = {}, action) => {
+const reviewsReducer = (state = {}, action) => {
+    console.log('In reviews reducer state', state)
     switch (action.type) {
         case RECEIVE_REVIEWS:
             return { ...action.reviews };
@@ -63,4 +74,4 @@ const businessesReducer = (state = {}, action) => {
     }
 };
 
-export default businessesReducer;
+export default reviewsReducer;
