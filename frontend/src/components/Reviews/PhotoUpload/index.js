@@ -35,6 +35,11 @@ const PhotoUpload = ({review}) => {
         formData.append('review[body]', review.body);
         formData.append('review[rating]', review.rating);
         formData.append('review[photo]', photo)
+        // formData.append('author_id', author_id);
+        // formData.append('business_id', business_id);
+        // formData.append('body', body);
+        // formData.append('rating', rating);
+        // formData.append('photo', photo)
         dispatch(createReview(formData));
     };
 

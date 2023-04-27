@@ -43,11 +43,11 @@ const NewReview = (props) => {
             <div id="newReviewContainer">
                 <div id="leftGutter"></div>
                 <div id="center">
-                    <form onSubmit={submitHandler}>
+                    <form onSubmit={submitHandler} encType="multipart/form-data">
                         <h2 className="title">{business.name}</h2>
                         <textarea
                             className="textareaLarge"
-                            value={body}
+                            value={form.body}
                             onChange={(e) => setBody(e.target.value)}
                         >
                             {body}
