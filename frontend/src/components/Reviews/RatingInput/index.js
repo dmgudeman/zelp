@@ -18,7 +18,10 @@ const RatingInput = ({ name, value, handleChange }) => {
 
     return (
         <div id="ratingContainer" className="rating-input">
-            <label for="radioButton1">
+            <label
+                for="radioButton1"
+                className={rating >= 1 ? "colored-in" : "not-colored-in"}
+            >
                 <input
                     type="radio"
                     id="radioButton1"
@@ -27,8 +30,10 @@ const RatingInput = ({ name, value, handleChange }) => {
                     hidden
                     onClick={handleChange}
                 />
+
                 <i className="fa-solid fa-star"></i>
             </label>
+
             <label for="radioButton2">
                 <input
                     type="radio"
@@ -40,82 +45,40 @@ const RatingInput = ({ name, value, handleChange }) => {
                 />
                 <i className="fa-solid fa-star"></i>
             </label>
-            {/* <div
-                className={rating >= 1 ? "filled" : "empty"}
-                name={name}
-                value={value}
-                onMouseEnter={() => {
-                    if (!disabled) setRating(1);
-                }}
-                onMouseLeave={() => {
-                    if (!disabled) setRating(rating);
-                }}
-                // onClick={() => { if (!disabled) handleChange} }
-                // onChange={()=> {handleChange(1)}}
-                onChange={handleChange}
-            >
+            <label for="radioButton3">
+                <input
+                    type="radio"
+                    id="radioButton3"
+                    name={name}
+                    value="3"
+                    hidden
+                    onClick={handleChange}
+                />
                 <i className="fa-solid fa-star"></i>
-            </div>
-            <div
-                className={rating >= 2 ? "filled" : "empty"}
-                name={name}
-                value={value}
-                onMouseEnter={() => {
-                    if (!disabled) setRating(2);
-                }}
-                onMouseLeave={() => {
-                    if (!disabled) setRating(rating);
-                }}
-                // onChange={() => { if (!disabled) handleRatingChange(2) }}
-                onChange={handleChange}
-            >
+            </label>
+            <label for="radioButton4">
+                <input
+                    type="radio"
+                    id="radioButton4"
+                    name={name}
+                    value="4"
+                    hidden
+                    onClick={handleChange}
+                />
                 <i className="fa-solid fa-star"></i>
-            </div>
-            <div
-                className={rating >= 3 ? "filled" : "empty"}
-                name={name}
-                value={value}
-                onMouseEnter={() => {
-                    if (!disabled) setRating(3);
-                }}
-                onMouseLeave={() => {
-                    if (!disabled) setRating(rating);
-                }}
-                // onChange={() => { if (!disabled) handleRatingChange(3)} }
-                onChange={handleChange}
-            >
+            </label>
+            <label for="radioButton5">
+                <input
+                    type="radio"
+                    id="radioButton5"
+                    name={name}
+                    value="5"
+                    hidden
+                    onClick={handleChange}
+                />
                 <i className="fa-solid fa-star"></i>
-            </div>
-            <div
-                className={rating >= 4 ? "filled" : "empty"}
-                name={name}
-                value={value}
-                onMouseEnter={() => {
-                    if (!disabled) setRating(4);
-                }}
-                onMouseLeave={() => {
-                    if (!disabled) setRating(rating);
-                }}
-                // onChange={() => { if (!disabled) handleRatingChange(4)} }
-                onChange={handleChange}
-            >
-                <i className="fa-solid fa-star"></i>
-            </div>
-            <div
-                className={rating >= 5 ? "filled" : "empty"}
-                name={name}
-                value={value}
-                onMouseEnter={() => {
-                    if (!disabled) setRating(5);
-                }}
-                onMouseLeave={() => {
-                    if (!disabled) setRating(rating);
-                }}
-                // onChange={() => { if (!disabled) handleRatingChange(5)} }
-                onChange={handleChange}
-            >
-                <i className="fa-solid fa-star"></i>
-            </div> */}
+            </label>
+            
         </div>
     );
 };

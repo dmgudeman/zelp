@@ -34,7 +34,7 @@
     color: #5cb9ff;
   }
   
-  .rating-input .empty {
+  .fa-solid .fa-star .empty {
     color: rgba(92,185,255, 0.4);
   }
   
@@ -53,4 +53,13 @@
     text-decoration: underline;
     pointer-events: none;
   }
+
+  .colored-in {
+    color: blue;
+
+}
+
+.not-colored-in {
+   color: gray;
+}
   
