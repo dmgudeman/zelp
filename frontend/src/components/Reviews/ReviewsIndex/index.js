@@ -8,7 +8,7 @@ const ReviewsIndex = (props) => {
     let reviews;
     const dispatch = useDispatch();
     reviews = useSelector(getReviews)
-    console.log( 'InRveiewsIndex', reviews)
+    
 
     useEffect(() => {
       

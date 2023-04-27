@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-  wrap_parameters include: Review.attribute_names + [:photo]
+  wrap_parameters :review, include: Review.attribute_names + [:photo]
 
   def index
     @reviews = Review.all.sort { |a, b| b.created_at <=> a.created_at }
@@ -11,6 +11,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
+    
     @review = Review.new(review_params)
 
     if @review.save!

@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import RatingDisplay from "../../Reviews/RatingDisplay";
 
 const BusinessCard = ({ business }) => {
-    console.log('Business Card', business)
-    console.log('Business Card Id', business.id)
+
  
     return (
         <>

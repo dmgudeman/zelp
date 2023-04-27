@@ -20,7 +20,7 @@ const ReviewNew = (props) => {
 
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(1);
     // let review = { author_id: userId, business_id: busId, body, rating };
 
     useEffect(() => {
@@ -41,34 +41,36 @@ const ReviewNew = (props) => {
     // };
 
     const handleChange = e => {
-        console.log('handleCahnge fired')
-        // setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-
-        console.log(e.target.value)
         const { name, value } = e.target;
+
+     
       
-        formData.set(name, value);
+        formData.append(`review[${name}]`, value);
         setFormData(formData);
       };
-    const ratingHandleChange =(rating) => {
+
+    const handleFile =({currentTarget}) => {
+        const file = currentTarget.files[0];
+        formData.append('review[photo]',file)
+        setFormData(formData);
 
     }
+  
 
     const submitHandler = (e) => {
         e.preventDefault();
         e.stopPropagation();
       
       
-        formData.set('author_id', sessionUser.id);
-        formData.set('business_id', busId);
-        // formData.append('body', body);
-        // formData.append('rating', rating);
-        // formData.append('photo', photo)
+        formData.set('review[author_id]', +sessionUser.id);
+        formData.set('review[business_id]', +busId);
+        formData.set('review[rating]', +rating);
+
 
         for (const [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
           }
-        // dispatch(createReview(formData));
+        dispatch(createReview(formData));
     };
 
     return (
@@ -102,7 +104,7 @@ const ReviewNew = (props) => {
                         )} */}
 
                         {/* {rating > 0 && formData.body ? ( */}
-                            <PhotoUpload name="photo" value={formData.photo} handleChange={handleChange}/>
+                            <PhotoUpload name="photo" value={formData.photo} handleChange={handleFile}/>
                          {/* ) : null} */}
                         <ReviewNewSubmit submitHandler={submitHandler} />
                     </form>

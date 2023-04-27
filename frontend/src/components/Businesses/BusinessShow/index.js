@@ -11,7 +11,7 @@ import './BusinessShow.css'
 const BusinessShow = (props) => {
     const dispatch = useDispatch();
     const {busId} = useParams();
-    // console.log('busId in BusinessShow', busId)
+   
     let business = useSelector(getBusiness(busId));
     const [id, setId] = useState(busId)
   

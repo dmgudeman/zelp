@@ -21,14 +21,14 @@ export const getReview =(reviewId) => (state)=> {
 }
 
 export const getReviews = state => {
-    console.log('getReviews, state', state)
+   
     return state.reviews ? Object.values(state.reviews) : [];
 }
 
 export const fetchReviews = () => async (dispatch) => {   
         const res = await csrfFetch("/api/reviews");
         if(res.ok){
-            console.log('reviews in fetchReviews',res)
+           
             const data = await res.json();
             dispatch(receiveReviews(data));
         } else {
@@ -49,11 +49,14 @@ export const fetchReview = (reviewId) => async (dispatch) => {
 };
 
 export const createReview = (review) => async (dispatch) => {
+
+    
     const res = await csrfFetch(`/api/reviews`,{
         method: 'POST',
         body: review
     });
     const data = await res.json(); 
+    console.log('increateReview data =', data)
     if(res.ok){
         dispatch(receiveReview(data));
         return res;
