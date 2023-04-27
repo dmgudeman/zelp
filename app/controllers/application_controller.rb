@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  debugger
+ 
   before_action :snake_case_params, :attach_authenticity_token
   include ActionController::RequestForgeryProtection
   protect_from_forgery with: :exception

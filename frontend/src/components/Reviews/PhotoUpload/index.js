@@ -5,7 +5,7 @@ import { createReview} from '../../../store/reviews';
 import "./PhotoUpload.css";
 
 
-const PhotoUpload = ({review}) => {
+const PhotoUpload = ({name, value, handleChange}) => {
     // console.log('ttttttt', author_id, business_id, rating, body)
     // console.log('ppppp', props)
     // const {author_id, business_id, rating, body } = {...props};
@@ -15,28 +15,16 @@ const PhotoUpload = ({review}) => {
     const [files, setFiles] = useState([]);
     const [photo, setPhoto] = useState(null);
 
-    const handleFileChange = (e) => {
-        // let newFiles = e.target.files;
-        //  setFiles([...files, ...newFiles]);
+    // const handleFileChange = (e) => {
+    //     // let newFiles = e.target.files;
+    //     //  setFiles([...files, ...newFiles]);
       
-        setPhoto(e.target.files[0]);
+    //     setPhoto(e.target.files[0]);
        
        
       
-    };
-    const submitHandler = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const formData = new FormData();
-        // console.log(author_id, business_id, rating, body)
-   
-        formData.append('review[author_id]', review.author_id);
-        formData.append('review[business_id]', review.business_id);
-        formData.append('review[body]', review.body);
-        formData.append('review[rating]', review.rating);
-        formData.append('review[photo]', photo)
-        dispatch(createReview(formData));
-    };
+    // };
+  
 
     const handleDragOver = e => {
         e.preventDefault();
@@ -44,35 +32,35 @@ const PhotoUpload = ({review}) => {
         // let newFiles = e.target.files;
 
         // setFiles([...files, ...newFiles]);
-        console.log(e.target);
+        console.log(e);
 
     }
     return (
         <div id="uploadContainer">
             <h3 className="title">Attach Photos</h3>
-            <form
+            {/* <form
                 className="form-photo-upload"
-                method="post"
+                // method="post"
                 // enctype="multipart/form-data"
-                onSubmit={submitHandler}
+                // onSubmit={submitHandler}
                 onDragOver={handleDragOver}
-            >
+            > */}
                 <label for="profile_pic">Choose file to upload</label>
                 <input
                     type="file"
                     id="profile_pic"
                     name="profile_pic"
                     // multiple
-                    onChange={handleFileChange}
+                    onChange={handleChange}
                 />
                 <p>Drag and Drop files or choose from your file directory</p>
 
                 <p>Number of files chosen: {files.length}</p>
 
                 <div>
-                    <button>Submit</button>
+                  
                 </div>
-            </form>
+            {/* </form> */}
         </div>
     );
 };

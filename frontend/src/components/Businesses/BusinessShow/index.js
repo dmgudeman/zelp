@@ -11,18 +11,18 @@ import './BusinessShow.css'
 const BusinessShow = (props) => {
     const dispatch = useDispatch();
     const {busId} = useParams();
-    console.log('busId in BusinessShow', busId)
+    // console.log('busId in BusinessShow', busId)
     let business = useSelector(getBusiness(busId));
     const [id, setId] = useState(busId)
   
 
     
-    // useEffect(()=>{
-    //     if (busId) {
-
+    useEffect(()=>{
+        if (!busId) {
+            <Redirect to="/" />
     //    dispatch(fetchBusiness(busId))
-    //     }
-    // },[dispatch])
+        }
+    },[dispatch, busId])
     if (!busId) return <Redirect to="/" />;
     if (!business) return <Redirect to="/" />;
 

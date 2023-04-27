@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./ReviewNewForm.css";
 
-const ReviewNewForm = ({bodyOnChange, body}) => {
-    // const [body, setBody] = useState("");
+const ReviewNewForm = ({ name, value, handleChange }) => {
+    
+    
     return (
         <>
-            <form onSubmit={()=>{}}>
-                <textarea
-                    className="textareaLarge"
-                    value={body}
-                    onChange={e=>bodyOnChange(e)}
-                    placeholder="Leave a comment or explain your rating if you would like. This will be posted on the site"
-                >
-                    {body}
-                </textarea>
-            </form>
+            <textarea
+                className="textareaLarge"
+                name={name}
+                value={value}
+                onChange={handleChange}
+                placeholder="Leave a comment or explain your rating if you would like. This will be posted on the site"
+            >
+                {value}
+            </textarea>
         </>
     );
 };
