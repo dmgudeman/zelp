@@ -15,8 +15,17 @@ const NewReview = (props) => {
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
     const sessionUser = useSelector(getUser);
+    const [userId, setUserId] = useState(sessionUser.id || '');
     const [body, setBody] = useState("");
-    const [rating, setRating] = useState(0)
+    // const [busId, setBusId] = useState(paramBusId || '')
+    const [rating, setRating] = useState(3);
+    let review = {author_id: userId, business_id:busId, body, rating}
+   
+
+    useEffect(()=>{
+      setUserId(sessionUser.id);
+
+    }, [sessionUser])
 
 
     if (!business) <Redirect to="/home" />;
@@ -49,7 +58,8 @@ const NewReview = (props) => {
                             value="Post Review"
                         />
                     </form>
-                    <PhotoUpload/>
+                    {console.log('hhhhhh', review)}
+                    <PhotoUpload review={review}/>
                    
                 </div>
                 <div id="rightGutter"></div>
