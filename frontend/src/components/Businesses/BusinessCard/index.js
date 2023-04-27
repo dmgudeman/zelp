@@ -1,6 +1,6 @@
 import "./BusinessCard.css";
 import { Link } from "react-router-dom";
-import DisplayReview from "../../Reviews/DisplayRating";
+import RatingDisplay from "../../Reviews/RatingDisplay";
 
 const BusinessCard = ({ business }) => {
     console.log('Business Card', business)
@@ -21,7 +21,7 @@ const BusinessCard = ({ business }) => {
                             <i id="x" className="fa-solid fa-x"></i>
                         </p>
                     </div>
-                    <DisplayReview rating={business.rating} />
+                    <RatingDisplay rating={business.rating} />
                 </div>
             </div>
         </>

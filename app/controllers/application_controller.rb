@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  debugger
   before_action :snake_case_params, :attach_authenticity_token
   include ActionController::RequestForgeryProtection
   protect_from_forgery with: :exception
@@ -43,6 +44,7 @@ class ApplicationController < ActionController::API
   private
 
   def snake_case_params
+
     params.deep_transform_keys!(&:underscore)
   end
 

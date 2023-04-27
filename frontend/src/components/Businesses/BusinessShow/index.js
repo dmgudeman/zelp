@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {useParams, Link} from 'react-router-dom';
+import {useParams, Link, Redirect} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import BusinessCard from '../BusinessCard';
 
@@ -15,12 +15,16 @@ const BusinessShow = (props) => {
     let business = useSelector(getBusiness(busId));
     const [id, setId] = useState(busId)
   
+
+    
     // useEffect(()=>{
     //     if (busId) {
 
     //    dispatch(fetchBusiness(busId))
     //     }
     // },[dispatch])
+    if (!busId) return <Redirect to="/" />;
+    if (!business) return <Redirect to="/" />;
 
     return (
        
@@ -36,7 +40,7 @@ const BusinessShow = (props) => {
             <div id="lowerContainer">
                 <div id="l-1"></div>
                 <div id="l-2">
-                    <Link to={`/newReview/${business.id}`}>
+                    <Link to={`/reviewNew/${business.id}`}>
                      <button className="blue-button" ><i className="fa-regular fa-star"></i>Write a review</button>
                      </Link>
                      <button>Add Photo</button>

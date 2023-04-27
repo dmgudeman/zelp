@@ -5,7 +5,7 @@ import BusinessShow from "./components/Businesses/BusinessShow";
 import ReviewsIndex from "./components/Reviews/ReviewsIndex";
 import { Route, Switch } from "react-router-dom";
 import Businesses from "./components/Businesses";
-import NewReview from "./components/Reviews/NewReview";
+import ReviewNew from "./components/Reviews/ReviewNew";
 
 function App() {
     return (
@@ -17,7 +17,7 @@ function App() {
                 <Route path='/reviews' component={ReviewsIndex}   />             
                 <Route path="/businesses/:busId" component={BusinessShow} />
                 <Route path="/businesses" component={Businesses} />
-                <Route path="/newReview/:busId" component={NewReview} />
+                <Route path="/reviewNew/:busId" component={ReviewNew} />
                 <Route path="/" component={Home} />
             </Switch>
         </>

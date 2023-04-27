@@ -58,7 +58,21 @@ export const createReview = (review) => async (dispatch) => {
         dispatch(receiveReview(data));
         return res;
     } else {
-        console.error('error in saving review')
+        console.error('error in creating a review')
+    }
+};
+
+export const updateReview = (review) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${review.id}`,{
+        method: 'PASTE',
+        body: review
+    });
+    const data = await res.json(); 
+    if(res.ok){
+        dispatch(receiveReview(data));
+        return res;
+    } else {
+        console.error('error in updating review')
     }
 };
 

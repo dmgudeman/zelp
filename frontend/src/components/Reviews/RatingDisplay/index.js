@@ -1,4 +1,4 @@
-import "./DisplayRating.css";
+import "./RatingDisplay.css";
 
 const DisplayRating = ({rating}) => {
     let activeRating = rating || 3
