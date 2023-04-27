@@ -19,19 +19,26 @@ const ReviewNew = (props) => {
     const [formData, setFormData] = useState(new FormData());
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
-    const [rating, setRating] = useState(1);
+    const [rating, setRating] = useState(0);
+    const flag = formData.get('review[body]')
 
     useEffect(() => {
         setUserId(sessionUser.id);
         setRating(rating);
+     
     }, [sessionUser, rating]);
 
     if (!business) <Redirect to="/home" />;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        formData.append(`review[${name}]`, value);
+        formData.set(`review[${name}]`, value);
         setFormData(formData);
+    };
+    const handleRatingChange = (newRating) => {
+        console.log('nreRating', rating)
+        setRating(newRating);
+        // ratingOnChange(newRating);
     };
 
     const handleFile = ({ currentTarget }) => {
@@ -39,6 +46,7 @@ const ReviewNew = (props) => {
         formData.append("review[photo]", file);
         setFormData(formData);
     };
+   
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -67,25 +75,27 @@ const ReviewNew = (props) => {
                         <RatingInput
                             name="rating"
                             value={formData.rating}
+                            rating={rating}
                             handleChange={handleChange}
+                            handleRatingChange={handleRatingChange}
                         />
-                        {/* {formData.rating > 0 ? ( */}
+                        {rating > 0 ? (
                         <ReviewNewForm
                             name="body"
                             value={formData.body}
                             handleChange={handleChange}
                         />
-                        {/* ) : (
+                         ) : (
                             <h2>First a rating</h2>
-                        )} */}
+                         )} 
 
-                        {/* {rating > 0 && formData.body ? ( */}
+                        {rating > 0 && formData.get('review[body]') ? (
                         <PhotoUpload
                             name="photo"
                             value={formData.photo}
                             handleChange={handleFile}
                         />
-                        {/* ) : null} */}
+                      ) : null} 
                         <ReviewNewSubmit submitHandler={submitHandler} />
                     </form>
                 </div>

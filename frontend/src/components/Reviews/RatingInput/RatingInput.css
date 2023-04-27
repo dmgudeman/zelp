@@ -7,10 +7,29 @@
     display:flex;
     flex-direction: row;
     margin-top: 30px;
-    margin-bottom: 10px;
-    /* background-color: bisque; */
+    margin-bottom: 10px;    
+    align-items: center;
+    width: 100%;
+    
     
 }
+
+#ratingContainer input[type="radio"] {
+  display: none;
+}
+/* #ratingContainer input[type="radio"]:checked + label {
+  color: #fff;
+  background-color: #007bff;
+} */
+#ratingContainer label:hover {
+ 
+  color: #59a1e0;
+}
+.star {
+  transform: scale(1.5);
+  margin: 7px;
+}
+
 
 .colored-in {
     color: blue;
@@ -21,7 +40,7 @@
    color: gray;
 }
 
-.rating-input {
+/* .rating-input {
     display: flex;
     margin-right: 4px;
   }
@@ -62,4 +81,4 @@
 .not-colored-in {
    color: gray;
 }
-  
+    */

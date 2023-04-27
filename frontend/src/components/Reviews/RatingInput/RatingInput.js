@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./RatingInput.css";
 
-const RatingInput = ({ name, value, handleChange }) => {
-    const [rating, setRating] = useState(value);
+const RatingInput = ({ rating, name, value, handleChange, handleRatingChange }) => {
+    // const [rating, setRating] = useState(value);
     let disabled = false;
     // console.log('name in RatingInput', name)
     // console.log('value in RatingInput', value)
@@ -11,10 +11,7 @@ const RatingInput = ({ name, value, handleChange }) => {
         console.log("rating changed rating is:", rating);
     }, [rating]);
 
-    const handleRatingChange = (newRating) => {
-        setRating(newRating);
-        // ratingOnChange(newRating);
-    };
+   
 
     return (
         <div id="ratingContainer" className="rating-input">
@@ -22,63 +19,78 @@ const RatingInput = ({ name, value, handleChange }) => {
                 for="radioButton1"
                 className={rating >= 1 ? "colored-in" : "not-colored-in"}
             >
-                <input
-                    type="radio"
-                    id="radioButton1"
-                    name={name}
-                    value="1"
-                    hidden
-                    onClick={handleChange}
-                />
-
-                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star star"></i>{" "}
             </label>
 
-            <label for="radioButton2">
-                <input
-                    type="radio"
-                    id="radioButton2"
-                    name={name}
-                    value="2"
-                    hidden
-                    onClick={handleChange}
-                />
-                <i className="fa-solid fa-star"></i>
+            <input
+               
+                type="radio"
+                id="radioButton1"
+                name={name}
+                value="1"
+                hidden
+                onChange={ ()=> handleRatingChange(1)}
+                onClick={handleChange}
+            />
+
+            <label for="radioButton2" className={rating >= 2 ? "colored-in" : "not-colored-in"}>
+                <i className="fa-solid fa-star star"></i>
             </label>
-            <label for="radioButton3">
-                <input
-                    type="radio"
-                    id="radioButton3"
-                    name={name}
-                    value="3"
-                    hidden
-                    onClick={handleChange}
-                />
-                <i className="fa-solid fa-star"></i>
+            <input
+             
+                type="radio"
+                id="radioButton2"
+                name={name}
+                value="2"
+                hidden
+                onChange={ ()=> handleRatingChange(2)}
+                onClick={handleChange}
+            />
+
+            <label for="radioButton3" className={rating >= 3 ? "colored-in" : "not-colored-in"}>
+                {" "}
+                <i className="fa-solid fa-star star"></i>
             </label>
-            <label for="radioButton4">
-                <input
-                    type="radio"
-                    id="radioButton4"
-                    name={name}
-                    value="4"
-                    hidden
-                    onClick={handleChange}
-                />
-                <i className="fa-solid fa-star"></i>
+            <input
+          
+                type="radio"
+                id="radioButton3"
+                name={name}
+                value="3"
+                hidden
+                onChange={ ()=> handleRatingChange(3)}
+                onClick={handleChange}
+            />
+
+            <label for="radioButton4" className={rating >= 4 ? "colored-in" : "not-colored-in"}>
+                {" "}
+                <i className="fa-solid fa-star star"></i>
             </label>
-            <label for="radioButton5">
-                <input
-                    type="radio"
-                    id="radioButton5"
-                    name={name}
-                    value="5"
-                    hidden
-                    onClick={handleChange}
-                />
-                <i className="fa-solid fa-star"></i>
+            <input
+             
+                type="radio"
+                id="radioButton4"
+                name={name}
+                value="4"
+                hidden
+                onChange={ ()=> handleRatingChange(4)}
+                onClick={handleChange}
+            />
+
+            <label for="radioButton5" className={rating >= 5 ? "colored-in" : "not-colored-in"}>
+                {" "}
+                <i className="fa-solid fa-star star"></i>
             </label>
-            
+            <input
+             
+                type="radio"
+                id="radioButton5"
+                name={name}
+                value="5"
+                hidden
+                onChange={ ()=> handleRatingChange(5)}
+                onClick={handleChange}
+            />
         </div>
     );
 };
