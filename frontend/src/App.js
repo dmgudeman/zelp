@@ -2,7 +2,7 @@ import Home from "./components/Home";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage/index";
 import BusinessShow from "./components/Businesses/BusinessShow";
-import ReviewsIndex from "./components/Reviews/ReviewsIndex";
+import ReviewsIndex from "./components/Reviews/ReviewsIndex/ReviewsIndex";
 import { Route, Switch } from "react-router-dom";
 import Businesses from "./components/Businesses";
 import ReviewNew from "./components/Reviews/ReviewNew";

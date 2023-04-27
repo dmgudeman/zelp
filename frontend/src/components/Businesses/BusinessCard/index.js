@@ -1,6 +1,6 @@
 import "./BusinessCard.css";
 import { Link } from "react-router-dom";
-import RatingDisplay from "../../Reviews/RatingDisplay";
+import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
 
 const BusinessCard = ({ business }) => {
 

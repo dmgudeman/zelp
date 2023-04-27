@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
-import ReviewNewForm from "./ReviewNewForm";
-import RatingInput from "../RatingInput";
-import PhotoUpload from "../PhotoUpload";
-import ReviewNewSubmit from "./ReviewNewSubmit/ReviewNewSubmit";
+import ReviewNewForm from "../ReviewNewForm/ReviewNewForm";
+import RatingInput from "../RatingInput/RatingInput";
+import PhotoUpload from "../PhotoUpload/PhotoUpload";
+import ReviewNewSubmit from "../ReviewNewSubmit/ReviewNewSubmit";
 import { getBusiness } from "../../../store/businesses";
 import { createReview } from "../../../store/reviews";
 import { getUser } from "../../../store/session";
@@ -17,11 +17,9 @@ const ReviewNew = (props) => {
     let business = useSelector(getBusiness(busId));
     const sessionUser = useSelector(getUser);
     const [formData, setFormData] = useState(new FormData());
-
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
     const [rating, setRating] = useState(1);
-    // let review = { author_id: userId, business_id: busId, body, rating };
 
     useEffect(() => {
         setUserId(sessionUser.id);
@@ -30,53 +28,33 @@ const ReviewNew = (props) => {
 
     if (!business) <Redirect to="/home" />;
 
-    // const ratingOnChange = (num) => {
-    //     setRating(parseInt(num));
-    //     console.log("rating", rating);
-    // };
-
-    // const bodyOnChange = (e) => {
-    //     console.log(e.target.value);
-    //     setBody(e.target.value);
-    // };
-
-    const handleChange = e => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
-
-     
-      
         formData.append(`review[${name}]`, value);
         setFormData(formData);
-      };
+    };
 
-    const handleFile =({currentTarget}) => {
+    const handleFile = ({ currentTarget }) => {
         const file = currentTarget.files[0];
-        formData.append('review[photo]',file)
+        formData.append("review[photo]", file);
         setFormData(formData);
-
-    }
-  
+    };
 
     const submitHandler = (e) => {
         e.preventDefault();
         e.stopPropagation();
-      
-      
-        formData.set('review[author_id]', +sessionUser.id);
-        formData.set('review[business_id]', +busId);
-        formData.set('review[rating]', +rating);
-
-
-        for (const [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-          }
+        formData.set("review[author_id]", +sessionUser.id);
+        formData.set("review[business_id]", +busId);
+        formData.set("review[rating]", +rating);
+        // for (const [key, value] of formData.entries()) {
+        //     console.log(`${key}: ${value}`);
+        //   }
         dispatch(createReview(formData));
     };
 
     return (
         <>
             <Navigation showFlag={false} />
-
             <div id="newReviewContainer">
                 <div id="leftGutter"></div>
                 <div id="center">
@@ -90,22 +68,24 @@ const ReviewNew = (props) => {
                             name="rating"
                             value={formData.rating}
                             handleChange={handleChange}
-                            
                         />
-
                         {/* {formData.rating > 0 ? ( */}
-                            <ReviewNewForm
-                                name="body"
-                                value={formData.body}
-                                handleChange={handleChange}
-                            />
+                        <ReviewNewForm
+                            name="body"
+                            value={formData.body}
+                            handleChange={handleChange}
+                        />
                         {/* ) : (
                             <h2>First a rating</h2>
                         )} */}
 
                         {/* {rating > 0 && formData.body ? ( */}
-                            <PhotoUpload name="photo" value={formData.photo} handleChange={handleFile}/>
-                         {/* ) : null} */}
+                        <PhotoUpload
+                            name="photo"
+                            value={formData.photo}
+                            handleChange={handleFile}
+                        />
+                        {/* ) : null} */}
                         <ReviewNewSubmit submitHandler={submitHandler} />
                     </form>
                 </div>
