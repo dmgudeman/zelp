@@ -29,7 +29,7 @@ const NavButtons = (props) => {
                 <button id="review-button">Write a Review</button>
             </Link>
 
-            <Link to="/logout">
+            <Link to="/">
                 <button onClick={() => dispatch(removeSessionUser())}>
                     Log Out
                 </button>

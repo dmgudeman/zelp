@@ -7,14 +7,14 @@ class Api::BusinessesController < ApplicationController
 
   def show 
     @business = Business.find(params[:id])
-    # @reviews = @business.reviews
+    @reviews = @business.reviews
     # debugger
-    render show
+    # render show
   end
 
   private
 
   def business_params
-    params.require(:business).permit(:name, :address, :phone, :email, :website, :cost, :lat, :lng)
+    params.require(:business).permit(:name, :reviews, :address, :phone, :email, :website, :cost, :lat, :lng)
   end
 end

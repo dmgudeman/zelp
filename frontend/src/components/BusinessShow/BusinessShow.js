@@ -1,37 +1,38 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, connect } from "react-redux";
 import BusinessCard from "../BusinessCard/BusinessCard";
 import ReviewsIndex from "../Reviews/ReviewsIndex/ReviewsIndex";
 import Navigation from "../Navigation";
-import { getBusiness, fetchbusiness } from "../../store/businesses";
+import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./BusinessShow.css";
 
 const BusinessShow = (props) => {
     const dispatch = useDispatch();
     const { busId } = useParams();
-
     let business = useSelector(getBusiness(busId));
     const [id, setId] = useState(busId);
+    
+   
+      
 
     useEffect(() => {
         if (!busId) {
             <Redirect to="/" />;
             //    
         }   
-
-    }, [dispatch, busId]);
-    if (!busId) return <Redirect to="/" />;
-    if (!business) return <Redirect to="/" />;
+        dispatch(fetchBusiness(busId));
+    
+    }, [dispatch, business.review]);
+    // if (!busId) return <Redirect to="/" />;
+    // if (!business) return <Redirect to="/" />;
 
     return (
         <>
             <Navigation showFlag={"index"} />
             <div id="businessShowContainer">
                 <div id="heroContainer">
-                    <div id="businessGroup">
-                        <BusinessCard business={business} />
-                    </div>
+                    <div className="businessName">{business.name}</div>
                 </div>
                 <div id="lowerContainer">
                     <div id="l-1"></div>
@@ -39,13 +40,11 @@ const BusinessShow = (props) => {
                         <div className="buttons">
                             <Link to={`/reviewNew/${business.id}`}>
                                 <button className="blue-button">
-                                    <i className="fa-regular fa-star"></i>Write
-                                    a review
+                                    <i className="fa-regular fa-star"></i> Leave your opinions, and  optional photo(s)
                                 </button>
                             </Link>
-                            <button>Add Photo</button>
                         </div>
-                        <ReviewsIndex />
+                        <ReviewsIndex reviews={business.reviews}/>
                     </div>
                     <div id="l-3"></div>
                     <div id="l-4"></div>
@@ -55,4 +54,8 @@ const BusinessShow = (props) => {
     );
 };
 
-export default BusinessShow;
+const mapStateToProps = (state) => ({
+    reviews: state.reviews,
+  });
+
+export default connect(mapStateToProps)(BusinessShow);

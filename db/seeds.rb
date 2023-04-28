@@ -72,8 +72,19 @@ ApplicationRecord.transaction do
         cost: '$',
         lat: Faker::Address.latitude.to_f.round(6),
         lng: Faker::Address.longitude.to_f.round(6)
+       
       }) 
-      end
+    
+    end
+    puts "Creating reviews"
+    4.times do 
+      Review.create(
+        author_id: User.all.sample,
+        business_id: Business.all.sample,
+        rating: Faker::Number.between(from: 1, to: 5),
+        body: Faker::Lorem.paragraph
+      )
+    end
    
     puts "Done!"
   end

@@ -35,15 +35,15 @@ export const fetchBusinesses = () => async (dispatch) => {
 };
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
-
+      console.log('inFetch business businessId ', businessId)
     const res = await csrfFetch(`/api/businesses/${businessId}`);
     const data = await res.json();
-    console.log('inreducerrrrrrr', data)
+    console.log('data in fetchBusiness', data)
     if(res.ok){
     dispatch(receiveBusiness(data));
     return res;
     } else {
-        console.error('DIDN"T WORKKKKK')
+        console.error('fetchBusiness did not work, in reducer')
     }
 };
 
@@ -52,7 +52,7 @@ const businessesReducer = (state = {}, action) => {
         case RECEIVE_BUSINESSES:
             return { ...action.businesses };
         case RECEIVE_BUSINESS:
-            return { ...state,    [action.business.id] : action.business };
+            return { ...state,    [action.business.business.id] : action.business.business };
         default:
             return state;
     }
