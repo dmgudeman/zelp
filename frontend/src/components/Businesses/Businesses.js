@@ -41,7 +41,7 @@ const Businesses = (props) => {
                     <div className="cardContainer">
                         {businesses.map((business, idx) => {
                             if (idx < cardTotal) {
-                                return <BusinessCard business={business} />;
+                                return <BusinessCard business={business} key={business.id}/>;
                             }
                         })}
                     </div>
