@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./RatingInput.css";
 
-const RatingInput = ({ rating, name, value, handleChange, handleRatingChange }) => {
+const RatingInput = ({ rating, name, value, handleChange}) => {
     // const [rating, setRating] = useState(value);
     let disabled = false;
     // console.log('name in RatingInput', name)
@@ -22,14 +22,12 @@ const RatingInput = ({ rating, name, value, handleChange, handleRatingChange }) 
                 <i className="fa-solid fa-star star"></i>{" "}
             </label>
 
-            <input
-               
+            <input     
                 type="radio"
                 id="radioButton1"
                 name={name}
                 value="1"
                 hidden
-                onChange={ ()=> handleRatingChange(1)}
                 onClick={handleChange}
             />
 
@@ -43,7 +41,6 @@ const RatingInput = ({ rating, name, value, handleChange, handleRatingChange }) 
                 name={name}
                 value="2"
                 hidden
-                onChange={ ()=> handleRatingChange(2)}
                 onClick={handleChange}
             />
 
@@ -58,7 +55,6 @@ const RatingInput = ({ rating, name, value, handleChange, handleRatingChange }) 
                 name={name}
                 value="3"
                 hidden
-                onChange={ ()=> handleRatingChange(3)}
                 onClick={handleChange}
             />
 
@@ -73,7 +69,6 @@ const RatingInput = ({ rating, name, value, handleChange, handleRatingChange }) 
                 name={name}
                 value="4"
                 hidden
-                onChange={ ()=> handleRatingChange(4)}
                 onClick={handleChange}
             />
 
@@ -88,7 +83,6 @@ const RatingInput = ({ rating, name, value, handleChange, handleRatingChange }) 
                 name={name}
                 value="5"
                 hidden
-                onChange={ ()=> handleRatingChange(5)}
                 onClick={handleChange}
             />
         </div>

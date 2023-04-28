@@ -35,11 +35,9 @@ const PhotoUpload = ({ name, value, handleChange }) => {
                 // multiple
                 onChange={handleChange}
             />
-            <p>Drag and Drop files or choose from your file directory</p>
+            <p>Drag and Drop a file or choose from your file directory</p>
 
-            <p>Number of files chosen: {files.length}</p>
-
-            <div></div>
+            {/* <p>Number of files chosen: {files.length}</p> */}
         </div>
     );
 };

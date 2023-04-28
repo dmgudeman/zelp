@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 import ReviewNewForm from "../ReviewNewForm/ReviewNewForm";
 import RatingInput from "../RatingInput/RatingInput";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
@@ -13,6 +13,7 @@ import "./ReviewNew.css";
 
 const ReviewNew = (props) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
     const sessionUser = useSelector(getUser);
@@ -25,8 +26,9 @@ const ReviewNew = (props) => {
     useEffect(() => {
         setUserId(sessionUser.id);
         setRating(rating);
+        setBody(body);
      
-    }, [sessionUser, rating]);
+    }, [sessionUser, rating, body]);
 
     if (!business) <Redirect to="/home" />;
 
@@ -34,12 +36,18 @@ const ReviewNew = (props) => {
         const { name, value } = e.target;
         formData.set(`review[${name}]`, value);
         setFormData(formData);
+        if (name==='rating') setRating(value);
+        if (name === 'body') setBody(value);
     };
-    const handleRatingChange = (newRating) => {
-        console.log('nreRating', rating)
-        setRating(newRating);
-        // ratingOnChange(newRating);
-    };
+    // const handleRatingChange = (newRating) => {
+    //     console.log('nreRating', rating)
+    //     setRating(newRating);
+    //     // ratingOnChange(newRating);
+    // };
+    // const handleBodyChange = ({currentTarget}) => {
+    //     console.log(currentTarget.value)
+    //     setBody(currentTarget.value)
+    // }
 
     const handleFile = ({ currentTarget }) => {
         const file = currentTarget.files[0];
@@ -57,7 +65,16 @@ const ReviewNew = (props) => {
         // for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
         //   }
+        try{
         dispatch(createReview(formData));
+        setFormData(null);
+        setBody(null);
+        setRating(null);
+
+        history.push(`/businesses/${busId}`)
+        } catch (errors) {
+            console.error(errors)
+        }
     };
 
     return (
@@ -77,19 +94,20 @@ const ReviewNew = (props) => {
                             value={formData.rating}
                             rating={rating}
                             handleChange={handleChange}
-                            handleRatingChange={handleRatingChange}
+                            // handleRatingChange={handleRatingChange}
                         />
                         {rating > 0 ? (
                         <ReviewNewForm
                             name="body"
                             value={formData.body}
+                            // handleBodyChange={handleBodyChange}
                             handleChange={handleChange}
                         />
                          ) : (
                             <h2>First a rating</h2>
                          )} 
 
-                        {rating > 0 && formData.get('review[body]') ? (
+                        {rating > 0 && body ? (
                         <PhotoUpload
                             name="photo"
                             value={formData.photo}
