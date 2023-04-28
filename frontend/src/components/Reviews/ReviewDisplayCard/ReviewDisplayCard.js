@@ -11,21 +11,18 @@ const ReviewDisplayCard = ({ review }) => {
     return (
         <>
             <div id="reviewCardContainer">
-                <div id="photoRatingCell">
-                   
-                  
-                    <img id="img" src={photoUrl} alt="" />
-
-                </div>
                 <div id="bodyContainer">
-                <div id="bodyCell">
-                <DisplayRating rating={rating} />
-                    {body}
-                    {businessId}
+                    <div id="bodyCell">
+                        <DisplayRating rating={rating} />
+                        {body}
+                        {businessId}
                     </div>
-
                 </div>
-               
+                { photoUrl ? 
+                <div id="photoRatingCell">
+                    <img id="img" src={photoUrl} alt="" />
+                </div>
+                : null}
             </div>
         </>
     );

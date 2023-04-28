@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCurrentUser, removeSessionUser } from "../../../store/session";
+import { getCurrentUser, removeSessionUser, logout } from "../../../store/session";
 import ProfileButton from "./ProfileButton/ProfileButton";
 import "./NavButtons.css";
 
@@ -29,8 +29,8 @@ const NavButtons = (props) => {
                 <button id="review-button">Write a Review</button>
             </Link>
 
-            <Link to="/">
-                <button onClick={() => dispatch(removeSessionUser())}>
+            <Link to="/logout">
+                <button onClick={() => { dispatch(removeSessionUser())}}>
                     Log Out
                 </button>
             </Link>

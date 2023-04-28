@@ -11,7 +11,9 @@ const BusinessShow = (props) => {
     const dispatch = useDispatch();
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
+    let [reviews, setReviews] = useState(business.review)
     const [id, setId] = useState(busId);
+    console.log('4444444444')
     
    
       
@@ -20,10 +22,11 @@ const BusinessShow = (props) => {
         if (!busId) {
             <Redirect to="/" />;
             //    
-        }   
+        }  
+        console.log('55555555') 
         dispatch(fetchBusiness(busId));
     
-    }, [dispatch, business.review]);
+    }, [dispatch]);
     // if (!busId) return <Redirect to="/" />;
     // if (!business) return <Redirect to="/" />;
 
@@ -40,7 +43,8 @@ const BusinessShow = (props) => {
                         <div className="buttons">
                             <Link to={`/reviewNew/${business.id}`}>
                                 <button className="blue-button">
-                                    <i className="fa-regular fa-star"></i> Leave your opinions, and  optional photo(s)
+                                    {/* <i className="fa-regular fa-star"></i>  */}
+                                    Leave your opinions, and  optional photo(s)
                                 </button>
                             </Link>
                         </div>

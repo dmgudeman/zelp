@@ -21,13 +21,12 @@ const ReviewNew = (props) => {
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
     const [rating, setRating] = useState(0);
-    const flag = formData.get('review[body]')
+    const flag = formData.get("review[body]");
 
     useEffect(() => {
         setUserId(sessionUser.id);
         setRating(rating);
         setBody(body);
-     
     }, [sessionUser, rating, body]);
 
     if (!business) <Redirect to="/home" />;
@@ -36,8 +35,8 @@ const ReviewNew = (props) => {
         const { name, value } = e.target;
         formData.set(`review[${name}]`, value);
         setFormData(formData);
-        if (name==='rating') setRating(value);
-        if (name === 'body') setBody(value);
+        if (name === "rating") setRating(value);
+        if (name === "body") setBody(value);
     };
     // const handleRatingChange = (newRating) => {
     //     console.log('nreRating', rating)
@@ -54,7 +53,6 @@ const ReviewNew = (props) => {
         formData.append("review[photo]", file);
         setFormData(formData);
     };
-   
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -65,15 +63,16 @@ const ReviewNew = (props) => {
         // for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
         //   }
-        try{
-        dispatch(createReview(formData));
-        setFormData(null);
-        setBody(null);
-        setRating(null);
 
-        history.push(`/businesses/${busId}`)
+        try {
+            dispatch(createReview(formData));
+            setFormData(null);
+            setBody(null);
+            setRating(null);
+
+            history.push(`/businesses/${busId}`)
         } catch (errors) {
-            console.error(errors)
+            console.error("dispatch redirect did not work");
         }
     };
 
@@ -97,23 +96,23 @@ const ReviewNew = (props) => {
                             // handleRatingChange={handleRatingChange}
                         />
                         {rating > 0 ? (
-                        <ReviewNewForm
-                            name="body"
-                            value={formData.body}
-                            // handleBodyChange={handleBodyChange}
-                            handleChange={handleChange}
-                        />
-                         ) : (
+                            <ReviewNewForm
+                                name="body"
+                                value={formData.body}
+                                // handleBodyChange={handleBodyChange}
+                                handleChange={handleChange}
+                            />
+                        ) : (
                             <h2>First a rating</h2>
-                         )} 
+                        )}
 
                         {rating > 0 && body ? (
-                        <PhotoUpload
-                            name="photo"
-                            value={formData.photo}
-                            handleChange={handleFile}
-                        />
-                      ) : null} 
+                            <PhotoUpload
+                                name="photo"
+                                value={formData.photo}
+                                handleChange={handleFile}
+                            />
+                        ) : null}
                         <ReviewNewSubmit submitHandler={submitHandler} />
                     </form>
                 </div>

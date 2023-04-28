@@ -55,13 +55,14 @@ export const createReview = (review) => async (dispatch) => {
         method: 'POST',
         body: review
     });
-    const data = await res.json(); 
-    console.log('increateReview data =', data)
-    if(res.ok){
+    console.log('PRIOR TO DATA')
+    const data = await res.json();
+   
+    try {
         dispatch(receiveReview(data));
-        return res;
-    } else {
-        console.error('error in creating a review')
+        return data;
+    } catch (error){  
+        return error;
     }
 };
 
