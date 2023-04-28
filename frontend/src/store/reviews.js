@@ -1,6 +1,8 @@
 import csrfFetch from "./csrf";
+import { RECEIVE_BUSINESS } from "./businesses";
 export const RECEIVE_REVIEWS = "reviews/RECEIVE_REVIEWS";
 export const RECEIVE_REVIEW = "reviews/RECEIVE_REVIEW";
+
 
 export const receiveReviews = (reviews) => {
     return {
@@ -19,9 +21,11 @@ export const receiveReview = (review) => {
 export const getReview =(reviewId) => (state)=> {
     return state.reviews ? state.reviews[reviewId] : {};
 }
+// export const getReviewsByBusiness =(busId) => (state)=> {
+//     return state.businesses[busId] ? state.businesses[busId]['reviews'] : {};
+// }
 
-export const getReviews = state => {
-   
+export const getReviews= state => {
     return state.reviews ? Object.values(state.reviews) : [];
 }
 
@@ -33,9 +37,19 @@ export const fetchReviews = () => async (dispatch) => {
             dispatch(receiveReviews(data));
         } else {
             console.error('fecthReviews failed')
-        }
-      
+        }    
 }
+
+export const fetchReviewsByBusiness = (busId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/businesses/${busId}`);
+    const data = await res.json(); 
+    if(res.ok){
+    dispatch(receiveReviews(data.reviews));
+    return res;
+    } else {
+        console.error('error in saving review')
+    }
+};
 
 export const fetchReview = (reviewId) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews/${reviewId}`);
@@ -87,6 +101,8 @@ const reviewsReducer = (state = {}, action) => {
             return { ...action.reviews };
         case RECEIVE_REVIEW:
             return { ...state, [action.review.id] : action.review };
+        case RECEIVE_BUSINESS:
+            return {...action.business.reviews}
         default:
             return state;
     }

@@ -61,6 +61,24 @@ ApplicationRecord.transaction do
       lat: 40.00,
       lng: 40.00
     )
+    # Business.create!(
+    #    name: 'Sprouts',
+    #    address: '301 Gellert Blvd Daly City, CA 94015',
+    #    phone: '415321091',
+    #    email: '',
+    #    website: 'https://www.sprouts.com',
+    #    cost: '$$',
+    #    lat: '37.66900254389973', 
+    #    lng: '-122.46650888579883',
+    #    photos: [
+    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_01.jpeg', 
+    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_02.jpeg',
+    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_03.jpeg',
+    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_04.jpeg',
+    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_05.jpeg'
+
+    #   ]
+    # )
 
     10.times do 
       Business.create!({
@@ -71,7 +89,8 @@ ApplicationRecord.transaction do
         website: Faker::Internet.url(host: 'example.com'),
         cost: '$',
         lat: Faker::Address.latitude.to_f.round(6),
-        lng: Faker::Address.longitude.to_f.round(6)
+        lng: Faker::Address.longitude.to_f.round(6),
+        # photos:[]
        
       }) 
     

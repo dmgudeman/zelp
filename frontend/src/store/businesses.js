@@ -52,7 +52,7 @@ const businessesReducer = (state = {}, action) => {
         case RECEIVE_BUSINESSES:
             return { ...action.businesses };
         case RECEIVE_BUSINESS:
-            return { ...state,    [action.business.business.id] : action.business.business };
+            return { ...state,    [action.business.id] : action.business };
         default:
             return state;
     }

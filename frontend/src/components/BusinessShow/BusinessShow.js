@@ -1,35 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch, connect } from "react-redux";
-import BusinessCard from "../BusinessCard/BusinessCard";
 import ReviewsIndex from "../Reviews/ReviewsIndex/ReviewsIndex";
 import Navigation from "../Navigation";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
+import { fetchReviewsByBusiness, getReviews, getReviewsByBusiness} from "../../store/reviews"
 import "./BusinessShow.css";
 
 const BusinessShow = (props) => {
     const dispatch = useDispatch();
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
-    let [reviews, setReviews] = useState(business.review)
-    const [id, setId] = useState(busId);
-    console.log('4444444444')
+    let reviews = useSelector(getReviews);
     
-   
-      
-
     useEffect(() => {
         if (!busId) {
-            <Redirect to="/" />;
-            //    
-        }  
-        console.log('55555555') 
+            <Redirect to="/" />; 
+        }   
         dispatch(fetchBusiness(busId));
-    
     }, [dispatch]);
-    // if (!busId) return <Redirect to="/" />;
-    // if (!business) return <Redirect to="/" />;
-
+    
+ 
+    if (!business) return null;
     return (
         <>
             <Navigation showFlag={"index"} />
@@ -48,7 +40,7 @@ const BusinessShow = (props) => {
                                 </button>
                             </Link>
                         </div>
-                        <ReviewsIndex reviews={business.reviews}/>
+                        <ReviewsIndex reviews={reviews}/>
                     </div>
                     <div id="l-3"></div>
                     <div id="l-4"></div>
