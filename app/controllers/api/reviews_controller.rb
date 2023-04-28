@@ -3,10 +3,12 @@ class Api::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all.sort { |a, b| b.created_at <=> a.created_at }
+    # @reviews = Review.where(business_id: desired_business_id)
   end
 
   def show
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:id]);
+   
     render show
   end
 

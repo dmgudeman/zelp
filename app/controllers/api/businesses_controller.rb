@@ -7,6 +7,8 @@ class Api::BusinessesController < ApplicationController
 
   def show 
     @business = Business.find(params[:id])
+    # @reviews = @business.reviews
+    # debugger
     render show
   end
 

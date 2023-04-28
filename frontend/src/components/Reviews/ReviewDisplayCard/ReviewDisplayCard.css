@@ -1,0 +1,43 @@
+
+
+#reviewCardContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 400px;
+    height: 130px;
+    border: black 1px solid;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+#photoRatingCell {
+    width: 100px;
+    height:100%;
+    padding-left: 10px;
+    /* background-color: aquamarine; */
+}
+
+#photo {
+    height: 100%;
+    width: 100%;
+}
+#img {
+    height:min(80px,100%);
+    width:100%;
+}
+
+#bodyContainer {
+    display: flex;
+    flex-direction: row;
+     flex: 1;
+}
+
+
+#bodyCell {
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 10px;
+    /* background-color: blue; */
+}
