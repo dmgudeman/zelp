@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews, getReviews } from "../../../store/reviews";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
-import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex";
+import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 
 const ReviewsIndex = ({reviews}) => {
     const [cardTotal, setCardTotal] = useState(6);

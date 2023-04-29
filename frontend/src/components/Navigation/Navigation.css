@@ -1,6 +1,7 @@
 
 
 #navContainer {  
+    position:fixed;
     width: 100vw;
     height: 75px; 
     display: flex;

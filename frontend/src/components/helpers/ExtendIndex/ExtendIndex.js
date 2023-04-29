@@ -1,5 +1,6 @@
 import './ExtendIndex.css'
 
+
 const ExtendIndex = ({extendHandler}) => {
     return (
         <>
@@ -11,4 +12,4 @@ const ExtendIndex = ({extendHandler}) => {
     )
 }
 
-export default ExtendIndex
+export default ExtendIndex;

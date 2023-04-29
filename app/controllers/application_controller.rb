@@ -1,31 +1,31 @@
 class ApplicationController < ActionController::API
- 
   before_action :snake_case_params, :attach_authenticity_token
   include ActionController::RequestForgeryProtection
   protect_from_forgery with: :exception
   rescue_from StandardError, with: :unhandled_error
   rescue_from ActionController::InvalidAuthenticityToken, with: :invalid_authenticity_token
 
-  def test
-    if params.has_key?(:login)
-       login!(User.first)
-      # login!(User.find_by_id(12))
-    elsif params.has_key?(:logout)
-      logout!
-    end
-  
-    if current_user
-      render json: { user: current_user.slice('id', 'username', 'session_token') }
-    else
-      render json: ['No current user']
-    end
-  end
+  # def test
+  #   if params.key?(:login)
+  #     login!(User.first)
+  #     # login!(User.find_by_id(12))
+  #   elsif params.key?(:logout)
+  #     logout!
+  #   end
+
+  #   if current_user
+  #     render json: { user: current_user.slice('id', 'username', 'session_token') }
+  #   else
+  #     render json: ['No current user']
+  #   end
+  # end
 
   def current_user
     @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
   def login!(user)
+    # debugger
     session[:session_token] = user.reset_session_token!
   end
 
@@ -44,7 +44,6 @@ class ApplicationController < ActionController::API
   private
 
   def snake_case_params
-
     params.deep_transform_keys!(&:underscore)
   end
 
