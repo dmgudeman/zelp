@@ -1,7 +1,7 @@
 import Navigation from "../Navigation";
-import './home.css';
+import './Home.css';
 
-const home = (props) => {
+const Home = (props) => {
     return (
         <div id="homeContainer">
             <Navigation id="app-nav" showFull={true}/>
@@ -11,4 +11,4 @@ const home = (props) => {
     );
 };
 
-export default home;
+export default Home;
