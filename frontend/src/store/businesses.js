@@ -35,10 +35,8 @@ export const fetchBusinesses = () => async (dispatch) => {
 };
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
-      console.log('inFetch business businessId ', businessId)
     const res = await csrfFetch(`/api/businesses/${businessId}`);
     const data = await res.json();
-    console.log('data in fetchBusiness', data)
     if(res.ok){
     dispatch(receiveBusiness(data));
     return res;

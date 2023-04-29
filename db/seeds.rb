@@ -5,26 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
+require "open-uri"
 ApplicationRecord.transaction do 
-
-    require "open-uri"
-    Business.first(3).each_with_index do |business, index|
-      business.photo.attach(
-        # The string passed to URI.open should be the URL of the image in its bucket.
-        # This sample assumes the bucket name is `benchbnb-seeds`.
-        io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/business_#{index + 1}.jpg"),
-        filename: "business_#{index + 1}.jpg"
-      )
-    end
-
-
-
-
-
-
-
-
 
 
 
@@ -61,24 +43,18 @@ ApplicationRecord.transaction do
       lat: 40.00,
       lng: 40.00
     )
-    # Business.create!(
-    #    name: 'Sprouts',
-    #    address: '301 Gellert Blvd Daly City, CA 94015',
-    #    phone: '415321091',
-    #    email: '',
-    #    website: 'https://www.sprouts.com',
-    #    cost: '$$',
-    #    lat: '37.66900254389973', 
-    #    lng: '-122.46650888579883',
-    #    photos: [
-    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_01.jpeg', 
-    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_02.jpeg',
-    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_03.jpeg',
-    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_04.jpeg',
-    #     'https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_05.jpeg'
+    Business.create!(
+       name: 'Sprouts',
+       address: '301 Gellert Blvd Daly City, CA 94015',
+       phone: '415321091',
+       website: 'https://www.sprouts.com',
+       cost: '$$',
+       lat: '37.66900254389973', 
+       lng: '-122.46650888579883',
 
-    #   ]
-    # )
+    )
+    
+
 
     10.times do 
       Business.create!({
@@ -108,3 +84,12 @@ ApplicationRecord.transaction do
     puts "Done!"
   end
   
+
+  sprout = Business.find_by('name': 'Sprouts');
+
+    
+    sprout.images.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_01.jpeg'), filename: "sprouts_01.jpeg")
+    # sprout.photo.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_02.jpeg'), filename: "sprouts_02.jpeg")
+    # sprout.photo.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_03.jpeg'), filename: "sprouts_03.jpeg")
+    # sprout.photo.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_04.jpeg'), filename: "sprouts_04.jpeg")
+    # sprout.photo.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_05.jpeg'), filename: "sprouts_05.jpeg")

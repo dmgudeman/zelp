@@ -1,5 +1,5 @@
 class Api::BusinessesController < ApplicationController
-  wrap_parameters include: Business.attribute_names + [:photos]
+  wrap_parameters include: Business.attribute_names 
 
   def index
     @businesses = Business.all
@@ -15,6 +15,6 @@ class Api::BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:name, :reviews, :address, :phone, :email, :website, :cost, :lat, :lng, :photos)
+    params.require(:business).permit(:name, :reviews, :address, :phone, :email, :website, :cost, :lat, :lng, images: [])
   end
 end
