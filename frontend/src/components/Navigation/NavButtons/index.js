@@ -30,7 +30,7 @@ const NavButtons = (props) => {
             </Link>
 
             <Link to="/logout">
-                <button onClick={() => { dispatch(logout())}}>
+                <button onClick={() => dispatch(logout())}>
                     Log Out
                 </button>
             </Link>

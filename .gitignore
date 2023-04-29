@@ -27,8 +27,13 @@ yarn-error.log*
 hosting/*
 
 /public
+<<<<<<< HEAD
 public
 
 /log
 log
 log/development.log
+=======
+/development.log
+
+>>>>>>> main

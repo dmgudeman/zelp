@@ -55,7 +55,7 @@ const LoginFormPage = (props) => {
                     />
 
                     <input
-                        type="text"
+                        type="password"
                         value={password}
                         placeholder="password"
                         onChange={(e) => setPassword(e.target.value)}
