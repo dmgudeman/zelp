@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch, connect } from "react-redux";
 import ReviewsIndex from "../Reviews/ReviewsIndex/ReviewsIndex";
 import Navigation from "../Navigation";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
-import { fetchReviewsByBusiness, getReviews, getReviewsByBusiness} from "../../store/reviews"
+import { getReviews } from "../../store/reviews";
 import "./BusinessShow.css";
 
 const BusinessShow = (props) => {
@@ -12,15 +12,14 @@ const BusinessShow = (props) => {
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
     let reviews = useSelector(getReviews);
-    
+
     useEffect(() => {
         if (!busId) {
-            <Redirect to="/" />; 
-        }   
+            <Redirect to="/" />;
+        }
         dispatch(fetchBusiness(busId));
     }, [dispatch]);
-    
- 
+
     if (!business) return null;
     return (
         <>
@@ -36,11 +35,11 @@ const BusinessShow = (props) => {
                             <Link to={`/reviewNew/${business.id}`}>
                                 <button className="blue-button">
                                     {/* <i className="fa-regular fa-star"></i>  */}
-                                    Leave your opinions, and  optional photo(s)
+                                    Leave your opinions, and optional photo(s)
                                 </button>
                             </Link>
                         </div>
-                        <ReviewsIndex reviews={reviews}/>
+                        <ReviewsIndex reviews={reviews} />
                     </div>
                     <div id="l-3"></div>
                     <div id="l-4"></div>
@@ -52,6 +51,6 @@ const BusinessShow = (props) => {
 
 const mapStateToProps = (state) => ({
     reviews: state.reviews,
-  });
+});
 
 export default connect(mapStateToProps)(BusinessShow);

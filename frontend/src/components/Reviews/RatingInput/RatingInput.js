@@ -1,18 +1,6 @@
-import { useEffect, useState } from "react";
 import "./RatingInput.css";
 
-const RatingInput = ({ rating, name, value, handleChange}) => {
-    // const [rating, setRating] = useState(value);
-    let disabled = false;
-    // console.log('name in RatingInput', name)
-    // console.log('value in RatingInput', value)
-
-    useEffect(() => {
-        console.log("rating changed rating is:", rating);
-    }, [rating]);
-
-   
-
+const RatingInput = ({ rating, name, value, handleChange }) => {
     return (
         <div id="ratingContainer" className="rating-input">
             <label
@@ -22,7 +10,7 @@ const RatingInput = ({ rating, name, value, handleChange}) => {
                 <i className="fa-solid fa-star star"></i>{" "}
             </label>
 
-            <input     
+            <input
                 type="radio"
                 id="radioButton1"
                 name={name}
@@ -31,11 +19,13 @@ const RatingInput = ({ rating, name, value, handleChange}) => {
                 onClick={handleChange}
             />
 
-            <label for="radioButton2" className={rating >= 2 ? "colored-in" : "not-colored-in"}>
+            <label
+                for="radioButton2"
+                className={rating >= 2 ? "colored-in" : "not-colored-in"}
+            >
                 <i className="fa-solid fa-star star"></i>
             </label>
             <input
-             
                 type="radio"
                 id="radioButton2"
                 name={name}
@@ -44,12 +34,14 @@ const RatingInput = ({ rating, name, value, handleChange}) => {
                 onClick={handleChange}
             />
 
-            <label for="radioButton3" className={rating >= 3 ? "colored-in" : "not-colored-in"}>
+            <label
+                for="radioButton3"
+                className={rating >= 3 ? "colored-in" : "not-colored-in"}
+            >
                 {" "}
                 <i className="fa-solid fa-star star"></i>
             </label>
             <input
-          
                 type="radio"
                 id="radioButton3"
                 name={name}
@@ -58,12 +50,14 @@ const RatingInput = ({ rating, name, value, handleChange}) => {
                 onClick={handleChange}
             />
 
-            <label for="radioButton4" className={rating >= 4 ? "colored-in" : "not-colored-in"}>
+            <label
+                for="radioButton4"
+                className={rating >= 4 ? "colored-in" : "not-colored-in"}
+            >
                 {" "}
                 <i className="fa-solid fa-star star"></i>
             </label>
             <input
-             
                 type="radio"
                 id="radioButton4"
                 name={name}
@@ -72,12 +66,14 @@ const RatingInput = ({ rating, name, value, handleChange}) => {
                 onClick={handleChange}
             />
 
-            <label for="radioButton5" className={rating >= 5 ? "colored-in" : "not-colored-in"}>
+            <label
+                for="radioButton5"
+                className={rating >= 5 ? "colored-in" : "not-colored-in"}
+            >
                 {" "}
                 <i className="fa-solid fa-star star"></i>
             </label>
             <input
-             
                 type="radio"
                 id="radioButton5"
                 name={name}

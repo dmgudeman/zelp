@@ -3,17 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews, getReviews } from "../../../store/reviews";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
+import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex";
 
 const ReviewsIndex = ({reviews}) => {
     const [cardTotal, setCardTotal] = useState(6);
 
+    const extendHandler = () => {
 
+      console.log(cardTotal, "lllllll")
+      setCardTotal(cardTotal + 6)
+    }
 
 
 
     return (
         <>
             <div id="reviewsIndexContainer">
+            
 
               {  reviews.length ?
                 reviews.map((review, idx) => {
@@ -23,9 +29,12 @@ const ReviewsIndex = ({reviews}) => {
                         );
                     }
                 })
-                : <div id="noReviews">There are currently no reviews for this business... you could be the first!</div>
+                : <div id="noReviews">There are currently no reviews for this business... you can be the first</div>
               }
+           
+         
             </div>
+            <ExtendIndex extendHandler={extendHandler}/>
         </>
     );
 };

@@ -72,7 +72,7 @@ ApplicationRecord.transaction do
     
     end
     puts "Creating reviews"
-    4.times do 
+    8.times do 
       Review.create(
         author_id: User.all.sample,
         business_id: Business.all.sample,
