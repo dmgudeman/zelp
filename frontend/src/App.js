@@ -1,4 +1,4 @@
-import Home from "./components/home";
+import Home from "./components/Home";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage/index";
 import { Route, Switch } from "react-router-dom";
