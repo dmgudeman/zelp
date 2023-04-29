@@ -63,14 +63,14 @@ const SignupFormPage = (props) => {
                     />
 
                     <input
-                        type="text"
+                        type="password"
                         value={password}
                         placeholder="password"
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
                     <input
-                        type="text"
+                        type="password"
                         value={confirmPassword}
                         placeholder="confirm password"
                         onChange={(e) => setConfirmPassword(e.target.value)}
