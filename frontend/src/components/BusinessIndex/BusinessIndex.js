@@ -4,9 +4,9 @@ import { fetchBusinesses, getBusinesses } from "../../store/businesses";
 import BusinessCard from "../BusinessCard/BusinessCard";
 import Navigation from "../Navigation";
 import SearchBar from "../SearchBar";
-import "./Businesses.css";
+import "./BusinessIndex.css";
 
-const Businesses = (props) => {
+const BusinessIndex = (props) => {
     const dispatch = useDispatch();
     let businesses = useSelector(getBusinesses);
     const [cardTotal, setCardTotal] = useState(6);
@@ -38,7 +38,7 @@ const Businesses = (props) => {
     );
 };
 
-export default Businesses;
+export default BusinessIndex;
 
 const BannerBackground = (props) => {
     return (
