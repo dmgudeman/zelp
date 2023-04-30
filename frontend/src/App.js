@@ -1,5 +1,4 @@
 import Home from "./components/Home";
-<<<<<<< HEAD
 
 import { useSelector } from "react-redux";
 import LoginFormPage from "./components/LoginFormPage";
@@ -18,8 +17,8 @@ function App() {
     return (
         <>
             <Switch> 
-                { isLoggedIn || <Route path="/login" component={LoginFormPage} />}
-                { isLoggedIn || <Route path="/signup" component={SignupFormPage} />}    
+               <Route path="/login" component={LoginFormPage} />
+               <Route path="/signup" component={SignupFormPage} />  
                 <Route path="/home" component={Home} />
                 <Route path='/reviews' component={ReviewsIndex}   />             
                 <Route path="/businesses/:busId" component={BusinessShow} />

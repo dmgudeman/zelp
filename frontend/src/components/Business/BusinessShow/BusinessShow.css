@@ -1,0 +1,92 @@
+
+
+#businessShowContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: blue; */
+}
+
+#heroContainer {
+    background-image: url("../../../assets/restaurant.jpeg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 66vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    z-index: -1;
+    /* background-color: aqua; */
+}
+.businessName {
+    font-size: 1in;
+    font-weight: 400;
+    opacity: 0.60;
+    letter-spacing: 0.25in;
+    color: white;
+    margin-left: 75px;
+    margin-bottom: 20px;
+    
+  }
+
+#businessGroup {
+    display:flex;
+    width: 100%;
+    padding-left: 200px;
+}
+
+#lowerContainer {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    /* background-color: aqua; */
+}
+
+#l-1, #l-4{
+    display: flex;
+  width: 10%;
+  /* background-color: blueviolet; */
+}
+
+#l-2 {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: flex-start; */
+  width: 900px;
+  flex: 1;
+    /* flex: 1; */
+    /* background-color: bisque; */
+}
+
+#l-3{
+    display: flex;
+
+    width: 2%;
+    /* background-color: blueviolet; */
+
+}
+
+#l-4 {
+
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+.blue-button {
+    height: 35px;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    /* background-color: rgb(102, 102, 174); */
+    background-color: #5cb9ff;
+    padding-left: 20px;
+    padding-right: 20px;
+}
