@@ -18,7 +18,7 @@ const BusinessIndex = (props) => {
         <>
             <NavBar showFlag={false} />
             <div className="businessContainer">
-                <BannerBackground />
+                <BannerBackground businesses={businesses}/>
                 <Banner />
 
                 <div className="cardContainer">
@@ -34,10 +34,14 @@ const BusinessIndex = (props) => {
 
 export default BusinessIndex;
 
-const BannerBackground = (props) => {
+const BannerBackground = ({businesses}) => {
+    const imgUrl = businesses[0].imageUrls[0]
     return (
         <>
-            <div className="backgroundContainer"></div>
+        
+            <div className="backgroundContainer"
+             style={{ backgroundImage: `url(${imgUrl})`, backgroundSize: "cover", backgroundPosition: "top", opacity: 0.5}}>
+            </div>
         </>
     );
 };
