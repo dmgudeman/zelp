@@ -11,17 +11,7 @@
 }
 
 
-.leftSearchBar {
-    display: flex;
-    flex: 1;
-    /* width:50%; */
-    height:100%;
-    margin: 0;
-    border:none;
-    border-radius:none;
-    /* background-color: blue; */
 
-}
 
 .rightSearchBar {
     display: flex;

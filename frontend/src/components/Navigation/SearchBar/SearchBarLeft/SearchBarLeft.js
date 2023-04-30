@@ -1,4 +1,6 @@
+import {Link }from 'react-router-dom';
 import { processName } from "../../../Helpers";
+
 import "./SearchBarLeft.css";
 
 const SearchBarLeft = (props) => {
@@ -6,10 +8,10 @@ const SearchBarLeft = (props) => {
         businesses,
         handleSearch,
         filterBusinesses,
-        searchTerm,
-        setSearchTerm,
+        queryLeft,
+        setQueryLeft,
     } = { ...props };
-    console.log(searchTerm === '','uuuuuuuu')
+   
     if (!businesses) return null;
     return (
         <>
@@ -23,13 +25,13 @@ const SearchBarLeft = (props) => {
                     />
                 </div>
                
-                    {searchTerm !== '' ? (
+                    {queryLeft !== '' ? (
                          <div id="SBLDropDown">
                         <ul>
                             {filterBusinesses().map((business) => (
                                 <li key={business.name}>
                                     {" "}
-                                    {processName(business.name)}
+                                   <Link to={`/businesses/${business.id}`}>{processName(business.name)}</Link> 
                                 </li>
                             ))}
                         </ul>
