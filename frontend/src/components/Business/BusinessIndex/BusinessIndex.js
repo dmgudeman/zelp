@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
-import BusinessCard from "../BusinessCard/BusinessCard";
-import Navigation from "../../Navigation/NavBar/NavBar";
+import BusinessIndexDisplay from "../BusinessIndexDisplay/BusinessIndexDisplay";
+import NavBar from "../../Navigation/NavBar/NavBar";
 import SearchBar from "../../Navigation/SearchBar";
 import "./BusinessIndex.css";
 
@@ -16,22 +16,16 @@ const BusinessIndex = (props) => {
     }, [dispatch]);
     return (
         <>
-            <Navigation showFlag={false} />
+            <NavBar showFlag={false} />
             <div className="businessContainer">
                 <BannerBackground />
                 <Banner />
 
                 <div className="cardContainer">
-                    {businesses.map((business, idx) => {
-                        if (idx < cardTotal) {
-                            return (
-                                <BusinessCard
-                                    business={business}
-                                    key={business.id}
-                                />
-                            );
-                        }
-                    })}
+                    <BusinessIndexDisplay
+                        businesses={businesses}
+                        cardTotal={cardTotal}
+                    />
                 </div>
             </div>
         </>
@@ -60,15 +54,14 @@ const Banner = (props) => {
                             Review anything from your favorite patios spot to
                             your local flower shop.
                         </p>
-                        <SearchBar />
+                        <div id="bannerSearchBar">
+                            <SearchBar />
+                        </div>
+                        <div className="bottomBanner">
+                            <div>Visited one of these places recently?</div>
+                        </div>
                     </div>
-                    <div className="rightBanner">
-                        <p>IMAGE</p>
-                    </div>
-
-                    <div className="bottomBanner">
-                        <div>Visited one of these places recently?</div>
-                    </div>
+                    <div className="rightBanner"></div>
                 </div>
             </div>
         </>
