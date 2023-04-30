@@ -43,9 +43,7 @@ export default Businesses;
 const BannerBackground = (props) => {
     return (
         <>
-            <div className="backgroundContainer">
-                
-            </div>
+            <div className="backgroundContainer"></div>
         </>
     );
 };
@@ -53,11 +51,9 @@ const BannerBackground = (props) => {
 const Banner = (props) => {
     return (
         <>
-            <div className="bannerContainer">
-                {/* <div className="topBanner"> */}
-                <div className={"leftBanner"}>
-                    
-                </div>
+            <div className="businessContainer">
+                <div className="bannerContainer">
+                    <div className={"leftBanner"}></div>
                     <div className="centerBanner">
                         <h2>Find a business to review</h2>
                         <p className="secondLine">
@@ -69,10 +65,10 @@ const Banner = (props) => {
                     <div className="rightBanner">
                         <p>IMAGE</p>
                     </div>
-                {/* </div> */}
 
-                <div className="bottomBanner">
-                    <div>Visited one of these places recently?</div>
+                    <div className="bottomBanner">
+                        <div>Visited one of these places recently?</div>
+                    </div>
                 </div>
             </div>
         </>
