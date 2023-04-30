@@ -1,5 +1,5 @@
 class Api::BusinessesController < ApplicationController
-  wrap_parameters include: Business.attribute_names 
+  wrap_parameters include: Business.attribute_names + [:images]
 
   def index
     @businesses = Business.all

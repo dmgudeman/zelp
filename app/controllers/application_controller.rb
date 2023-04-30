@@ -6,15 +6,6 @@ class ApplicationController < ActionController::API
   rescue_from ActionController::InvalidAuthenticityToken, with: :invalid_authenticity_token
 
   # def test
-<<<<<<< HEAD
-  #   if params.key?(:login)
-  #     login!(User.first)
-  #     # login!(User.find_by_id(12))
-  #   elsif params.key?(:logout)
-  #     logout!
-  #   end
-
-=======
   #   if params.has_key?(:login)
   #      login!(User.first)
   #     # login!(User.find_by_id(12))
@@ -22,7 +13,6 @@ class ApplicationController < ActionController::API
   #     logout!
   #   end
   
->>>>>>> main
   #   if current_user
   #     render json: { user: current_user.slice('id', 'username', 'session_token') }
   #   else

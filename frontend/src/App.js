@@ -7,7 +7,7 @@ import BusinessShow from "./components/BusinessShow/BusinessShow";
 import ReviewsIndex from "./components/Reviews/ReviewsIndex/ReviewsIndex";
 import { Route, Switch } from "react-router-dom";
 import ReviewNew from "./components/Reviews/ReviewNew";
-import Businesses from "./components/Businesses";
+import Businesses from "./components/Businesses/Businesses";
 import { getCurrentUser } from "./store/session";
  
 

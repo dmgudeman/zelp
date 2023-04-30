@@ -9,16 +9,16 @@ const BusinessCard = ({ business }) => {
         <>
             <div id="businessCardContainer">
                 <div id="imageContainer">
-                    <p>IMAGE</p>
+                    <img id="busPic" src={business.imageUrls[0]} alt="business photo" />
                 </div>
                 <div id="reviewContainer">
                     <div className="firstLine">
                         <Link to={`/businesses/${business.id}`}>
                             <p>{business.name}</p>
                         </Link>
-                        <p>
+                        {/* <p>
                             <i id="x" className="fa-solid fa-x"></i>
-                        </p>
+                        </p> */}
                     </div>
                     <RatingDisplay rating={business.rating} />
                 </div>
