@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch, connect } from "react-redux";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
-import Navigation from "../../Navigation";
+import Navigation from "../../Navigation/NavBar/NavBar";
 import { getBusiness, fetchBusiness } from "../../../store/businesses";
 import { getReviews } from "../../../store/reviews";
 import "./BusinessShow.css";

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../../store/session";
-import Navigation from "../Navigation";
-import DemoUserForm from "../Auth/DemoUserForm";
+import { signup } from "../../../store/session";
+import Navigation from "../../Navigation/NavBar/NavBar";
+import DemoUserForm from "../DemoUserForm";
 import "./SignupForm.css";
 
 

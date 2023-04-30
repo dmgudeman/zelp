@@ -8,7 +8,7 @@ import ReviewNewSubmit from "../ReviewNewSubmit/ReviewNewSubmit";
 import { getBusiness } from "../../../store/businesses";
 import { createReview } from "../../../store/reviews";
 import { getUser } from "../../../store/session";
-import Navigation from "../../Navigation";
+import Navigation from "../../Navigation/NavBar/NavBar";
 import "./ReviewNew.css";
 
 const ReviewNew = (props) => {

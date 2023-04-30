@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
 import BusinessCard from "../BusinessCard/BusinessCard";
-import Navigation from "../../Navigation";
-import SearchBar from "../../SearchBar";
+import Navigation from "../../Navigation/NavBar/NavBar";
+import SearchBar from "../../Navigation/SearchBar";
 import "./BusinessIndex.css";
 
 const BusinessIndex = (props) => {

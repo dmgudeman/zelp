@@ -1,4 +1,4 @@
-import Navigation from "../Navigation";
+import Navigation from "../Navigation/NavBar/NavBar";
 import './Home.css';
 
 const Home = (props) => {

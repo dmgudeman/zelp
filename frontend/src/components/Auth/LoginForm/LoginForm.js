@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { login, getCurrentUser } from "../../store/session";
+import { login, getCurrentUser } from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
-import Navigation from "../Navigation";
-import DemoUserForm from '../Auth/DemoUserForm'
-import "./LoginFormPage.css";
+import Navigation from "../../Navigation/NavBar/NavBar";
+import DemoUserForm from '../DemoUserForm'
+import "./LoginForm.css";
 
-const LoginFormPage = (props) => {
+const LoginForm = (props) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(getCurrentUser);
     const [credential, setCredential] = useState("");
@@ -74,4 +74,4 @@ const LoginFormPage = (props) => {
     );
 };
 
-export default LoginFormPage;
+export default LoginForm;
