@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
 import BusinessIndexDisplay from "../BusinessIndexDisplay/BusinessIndexDisplay";
 import NavBar from "../../Navigation/NavBar/NavBar";
-import SearchBar from "../../Navigation/SearchBar";
+import SearchBar from "../../Navigation/SearchBar/SearchBar";
 import "./BusinessIndex.css";
 
 const BusinessIndex = (props) => {

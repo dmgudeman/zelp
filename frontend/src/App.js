@@ -11,7 +11,7 @@ import BusinessIndex from "./components/Business/BusinessIndex/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow/BusinessShow";
 import ReviewsIndex from "./components/Reviews/ReviewsIndex/ReviewsIndex";
 import ReviewNew from "./components/Reviews/ReviewNew";
-import Test from "./components/Test/Test";
+import Test2 from "./components/Test/Test2";
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
                 <PrivateRoute path="/businesses/:busId" component={BusinessShow} isLoggedIn={isLoggedIn}/>
                 <PrivateRoute path="/businesses" component={BusinessIndex} isLoggedIn={isLoggedIn}/>
                 <PrivateRoute path="/reviewNew/:busId" component={ReviewNew} isLoggedIn={isLoggedIn}/>
-                <PrivateRoute path="/test"  component={Test}/>
+                <Route path="/test"  component={Test2}/>
                 <Route path="/" component={Home} />
             </Switch>
         </>
