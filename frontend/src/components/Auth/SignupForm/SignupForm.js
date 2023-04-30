@@ -78,7 +78,7 @@ const SignupForm = (props) => {
                     />
 
                     <input id="submit" type="submit" value="Sign Up" />
-                    <ul>
+                    <ul id="ulSignUp">
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}

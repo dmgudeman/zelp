@@ -26,11 +26,11 @@ const NavButtons = (props) => {
     const withSessionUser = (
         <div id="container">
             <Link to="/businesses">
-                <button id="review-button">Write a Review</button>
+                <button className="blueButton">Write a Review</button>
             </Link>
 
             <Link to="/logout">
-                <button onClick={() => dispatch(logout())}>
+                <button className="blueButton" onClick={() => dispatch(logout())}>
                     Log Out
                 </button>
             </Link>

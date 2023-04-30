@@ -62,7 +62,7 @@ const LoginForm = (props) => {
                     />
 
                     <input id="submit" type="submit" value="Log In" />
-                    <ul>
+                    <ul id="ulLogin">
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}

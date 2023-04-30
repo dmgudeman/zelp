@@ -6,7 +6,7 @@ const ReviewNewSubmit = ({submitHandler}) => {
     return (
         <>
         <div id="reviewNewSubmitContainer">
-        <button className="button" onClick={submitHandler}>Submit Review</button>
+        <button className="blueButton" onClick={submitHandler}>Submit Review</button>
         </div>
         </>
     )

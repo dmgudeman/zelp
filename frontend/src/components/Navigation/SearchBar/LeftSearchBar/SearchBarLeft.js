@@ -1,4 +1,5 @@
 import { processName } from "../../../Helpers";
+import "./SearchBarLeft.css";
 
 const SearchBarLeft = (props) => {
     const {
@@ -8,27 +9,34 @@ const SearchBarLeft = (props) => {
         searchTerm,
         setSearchTerm,
     } = { ...props };
-
+    console.log(searchTerm === '','uuuuuuuu')
     if (!businesses) return null;
     return (
         <>
-            <div>
-                <input
-                    className="leftSearchBar"
-                    type="text"
-                    placeholder="Search by name"
-                    onChange={handleSearch}
-                />
-                {searchTerm && (
-                    <ul>
-                        {filterBusinesses().map((business) => (
-                            <li key={business.name}>
-                                {" "}
-                                {processName(business.name)}
-                            </li>
-                        ))}
-                    </ul>
-                )}
+            <div id="SBLcontainer">
+                <div id="SBLInputWrap">
+                    <input
+                        id="SBLInput"
+                        type="text"
+                        placeholder="Search by name"
+                        onChange={handleSearch}
+                    />
+                </div>
+               
+                    {searchTerm !== '' ? (
+                         <div id="SBLDropDown">
+                        <ul>
+                            {filterBusinesses().map((business) => (
+                                <li key={business.name}>
+                                    {" "}
+                                    {processName(business.name)}
+                                </li>
+                            ))}
+                        </ul>
+                        </div>
+                    ) : null
+                }
+               
             </div>
         </>
     );

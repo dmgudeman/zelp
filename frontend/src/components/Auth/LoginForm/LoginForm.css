@@ -63,7 +63,7 @@ input:not(#submit) {
     /* z-index: 100; */
 }
 
-ul {
+#ulLogin {
     color: red;
     font-style: italic;
     padding-left: 20px;
