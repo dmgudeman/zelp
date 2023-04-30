@@ -54,8 +54,11 @@ const Banner = (props) => {
     return (
         <>
             <div className="bannerContainer">
-                <div className="topBanner">
-                    <div className="leftBanner">
+                {/* <div className="topBanner"> */}
+                <div className={"leftBanner"}>
+                    
+                </div>
+                    <div className="centerBanner">
                         <h2>Find a business to review</h2>
                         <p className="secondLine">
                             Review anything from your favorite patios spot to
@@ -66,7 +69,7 @@ const Banner = (props) => {
                     <div className="rightBanner">
                         <p>IMAGE</p>
                     </div>
-                </div>
+                {/* </div> */}
 
                 <div className="bottomBanner">
                     <div>Visited one of these places recently?</div>
