@@ -1,11 +1,13 @@
+
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusinesses, fetchBusinesses } from "../../../store/businesses";
 import { processName } from "../../Helpers";
-
+import SearchBarLeft from "./LeftSearchBar/SearchBarLeft";
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
+
     const dispatch = useDispatch();
     let businesses = useSelector(getBusinesses);
     const [searchTerm, setSearchTerm] = useState("");
@@ -34,20 +36,19 @@ const SearchBar = (props) => {
     useEffect(() => {
         dispatch(fetchBusinesses());
     }, [dispatch]);
-
-    if (!businesses) return null;
+  
     return (
         <>
             <form className="searchBarContainer">
-                <div>
-                    <input
-                        className="leftSearchBar"
-                        type="text"
-                        placeholder="Search by name"
-                       
-                        onChange={handleSearch}
-                    />
+                <div id="searchBarLeftContainer">
+                  <SearchBarLeft 
+                    businesses={businesses}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                    handleSearch={handleSearch}
+                    filterBusinesses={filterBusinesses}/>
                 </div>
+               
                 <div className="rightSearchBar">
                     <input
                         className="rightSearchBar"
@@ -58,17 +59,7 @@ const SearchBar = (props) => {
                 <div className="searchButton">
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div>
-                <p>Hi there</p>
-                <ul>
-                    {filterBusinesses().map((business) => (
-                        <li key={business.name}>
-                            {" "}
-                            {processName(business.name)}
-                        </li>
-                    ))}
-                </ul>
-            </div>
+               
             </form>
            
         </>
