@@ -1,10 +1,10 @@
-import Navigation from "../Navigation/NavBar/NavBar";
+import NavBar from "../Navigation/NavBar/NavBar";
 import './Home.css';
 
 const Home = (props) => {
     return (
         <div id="homeContainer">
-            <Navigation id="app-nav" showFlag={true}/>
+            <NavBar id="app-nav" showFlag={true}/>
             <div className="heroContainer">
             </div>
         </div>

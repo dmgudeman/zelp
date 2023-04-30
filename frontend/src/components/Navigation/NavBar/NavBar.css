@@ -2,13 +2,14 @@
 
 #navContainer {  
     position:fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 75px; 
     display: flex;
     align-items: space-between;
-    /* background-color: bisque; */
-   
 
+    /* background-color: bisque; */
    
 }
 #navContainer.index {

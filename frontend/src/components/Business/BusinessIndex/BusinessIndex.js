@@ -12,11 +12,14 @@ const BusinessIndex = (props) => {
     const [cardTotal, setCardTotal] = useState(6);
 
     useEffect(() => {
+      
         dispatch(fetchBusinesses());
     }, [dispatch]);
+
+    if (!businesses) return null;
     return (
         <>
-            <NavBar showFlag={false} />
+            {/* <NavBar showFlag={false} /> */}
             <div className="businessContainer">
                 <BannerBackground businesses={businesses}/>
                 <Banner />
@@ -35,7 +38,7 @@ const BusinessIndex = (props) => {
 export default BusinessIndex;
 
 const BannerBackground = ({businesses}) => {
-    const imgUrl = businesses[0].imageUrls[0]
+    const imgUrl = businesses[0]?.imageUrls ?  businesses[0].imageUrls[0] : 'https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg'
     return (
         <>
         
