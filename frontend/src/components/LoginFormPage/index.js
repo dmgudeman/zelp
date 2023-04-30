@@ -3,7 +3,7 @@ import { login, getCurrentUser } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import Navigation from "../Navigation";
-import DemoUserForm from "../DemoUserForm";
+import DemoUserForm from '../Auth/DemoUserForm'
 import "./LoginFormPage.css";
 
 const LoginFormPage = (props) => {

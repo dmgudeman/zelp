@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { signup } from "../../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import NavBar from "../../Navigation/NavBar/NavBar";
 import { NavLink, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signup } from "../../store/session";
+import Navigation from "../Navigation";
+import DemoUserForm from "../Auth/DemoUserForm";
 import "./SignupForm.css";
 
-import DemoUserForm from "../DemoUserForm/DemoUseForm";
 
-const SignupFormPage = (props) => {
+
+const SignupForm = (props) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [username, setUsername] = useState("");
@@ -44,7 +45,7 @@ const SignupFormPage = (props) => {
 
     return (
         <>
-            <NavBar id="app-nav" showFlag={false} />
+            <Navigation id="app-nav" showFlag={false} />
             <div id="signupFormContainer">
                 <form id="inputForm" onSubmit={submitHandler}>
                     <h2>Sign Up for Zelp</h2>
@@ -95,4 +96,4 @@ const SignupFormPage = (props) => {
     );
 };
 
-export default SignupFormPage;
+export default SignupForm;

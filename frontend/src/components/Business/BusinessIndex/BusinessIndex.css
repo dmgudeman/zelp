@@ -1,71 +1,79 @@
-
-#businessContainer {
+.businessContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    /* background-color:pink; */
-    /* background-color: transparent; */   
+    background-color: darkgray;
 }
 
-#bannerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow:1;
-    width: 100vw;
-    height: 50vh;
-    z-index: 50;
+.backgroundContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 350px;
+    z-index: 10;
+     background-image: url('https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg');
+    /* background-color: #5cb9ff; */
+    /* background-color: rgba(92,185,255, 0.1); */  
 }
 
-
-
-
-#centerBanner {
+.bannerContainer {
     display: flex;
-    margin-top: 75px;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 50vw;
-    flex-direction: column;   
+    position: absolute;
+    width: 100%;
+    height: 350px;
+    z-index:20;
+     /* background-color: red; */
+    /* background-color: transparent; */
+}
+/* .topBanner {
+    display: flex;
     height: 60%;
-    background-color: #5cb9ff;
-    border-radius: 25px;
-}
-
-#firstLine {
-    font-size:  0.5in;
-    font-weight: bold;
-    color: white
-}
-
-#secondLine {
-    color:white;
-}
-
-#businessesSearchBar{
-  width:75%;
-}
-
-
-
-
-#centerBottomBanner{
+ 
+} */
+.leftBanner {
     display: flex;
-    align-items: center;
+    flex-grow: 1;
+ 
+    /* background-color: aqua; */
+    /* background-color: transparent; */
+}
+.centerBanner {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+}
+
+.secondLine {
+    font-size: smaller;
+}
+.rightBanner {
+    display: flex; 
+    flex-grow: 1;
+}
+
+.bottomBanner{
+    display: flex;
+    align-items: flex-end;
     height: 40%;
     background-color: yellow;
     font-weight: bold;
+    /* background-color: transparent; */
 
 }
 
-#cardContainer {
+.cardContainer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    /* background-color: aquamarine; */
+    background-color: aquamarine;
     /* background-color: transparent; */
 
 }

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch, connect } from "react-redux";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
-import NavBar from "../../Navigation/NavBar/NavBar";
+import Navigation from "../../Navigation";
 import { getBusiness, fetchBusiness } from "../../../store/businesses";
 import { getReviews } from "../../../store/reviews";
 import "./BusinessShow.css";
@@ -23,7 +23,7 @@ const BusinessShow = (props) => {
     if (!business) return null;
     return (
         <>
-            <NavBar showFlag={"index"} />
+            <Navigation showFlag={"index"} />
             <div id="businessShowContainer">
                 <div id="heroContainer">
                     <div className="businessName">{business.name}</div>
