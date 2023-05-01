@@ -5,6 +5,9 @@
     margin: 10px 0px;
     
 }
+/* .dStar{
+    transform: scale(2.0)
+} */
 
 .colored-in {
     color: blue;
@@ -13,4 +16,15 @@
 
 .not-colored-in {
    color: gray;
+}
+
+.starCard {
+   
+
+}
+
+/*  enlarges stars for the BusinessShowDisplay */
+.starDisplay { 
+    transform: scale(3);
+    margin: 25px;
 }

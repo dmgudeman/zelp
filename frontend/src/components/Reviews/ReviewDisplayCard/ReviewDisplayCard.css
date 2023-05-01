@@ -35,6 +35,12 @@
      flex: 1;
 }
 
+.star {
+    transform: scale(1.5);
+    margin: 7px;
+ 
+  }
+
 
 #bodyCell {
     justify-content: flex-start;

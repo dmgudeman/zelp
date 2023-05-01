@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./ReviewDisplayCard.css";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
 
-const ReviewDisplayCard = ({ review }) => {
+const ReviewDisplayCard = ({ review}) => {
     const { body, photoUrl, rating, businessId } = { ...review };
     const [ truncBody, setTruncBody] = useState(body.substring(0,150) + "...")
     const [cardTotal, setCardTotal] = useState(6);
@@ -13,7 +13,7 @@ const ReviewDisplayCard = ({ review }) => {
             <div id="reviewCardContainer">
                 <div id="bodyContainer">
                     <div id="bodyCell">
-                        <DisplayRating rating={rating} />
+                        <DisplayRating rating={rating} starClass="starCard" />
                         {truncBody}
                       
                     </div>

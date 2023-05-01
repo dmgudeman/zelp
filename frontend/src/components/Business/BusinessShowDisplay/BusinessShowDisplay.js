@@ -1,6 +1,8 @@
 import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
+import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
 import "./BusinessShowDisplay.css";
-const BusinessShowDisplay = ({businesses}) => {
+const BusinessShowDisplay = ({business}) => {
+    
    
     return (
         <>
@@ -10,11 +12,12 @@ const BusinessShowDisplay = ({businesses}) => {
                 </div>
                 <div id="BSDCenter">
                     <div id="InfoContainer">
-                        <p>hi there</p>
+                        <RatingDisplay starClass="starDisplay"/>
+                        <div className="displayText" >{business.cost}</div>
                     </div>
                     <div id="mapContainer">
                         <div id="mapLeft">
-                         <ZelpMap businesses={businesses} className="zelpMap"/>
+                         <ZelpMap businesses={[business]} className="zelpMap"/>
                         </div>
                         <div id="mapRight"></div>
                     </div>

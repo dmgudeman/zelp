@@ -33,7 +33,7 @@ const BusinessShow = (props) => {
                 <div id="heroContainer">
                     <div className="businessName">{business.name}</div>
                 </div>
-                <BusinessShowDisplay businesses={[business]}/>
+                <BusinessShowDisplay business={business}/>
                 <div id="lowerContainer">
                     <div id="l-1"></div>
                     <div id="l-2">
