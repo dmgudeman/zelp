@@ -12,7 +12,6 @@ const BusinessIndex = (props) => {
     const [cardTotal, setCardTotal] = useState(6);
 
     useEffect(() => {
-      
         dispatch(fetchBusinesses());
     }, [dispatch]);
 
@@ -21,7 +20,7 @@ const BusinessIndex = (props) => {
         <>
             {/* <NavBar showFlag={false} /> */}
             <div className="businessContainer">
-                <BannerBackground businesses={businesses}/>
+                <BannerBackground businesses={businesses} />
                 <Banner />
 
                 <div className="cardContainer">
@@ -37,14 +36,21 @@ const BusinessIndex = (props) => {
 
 export default BusinessIndex;
 
-const BannerBackground = ({businesses}) => {
-    const imgUrl = businesses[0]?.imageUrls ?  businesses[0].imageUrls[0] : 'https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg'
+const BannerBackground = ({ businesses }) => {
+    const imgUrl = businesses[0]?.imageUrls
+        ? businesses[0].imageUrls[0]
+        : "https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg";
     return (
         <>
-        
-            <div className="backgroundContainer"
-             style={{ backgroundImage: `url(${imgUrl})`, backgroundSize: "cover", backgroundPosition: "top", opacity: 0.5}}>
-            </div>
+            <div
+                className="backgroundContainer"
+                style={{
+                    backgroundImage: `url(${imgUrl})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "top",
+                    opacity: 0.5,
+                }}
+            ></div>
         </>
     );
 };

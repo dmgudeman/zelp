@@ -1,7 +1,7 @@
 import './BusinessCard.css'
 import { Link } from "react-router-dom";
 import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
-import { processName } from '../../Helpers';
+
 
 const BusinessCard = ({ business }) => {
 
@@ -15,7 +15,7 @@ const BusinessCard = ({ business }) => {
                 <div id="reviewContainer">
                     <div className="firstLine">
                         <Link to={`/businesses/${business.id}`}>
-                            <p>{processName(business.name)}</p>
+                            <p>{business.name}</p>
                         </Link>
                         {/* <p>
                             <i id="x" className="fa-solid fa-x"></i>

@@ -183,13 +183,24 @@ ApplicationRecord.transaction do
   end
 end
 puts 'Done!'
+
+
+
+
 puts 'attaching photos....'
+
+def preprocessName(name)
+    name.gsub(" ", "_")
+    name.gsub("''", "__")
+end
+
+
 Business.all.each do |bus|
   business = Business.find_by(name: bus.name)
   (1..5).each do |i|
     business.images.attach(
-      io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/#{business.name}_a#{i}.jpeg"),
-      filename: "#{business.name}_a#{i}.jpeg"
+      io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/#{preprocessName(business.name)}_a#{i}.jpeg"),
+      filename: "#{preprocessName(business.name)}_a#{i}.jpeg"
     )
   end
 end

@@ -5,7 +5,6 @@ import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import { getBusiness, fetchBusiness } from "../../../store/businesses";
 import { getReviews } from "../../../store/reviews";
-import { processName } from "../../Helpers";
 import "./BusinessShow.css";
 
 const BusinessShow = (props) => {
@@ -13,7 +12,7 @@ const BusinessShow = (props) => {
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
     let reviews = useSelector(getReviews);
-    const [name, setName] = useState(processName(business?.name || ''))
+    const [name, setName] = useState(business?.name || '')
 
     useEffect(() => {
         if (!busId) {
