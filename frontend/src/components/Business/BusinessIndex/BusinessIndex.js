@@ -20,18 +20,20 @@ const BusinessIndex = (props) => {
     return (
         <>
             {/* <NavBar showFlag={false} /> */}
-            <div className="businessContainer">
-                <BannerBackground businesses={businesses} />
-                <Banner />
+            <div id="businessContainer">
+                <div id="bannerContainer">
+                    <BannerBackground businesses={businesses} />
+                    <Banner />
+                </div>
 
-                <div className="cardContainer">
+                <div id="cardContainer">
                     <BusinessIndexDisplay
                         businesses={businesses}
                         cardTotal={cardTotal}
                     />
-                    {/* <ZelpMap businesses={businesses}/> */}
                 </div>
             </div>
+            <ZelpMap businesses={businesses} />
         </>
     );
 };
@@ -45,12 +47,12 @@ const BannerBackground = ({ businesses }) => {
     return (
         <>
             <div
-                className="backgroundContainer"
+                id="backgroundContainer"
                 style={{
                     backgroundImage: `url(${imgUrl})`,
                     backgroundSize: "cover",
                     backgroundPosition: "top",
-                    opacity: 0.5,
+                    opacity: 0.3,
                 }}
             ></div>
         </>
@@ -60,8 +62,8 @@ const BannerBackground = ({ businesses }) => {
 const Banner = (props) => {
     return (
         <>
-            <div className="businessContainer">
-                <div className="bannerContainer">
+            <div id="businessFrontContainer">
+                <div ide="bannerFrontContainer">
                     <div className={"leftBanner"}></div>
                     <div className="centerBanner">
                         <h2>Find a business to review</h2>

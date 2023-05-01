@@ -1,19 +1,23 @@
 
 
 #businessShowContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+    height: 2000px;
+    overflow-y: scroll;
     /* background-color: blue; */
 }
+
+
 
 #heroContainer {
     background-image: url("../../../assets/restaurant.jpeg");
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 66vh;
+    height: 600px;;
     display: flex;
     flex-direction: column;
     justify-content: end;

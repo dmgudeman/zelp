@@ -1,9 +1,11 @@
 import { useEffect, useState} from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch, connect } from "react-redux";
+import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import Navigation from "../../Navigation/NavBar/NavBar";
-import { getBusiness, fetchBusiness } from "../../../store/businesses";
+import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
+import { getBusiness, fetchBusiness, getBusinesses,fetchBusinesses } from "../../../store/businesses";
 import { getReviews } from "../../../store/reviews";
 import "./BusinessShow.css";
 
@@ -13,15 +15,19 @@ const BusinessShow = (props) => {
     let business = useSelector(getBusiness(busId));
     let reviews = useSelector(getReviews);
     const [name, setName] = useState(business?.name || '')
+   
 
     useEffect(() => {
-        if (!busId) {
-            <Redirect to="/" />;
+        if(busId){
+            dispatch(fetchBusiness(busId));
         }
-        dispatch(fetchBusiness(busId));
-    }, [dispatch]);
+    }, [dispatch, busId]);
+
+ 
+
 
     if (!business) return null;
+
     return (
         <>
             <Navigation showFlag={"index"} />
@@ -29,6 +35,7 @@ const BusinessShow = (props) => {
                 <div id="heroContainer">
                     <div className="businessName">{name}</div>
                 </div>
+                <BusinessShowDisplay businesses={[business]}/>
                 <div id="lowerContainer">
                     <div id="l-1"></div>
                     <div id="l-2">
@@ -41,6 +48,7 @@ const BusinessShow = (props) => {
                             </Link>
                         </div>
                         <ReviewsIndex reviews={reviews} />
+                      
                     </div>
                     <div id="l-3"></div>
                     <div id="l-4"></div>
@@ -88,3 +96,5 @@ const Banner = (props) => {
         </>
     );
 };
+
+

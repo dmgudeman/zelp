@@ -10,7 +10,6 @@ export const receiveBusinesses = (businesses) => {
 };
 
 export const receiveBusiness = (business) => {
-    console.log('business', business)
     return {
         type: RECEIVE_BUSINESS,
         business,
@@ -51,7 +50,6 @@ const businessesReducer = (state = {}, action) => {
         case RECEIVE_BUSINESSES:
             return { ...action.businesses };
         case RECEIVE_BUSINESS:
-            console.log('action.business',action.business.id)
             return {...state, [action.business.id] : action.business };
         default:
             return state;

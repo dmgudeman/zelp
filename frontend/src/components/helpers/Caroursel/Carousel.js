@@ -22,7 +22,7 @@ const Carousel = () => {
 
                 setFadeIn(true);
             }, 300);
-        }, 12000);
+        }, 6000);
         return () => clearInterval(interval);
     }, [currentImage]);
 

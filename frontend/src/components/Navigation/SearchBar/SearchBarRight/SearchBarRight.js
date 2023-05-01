@@ -9,7 +9,6 @@ const SearchBarRight = (props) => {
         queryRight,
         setQueryRight,
     } = { ...props };
-    console.log(queryRight === '','uuuuuuuu')
     if (!businesses) return null;
     return (
         <>

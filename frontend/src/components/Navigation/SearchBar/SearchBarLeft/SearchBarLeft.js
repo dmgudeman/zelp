@@ -14,9 +14,6 @@ const SearchBarLeft = (props) => {
         setQueryLeft,
     } = { ...props };
 
-    useEffect(()=>{
-        console.log(queryLeft)
-    },[queryLeft])
     
     if (!businesses) return null;
     return (
