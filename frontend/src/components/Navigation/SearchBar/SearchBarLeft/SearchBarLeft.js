@@ -1,9 +1,11 @@
-import {Link }from 'react-router-dom';
+import { useEffect } from 'react';   
+import {Link, useHistory }from 'react-router-dom';
 import { processName } from "../../../Helpers";
 
 import "./SearchBarLeft.css";
 
 const SearchBarLeft = (props) => {
+    const history = useHistory();
     const {
         businesses,
         handleSearch,
@@ -11,7 +13,11 @@ const SearchBarLeft = (props) => {
         queryLeft,
         setQueryLeft,
     } = { ...props };
-   
+
+    useEffect(()=>{
+        console.log(queryLeft)
+    },[queryLeft])
+    
     if (!businesses) return null;
     return (
         <>
@@ -30,7 +36,10 @@ const SearchBarLeft = (props) => {
                         <ul>
                             {filterBusinesses().map((business) => (
                                 <li key={business.name}>
-                                    {" "}
+                                    {/* <button onClick={()=> history.push(`/businesses/${business.id}`)}  ></button> */}
+                                     {" "}
+
+                                   
                                    <Link to={`/businesses/${business.id}`}>{processName(business.name)}</Link> 
                                 </li>
                             ))}
