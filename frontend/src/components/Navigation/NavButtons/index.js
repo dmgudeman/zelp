@@ -14,7 +14,7 @@ const NavButtons = (props) => {
                 <button id="review-button">Write a Review</button>
             </Link>
             <Link to="/login">
-                <button id="login-button">Log In</button>
+                <button className="blueButton" id="login-button">Log In</button>
             </Link>
             <Link to="/signup">
                 <button onClick={() => console.log("sign up")}>Sign Up</button>

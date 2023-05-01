@@ -5,11 +5,17 @@
     padding: 3px;
     border-radius: 5px;
     color: white;
-    /* background-color: rgb(102, 102, 174); */
-    background-color: #5cb9ff;
+    background-color: var(--two);
     /* background-color: #18A5E7; */
     padding-left: 10px;
     padding-right: 10px;
+    transition: all 0.3s;
+}
+
+.blueButton:hover {
+    /* height: 40px; */
+    border: 2px solid var(--one);
+    /* background-color: var(--aqua); */
 }
 
 #container {

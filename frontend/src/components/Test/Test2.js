@@ -1,25 +1,30 @@
 import { useState, useEffect } from "react";
+import './Test.css';
+import Carousel from '../Helpers/Caroursel/Carousel';
 
 const SearchBar = (props) => {
-    const [searchTerm, setSearchTerm] = useState("");
-    useEffect(()=>{
-        console.log(searchTerm)
-    },[searchTerm])
+    // const [searchTerm, setSearchTerm] = useState("");
+    // useEffect(()=>{
+    //     console.log(searchTerm)
+    // },[searchTerm])
 
-    const handleSearch = (e) => {
-        setSearchTerm(e.target.value);
+    // const handleSearch = (e) => {
+    //     setSearchTerm(e.target.value);
        
-    };
+    // };
 
     return (
         <>
-            <form>
+            {/* <form>
                 <input
                     type="text"
                     placeholder="Search by name"
                     onChange={handleSearch}
                 />
-            </form>
+            </form> */}
+            <div id="testContainer">
+            <Carousel/>
+            </div>
         </>
     );
 };
