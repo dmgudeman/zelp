@@ -14,8 +14,6 @@ const BusinessShow = (props) => {
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
     let reviews = useSelector(getReviews);
-    const [name, setName] = useState(business?.name || '')
-   
 
     useEffect(() => {
         if(busId){
@@ -33,7 +31,7 @@ const BusinessShow = (props) => {
             <Navigation showFlag={"index"} />
             <div id="businessShowContainer">
                 <div id="heroContainer">
-                    <div className="businessName">{name}</div>
+                    <div className="businessName">{business.name}</div>
                 </div>
                 <BusinessShowDisplay businesses={[business]}/>
                 <div id="lowerContainer">
