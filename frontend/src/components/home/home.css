@@ -6,7 +6,7 @@
 }
 
 .heroContainer {
-    background-image: url("../../assets/lawn.jpg");
+    /* background-image: url("../../assets/lawn.jpg"); */
     position: absolute;
     top:0;
     left: 0;
