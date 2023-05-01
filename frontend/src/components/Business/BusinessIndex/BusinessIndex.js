@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
 import BusinessIndexDisplay from "../BusinessIndexDisplay/BusinessIndexDisplay";
 import NavBar from "../../Navigation/NavBar/NavBar";
+import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
 import SearchBar from "../../Navigation/SearchBar/SearchBar";
 import "./BusinessIndex.css";
 
@@ -28,6 +29,7 @@ const BusinessIndex = (props) => {
                         businesses={businesses}
                         cardTotal={cardTotal}
                     />
+                    {/* <ZelpMap businesses={businesses}/> */}
                 </div>
             </div>
         </>

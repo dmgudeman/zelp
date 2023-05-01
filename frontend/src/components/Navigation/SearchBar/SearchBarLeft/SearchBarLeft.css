@@ -1,0 +1,36 @@
+
+
+#SBLcontainer {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+}
+
+#SBLInputWrap {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    /* background-color: blue; */
+}
+#SBLInput {
+    border: none;
+    outline: none;
+    /* background-color: aquamarine; */
+    
+}
+#SBLDropDown{
+    background-color: white;
+    color: black;
+    font-style: italic;
+    font-size: smaller;
+    padding:10px;
+    margin: 10px;
+    border-radius: 14px;
+
+}
+#SBLDropDown.hidden {
+    display: none;
+   
+
+} 

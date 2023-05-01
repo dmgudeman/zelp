@@ -77,7 +77,7 @@ ApplicationRecord.transaction do
   )
 
   Business.create!(
-    name: 'Nijiya_Market',
+    name: 'Nijiya Market',
     address: '1737 Post St San Francisco, CA 94115',
     phone: '4155631901',
     website: 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.nijiya.com&cachebuster=1682871302&website_link_type=website&src_bizid=3-QftDg5y7rqLfCVt_Ja-g&s=1687d1d6ea880d6ea99ab048c9baeeac95f97508e1e2ea8e633175643007d8b6',
@@ -87,7 +87,7 @@ ApplicationRecord.transaction do
   )
 
   Business.create!(
-    name: 'Trader_Joe__s',
+    name: 'Trader Joe\'s',
     address: '3 Masonic Ave San Francisco, CA 94118',
     phone: '4153469964',
     website: 'http://www.traderjoes.com',
@@ -169,9 +169,10 @@ ApplicationRecord.transaction do
   puts 'writing reviews....'
 
   reviews.each do |key, value|
-    business = Business.find_by(name: key)
-   
-
+    name = key.to_s
+    modName = name.gsub("__", "'")
+    modmodName = modName.gsub("_", " ")
+    business = Business.find_by(name: modmodName)
     value.each do |review|
       Review.create(
         author_id: User.all.sample.id,
@@ -185,13 +186,12 @@ end
 puts 'Done!'
 
 
-
-
 puts 'attaching photos....'
 
 def preprocessName(name)
-    name.gsub(" ", "_")
-    name.gsub("''", "__")
+   modName = name.gsub(" ", "_")
+    modmodName = modName.gsub("'", "__")
+    return modmodName
 end
 
 
