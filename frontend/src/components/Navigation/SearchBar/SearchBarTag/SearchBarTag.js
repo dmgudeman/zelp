@@ -2,11 +2,12 @@ const SearchBarTag = (props) => {
     const {
         businesses,
         handleSearch,
-        filterBusinesses,
-        queryRight,
-        setQueryRight,
+        // filterBusinesses,
+        queryTag,
+        filterTags
+        // setQueryRight,
     } = { ...props };
-    if (!businesses) return null;
+    // if (!businesses) return null;
     return (
         <>
 
@@ -20,13 +21,13 @@ const SearchBarTag = (props) => {
                     />
                 </div>
                
-                    {queryRight !== '' ? (
+                    {queryTag!== '' ? (
                          <div className="SBDropDown">
                         <ul>
-                            {filterBusinesses().map((business) => (
-                                <li key={business.name}>
+                            {filterTags().map((tag) => (
+                                <li key={tag.tag}>
                                     {" "}
-                                    {business.name}
+                                    {tag.tag}
                                 </li>
                             ))}
                         </ul>

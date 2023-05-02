@@ -5,7 +5,7 @@ import {
     fetchBusinesses,
     fetchBusinessesWithTag,
 } from "../../../store/businesses";
-import { fetchTags, getTags} from "../../../store/tags";
+import { fetchTags, getTags } from "../../../store/tags";
 import { processName } from "../../Helpers";
 import SearchBarLeft from "./SearchBarLeft/SearchBarLeft";
 import SearchBarRight from "./SearchBarRight/SearchBarRight";
@@ -28,13 +28,13 @@ const SearchBar = (props) => {
         });
     };
 
-    
-    const filterCities = () => {};
-    const filterTags = (tag) => {
-        console.log('in filter tags', tag)
-      dispatch(fetchBusinessesWithTag(tag));
-
+    const filterTags = () => {
+        return tags.filter((tag) => {
+            return tag.tag.toLowerCase().includes(queryTag.toLowerCase());
+        });
     };
+
+    const filterCities = () => {};
 
     const handleLeftSearch = (e) => {
         setQueryLeft(e.target.value);
@@ -47,27 +47,30 @@ const SearchBar = (props) => {
     };
 
     useEffect(() => {
+        dispatch(fetchTags());
+        dispatch(fetchBusinesses());
+    }, [dispatch]);
+
+    useEffect(() => {
         filterBusinesses();
     }, [queryLeft]);
-    // useEffect(() => {
-    //     filterTags(queryTag);
-    // }, [queryTag]);
+
     useEffect(() => {
-        dispatch(fetchTags())
-    }, [dispatch, queryTag ]);
-   
+        filterTags();
+    }, [queryTag]);
 
     return (
         <>
             <form className="searchBarContainer">
-               <SearchBarTag
+                <SearchBarTag
                     businesses={businesses}
-                    queryRight={queryRight}
-                    setQueryRight={setQueryRight}
-                    handleSearch={handleRightSearch}
-                    filterBusinesses={filterBusinesses}
+                    tags={tags}
+                    queryTag={queryTag}
+                    // setQueryRight={setQueryRight}
+                    handleSearch={handleTagSearch}
+                    filterTags={filterTags}
                 />
-              
+
                 <SearchBarLeft
                     businesses={businesses}
                     queryLeft={queryLeft}
@@ -75,16 +78,15 @@ const SearchBar = (props) => {
                     handleSearch={handleLeftSearch}
                     filterBusinesses={filterBusinesses}
                 />
-                
-             
-                 <SearchBarRight
+
+                <SearchBarRight
                     businesses={businesses}
                     queryRight={queryRight}
                     setQueryRight={setQueryRight}
                     handleSearch={handleRightSearch}
                     filterBusinesses={filterBusinesses}
                 />
-               
+
                 <div className="searchButton">
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
