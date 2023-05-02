@@ -12,10 +12,10 @@ const SearchBarRight = (props) => {
     if (!businesses) return null;
     return (
         <>
-            <div id="SBRcontainer">
-                <div id="SBRInputWrap">
+            <div className="SBcontainer">
+                <div className="SBInputWrap">
                     <input
-                        id="SBRInput"
+                        className="SBInput"
                         type="text"
                         placeholder="Search by city"
                         onChange={handleSearch}
@@ -23,7 +23,7 @@ const SearchBarRight = (props) => {
                 </div>
                
                     {queryRight !== '' ? (
-                         <div id="SBRDropDown">
+                         <div className="SBDropDown">
                         <ul>
                             {filterBusinesses().map((business) => (
                                 <li key={business.name}>

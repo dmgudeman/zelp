@@ -2,7 +2,11 @@ class Api::BusinessesController < ApplicationController
   wrap_parameters include: Business.attribute_names + [:images]
 
   def index
-    @businesses = Business.all
+    if params[:tag].present?
+      @businesses = Business.joins(:tags).where(tags: { tag: params[:tag] })
+    else
+      @businesses = Business.all
+    end
   end
 
   def show 
@@ -15,6 +19,6 @@ class Api::BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:name, :reviews, :address, :phone, :email, :website, :cost, :lat, :lng, images: [])
+    params.require(:business).permit(:name, :reviews, :address, :phone, :website, :cost, :latlng, :hours,  images: [])
   end
 end

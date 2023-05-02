@@ -28,8 +28,9 @@ const BusinessShow = (props) => {
 
     return (
         <>
-            <Navigation showFlag={"index"} />
+           
             <div id="businessShowContainer">
+            <Navigation showFlag={"index"} />
                 <div id="heroContainer">
                     <div className="businessName">{business.name}</div>
                 </div>

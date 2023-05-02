@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :users, only: :create
     resources :businesses, only: %i[index show]
     resources :reviews, except: %i[edit]
+    resources :tags, only: :index
     resource :session, only: %i[show create destroy]
     
   end

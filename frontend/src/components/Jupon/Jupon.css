@@ -1,0 +1,22 @@
+
+#jContainer {
+    display: flex;
+    width: 100vw;
+    height: 100vw;
+    background-color: blue
+
+}
+
+
+ #texty {
+    width:400px;
+    height:600px;
+   
+} 
+
+#outy {
+    width: 400px;
+    height:600px;
+    background-color: lightblue;
+  
+} 

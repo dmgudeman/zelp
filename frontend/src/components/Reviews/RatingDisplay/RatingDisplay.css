@@ -10,7 +10,7 @@
 } */
 
 .colored-in {
-    color: blue;
+    color: var(--two)
 
 }
 

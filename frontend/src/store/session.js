@@ -102,8 +102,3 @@ const sessionReducer = (state = initialState, action) => {
 };
 
 export default sessionReducer;
-// await csrfFetch('/api/test?login', { method: 'POST' }).then(res => res.json())
-// await csrfFetch('/api/session', {  credential: 'Demo-lition', password: 'password' }).then(res => res.json())
-// await csrfFetch('/api/users', {method: 'POST', body:{  username: 'eee', password: 'password', email: 'e@e.com' }}).then(res => res.json())
-// await csrfFetch('/api/test?logout', { method: 'POST' }).then(res => res.json())
-// await csrfFetch('/api/logout', { method: 'DELETE' }).then(res => res.json())

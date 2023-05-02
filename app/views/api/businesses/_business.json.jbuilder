@@ -1,2 +1,2 @@
-json.extract! business, :id, :name, :phone, :email, :website, :cost, :lat, :lng
+json.extract! business, :id, :name, :phone, :address, :website, :cost, :latlng, :hours
 json.imageUrls business.images.map { |file| file.url } 

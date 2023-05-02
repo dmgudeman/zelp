@@ -4,7 +4,7 @@ import './Test3.css';
 const Test3 = (props) => {
     return (
         <>
-        <di></di>
+        <di>hello</di>
         </>
     )
 }

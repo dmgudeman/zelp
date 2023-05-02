@@ -11,7 +11,7 @@ import BusinessIndex from "./components/Business/BusinessIndex/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow/BusinessShow";
 import ReviewsIndex from "./components/Reviews/ReviewsIndex/ReviewsIndex";
 import ReviewNew from "./components/Reviews/ReviewNew";
-// import Test4 from './components/Test/Test4/Test4';
+import Jupon from './components/Jupon/Jupon'
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
                 <PrivateRoute path="/businesses/:busId" component={BusinessShow} isLoggedIn={isLoggedIn}/>
                 <PrivateRoute path="/businesses" component={BusinessIndex} isLoggedIn={isLoggedIn}/>
                 <PrivateRoute path="/reviewNew/:busId" component={ReviewNew} isLoggedIn={isLoggedIn}/>
-                {/* <Route path="/test"  component={Test4}/> */}
+                <Route path="/jupon"  component={Jupon}/>
                 <Route path="/" component={Home} />
             </Switch>
         </>

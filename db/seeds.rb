@@ -50,11 +50,12 @@ ApplicationRecord.transaction do
   Business.create!(
     name: 'Sprouts',
     address: '301 Gellert Blvd Daly City, CA 94015',
-    phone: '415321091',
+    phone: '(415) 325-1091',
     website: 'https://www.sprouts.com',
     cost: '$$',
-    lat: '37.66900254389973',
-    lng: '-122.46650888579883'
+   
+    latlng: '"37.66899405144818, -122.46662690296195"',
+    hours: {"`Mon":{"time":"7:00 AM - 10:00 PM"},"Tue":{"time":"7:00 AM - 10:00 PM"},"Wed":{"time":"7:00 AM - 10:00 PM"},"Thu":{"time":"7:00 AM - 10:00 PM"},"Fri":{"time":"7:00 AM - 10:00 PM"},"Sat":{"time":"7:00 AM - 10:00 PM"},"Sun":{"time":"7:00 AM - 10:00 PM`"}}
   )
 
   Business.create!(
@@ -62,38 +63,42 @@ ApplicationRecord.transaction do
     address: '2020 Market St San Francisco, CA 94114',
     phone: '4158617660',
     website: 'http://safeway.com',
-    cost: '$$',
-    lat: '37.76900125791264',
-    lng: '-122.4279027620785'
-  )
-  Business.create!(
-    name: 'Lucky',
-    address: '1515 Sloat Blvd San Francisco, CA 94132',
-    phone: '4156814300',
-    website: 'https://www.yelp.com/biz_redir?url=https%3A%2F%2Fluckysupermarkets.com&cachebuster=1682870824&website_link_type=website&src_bizid=t2BIu94PpNJqzxKw18c4VQ&s=7670519fdc03d9e0f47aaf45fc5766ecb8ac2ff17256777c2124c783db5419fa',
-    cost: '$$',
-    lat: '37.73330576338074',
-    lng: '-122.48960835881019'
+    cost: '$$'
   )
 
-  Business.create!(
-    name: 'Nijiya Market',
-    address: '1737 Post St San Francisco, CA 94115',
-    phone: '4155631901',
-    website: 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.nijiya.com&cachebuster=1682871302&website_link_type=website&src_bizid=3-QftDg5y7rqLfCVt_Ja-g&s=1687d1d6ea880d6ea99ab048c9baeeac95f97508e1e2ea8e633175643007d8b6',
-    cost: '$$',
-    lat: '37.78539647974665',
-    lng: '-122.43114328949343'
-  )
+
+
+    # lat: '37.76900125791264',
+    # lng: '-122.4279027620785'
+  # )
+  # Business.create!(
+  #   name: 'Lucky',
+  #   address: '1515 Sloat Blvd San Francisco, CA 94132',
+  #   phone: '4156814300',
+  #   website: 'https://www.yelp.com/biz_redir?url=https%3A%2F%2Fluckysupermarkets.com&cachebuster=1682870824&website_link_type=website&src_bizid=t2BIu94PpNJqzxKw18c4VQ&s=7670519fdc03d9e0f47aaf45fc5766ecb8ac2ff17256777c2124c783db5419fa',
+  #   cost: '$$',
+  #   lat: '37.73330576338074',
+  #   lng: '-122.48960835881019'
+  # )
+
+  # Business.create!(
+  #   name: 'Nijiya Market',
+  #   address: '1737 Post St San Francisco, CA 94115',
+  #   phone: '4155631901',
+  #   website: 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.nijiya.com&cachebuster=1682871302&website_link_type=website&src_bizid=3-QftDg5y7rqLfCVt_Ja-g&s=1687d1d6ea880d6ea99ab048c9baeeac95f97508e1e2ea8e633175643007d8b6',
+  #   cost: '$$',
+  #   lat: '37.78539647974665',
+  #   lng: '-122.43114328949343'
+  # )
 
   Business.create!(
     name: 'Trader Joe\'s',
     address: '3 Masonic Ave San Francisco, CA 94118',
     phone: '4153469964',
     website: 'http://www.traderjoes.com',
-    cost: '$$',
-    lat: '37.783619803264706',
-    lng: '-122.44786903182215'
+    cost: '$$'
+    # lat: '37.783619803264706',
+    # lng: '-122.44786903182215'
   )
 
   # Business.create!(
@@ -207,8 +212,36 @@ end
 
 puts 'Done!'
 
-# sprout.images.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_01.jpeg'), filename: "sprouts_01.jpeg")
-# sprout.photo.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_02.jpeg'), filename: "sprouts_02.jpeg")
-# sprout.photo.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_03.jpeg'), filename: "sprouts_03.jpeg")
-# sprout.photo.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_04.jpeg'), filename: "sprouts_04.jpeg")
-# sprout.photo.attach( io: URI.open('https://zelp99-dev.s3.us-west-1.amazonaws.com/sprouts_05.jpeg'), filename: "sprouts_05.jpeg")
+
+puts 'creating tags...'
+
+Tag.create!(
+  tag: 'Grocery'
+)
+Tag.create!(
+  tag: 'Restaurant'
+)
+Tag.create!(
+  tag: 'Lumber'
+)
+Tag.create!(
+  tag: 'Hardware'
+)
+Tag.create!(
+  tag: 'Plumbing Service'
+)
+Tag.create!(
+  tag: 'Lawn Service'
+)
+
+puts 'Done with tags'
+
+puts 'attaching tags'
+
+bus = Business.find_by(name: 'Sprouts')
+tag = Tag.find_by(tag: 'Grocery')
+
+bus.tags << tag
+
+puts 'Done attaching tags'
+

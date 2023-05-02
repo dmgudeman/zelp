@@ -2,18 +2,19 @@ import { useEffect } from 'react';
 import {Link, useHistory }from 'react-router-dom';
 
 
-import "./SearchBarLeft.css";
+import "./SearchBarTag.css";
 
-const SearchBarLeft = (props) => {
+const SearchBarTag = (props) => {
     const history = useHistory();
     const {
         businesses,
         handleSearch,
-        filterBusinesses,
-        queryLeft,
-        setQueryLeft,
+        filterTags,
+        queryTag,
+        setQueryTag,
+        tags
     } = { ...props };
-
+   
     
     if (!businesses) return null;
     return (
@@ -23,21 +24,21 @@ const SearchBarLeft = (props) => {
                     <input
                         className="SBInput"
                         type="text"
-                        placeholder="Search by name"
+                        placeholder="Search by category"
                         onChange={handleSearch}
                     />
                 </div>
-               
-                    {queryLeft !== '' ? (
+
+                {queryTag !== '' ? (
                          <div className="SBDropDown">
                         <ul>
-                            {filterBusinesses().map((business) => (
-                                <li key={business.name}>
+                            {tags.map((tag) => (
+                                <li key={tag.tag}>
                                     {/* <button onClick={()=> history.push(`/businesses/${business.id}`)}  ></button> */}
                                      {" "}
 
                                    
-                                   <Link to={`/businesses/${business.id}`}>{business.name}</Link> 
+                                 
                                 </li>
                             ))}
                         </ul>
@@ -45,9 +46,31 @@ const SearchBarLeft = (props) => {
                     ) : null
                 }
                
+                  
+               
             </div>
         </>
     );
 };
 
-export default SearchBarLeft;
+export default SearchBarTag;
+
+
+
+/*
+{queryTag !== '' ? (
+    <div className="SBDropDown">
+   <ul>
+       {filterTags(queryTag).map((business) => (
+           <li key={business.name}>
+               {/* <button onClick={()=> history.push(`/businesses/${business.id}`)}  ></button> */
+            /*    {" "}
+
+              
+              {/* <Link to={`/businesses/${business.id}`}>{business.name}</Link>  */
+         /*  </li>
+       ))}
+   </ul>
+   </div>
+) : null
+}*/
