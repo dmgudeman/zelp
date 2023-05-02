@@ -15,7 +15,7 @@ const SearchBarLeft = (props) => {
     } = { ...props };
 
     
-    if (!businesses) return null;
+
     return (
         <>
             <div className="SBcontainer">

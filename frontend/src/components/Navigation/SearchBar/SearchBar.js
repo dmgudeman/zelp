@@ -6,7 +6,6 @@ import {
     fetchBusinessesWithTag,
 } from "../../../store/businesses";
 import { fetchTags, getTags } from "../../../store/tags";
-import { processName } from "../../Helpers";
 import SearchBarLeft from "./SearchBarLeft/SearchBarLeft";
 import SearchBarRight from "./SearchBarRight/SearchBarRight";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
@@ -30,6 +29,7 @@ const SearchBar = (props) => {
 
     const filterTags = () => {
         return tags.filter((tag) => {
+           console.log( tag);
             return tag.tag.toLowerCase().includes(queryTag.toLowerCase());
         });
     };
@@ -43,8 +43,12 @@ const SearchBar = (props) => {
         setQueryRight(e.target.value);
     };
     const handleTagSearch = (e) => {
+        // console.log('vvvv', value)
         setQueryTag(e.target.value);
     };
+    function handleChildItemClicked(value) {
+        console.log(`Item clicked: ${value}`);
+      }
 
     useEffect(() => {
         dispatch(fetchTags());
@@ -63,12 +67,12 @@ const SearchBar = (props) => {
         <>
             <form className="searchBarContainer">
                 <SearchBarTag
-                    businesses={businesses}
                     tags={tags}
                     queryTag={queryTag}
-                    // setQueryRight={setQueryRight}
+                    setQueryTag={setQueryTag}
                     handleSearch={handleTagSearch}
                     filterTags={filterTags}
+                    onItemClicked={handleChildItemClicked}
                 />
 
                 <SearchBarLeft

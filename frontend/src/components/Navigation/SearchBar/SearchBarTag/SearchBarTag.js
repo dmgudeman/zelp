@@ -1,17 +1,22 @@
 const SearchBarTag = (props) => {
     const {
-        businesses,
+        tags,
         handleSearch,
-        // filterBusinesses,
+        filterTags,
         queryTag,
-        filterTags
-        // setQueryRight,
+        setQueryTag,
+        // onItemClicked
     } = { ...props };
-    // if (!businesses) return null;
+
+    // function handleItemClick(value){
+    //     console.log('local', value)
+    //     // setQueryTag(value);
+    //     onItemClicked(value)
+    // }
+
     return (
         <>
-
-<div className="SBcontainer">
+            <div className="SBcontainer">
                 <div className="SBInputWrap">
                     <input
                         className="SBInput"
@@ -20,23 +25,22 @@ const SearchBarTag = (props) => {
                         onChange={handleSearch}
                     />
                 </div>
-               
-                    {queryTag!== '' ? (
-                         <div className="SBDropDown">
+
+                {queryTag !== "" ? (
+                    <div className="SBDropDown">
                         <ul>
                             {filterTags().map((tag) => (
-                                <li key={tag.tag}>
-                                    {" "}
+                                <li
+                                    key={tag.tag}
+                                    // onClick={() => handleItemClick(tag.tag)}
+                                >
                                     {tag.tag}
                                 </li>
                             ))}
                         </ul>
-                        </div>
-                    ) : null
-                }
-               
+                    </div>
+                ) : null}
             </div>
-         
         </>
     );
 };
