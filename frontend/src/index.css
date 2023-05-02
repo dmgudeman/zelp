@@ -1,0 +1,44 @@
+/* TODO Add site wide styles */
+
+/* background-color: #5cb9ff; */
+
+@import './reset.css';
+
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+:root {
+    /* --green: #18E75A;
+    --blue: #18A5E7;
+    --aqua: #18E7C1; */
+
+    --one: #509CAF;
+    --two: #506CAF;
+    --three: #50AF93;
+}
+
+/* #18E7C1
+
+#18A5E7
+#18E75A */
+
+ .blueButton {
+    height: 35px;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    background-color: var(--two);
+   
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: all 0.3s;
+} 
+
+
+.blueButton:hover { 
+    /* height: 40px; */
+    border: 2px solid var(--one);
+    /* background-color: var(--aqua); */
+ }

@@ -1,0 +1,42 @@
+
+
+/* .blueButton {
+    height: 35px;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    background-color: var(--two);
+   
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: all 0.3s;
+} */
+
+/* .blueButton:hover { */
+    /* height: 40px; */
+    /* border: 2px solid var(--one); */
+    /* background-color: var(--aqua); */
+/* } */
+
+#container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: brown; */
+    width: 100%;
+    height: 100%
+
+}
+
+#login-button {
+    border: 2px solid white;
+    background-color: transparent;
+    padding-left: 13px;
+    padding-right: 13px;
+
+}
+
+#review-button {
+    background-color: transparent ;
+    border: none;
+}
