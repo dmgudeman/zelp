@@ -6,8 +6,8 @@ class Business < ApplicationRecord
     #     format: { with: URI::MailTo::EMAIL_REGEXP },
     #     allow_nil: true
 
-    has_and_belongs_to_many :tags,
-    dependent: :destroy
+    has_and_belongs_to_many :tags
+    # dependent: :destroy
 
     has_many :reviews,
     dependent: :destroy

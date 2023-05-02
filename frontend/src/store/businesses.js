@@ -19,9 +19,9 @@ export const receiveBusiness = (business) => {
 export const getBusinesses = (state) => {
     return state.businesses ? Object.values(state.businesses) : [];
 };
-export const getBusinesses2 = (state) => {
-    return state.businesses ?state.businesses : {};
-};
+// export const getBusinesses2 = (state) => {
+//     return state.businesses ?state.businesses : {};
+// };
 
 export const getBusiness =(businessId) => (state)=> {
     return state.businesses ? state.businesses[businessId] : {};

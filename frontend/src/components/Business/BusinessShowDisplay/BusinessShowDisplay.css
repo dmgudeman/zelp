@@ -83,3 +83,7 @@
     padding-left: 50px;
     color:var(--one)
 }
+
+#hours {
+    width: 220px;
+}

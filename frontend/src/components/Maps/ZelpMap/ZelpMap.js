@@ -17,8 +17,6 @@ const ZelpMap = (props) => {
     const markersRef = useRef([]);
     const history = useHistory();
 
-    console.log("inZelpMap BBBBBBBBBBBBBBBBBBBBBBBBs =", businesses);
-
     // Create the map
     useEffect(() => {
         if (!map) {

@@ -1,9 +1,9 @@
-
+import SearchBar from "../../Navigation/SearchBar/SearchBar";
 
 const Banner = (props) => {
     return (
         <>
-            <div className="businessContainer">
+           
                 <div className="bannerContainer">
                     <div className={"leftBanner"}></div>
                     <div className="centerBanner">
@@ -21,7 +21,7 @@ const Banner = (props) => {
                     </div>
                     <div className="rightBanner"></div>
                 </div>
-            </div>
+        
         </>
     );
 };
