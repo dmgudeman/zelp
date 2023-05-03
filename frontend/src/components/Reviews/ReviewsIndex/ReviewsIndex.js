@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews, getReviews } from "../../../store/reviews";
+import { useParams, Link, Redirect } from "react-router-dom";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 
-const ReviewsIndex = ({ reviews }) => {
+const ReviewsIndex = ({ reviews, business }) => {
     const [cardTotal, setCardTotal] = useState(6);
 
     const extendHandler = () => {
@@ -14,6 +15,15 @@ const ReviewsIndex = ({ reviews }) => {
 
     return (
         <>
+           <div id="containerRI">
+           <div className="buttons">
+                            <Link to={`/reviewNew/${business.id}`}>
+                                <button className="blue-button">
+                                    {/* <i className="fa-regular fa-star"></i>  */}
+                                    Leave your opinions, and optional photo(s)
+                                </button>
+                            </Link>
+                        </div>
             <div id="reviewsIndexContainer">
                 {reviews.length ? (
                     reviews.map((review, idx) => {
@@ -33,7 +43,9 @@ const ReviewsIndex = ({ reviews }) => {
                     </div>
                 )}
             </div>
-            <ExtendIndex extendHandler={extendHandler} />
+            { reviews.length ?  <ExtendIndex extendHandler={extendHandler} /> : null}
+           </div>
+            
         </>
     );
 };

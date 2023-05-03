@@ -46,15 +46,21 @@ ApplicationRecord.transaction do
   # )
   puts 'Done with Users'
   puts 'Creating Businesses'
-  # In business name the spaces are underscore and the apostrophes are double Underscore
+
+  def make_coord(str)
+    coords = str.split(',').map(&:to_f)
+    { lat: coords[0], lng: coords[1] }.to_json
+  end
+   
   Business.create!(
     name: 'Sprouts',
     address: '301 Gellert Blvd Daly City, CA 94015',
     phone: '(415) 325-1091',
     website: 'https://www.sprouts.com',
     cost: '$$',
-    latlng: '"37.66899405144818, -122.46662690296195"',
-    hours: {"`Mon":{"time":"7:00 AM - 10:00 PM"},"Tue":{"time":"7:00 AM - 10:00 PM"},"Wed":{"time":"7:00 AM - 10:00 PM"},"Thu":{"time":"7:00 AM - 10:00 PM"},"Fri":{"time":"7:00 AM - 10:00 PM"},"Sat":{"time":"7:00 AM - 10:00 PM"},"Sun":{"time":"7:00 AM - 10:00 PM`"}}
+    latlng: make_coord('37.66899405144818, -122.46662690296195'),
+    hours: { "Mon": { "time": '7:00 AM - 10:00 PM' }, "Tue": { "time": '7:00 AM - 10:00 PM' },
+             "Wed": { "time": '7:00 AM - 10:00 PM' }, "Thu": { "time": '7:00 AM - 10:00 PM' }, "Fri": { "time": '7:00 AM - 10:00 PM' }, "Sat": { "time": '7:00 AM - 10:00 PM' }, "Sun": { "time": '7:00 AM - 10:00 PM' } }
   )
 
   Business.create!(
@@ -64,13 +70,12 @@ ApplicationRecord.transaction do
     website: 'http://safeway.com',
     cost: '$$',
     latlng: '"37.726793002132965, -122.4762884452887"',
-    hours: {"`Mon":{"time":"6:00 AM - 9:00 PM"},"Tue":{"time":"6:00 AM - 9:00 PM"},"Wed":{"time":"6:00 AM - 9:00 PM"},"Thu":{"time":"6:00 AM - 9:00 PM"},"Fri":{"time":"6:00 AM - 9:00 PM"},"Sat":{"time":"6:00 AM - 9:00 PM"},"Sun":{"time":"6:00 AM - 9:00 PM`"}}
+    hours: { "`Mon": { "time": '6:00 AM - 9:00 PM' }, "Tue": { "time": '6:00 AM - 9:00 PM' }, "Wed": { "time": '6:00 AM - 9:00 PM' },
+             "Thu": { "time": '6:00 AM - 9:00 PM' }, "Fri": { "time": '6:00 AM - 9:00 PM' }, "Sat": { "time": '6:00 AM - 9:00 PM' }, "Sun": { "time": '6:00 AM - 9:00 PM`' } }
   )
 
-
-
-    # lat: '37.76900125791264',
-    # lng: '-122.4279027620785'
+  # lat: '37.76900125791264',
+  # lng: '-122.4279027620785'
   # )
   # Business.create!(
   #   name: 'Lucky',
@@ -99,7 +104,8 @@ ApplicationRecord.transaction do
     website: 'http://www.traderjoes.com',
     cost: '$$',
     latlng: '"37.72695423288699, -122.47623480111044"',
-    hours: {"`Mon":{"time":"8:00 AM - 9:00 PM"},"Tue":{"time":"8:00 AM - 9:00 PM"},"Wed":{"time":"8:00 AM - 9:00 PM"},"Thu":{"time":"8:00 AM - 9:00 PM"},"Fri":{"time":"8:00 AM - 9:00 PM"},"Sat":{"time":"8:00 AM - 9:00 PM"},"Sun":{"time":"8:00 AM - 9:00 PM`"}}
+    hours: { "`Mon": { "time": '8:00 AM - 9:00 PM' }, "Tue": { "time": '8:00 AM - 9:00 PM' }, "Wed": { "time": '8:00 AM - 9:00 PM' },
+             "Thu": { "time": '8:00 AM - 9:00 PM' }, "Fri": { "time": '8:00 AM - 9:00 PM' }, "Sat": { "time": '8:00 AM - 9:00 PM' }, "Sun": { "time": '8:00 AM - 9:00 PM`' } }
     # lat: '37.783619803264706',
     # lng: '-122.44786903182215'
   )
@@ -150,27 +156,25 @@ ApplicationRecord.transaction do
         So why not 5 stars?  Simple.  They tend to only have half the check out lines open while lines gather from one end of the store to the other and take 30+ minutes.  Just hire more checkers and get people through in a reasonable time.  Second, the exterior/parking lot is a mess.  Its grimy, filthy, trash covered, etc. with random carts left scattered about. Surely its not too much to hire someone to look after that area.
       " },
       { rating: 1, body: "LOL!!  LOW LOW LOW PRICES????  uuuuuhhh ok.....
-        Someone here on the post said this about FOODSCO....NOT!  They like all stores have high low prices, but their CUSTOMER SERVICE IS HORRIBLE, that is my point, not their food. I am going to do you all another favor....."
-        },
-      { rating: 1, body: "tonight at 9:00 we drove to store on 'folsom' st. when we walked up, it looked like the covid 
-        days, about 6-people were waiting outside in the dark and cold, there was a homeless man sitting right there at 
-        their feet basically while we were waiting, i asked why they were waiting and why was the doors locked, they 
+        Someone here on the post said this about FOODSCO....NOT!  They like all stores have high low prices, but their CUSTOMER SERVICE IS HORRIBLE, that is my point, not their food. I am going to do you all another favor....." },
+      { rating: 1, body: "tonight at 9:00 we drove to store on 'folsom' st. when we walked up, it looked like the covid
+        days, about 6-people were waiting outside in the dark and cold, there was a homeless man sitting right there at
+        their feet basically while we were waiting, i asked why they were waiting and why was the doors locked, they
         said they were told the store had only 1-cashier and were not allowing people in.  when i looked in, there was no
-         one at the door, nor security. no one was in the register but one cashier. this store has had severe issues since 
-         i moved here in s.f. 1/5/23. they usually have 2-cashiers, maybe 3 on a good day, the lines are always to the back 
-         of the store. the cashier mostly complain, run around doing what they want to do, when they want to do it when assisting customers. 
-          i will no longer be forwarding my employees to go buy food from here for our homeless families because it is a waste of time, every time. the employees run the store, like there is no management.  why is this happening?"
-        },
-        {rating: 3, body: "This place is the closest grocery store to my apartment.
+         one at the door, nor security. no one was in the register but one cashier. this store has had severe issues since
+         i moved here in s.f. 1/5/23. they usually have 2-cashiers, maybe 3 on a good day, the lines are always to the back
+         of the store. the cashier mostly complain, run around doing what they want to do, when they want to do it when assisting customers.
+          i will no longer be forwarding my employees to go buy food from here for our homeless families because it is a waste of time, every time. the employees run the store, like there is no management.  why is this happening?" },
+      { rating: 3, body: "This place is the closest grocery store to my apartment.
           It is okay but I would prefer a Trader Joe's any time over this one but propably cause I am vegetarian and TJ has so much more options there.
           Anyway this place is nice enough and opens late.
-          Big downside for me that they do not take visa payments!"},
-        {rating: 4, body: "This is the perfect store for someone on a budget.  I have been here three times in the past six months.  My son has limited space in his dorm, yet we are able to get a great deal of food for less than $100 without buying huge quantities.  
+          Big downside for me that they do not take visa payments!" },
+      { rating: 4, body: "This is the perfect store for someone on a budget.  I have been here three times in the past six months.  My son has limited space in his dorm, yet we are able to get a great deal of food for less than $100 without buying huge quantities.
           There are numerous vegetable options and I have yet to run into bad ones.  They have amazing prices on jarred pasta sauces and Ken's salad dressing.
           Most of the meat is decent quality.  This particular trip we were looking to purchase some fresh (as fresh as could be at this store) salmon, but they didn't have any.  We opted for frozen instead.  It was super thin and I wouldn't buy it for myself.  However, my son thought it was good.
           Dairy items are also inexpensive and there are many options.
           Parking is one of the major issues.  On one hand, it is awesome that they have their own parking lot (major plus in San Francisco), however, the spots seem tiny and it is always packed.  Another issue is the fact that there are a great many derelicts walking about near the store or in the parking lot.
-          Here's What I Think... We will continue shopping here for the next two and a half years."}
+          Here's What I Think... We will continue shopping here for the next two and a half years." }
 
     ]
   }
@@ -178,8 +182,8 @@ ApplicationRecord.transaction do
 
   reviews.each do |key, value|
     name = key.to_s
-    modName = name.gsub("__", "'")
-    modmodName = modName.gsub("_", " ")
+    modName = name.gsub('__', "'")
+    modmodName = modName.gsub('_', ' ')
     business = Business.find_by(name: modmodName)
     value.each do |review|
       Review.create(
@@ -193,15 +197,12 @@ ApplicationRecord.transaction do
 end
 puts 'Done!'
 
-
 puts 'attaching photos....'
 
 def preprocessName(name)
-   modName = name.gsub(" ", "_")
-    modmodName = modName.gsub("'", "__")
-    return modmodName
+  modName = name.gsub(' ', '_')
+  modName.gsub("'", '__')
 end
-
 
 Business.all.each do |bus|
   business = Business.find_by(name: bus.name)
@@ -214,7 +215,6 @@ Business.all.each do |bus|
 end
 
 puts 'Done!'
-
 
 puts 'creating tags...'
 
@@ -247,4 +247,3 @@ tag = Tag.find_by(tag: 'Grocery')
 bus.tags << tag
 
 puts 'Done attaching tags'
-
