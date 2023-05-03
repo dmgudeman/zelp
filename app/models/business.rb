@@ -5,12 +5,16 @@ class Business < ApplicationRecord
     #     length: { in: 3..255 },
     #     format: { with: URI::MailTo::EMAIL_REGEXP },
     #     allow_nil: true
+    
 
-    has_and_belongs_to_many :tags
-    # dependent: :destroy
+    has_many :business_tags
+    has_many :tags, through: :business_tags
 
     has_many :reviews,
     dependent: :destroy
+   
+    # dependent: :destroy
+
 
     has_many_attached :images
 

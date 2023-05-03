@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_040342) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_184811) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_040342) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "business_tags", id: false, force: :cascade do |t|
+    t.bigint "business_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_business_tags_on_business_id"
+    t.index ["tag_id"], name: "index_business_tags_on_tag_id"
+  end
+
   create_table "businesses", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
@@ -53,15 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_040342) do
     t.json "hours"
     t.json "latlng"
     t.index ["name"], name: "index_businesses_on_name", unique: true
-  end
-
-  create_table "businesses_tags", id: false, force: :cascade do |t|
-    t.bigint "business_id", null: false
-    t.bigint "tag_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["business_id"], name: "index_businesses_tags_on_business_id"
-    t.index ["tag_id"], name: "index_businesses_tags_on_tag_id"
   end
 
   create_table "reviews", force: :cascade do |t|

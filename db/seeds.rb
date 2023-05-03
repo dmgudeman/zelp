@@ -16,6 +16,8 @@ ApplicationRecord.transaction do
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('businesses')
   ApplicationRecord.connection.reset_pk_sequence!('reviews')
+  ApplicationRecord.connection.reset_pk_sequence!('tags')
+
 
   puts 'Creating users...'
   # Create one user with an easy to remember username, email, and password:
@@ -51,7 +53,7 @@ ApplicationRecord.transaction do
     coords = str.split(',').map(&:to_f)
     { lat: coords[0], lng: coords[1] }.to_json
   end
-   
+
   Business.create!(
     name: 'Sprouts',
     address: '301 Gellert Blvd Daly City, CA 94015',
@@ -66,10 +68,10 @@ ApplicationRecord.transaction do
   Business.create!(
     name: 'Safeway',
     address: '2020 Market St San Francisco, CA 94114',
-    phone: '4158617660',
+    phone: '(415) 861-7660',
     website: 'http://safeway.com',
     cost: '$$',
-    latlng: '"37.726793002132965, -122.4762884452887"',
+    latlng: make_coord('37.726793002132965, -122.4762884452887'),
     hours: { "`Mon": { "time": '6:00 AM - 9:00 PM' }, "Tue": { "time": '6:00 AM - 9:00 PM' }, "Wed": { "time": '6:00 AM - 9:00 PM' },
              "Thu": { "time": '6:00 AM - 9:00 PM' }, "Fri": { "time": '6:00 AM - 9:00 PM' }, "Sat": { "time": '6:00 AM - 9:00 PM' }, "Sun": { "time": '6:00 AM - 9:00 PM`' } }
   )
@@ -100,14 +102,12 @@ ApplicationRecord.transaction do
   Business.create!(
     name: 'Trader Joe\'s',
     address: '3 Masonic Ave San Francisco, CA 94118',
-    phone: '4153469964',
+    phone: '(415) 346-9964',
     website: 'http://www.traderjoes.com',
     cost: '$$',
-    latlng: '"37.72695423288699, -122.47623480111044"',
+    latlng: make_coord('37.72695423288699, -122.47623480111044'),
     hours: { "`Mon": { "time": '8:00 AM - 9:00 PM' }, "Tue": { "time": '8:00 AM - 9:00 PM' }, "Wed": { "time": '8:00 AM - 9:00 PM' },
              "Thu": { "time": '8:00 AM - 9:00 PM' }, "Fri": { "time": '8:00 AM - 9:00 PM' }, "Sat": { "time": '8:00 AM - 9:00 PM' }, "Sun": { "time": '8:00 AM - 9:00 PM`' } }
-    # lat: '37.783619803264706',
-    # lng: '-122.44786903182215'
   )
 
   # Business.create!(
@@ -119,6 +119,16 @@ ApplicationRecord.transaction do
   #   lat: '',
   #   lng: ''
   # )
+
+  Business.create!(
+    name: 'The Home Depot',
+    address: '303 E Lake Merced Blvd Daly City, CA 94015',
+    phone: '(650) 755-0178',
+    website: 'https://www.homedepot.com',
+    cost: '$$',
+    hours: '{"Mon":{"time":"6:00 AM - 10:00 PM"},"Tue":{"time":"6:00 AM - 10:00 PM"},"Wed":{"time":"6:00 AM - 10:00 PM"},"Open now\nThu":{"time":"6:00 AM - 10:00 PM"},"Fri":{"time":"6:00 AM - 10:00 PM"},"Sat":{"time":"6:00 AM - 10:00 PM"},"Sun":{"time":"7:00 AM - 8:00 PM"}}',
+    latlng: make_coord('37.69900782936481, -122.48302795878271')
+  )
   puts 'Done with Businesses'
   # 10.times do
   #   Business.create!({
@@ -207,10 +217,12 @@ end
 Business.all.each do |bus|
   business = Business.find_by(name: bus.name)
   (1..5).each do |i|
+   if (business.images)
     business.images.attach(
       io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/#{preprocessName(business.name)}_a#{i}.jpeg"),
       filename: "#{preprocessName(business.name)}_a#{i}.jpeg"
     )
+  end
   end
 end
 
@@ -218,32 +230,61 @@ puts 'Done!'
 
 puts 'creating tags...'
 
-Tag.create!(
-  tag: 'Grocery'
-)
-Tag.create!(
-  tag: 'Restaurant'
-)
-Tag.create!(
-  tag: 'Lumber'
-)
-Tag.create!(
-  tag: 'Hardware'
-)
-Tag.create!(
-  tag: 'Plumbing Service'
-)
-Tag.create!(
-  tag: 'Lawn Service'
-)
+tags = [
+  'Appliances',
+  'Gardening',
+  'Grocery',
+  'Hardware',
+  'Lawn Service',
+  'Lumber',
+  'Plumbing Service',
+  'Plumbing Supplies',
+  'Restaurant'
+]
 
-puts 'Done with tags'
+
+tags.each do |tag|
+
+Tag.create!(
+  tag: tag
+)
+end
+
+puts 'Done with creating tags'
 
 puts 'attaching tags'
 
-bus = Business.find_by(name: 'Sprouts')
-tag = Tag.find_by(tag: 'Grocery')
+# bus = Business.find_by(name: 'Sprouts')
+# tag = Tag.find_by(tag: 'Grocery')
 
-bus.tags << tag
+# BusinessTag.create!(
+#   business_id: bus.id,
+#   tag_id: tag.id
+# )
+
+def attachTag(data)
+  bus = Business.find_by(name: data[0])
+  tag = Tag.find_by(tag: data[1])
+  BusinessTag.create!(
+    business_id: bus.id,
+    tag_id: tag.id
+  )
+  
+end
+
+allTags = [
+  ['Sprouts', 'Grocery'],
+  ['Trader Joe\'s', 'Grocery'],
+  ['The Home Depot', 'Lumber'],
+  ['The Home Depot', 'Appliances'],
+  ['The Home Depot', 'Gardening'],
+  ['The Home Depot', 'Plumbing Supplies']
+]
+
+
+allTags.each do | data |
+ 
+  attachTag(data)
+end
 
 puts 'Done attaching tags'
