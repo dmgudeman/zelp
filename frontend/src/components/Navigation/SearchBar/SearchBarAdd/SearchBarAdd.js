@@ -1,7 +1,7 @@
 import "./SearchBarAdd.css";
 
 const SearchBarAdd = (props) => {
-    const { queryAdd, handleAddSearchEvent } = { ...props };
+    const { searchData, handleSearchEvent } = { ...props };
     return (
         <>
             <div className="SBcontainer">
@@ -9,9 +9,10 @@ const SearchBarAdd = (props) => {
                     <input
                         className="SBInput"
                         type="text"
-                        value={queryAdd}
-                        placeholder="Search by city"
-                        onChange={handleAddSearchEvent}
+                        name="add"
+                        value={searchData.add}
+                        placeholder="Search by address"
+                        onChange={handleSearchEvent}
                     />
                 </div>
             </div>

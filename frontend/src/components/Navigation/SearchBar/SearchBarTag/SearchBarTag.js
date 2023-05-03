@@ -1,9 +1,9 @@
 const SearchBarTag = (props) => {
     const {
-        queryTag,
+        searchData,
         selectTag,
         hideTagList,
-        handleTagSearchEvent,
+        handleSearchEvent,
         handleTagListClick,
         filterTags,
     } = { ...props };
@@ -15,9 +15,10 @@ const SearchBarTag = (props) => {
                     <input
                         className="SBInput"
                         type="text"
-                        value={selectTag ? selectTag : queryTag}
+                        name="tag"
+                        value={selectTag ? selectTag : searchData.tag}
                         placeholder="Search by tag"
-                        onChange={handleTagSearchEvent}
+                        onChange={handleSearchEvent}
                     />
                 </div>
 
@@ -29,7 +30,7 @@ const SearchBarTag = (props) => {
                                     key={tag.tag}
                                     onClick={() => handleTagListClick(tag.tag)}
                                 >
-                                    {tag.tag}
+                                    {tag.tag} 
                                 </li>
                             ))}
                         </ul>

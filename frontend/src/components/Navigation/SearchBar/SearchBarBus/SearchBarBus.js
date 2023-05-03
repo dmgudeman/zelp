@@ -5,10 +5,10 @@ import "./SearchBarBus.css";
 
 const SearchBarBus = (props) => {
     const {
-        queryBus,
+        searchData,
         selectBus,
         hideBusList,
-        handleBusSearchEvent,
+        handleSearchEvent,
         handleBusListClick,
         filterBusinesses,
     } = { ...props };
@@ -20,9 +20,10 @@ const SearchBarBus = (props) => {
                     <input
                         className="SBInput"
                         type="text"
-                        value={selectBus ? selectBus : queryBus}
+                        name="bus"
+                        value={selectBus ? selectBus : searchData.bus}
                         placeholder="Search by business name"
-                        onChange={handleBusSearchEvent}
+                        onChange={handleSearchEvent}
                     />
                 </div>
 

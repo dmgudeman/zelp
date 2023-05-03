@@ -22,7 +22,7 @@ const SearchBar = (props) => {
     const [selectBus, setSelectBus] = useState(null);
     const [hideBusList, setHideBusList] = useState(true);
     const [queryAdd, setQueryAdd] = useState("");
-    const [queryFull, setQueryFull] = useState({tag: '', name:'', add:''})
+    const [searchData, setSearchData] = useState({tag:'', bus:'', add:''})
     
     const filterBusinesses = () => {
         return businesses.filter((business) => {
@@ -31,6 +31,22 @@ const SearchBar = (props) => {
                 .includes(queryBus.toLowerCase());
         });
     };
+
+    const handleSearchEvent =(e) => {
+        const {name, value } = e.target;
+        setSearchData(prevState => ({
+            ...prevState,
+            [name]: value
+        }))
+
+        if(name==='tag'){
+            setHideTagList(false);
+            setSelectTag(null);}
+        if(name==='bus'){
+            setHideBusList(false);
+            setSelectBus(null);
+        }
+    }
 
     const handleTagListClick = (tag) => {
         setSelectTag(tag);
@@ -57,12 +73,13 @@ const SearchBar = (props) => {
     }
 
     const handleSearchSubmit = () => {
-        dispatch(fetchBusinessesSearch(queryFull))
+        dispatch(fetchBusinessesSearch(searchData))
     }
 
     const filterTags = () => {
         return tags.filter((tag) => {
-            return tag.tag.toLowerCase().includes(queryTag.toLowerCase());
+           
+            return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
         });
     };
 
@@ -78,45 +95,42 @@ const SearchBar = (props) => {
 
     useEffect(() => {
         filterBusinesses();
-    }, [queryBus]);
+    }, [searchData.bus]);
 
     useEffect(() => {
         filterTags();
-    }, [queryTag]);
 
-    useEffect (()=>{
 
-        setQueryFull({tag:selectTag, bus:selectBus, add:queryAdd})
-        console.log('msmsmsmsmsm', queryFull)
+    }, [searchData.tag]);
 
-    },[selectTag, selectBus, queryAdd])
 
     return (
         <>
             <form className="searchBarContainer">
                 <SearchBarTag
-                    queryTag={queryTag}
+                    searchData={searchData}
                     selectTag={selectTag}
                     hideTagList={hideTagList}
-                    handleTagSearchEvent={handleTagSearchEvent}
+                    handleSearchEvent={handleSearchEvent}
                     handleTagListClick={handleTagListClick}
                     filterTags={filterTags}
                 />
 
                 <SearchBarBus
                     businesses={businesses}
-                    queryBus={queryBus}
+                    searchData={searchData}
                     selectBus={selectBus}    
                     hideBusList={hideBusList}               
-                    handleBusSearchEvent={handleBusSearchEvent}
+                    handleSearchEvent={handleSearchEvent}
                     handleBusListClick={handleBusListClick}
                     filterBusinesses={filterBusinesses}
                 />
 
                 <SearchBarAdd
-                    queryAdd={queryAdd}
-                    setQueryAdd={setQueryAdd}
-                    handleAddSearchEvent={handleAddSearchEvent}
+                    searchData={searchData}
+                    handleSearchEvent={handleSearchEvent}
+                   
+                   
                     
                 />
 
