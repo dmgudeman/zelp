@@ -1,14 +1,7 @@
-
 import "./SearchBarAdd.css";
 
 const SearchBarAdd = (props) => {
-    const {
-        businesses,
-        handleSearch,
-        filterBusinesses,
-        queryAdd,
-        setQueryAdd,
-    } = { ...props };
+    const { queryAdd, handleAddSearchEvent } = { ...props };
     return (
         <>
             <div className="SBcontainer">
@@ -16,25 +9,11 @@ const SearchBarAdd = (props) => {
                     <input
                         className="SBInput"
                         type="text"
+                        value={queryAdd}
                         placeholder="Search by city"
-                        onChange={handleSearch}
+                        onChange={handleAddSearchEvent}
                     />
                 </div>
-               
-                    {queryAdd !== '' ? (
-                         <div className="SBDropDown">
-                        <ul>
-                            {filterBusinesses().map((business) => (
-                                <li key={business.name}>
-                                    {" "}
-                                    {business.name}
-                                </li>
-                            ))}
-                        </ul>
-                        </div>
-                    ) : null
-                }
-               
             </div>
         </>
     );

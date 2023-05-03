@@ -24,8 +24,6 @@ const SearchBar = (props) => {
    
     const [queryAdd, setQueryAdd] = useState("");
     
-    
-
     const filterBusinesses = () => {
         return businesses.filter((business) => {
             return business.name
@@ -33,7 +31,6 @@ const SearchBar = (props) => {
                 .includes(queryBus.toLowerCase());
         });
     };
-
 
     const handleTagListClick = (tag) => {
         setSelectTag(tag);
@@ -65,7 +62,8 @@ const SearchBar = (props) => {
         });
     };
 
-    const handleAddSearch = (e) => {
+    const handleAddSearchEvent = (e) => {
+        e.preventDefault();
         setQueryAdd(e.target.value);
     };
 
@@ -107,7 +105,7 @@ const SearchBar = (props) => {
                 <SearchBarAdd
                     queryAdd={queryAdd}
                     setQueryAdd={setQueryAdd}
-                    handleSearch={handleAddSearch}
+                    handleAddSearchEvent={handleAddSearchEvent}
                     
                 />
 
