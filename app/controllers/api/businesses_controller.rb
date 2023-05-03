@@ -12,6 +12,7 @@ class Api::BusinessesController < ApplicationController
   def show 
     @business = Business.find(params[:id])
     @reviews = @business.reviews
+    @tags = @business.tags
     # debugger
     # render show
   end

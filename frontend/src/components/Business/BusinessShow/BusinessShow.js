@@ -9,9 +9,10 @@ import {
     getBusiness,
     fetchBusiness,
     getBusinesses,
-    fetchBusinesses,
+    fetchBusinesses
 } from "../../../store/businesses";
 import { getReviews } from "../../../store/reviews";
+import { getTags } from "../../../store/tags";
 import "./BusinessShow.css";
 
 const BusinessShow = (props) => {
@@ -19,6 +20,7 @@ const BusinessShow = (props) => {
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
     let reviews = useSelector(getReviews);
+    let tags = useSelector(getTags);
 
     useEffect(() => {
         if (busId) {
