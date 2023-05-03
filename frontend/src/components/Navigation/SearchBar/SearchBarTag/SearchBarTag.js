@@ -1,21 +1,19 @@
 const SearchBarTag = (props) => {
     const {
-        tags,
+     
         handleSearchEvent,
         filterTags,
         queryTag,
-        selectTag,
         setQueryTag,
-        setSelectTag
-        
-        // onItemClicked
+        selectTag,
+        setSelectTag,
+        hideTagList,
+        setHideTagList,
+        handleTagListClick
+
     } = { ...props };
 
-    // function handleItemClick(value){
-    //     console.log('local', value)
-    //     // setQueryTag(value);
-    //     onItemClicked(value)
-    // }
+ 
 
     return (
         <>
@@ -30,20 +28,20 @@ const SearchBarTag = (props) => {
                     />
                 </div>
 
-                {queryTag !== "" ? (
+                { hideTagList ? null : (
                     <div className="SBDropDown">
                         <ul>
                             {filterTags().map((tag) => (
                                 <li
                                     key={tag.tag}
-                                    onClick={() => setSelectTag(tag.tag)}
+                                    onClick={() => handleTagListClick(tag.tag)}
                                 >
                                     {tag.tag}
                                 </li>
                             ))}
                         </ul>
                     </div>
-                ) : null}
+                ) }
             </div>
         </>
     );

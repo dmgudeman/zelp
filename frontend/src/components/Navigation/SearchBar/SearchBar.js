@@ -18,8 +18,8 @@ const SearchBar = (props) => {
     const [queryLeft, setQueryLeft] = useState("");
     const [queryRight, setQueryRight] = useState("");
     const [queryTag, setQueryTag] = useState("");
-    // const [filterTag, setFilterTag] = useState("");
     const [selectTag, setSelectTag] = useState(null);
+    const [hideTagList, setHideTagList] = useState(true);
 
     const filterBusinesses = () => {
         return businesses.filter((business) => {
@@ -33,11 +33,15 @@ const SearchBar = (props) => {
     //     setFilterTag(e.target.value);
     //     setSelectedItem(null);
     // }
+    const handleTagListClick = (tag) => {
+        setSelectTag(tag);
+        setHideTagList(true);
+    }
+
     const handleTagSearchEvent = (e) => {
-        // console.log('vvvv', value)
+        setHideTagList(false)
         setQueryTag(e.target.value);
-        setSelectTag(null);
-        
+        setSelectTag(null);     
     };
 
     const filterTags = () => {
@@ -55,9 +59,6 @@ const SearchBar = (props) => {
         setQueryRight(e.target.value);
     };
    
-    function handleChildItemClicked(value) {
-        console.log(`Item clicked: ${value}`);
-      }
 
     useEffect(() => {
         dispatch(fetchTags());
@@ -76,14 +77,16 @@ const SearchBar = (props) => {
         <>
             <form className="searchBarContainer">
                 <SearchBarTag
-                    tags={tags}
+                    
                     queryTag={queryTag}
                     selectTag={selectTag}
                     setQueryTag={setQueryTag}
                     setSelectTag={setSelectTag}
+                    hideTagList={hideTagList}
+                    setHideTagList={setHideTagList}
                     handleSearchEvent={handleTagSearchEvent}
+                    handleTagListClick={handleTagListClick}
                     filterTags={filterTags}
-                    onItemClicked={handleChildItemClicked}
                 />
 
                 <SearchBarLeft
