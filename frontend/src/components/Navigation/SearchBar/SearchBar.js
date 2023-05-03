@@ -7,7 +7,7 @@ import {
 } from "../../../store/businesses";
 import { fetchTags, getTags } from "../../../store/tags";
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
-import SearchBarRight from "./SearchBarRight/SearchBarRight";
+import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
 import "./SearchBar.css";
 
@@ -22,7 +22,7 @@ const SearchBar = (props) => {
     const [selectBus, setSelectBus] = useState(null);
     const [hideBusList, setHideBusList] = useState(true);
    
-    const [queryRight, setQueryRight] = useState("");
+    const [queryAdd, setQueryAdd] = useState("");
     
     
 
@@ -57,8 +57,6 @@ const SearchBar = (props) => {
         setHideBusList(false);
         setQueryBus(e.target.value);
         setSelectBus(null);
-
-
     }
 
     const filterTags = () => {
@@ -67,11 +65,8 @@ const SearchBar = (props) => {
         });
     };
 
-    const handleBusSearch = (e) => {
-        setQueryBus(e.target.value);
-    };
-    const handleRightSearch = (e) => {
-        setQueryRight(e.target.value);
+    const handleAddSearch = (e) => {
+        setQueryAdd(e.target.value);
     };
 
     useEffect(() => {
@@ -109,10 +104,10 @@ const SearchBar = (props) => {
                     filterBusinesses={filterBusinesses}
                 />
 
-                <SearchBarRight
-                    queryRight={queryRight}
-                    setQueryRight={setQueryRight}
-                    handleSearch={handleRightSearch}
+                <SearchBarAdd
+                    queryAdd={queryAdd}
+                    setQueryAdd={setQueryAdd}
+                    handleSearch={handleAddSearch}
                     
                 />
 

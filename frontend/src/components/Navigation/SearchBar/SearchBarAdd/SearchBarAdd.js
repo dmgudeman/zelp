@@ -1,15 +1,14 @@
 
-import "./SearchBarRight.css";
+import "./SearchBarAdd.css";
 
-const SearchBarRight = (props) => {
+const SearchBarAdd = (props) => {
     const {
         businesses,
         handleSearch,
         filterBusinesses,
-        queryRight,
-        setQueryRight,
+        queryAdd,
+        setQueryAdd,
     } = { ...props };
-    if (!businesses) return null;
     return (
         <>
             <div className="SBcontainer">
@@ -22,7 +21,7 @@ const SearchBarRight = (props) => {
                     />
                 </div>
                
-                    {queryRight !== '' ? (
+                    {queryAdd !== '' ? (
                          <div className="SBDropDown">
                         <ul>
                             {filterBusinesses().map((business) => (
@@ -41,4 +40,4 @@ const SearchBarRight = (props) => {
     );
 };
 
-export default SearchBarRight;
+export default SearchBarAdd;
