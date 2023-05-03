@@ -13,7 +13,6 @@
 
 
 #heroContainer {
-    background-image: url("../../../assets/restaurant.jpeg");
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -26,13 +25,14 @@
     /* background-color: aqua; */
 }
 .businessName {
-    font-size: 1in;
+    font-size: 1.3in;
     font-weight: 400;
-    opacity: 0.60;
+    opacity: 0.8;
     letter-spacing: 0.25in;
     color: white;
-    margin-left: 75px;
+    margin-left: 100px;
     margin-bottom: 20px;
+    text-shadow: 3px 3px var(--two);
     
   }
 
@@ -90,7 +90,7 @@
     border-radius: 5px;
     color: white;
     /* background-color: rgb(102, 102, 174); */
-    background-color: #5cb9ff;
+    background-color: var(--two);
     padding-left: 20px;
     padding-right: 20px;
 }

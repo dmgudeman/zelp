@@ -1,11 +1,16 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch, connect } from "react-redux";
 import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
-import { getBusiness, fetchBusiness, getBusinesses,fetchBusinesses } from "../../../store/businesses";
+import {
+    getBusiness,
+    fetchBusiness,
+    getBusinesses,
+    fetchBusinesses,
+} from "../../../store/businesses";
 import { getReviews } from "../../../store/reviews";
 import "./BusinessShow.css";
 
@@ -16,25 +21,41 @@ const BusinessShow = (props) => {
     let reviews = useSelector(getReviews);
 
     useEffect(() => {
-        if(busId){
+        if (busId) {
             dispatch(fetchBusiness(busId));
         }
     }, [dispatch, busId]);
-
- 
-
 
     if (!business) return null;
 
     return (
         <>
-           
             <div id="businessShowContainer">
-            <Navigation showFlag={"index"} />
-                <div id="heroContainer">
+                <Navigation showFlag={"index"} />
+                {/* 
+                    <div className="businessName">{business.name}</div>
+                </div> */}
+
+                <div
+                    style={{
+                        backgroundImage: `url(${business.imageUrls[0]})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        height: "100vh",
+                        display: "flex",
+                        alignItems: "end",
+                        justifyContent: "start",
+                        // color: "#fff",
+                        // fontSize: "2rem",
+                        // fontWeight: "bold",
+                        textShadow: "3px 3px #000",
+                    }}
+                >
                     <div className="businessName">{business.name}</div>
                 </div>
-                <BusinessShowDisplay business={business}/>
+
+                <BusinessShowDisplay business={business} />
                 <div id="lowerContainer">
                     <div id="l-1"></div>
                     <div id="l-2">
@@ -47,7 +68,6 @@ const BusinessShow = (props) => {
                             </Link>
                         </div>
                         <ReviewsIndex reviews={reviews} />
-                      
                     </div>
                     <div id="l-3"></div>
                     <div id="l-4"></div>
@@ -59,15 +79,21 @@ const BusinessShow = (props) => {
 
 export default BusinessShow;
 
-
-const BannerBackground = ({businesses}) => {
-    const imgUrl = businesses[0]?.imageUrls ?  businesses[0].imageUrls[0] : 'https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg'
+const BannerBackground = ({ businesses }) => {
+    const imgUrl = businesses[0]?.imageUrls
+        ? businesses[0].imageUrls[0]
+        : "https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg";
     return (
         <>
-        
-            <div className="backgroundContainer"
-             style={{ backgroundImage: `url(${imgUrl})`, backgroundSize: "cover", backgroundPosition: "top", opacity: 0.5}}>
-            </div>
+            <div
+                className="backgroundContainer"
+                style={{
+                    backgroundImage: `url(${imgUrl})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "top",
+                    opacity: 0.5,
+                }}
+            ></div>
         </>
     );
 };
@@ -84,7 +110,7 @@ const Banner = (props) => {
                             Review anything from your favorite patios spot to
                             your local flower shop.
                         </p>
-                      
+
                         <div className="bottomBanner">
                             <div>Visited one of these places recently?</div>
                         </div>
@@ -95,5 +121,3 @@ const Banner = (props) => {
         </>
     );
 };
-
-

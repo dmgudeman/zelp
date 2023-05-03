@@ -53,7 +53,6 @@ ApplicationRecord.transaction do
     phone: '(415) 325-1091',
     website: 'https://www.sprouts.com',
     cost: '$$',
-   
     latlng: '"37.66899405144818, -122.46662690296195"',
     hours: {"`Mon":{"time":"7:00 AM - 10:00 PM"},"Tue":{"time":"7:00 AM - 10:00 PM"},"Wed":{"time":"7:00 AM - 10:00 PM"},"Thu":{"time":"7:00 AM - 10:00 PM"},"Fri":{"time":"7:00 AM - 10:00 PM"},"Sat":{"time":"7:00 AM - 10:00 PM"},"Sun":{"time":"7:00 AM - 10:00 PM`"}}
   )
@@ -63,7 +62,9 @@ ApplicationRecord.transaction do
     address: '2020 Market St San Francisco, CA 94114',
     phone: '4158617660',
     website: 'http://safeway.com',
-    cost: '$$'
+    cost: '$$',
+    latlng: '"37.726793002132965, -122.4762884452887"',
+    hours: {"`Mon":{"time":"6:00 AM - 9:00 PM"},"Tue":{"time":"6:00 AM - 9:00 PM"},"Wed":{"time":"6:00 AM - 9:00 PM"},"Thu":{"time":"6:00 AM - 9:00 PM"},"Fri":{"time":"6:00 AM - 9:00 PM"},"Sat":{"time":"6:00 AM - 9:00 PM"},"Sun":{"time":"6:00 AM - 9:00 PM`"}}
   )
 
 
@@ -96,7 +97,9 @@ ApplicationRecord.transaction do
     address: '3 Masonic Ave San Francisco, CA 94118',
     phone: '4153469964',
     website: 'http://www.traderjoes.com',
-    cost: '$$'
+    cost: '$$',
+    latlng: '"37.72695423288699, -122.47623480111044"',
+    hours: {"`Mon":{"time":"8:00 AM - 9:00 PM"},"Tue":{"time":"8:00 AM - 9:00 PM"},"Wed":{"time":"8:00 AM - 9:00 PM"},"Thu":{"time":"8:00 AM - 9:00 PM"},"Fri":{"time":"8:00 AM - 9:00 PM"},"Sat":{"time":"8:00 AM - 9:00 PM"},"Sun":{"time":"8:00 AM - 9:00 PM`"}}
     # lat: '37.783619803264706',
     # lng: '-122.44786903182215'
   )

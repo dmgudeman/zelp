@@ -1,19 +1,12 @@
 const SearchBarTag = (props) => {
     const {
-     
-        handleSearchEvent,
-        filterTags,
         queryTag,
-        setQueryTag,
         selectTag,
-        setSelectTag,
         hideTagList,
-        setHideTagList,
-        handleTagListClick
-
+        handleTagSearchEvent,
+        handleTagListClick,
+        filterTags,
     } = { ...props };
-
- 
 
     return (
         <>
@@ -24,11 +17,11 @@ const SearchBarTag = (props) => {
                         type="text"
                         value={selectTag ? selectTag : queryTag}
                         placeholder="Search by tag"
-                        onChange={handleSearchEvent}
+                        onChange={handleTagSearchEvent}
                     />
                 </div>
 
-                { hideTagList ? null : (
+                {hideTagList ? null : (
                     <div className="SBDropDown">
                         <ul>
                             {filterTags().map((tag) => (
@@ -41,7 +34,7 @@ const SearchBarTag = (props) => {
                             ))}
                         </ul>
                     </div>
-                ) }
+                )}
             </div>
         </>
     );

@@ -36,12 +36,12 @@ const SearchBar = (props) => {
     const handleTagListClick = (tag) => {
         setSelectTag(tag);
         setHideTagList(true);
-    }
+    };
 
     const handleTagSearchEvent = (e) => {
-        setHideTagList(false)
+        setHideTagList(false);
         setQueryTag(e.target.value);
-        setSelectTag(null);     
+        setSelectTag(null);
     };
 
     const filterTags = () => {
@@ -58,7 +58,6 @@ const SearchBar = (props) => {
     const handleRightSearch = (e) => {
         setQueryRight(e.target.value);
     };
-   
 
     useEffect(() => {
         dispatch(fetchTags());
@@ -77,14 +76,10 @@ const SearchBar = (props) => {
         <>
             <form className="searchBarContainer">
                 <SearchBarTag
-                    
                     queryTag={queryTag}
                     selectTag={selectTag}
-                    setQueryTag={setQueryTag}
-                    setSelectTag={setSelectTag}
                     hideTagList={hideTagList}
-                    setHideTagList={setHideTagList}
-                    handleSearchEvent={handleTagSearchEvent}
+                    handleTagSearchEvent={handleTagSearchEvent}
                     handleTagListClick={handleTagListClick}
                     filterTags={filterTags}
                 />
