@@ -43,7 +43,7 @@ const ReviewsIndex = ({ reviews, business }) => {
                     </div>
                 )}
             </div>
-            { reviews.length ?  <ExtendIndex extendHandler={extendHandler} /> : null}
+            { reviews.length > 6 ?  <ExtendIndex extendHandler={extendHandler} /> : null}
            </div>
             
         </>

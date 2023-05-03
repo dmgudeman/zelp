@@ -18,7 +18,6 @@ ApplicationRecord.transaction do
   ApplicationRecord.connection.reset_pk_sequence!('reviews')
   ApplicationRecord.connection.reset_pk_sequence!('tags')
 
-
   puts 'Creating users...'
   # Create one user with an easy to remember username, email, and password:
   User.create!(
@@ -72,8 +71,8 @@ ApplicationRecord.transaction do
     website: 'http://safeway.com',
     cost: '$$',
     latlng: make_coord('37.726793002132965, -122.4762884452887'),
-    hours: { "`Mon": { "time": '6:00 AM - 9:00 PM' }, "Tue": { "time": '6:00 AM - 9:00 PM' }, "Wed": { "time": '6:00 AM - 9:00 PM' },
-             "Thu": { "time": '6:00 AM - 9:00 PM' }, "Fri": { "time": '6:00 AM - 9:00 PM' }, "Sat": { "time": '6:00 AM - 9:00 PM' }, "Sun": { "time": '6:00 AM - 9:00 PM`' } }
+    hours: { "Mon": { "time": '6:00 AM - 9:00 PM' }, "Tue": { "time": '6:00 AM - 9:00 PM' }, "Wed": { "time": '6:00 AM - 9:00 PM' },
+             "Thu": { "time": '6:00 AM - 9:00 PM' }, "Fri": { "time": '6:00 AM - 9:00 PM' }, "Sat": { "time": '6:00 AM - 9:00 PM' }, "Sun": { "time": '6:00 AM - 9:00 PM' } }
   )
 
   # lat: '37.76900125791264',
@@ -106,8 +105,8 @@ ApplicationRecord.transaction do
     website: 'http://www.traderjoes.com',
     cost: '$$',
     latlng: make_coord('37.72695423288699, -122.47623480111044'),
-    hours: { "`Mon": { "time": '8:00 AM - 9:00 PM' }, "Tue": { "time": '8:00 AM - 9:00 PM' }, "Wed": { "time": '8:00 AM - 9:00 PM' },
-             "Thu": { "time": '8:00 AM - 9:00 PM' }, "Fri": { "time": '8:00 AM - 9:00 PM' }, "Sat": { "time": '8:00 AM - 9:00 PM' }, "Sun": { "time": '8:00 AM - 9:00 PM`' } }
+    hours: { "Mon": { "time": '8:00 AM - 9:00 PM' }, "Tue": { "time": '8:00 AM - 9:00 PM' }, "Wed": { "time": '8:00 AM - 9:00 PM' },
+             "Thu": { "time": '8:00 AM - 9:00 PM' }, "Fri": { "time": '8:00 AM - 9:00 PM' }, "Sat": { "time": '8:00 AM - 9:00 PM' }, "Sun": { "time": '8:00 AM - 9:00 PM' } }
   )
 
   # Business.create!(
@@ -126,7 +125,9 @@ ApplicationRecord.transaction do
     phone: '(650) 755-0178',
     website: 'https://www.homedepot.com',
     cost: '$$',
-    hours: '{"Mon":{"time":"6:00 AM - 10:00 PM"},"Tue":{"time":"6:00 AM - 10:00 PM"},"Wed":{"time":"6:00 AM - 10:00 PM"},"Open now\nThu":{"time":"6:00 AM - 10:00 PM"},"Fri":{"time":"6:00 AM - 10:00 PM"},"Sat":{"time":"6:00 AM - 10:00 PM"},"Sun":{"time":"7:00 AM - 8:00 PM"}}',
+    hours: { "Mon": { "time": '6:00 AM - 10:00 PM' }, "Tue": { "time": '6:00 AM - 10:00 PM' }, "Wed": { "time": '6:00 AM - 10:00 PM' },
+             "Thu": { "time": '6:00 AM - 10:00 PM' }, "Fri": { "time": '6:00 AM - 10:00 PM' }, "Sat": { "time": '6:00 AM - 10:00 PM' }, "Sun": { "time": '7:00 AM - 8:00 PM' } },
+
     latlng: make_coord('37.69900782936481, -122.48302795878271')
   )
   puts 'Done with Businesses'
@@ -217,12 +218,12 @@ end
 Business.all.each do |bus|
   business = Business.find_by(name: bus.name)
   (1..5).each do |i|
-   if (business.images)
+    next unless business.images
+
     business.images.attach(
       io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/#{preprocessName(business.name)}_a#{i}.jpeg"),
       filename: "#{preprocessName(business.name)}_a#{i}.jpeg"
     )
-  end
   end
 end
 
@@ -242,12 +243,10 @@ tags = [
   'Restaurant'
 ]
 
-
 tags.each do |tag|
-
-Tag.create!(
-  tag: tag
-)
+  Tag.create!(
+    tag:
+  )
 end
 
 puts 'Done with creating tags'
@@ -269,7 +268,6 @@ def attachTag(data)
     business_id: bus.id,
     tag_id: tag.id
   )
-  
 end
 
 allTags = [
@@ -281,9 +279,7 @@ allTags = [
   ['The Home Depot', 'Plumbing Supplies']
 ]
 
-
-allTags.each do | data |
- 
+allTags.each do |data|
   attachTag(data)
 end
 

@@ -3,7 +3,7 @@
   json.imageUrls (@business.images.map {|file| file.url})
 
   json.tags @business.tags do |tag|
-    json.extract! tag, :id, :business_id, :tag_id
+    json.extract! tag
   end
 
 json.reviews @business.reviews do |review|
