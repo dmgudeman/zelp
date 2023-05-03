@@ -18,6 +18,8 @@ const SearchBar = (props) => {
     const [queryLeft, setQueryLeft] = useState("");
     const [queryRight, setQueryRight] = useState("");
     const [queryTag, setQueryTag] = useState("");
+    // const [filterTag, setFilterTag] = useState("");
+    const [selectTag, setSelectTag] = useState(null);
 
     const filterBusinesses = () => {
         return businesses.filter((business) => {
@@ -27,9 +29,19 @@ const SearchBar = (props) => {
         });
     };
 
+    // handleTagFilterChangeEvent =(e) => {
+    //     setFilterTag(e.target.value);
+    //     setSelectedItem(null);
+    // }
+    const handleTagSearchEvent = (e) => {
+        // console.log('vvvv', value)
+        setQueryTag(e.target.value);
+        setSelectTag(null);
+        
+    };
+
     const filterTags = () => {
         return tags.filter((tag) => {
-           console.log( tag);
             return tag.tag.toLowerCase().includes(queryTag.toLowerCase());
         });
     };
@@ -42,10 +54,7 @@ const SearchBar = (props) => {
     const handleRightSearch = (e) => {
         setQueryRight(e.target.value);
     };
-    const handleTagSearch = (e) => {
-        // console.log('vvvv', value)
-        setQueryTag(e.target.value);
-    };
+   
     function handleChildItemClicked(value) {
         console.log(`Item clicked: ${value}`);
       }
@@ -69,8 +78,10 @@ const SearchBar = (props) => {
                 <SearchBarTag
                     tags={tags}
                     queryTag={queryTag}
+                    selectTag={selectTag}
                     setQueryTag={setQueryTag}
-                    handleSearch={handleTagSearch}
+                    setSelectTag={setSelectTag}
+                    handleSearchEvent={handleTagSearchEvent}
                     filterTags={filterTags}
                     onItemClicked={handleChildItemClicked}
                 />

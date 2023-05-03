@@ -1,10 +1,13 @@
 const SearchBarTag = (props) => {
     const {
         tags,
-        handleSearch,
+        handleSearchEvent,
         filterTags,
         queryTag,
+        selectTag,
         setQueryTag,
+        setSelectTag
+        
         // onItemClicked
     } = { ...props };
 
@@ -21,8 +24,9 @@ const SearchBarTag = (props) => {
                     <input
                         className="SBInput"
                         type="text"
+                        value={selectTag ? selectTag : queryTag}
                         placeholder="Search by tag"
-                        onChange={handleSearch}
+                        onChange={handleSearchEvent}
                     />
                 </div>
 
@@ -32,7 +36,7 @@ const SearchBarTag = (props) => {
                             {filterTags().map((tag) => (
                                 <li
                                     key={tag.tag}
-                                    // onClick={() => handleItemClick(tag.tag)}
+                                    onClick={() => setSelectTag(tag.tag)}
                                 >
                                     {tag.tag}
                                 </li>
