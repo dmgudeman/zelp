@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     getBusinesses,
     fetchBusinesses,
-    fetchBusinessesWithTag,
+    fetchBusinessesSearch,
 } from "../../../store/businesses";
 import { fetchTags, getTags } from "../../../store/tags";
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
@@ -21,8 +21,8 @@ const SearchBar = (props) => {
     const [queryBus, setQueryBus] = useState("");
     const [selectBus, setSelectBus] = useState(null);
     const [hideBusList, setHideBusList] = useState(true);
-   
     const [queryAdd, setQueryAdd] = useState("");
+    const [queryFull, setQueryFull] = useState({tag: '', name:'', add:''})
     
     const filterBusinesses = () => {
         return businesses.filter((business) => {
@@ -56,6 +56,10 @@ const SearchBar = (props) => {
         setSelectBus(null);
     }
 
+    const handleSearchSubmit = () => {
+        dispatch(fetchBusinessesSearch(queryFull))
+    }
+
     const filterTags = () => {
         return tags.filter((tag) => {
             return tag.tag.toLowerCase().includes(queryTag.toLowerCase());
@@ -79,6 +83,13 @@ const SearchBar = (props) => {
     useEffect(() => {
         filterTags();
     }, [queryTag]);
+
+    useEffect (()=>{
+
+        setQueryFull({tag:selectTag, bus:selectBus, add:queryAdd})
+        console.log('msmsmsmsmsm', queryFull)
+
+    },[selectTag, selectBus, queryAdd])
 
     return (
         <>
@@ -109,7 +120,9 @@ const SearchBar = (props) => {
                     
                 />
 
-                <div className="searchButton">
+                <div className="searchButton"
+                   onClick={handleSearchSubmit}
+                >
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
             </form>

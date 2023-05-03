@@ -43,6 +43,18 @@ export const fetchBusinessesWithTag = (tag) => async (dispatch) => {
     return res;
 };
 
+export const fetchBusinessesSearch = ({tag, bus, add}) => async (dispatch) => {
+    // const res = await csrfFetch(`/api/businesses?tag=Grocery&bus=Sprouts&add=123+mMain`);
+    const res = await csrfFetch(`/api/businesses?add=Lake`);
+    
+    // const res = await csrfFetch(`/api/businesses?tag=${tag}&bus=${bus}&add=${add}`);
+    const data = await res.json();
+     console.log('in business reducer data', data)
+    dispatch(receiveBusinesses(data));
+    return res;
+};
+
+
 
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
