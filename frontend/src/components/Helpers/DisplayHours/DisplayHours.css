@@ -1,0 +1,38 @@
+
+
+#containerDH {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+#lineDH {
+   display:flex; 
+   margin:10px;
+}
+
+
+#daysDH{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height:25px;
+
+    color: white;
+    margin-right: 15px;
+    background-color: var(--three);
+    border-radius: 3px;
+    
+
+}
+
+#hoursDH {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--one)
+  
+
+}
+

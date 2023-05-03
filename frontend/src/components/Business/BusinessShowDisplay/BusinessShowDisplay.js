@@ -1,32 +1,11 @@
 // import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
 import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
-
+import DisplayHours from "../../Helpers/DisplayHours/DisplayHours";
 import "./BusinessShowDisplay.css";
+
 const BusinessShowDisplay = ({ business }) => {
-    // const [hours, setHours] = useState("");
-    // let x = JSON.stringify(business.hours);
-    let y = Object.entries(business.hours);
-
-    // console.log('xxxxxx', x);
-    // console.log('yyyyyy',y);
-
-    // console.log('fffffff', y[0][0], y[0][1]['time'])
-    //    console.log('ggggg', JSON.stringify(y[1][1]['time']))
-
-    const processHours = (y) => {
-        let str = "";
-
-        for (let i = 0; i < y.length; i++) {
-            str += `${JSON.stringify(y[i][0])}${JSON.stringify(
-                y[i][1]["time"]
-            )}`;
-        }
-
-        return str;
-    };
-    let z = processHours(y);
+    let hoursArray = Object.entries(business.hours);
 
     if (!business) return null;
     return (
@@ -56,24 +35,7 @@ const BusinessShowDisplay = ({ business }) => {
                             />
                         </div>
                         <div id="mapRight">
-                            {business.hours ? (
-                                <div id="hours">
-                                    {Object.entries(business.hours).map(
-                                        (k, i) => {
-                                            <p>
-                                                {" "}
-                                                {`${JSON.stringify(
-                                                    y[i][0]
-                                                )}${JSON.stringify(
-                                                    y[i][1]["time"]
-                                                )}`}
-                                            </p>;
-                                        }
-                                    )}
-                                </div>
-                            ) : (
-                                <p></p>
-                            )}
+                            <DisplayHours hoursArray={hoursArray} />
                         </div>
                     </div>
                 </div>

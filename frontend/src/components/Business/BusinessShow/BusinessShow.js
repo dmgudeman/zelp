@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
-import { useSelector, useDispatch, connect } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import Navigation from "../../Navigation/NavBar/NavBar";
-import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
 import {
     getBusiness,
     fetchBusiness,
@@ -21,6 +20,7 @@ const BusinessShow = (props) => {
     let business = useSelector(getBusiness(busId));
     let reviews = useSelector(getReviews);
     let tags = useSelector(getTags);
+
 
     useEffect(() => {
         if (busId) {
