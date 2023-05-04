@@ -19,8 +19,8 @@ const BusinessIndex = (props) => {
     if (!businesses) return null;
     return (
         <>
-            {/* <NavBar showFlag={false} /> */}
             <div id="businessContainer">
+            <NavBar showFlag={true} />
                 <div id="bannerContainer">
                     <BannerBackground businesses={businesses} />
                     {/* <Banner /> */}

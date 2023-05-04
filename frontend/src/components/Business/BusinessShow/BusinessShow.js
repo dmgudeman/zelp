@@ -3,7 +3,7 @@ import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
-import Navigation from "../../Navigation/NavBar/NavBar";
+import NavBar from "../../Navigation/NavBar/NavBar";
 import {
     getBusiness,
     fetchBusiness,
@@ -32,7 +32,7 @@ const BusinessShow = (props) => {
     return (
         <>
             <div id="businessShowContainer">
-                <Navigation showFlag={"index"} />
+                <NavBar showFlag={true} />
                 {/* 
                     <div className="businessName">{business.name}</div>
                 </div> */}
