@@ -172,9 +172,12 @@ const SearchBar = (props) => {
                         searchData={searchData}
                         handleSearchEvent={handleSearchEvent}
                     />
-                    <SearchBarButton 
+                    {/* <SearchBarButton 
                     className="inputSB"
-                    handleSearchSubmit={handleSearchSubmit}/>
+                    handleSearchSubmit={handleSearchSubmit}/> */}
+                      <div className="searchButton" onClick={handleSearchSubmit}>
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                </div>
                     
                     {/* <input type="text" placeholder="Search..." onClick={handleSearchBarClick} /> */}
                     
