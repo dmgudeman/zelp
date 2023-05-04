@@ -48,6 +48,7 @@ const LoginForm = (props) => {
                 <form id="inputForm" onSubmit={submitHandler}>
                    
                     <input
+                        className="inputLIF"
                         type="text"
                         value={credential}
                         placeholder="username or email"
@@ -55,13 +56,14 @@ const LoginForm = (props) => {
                     />
 
                     <input
+                        className="inputLIF"
                         type="password"
                         value={password}
                         placeholder="password"
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <input id="submit" type="submit" value="Log In" />
+                    <input id="submitLIF" type="submit" value="Log In" />
                     <ul id="ulLogin">
                         {errors.map((error) => (
                             <li key={error}>{error}</li>

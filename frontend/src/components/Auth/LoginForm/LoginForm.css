@@ -10,7 +10,7 @@
     /* background-color: lightblue; */
 }
 
-h2 {
+/* h2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ h2 {
     background-color: white;
    
     
-}
+} */
 #inputForm {
     display: flex;
     flex-direction: column;
@@ -33,35 +33,35 @@ h2 {
    
 }
 
-input {
+.inputLIF {
     height: 30px;
     border-radius: 5px;
     margin: 5px;
 
 }
-input:not(#submit) {
+.inputLIF:not(#submit) {
     padding-left: 20px;
 }
 
-#submit {
-    background-color: #5cb9ff;
+#submitLIF {
+    background-color:var(--two);
     color: white;
     font-weight:bolder;
 }
 
- .nav-link {
+/* .nav-link {
    text-decoration: none !important;
-   color: #5cb9ff; 
-}
+   color: var(--two); 
+} */
 
-#app-nav {
+/* #app-nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
    
     /* z-index: 100; */
-}
+/* }  */
 
 #ulLogin {
     color: red;

@@ -6,9 +6,11 @@ import './NavLogo.css'
 const NavLogo = (props) => {
     return (
         <>
+        <div id="containerLOGO">
         <Link to="/">
            <img id="logo" src={logo} alt="Logo" />
             </Link> 
+            </div>
         </>
     )
 }

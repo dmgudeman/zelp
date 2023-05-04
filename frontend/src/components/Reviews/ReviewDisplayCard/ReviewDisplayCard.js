@@ -10,7 +10,7 @@ const ReviewDisplayCard = ({ review}) => {
 
     return (
         <>
-            <div id="reviewCardContainer">
+            <div id="reviewCardContainerRDC">
                 <div id="bodyContainer">
                     <div id="bodyCell">
                         <DisplayRating rating={rating} starClass="starCard" />
@@ -20,7 +20,7 @@ const ReviewDisplayCard = ({ review}) => {
                 </div>
                 { photoUrl ? 
                 <div id="photoRatingCell">
-                    <img id="img" src={photoUrl} alt="" />
+                    <img id="imgRDC" src={photoUrl} alt="" />
                 </div>
                 : null}
             </div>

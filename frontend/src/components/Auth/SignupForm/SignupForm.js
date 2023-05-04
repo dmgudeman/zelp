@@ -6,8 +6,6 @@ import Navigation from "../../Navigation/NavBar/NavBar";
 import DemoUserForm from "../DemoUserForm";
 import "./SignupForm.css";
 
-
-
 const SignupForm = (props) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -48,8 +46,9 @@ const SignupForm = (props) => {
             <Navigation id="app-nav" showFlag={false} />
             <div id="signupFormContainer">
                 <form id="inputForm" onSubmit={submitHandler}>
-                    <h2>Sign Up for Zelp</h2>
+                    <h2 id="titleSUF">Sign Up for Zelp</h2>
                     <input
+                        className="inputSUF"
                         type="text"
                         value={username}
                         placeholder="username"
@@ -57,6 +56,7 @@ const SignupForm = (props) => {
                     />
 
                     <input
+                        className="inputSUF"
                         type="text"
                         value={email}
                         placeholder="email"
@@ -64,6 +64,7 @@ const SignupForm = (props) => {
                     />
 
                     <input
+                        className="inputSUF"
                         type="password"
                         value={password}
                         placeholder="password"
@@ -71,13 +72,14 @@ const SignupForm = (props) => {
                     />
 
                     <input
+                        className="inputSUF"
                         type="password"
                         value={confirmPassword}
                         placeholder="confirm password"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
-                    <input id="submit" type="submit" value="Sign Up" />
+                    <input id="submitSUF" className="inputSUF" type="submit" value="Sign Up" />
                     <ul id="ulSignUp">
                         {errors.map((error) => (
                             <li key={error}>{error}</li>

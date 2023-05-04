@@ -22,14 +22,14 @@
     /* background-color: aquamarine; */
 }
 
-#img {
+#imgRDC {
     height:100%;
     width:100%;
     border-radius: 0px 14px 14px 0px;
     
 }
 
-#bodyContainer {
+#bodyContainerRDC {
     display: flex;
     flex-direction: row;
      flex: 1;

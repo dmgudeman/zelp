@@ -2,7 +2,7 @@
 #demoUserFormContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 450px;
    
@@ -11,7 +11,7 @@
 
 }
 
-h2 {
+#titleDUF {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,24 +19,24 @@ h2 {
     width: 400px;
     font-size: 20px;
     font-weight: bolder;
-    color: #5cb9ff;
+    color: var(--two);
     background-color: white;
    
     
 }
-form {
+#formDUF {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 400px;
     /* background-color: pink; */
-    margin: 20px 20px 20px 0px;
+    margin: 20px 20px 20px 20px;
    
 }
 
 
 
-input {
+/* input {
     height: 30px;
     border-radius: 5px;
     margin: 5px;
@@ -44,10 +44,16 @@ input {
 }
 input:not(#submit) {
     padding-left: 20px;
-}
+} */
 
-#submit {
-    background-color: #5cb9ff;;
+#submitDUF {
+ 
+    margin-left: 25px;
+    height: 35px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: var(--two);
     color: white;
+    
     font-weight:bolder;
 }

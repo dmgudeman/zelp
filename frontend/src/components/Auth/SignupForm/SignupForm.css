@@ -9,7 +9,7 @@
     /* background-color: lightblue; */
 }
 
-h2 {
+#titleSUF {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ h2 {
     width: 400px;
     font-size: 20px;
     font-weight: bolder;
-    color: #5cb9ff;
+    color: var(--two);
     background-color: white;  
 }
 f#inputForm {
@@ -32,18 +32,21 @@ f#inputForm {
 
 
 
-input {
+.inputSUF {
     height: 30px;
     border-radius: 5px;
     margin: 5px;
 
 }
-input:not(#submit) {
+.inputSUF:not(#submit) {
     padding-left: 20px;
 }
 
-#submit {
-    background-color: #5cb9ff;
+#submitSUF {
+    height: 35px;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: var(--two);
     color: white;
     font-weight:bolder;
 }

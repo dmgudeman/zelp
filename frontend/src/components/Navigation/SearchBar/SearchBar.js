@@ -128,35 +128,38 @@ const SearchBar = (props) => {
 
     return (
         <>
-            <form className="searchBarContainer">
-                <SearchBarTag
-                    searchData={searchData}
-                    selectTag={selectTag}
-                    hideTagList={hideTagList}
-                    handleSearchEvent={handleSearchEvent}
-                    handleTagListClick={handleTagListClick}
-                    filterTags={filterTags}
-                />
+            
+            <div id="containerSB">
+                <form id="formSB">
+                    <SearchBarTag
+                        searchData={searchData}
+                        selectTag={selectTag}
+                        hideTagList={hideTagList}
+                        handleSearchEvent={handleSearchEvent}
+                        handleTagListClick={handleTagListClick}
+                        filterTags={filterTags}
+                    />
 
-                <SearchBarBus
-                    businesses={businesses}
-                    searchData={searchData}
-                    selectBus={selectBus}
-                    hideBusList={hideBusList}
-                    handleSearchEvent={handleSearchEvent}
-                    handleBusListClick={handleBusListClick}
-                    filterBusinesses={filterBusinesses}
-                />
+                    <SearchBarBus
+                        businesses={businesses}
+                        searchData={searchData}
+                        selectBus={selectBus}
+                        hideBusList={hideBusList}
+                        handleSearchEvent={handleSearchEvent}
+                        handleBusListClick={handleBusListClick}
+                        filterBusinesses={filterBusinesses}
+                    />
 
-                <SearchBarAdd
-                    searchData={searchData}
-                    handleSearchEvent={handleSearchEvent}
-                />
+                    <SearchBarAdd
+                        searchData={searchData}
+                        handleSearchEvent={handleSearchEvent}
+                    />
 
-                <div className="searchButton" onClick={handleSearchSubmit}>
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </form>
+                    <div id="buttonSB" onClick={handleSearchSubmit}>
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </form>
+            </div>
         </>
     );
 };

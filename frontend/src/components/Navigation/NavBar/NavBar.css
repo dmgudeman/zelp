@@ -8,8 +8,8 @@
     height: 75px; 
     display: flex;
     align-items: space-between;
+    justify-content: center;
 
-    /* background-color: bisque; */
    
 }
 #navContainer.index {
@@ -27,36 +27,23 @@
      */
 }
 
-img {
-    height: 50px;
-    width: 50px;
-}
-
-
-
-#logoContainer{
+#logoContainer1{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: yellow; */
+    background-color: yellow;
     background-color: transparent;
-    width: 150px
+    width: 50px
 
 }
 
 
 
-#searchBarContainer {
-    /* background-color: green; */
+#searchBarContainer1{
     background-color: transparent;
-    flex: 1;
-
 }
 
-#buttonsContainer {
-    /* background-color: yellowgreen; */
+#buttonsContainer1 {
     background-color: transparent;
-     width: 40%;
-
 } 
 

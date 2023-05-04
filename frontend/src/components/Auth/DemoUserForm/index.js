@@ -17,9 +17,9 @@ const DemoUserForm = (props) => {
     return (
         <>
             <div id="demoUserFormContainer">
-                <form onSubmit={submitHandler}>
-                    <h2>Demo User</h2>
-                    <input id="submit" type="submit" value="Demo User" />
+                <form id="formDUF" onSubmit={submitHandler}>
+                    <h2 id="titleDUF">Demo User</h2>
+                    <input id="submitDUF" type="submit" value="Demo User" />
                 </form>
             </div>
         </>

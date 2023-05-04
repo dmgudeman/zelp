@@ -1,16 +1,25 @@
 
 
-.searchBarContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 40px; 
-    background: white;   
-     border-radius: 6px;
+#containerSB{
+   display:flex;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   width:100%;
+   height: 100%;
+   background-color: blueviolet;
   
 }
 
+#formSB{ 
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px; 
+    border-radius: 6px;
+    background-color: blue;
+}
 
 
 
@@ -26,33 +35,29 @@
     
 } */
 
-.SBcontainer {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    width:100%;
-    height:100%;
-}
-.searchButton {
+
+#buttonSB {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40px;
-    width: 40px;
-    background-color: #5cb9ff;;
+    width: 60px;
+    background-color: var(--two);
     color: white;
     border-radius: 0px 7px 7px 0px;
+   
 }
 
-.SBInputWrap {
+/* .SBInputWrap {
     width: 100%;
     height: 100%;
-    flex-grow: 1;
-}
+    */
+/* } */
 .SBInput {
     border: none;
     outline: none;
-
+    width: 80%;
+    z-index: 1;
     
 }
 .SBDropDown{
@@ -67,8 +72,6 @@
 }
 .SBDropDown.hidden {
     display: none;
-   
-
 } 
 
 
