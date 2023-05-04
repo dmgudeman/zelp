@@ -14,7 +14,6 @@ class Api::BusinessesController < ApplicationController
      end
 
 if params[:add]
-
     @businesses = @businesses.where('address LIKE ?', "%#{params[:add]}%")
 end
   end

@@ -50,3 +50,9 @@
   
     /* background-color: blue; */
 }
+
+#nameRVD {
+    color:var(--two);
+    font-weight: 800;
+    margin-top: 5px;
+}

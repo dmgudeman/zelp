@@ -4,8 +4,8 @@ import "./ReviewDisplayCard.css";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
 
 const ReviewDisplayCard = ({ review}) => {
-    const { body, photoUrl, rating, businessId } = { ...review };
-    const [ truncBody, setTruncBody] = useState(body.substring(0,150) + "...")
+    const { body, photoUrl, rating, businessId, authorName } = { ...review };
+    const [ truncBody, setTruncBody] = useState(body.substring(0,100) + "...")
     const [cardTotal, setCardTotal] = useState(6);
 
     return (
@@ -14,7 +14,8 @@ const ReviewDisplayCard = ({ review}) => {
                 <div id="bodyContainer">
                     <div id="bodyCell">
                         <DisplayRating rating={rating} starClass="starCard" />
-                        {truncBody}
+                       <p> {truncBody}</p>
+                        <p id="nameRVD">{authorName}</p>
                       
                     </div>
                 </div>
