@@ -4,13 +4,15 @@ import sessionReducer from './session';
 import businessesReducer from './businesses';
 import reviewsReducer from './reviews';
 import tagsReducer from './tags';
+import uiReducer from './ui/ui';
 
 
 export const rootReducer = combineReducers({
   session: sessionReducer,
   businesses: businessesReducer,
   reviews: reviewsReducer,
-  tags: tagsReducer
+  tags: tagsReducer,
+  ui: uiReducer
 });
 
 let enhancer;
