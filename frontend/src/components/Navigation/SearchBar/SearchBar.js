@@ -157,6 +157,7 @@ const SearchBar = (props) => {
                         searchData={searchData}
                         handleSearchEvent={handleSearchEvent}
                     />
+               
 
                     <div id="buttonSB" onClick={handleSearchSubmit}>
                         <i className="fa-solid fa-magnifying-glass"></i>

@@ -1,4 +1,13 @@
-
+.searchBarContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px; 
+    background: white;   
+     border-radius: 6px;
+  
+}
 
 #containerSB{
    
@@ -151,4 +160,14 @@
    
 
 } 
+
+/* <form className="searchBarContainer">
+                <SearchBarTag
+                    queryTag={queryTag}
+                    selectTag={selectTag}
+                    hideTagList={hideTagList}
+                    handleTagSearchEvent={handleTagSearchEvent}
+                    handleTagListClick={handleTagListClick}
+                    filterTags={filterTags}
+                /> */
 
