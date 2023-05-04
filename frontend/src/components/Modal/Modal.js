@@ -1,44 +1,46 @@
-
-import { closeModal } from '../../store/ui';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import LoginForm from '../Auth/LoginForm/LoginForm';
 import SignupForm from '../Auth/SignupForm/SignupForm';
-import './Modal.css';
+import { showModal, hideModal } from '../../store/ui';
+// import ReviewForm from './ReviewForm';
 
-function Modal({modal, closeModal}) {
-  if (!modal) {
-    return null;
-  }
-  let component;
-  switch (modal) {
-    case 'login':
-      component = <LoginForm />;
+const Modal = ({ showModalType, closeModal }) => {
+  let form = null;
+  switch (showModalType) {
+    case 'LOGIN':
+      form = <LoginForm />;
       break;
-    case 'signup':
-      component = <SignupForm />;
+    case 'SIGNUP':
+      form = <SignupForm />;
       break;
+    // case 'REVIEW':
+    //   form = <ReviewForm />;
+    //   break;
     default:
-      return null;
+      form = null;
   }
   return (
-    <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+    <div className="modal">
+      <div className="modal-content">
+        {form}
+        <button onClick={closeModal}>Close Modal</button>
       </div>
     </div>
   );
-}
-
-const mapStateToProps = state => {
-  return {
-    modal: state.ui.modal
-  };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    closeModal: () => dispatch(closeModal())
-  };
+
+
+
+
+const mapStateToProps = (state) => ({
+  showModalType: state.showModalType,
+});
+
+const mapDispatchToProps = {
+  showModal,
+  hideModal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+

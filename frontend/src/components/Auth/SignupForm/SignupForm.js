@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState} from "react";
+import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
 import { NavLink, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../../store/session";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import DemoUserForm from "../DemoUserForm";
+import { showModal, hideModal } from "../../../store/ui";
 import "./SignupForm.css";
 
 const SignupForm = (props) => {
@@ -97,5 +99,11 @@ const SignupForm = (props) => {
         </>
     );
 };
+
+// const mapDispatchToProps = {
+//     dispatchShowModal: showModal
+//   };
+  
+//   export default connect(null, mapDispatchToProps)(SignupForm);
 
 export default SignupForm;

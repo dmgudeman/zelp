@@ -6,9 +6,11 @@ import { Redirect, NavLink } from "react-router-dom";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import DemoUserForm from '../DemoUserForm'
 import "./LoginForm.css";
-import { closeModal } from "../../../store/ui";
+import { showModal, hideModal } from "../../../store/ui";
 
-const LoginForm = (props) => {
+
+
+const LoginForm = ({ dispatchShowModal }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(getCurrentUser);
     const [credential, setCredential] = useState("");
@@ -26,7 +28,7 @@ const LoginForm = (props) => {
             try {
                 // .clone()  essentially allows you to read the response body twice
                 data = await res.clone().json();
-                closeModal()
+                hideModal()
             } catch {
                 data = await res.text(); // Will hit this case if the server is down
             }
@@ -68,6 +70,10 @@ const LoginForm = (props) => {
                     />
 
                     <input className="blueButton" type="submit" value="Log In" />
+                    <div>
+    <h2>Login</h2>
+    <button onClick={() => dispatchShowModal('login')}>Open Modal</button>
+  </div>
                     <ul id="ulLogin">
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
@@ -80,16 +86,10 @@ const LoginForm = (props) => {
     );
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    //   processForm: (user) => dispatch(login(user)),
-    //   otherForm: (
-        // <button onClick={() => dispatch(openModal('signup'))}>
-        //   Signup
-        // </button>
-    //   ),
-      closeModal: () => dispatch(closeModal())
-    };
-  };
+// const mapDispatchToProps = {
+//     dispatchShowModal: showModal
+//   };
   
-  export default connect( mapDispatchToProps)(LoginForm)
+//   export default connect(null, mapDispatchToProps)(LoginForm);
+
+export default LoginForm;

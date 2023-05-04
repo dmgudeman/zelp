@@ -1,34 +1,39 @@
-export const OPEN_MODAL = "ui/OPEN_MODAL";
-export const CLOSE_MODAL = "ui/CLOSE_MODAL";
+const SHOW_MODAL = 'SHOW_MODAL';
+const HIDE_MODAL = 'HIDE_MODAL';
 
-export const UPDATE_FILTER = "UPDATE_FILTER";
-export const RECEIVE_BENCHES = "RECEIVE_BENCHES";
+// Action creators
+export const showModal = (showModalType) => ({
+  type: SHOW_MODAL,
+  showModalType,
+});
 
-export const openModal = (modal) => {
-    return {
-        type: OPEN_MODAL,
-        modal,
-    };
+export const hideModal = () => ({
+  type: HIDE_MODAL,
+});
+
+// Reducer
+const initialState = {
+  showModalType: null,
 };
 
-export const closeModal = () => {
-    return {
-        type: CLOSE_MODAL,
-    };
+const uiReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SHOW_MODAL:
+      return {
+        ...state,
+        showModalType: action.showModalType,
+      };
+    case HIDE_MODAL:
+      return {
+        ...state,
+        showModalType: null,
+      };
+    default:
+      return state;
+  }
 };
 
-const uiReducer = (state = {}, action) => {
-    switch (action.type) {
-        case UPDATE_FILTER:
-            const newFilter = { [action.filter]: action.value };
-            return { ...state, ...newFilter };
-        case OPEN_MODAL:
-            return action.modal;
-        case CLOSE_MODAL:
-            return null;
-        default:
-            return state;
-    }
-};
+
+
 
 export default uiReducer;

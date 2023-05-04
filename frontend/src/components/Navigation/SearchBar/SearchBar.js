@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
     getBusinesses,
@@ -7,9 +7,17 @@ import {
     fetchBusinessesSearch,
 } from "../../../store/businesses";
 import { fetchTags, getTags } from "../../../store/tags";
+
+import { showModal, hideModal } from '../../../store/ui';
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
 import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
+import store from '../../../store';
+
+import Modal from '../../Modal/Modal';
+import LoginForm from '../../Auth/LoginForm/LoginForm';
+
+
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
@@ -48,6 +56,12 @@ const SearchBar = (props) => {
             setIsSearchDataUpdated(false);
         }
     }, [dispatch, history, isSearchDataUpdated, searchData]);
+
+  
+
+      const handleSearchBarClick = () => {
+        store.dispatch(showModal('LOGIN'));
+      }
 
     const filterTags = () => {
         return tags.filter((tag) => {
@@ -162,10 +176,18 @@ const SearchBar = (props) => {
                     <div id="buttonSB" onClick={handleSearchSubmit}>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
+                    {/* <input type="text" placeholder="Search..." onClick={handleSearchBarClick} /> */}
+
                 </form>
             </div>
         </>
     );
 };
-
 export default SearchBar;
+
+
+// const mapDispatchToProps = (dispatch) => ({
+//     dispatchShowModal: (modalType, modalProps) => dispatch(showModal(modalType, modalProps)),
+//   });
+  
+//   export default connect(null, mapDispatchToProps)(SearchBar);

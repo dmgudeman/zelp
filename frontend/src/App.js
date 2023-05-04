@@ -9,14 +9,22 @@ import BusinessIndex from "./components/Business/BusinessIndex/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow/BusinessShow";
 import ReviewsIndex from "./components/Reviews/ReviewsIndex/ReviewsIndex";
 import ReviewNew from "./components/Reviews/ReviewNew";
-import Modal from "./components/Modal/Modal";
+
 import Jupon from "./components/Jupon/Jupon";
+
+
+import store from './store';
 
 function App() {
     const isLoggedIn = useSelector(getCurrentUser);
+
+  
+    
     return (
         <>
-            {/* <Modal/> */}
+
+
+
             <Switch>
                 <Route path="/login" component={LoginFormPage} />
                 <Route path="/signup" component={SignupFormPage} />
@@ -40,6 +48,7 @@ function App() {
                 <Route path="/jupon" component={Jupon} />
                 <Route path="/" component={Home} />
             </Switch>
+           
         </>
     );
 }
