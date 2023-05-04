@@ -100,11 +100,13 @@
   
 
 }
-.SBInput1111111{
-    display:flex;
+.SBInput{
+    /* display:flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
+    background-color: green; */
+    width: 170px;
+    border: none;
     
 }
 
