@@ -1,16 +1,5 @@
-.searchBarContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 40px; 
-    background: white;   
-     border-radius: 6px;
-  
-}
 
-#containerSB{
-   
+#containerSB{ 
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -23,7 +12,7 @@
 #formSB{ 
     display: flex;
     flex-direction: row;
-    justify-content: space-between ;
+    justify-content: space-around ;
     align-items: center;
     width: 100%;
     height: var(--bh);
@@ -47,12 +36,14 @@
 } */
 
 
-#buttonSB {
+#buttonSB{
     display: flex;
     justify-content: center;
     align-items: center;
+
     height: var(--bh);
-    width: calc(var(--bh) * 1.4);
+    width: calc(var(--bh) * 1.7);
+    
     background-color: var(--two);
     color: white;
     border-radius: 0px 7px 7px 0px;
@@ -64,8 +55,8 @@
     height: 100%;
     */
 /* } */
-.inputSB {
-    
+/* .inputSB1
+{  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,35 +65,79 @@
     width: 100%;
     z-index: 1;
     
+} */
+.SBcontainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width:100%;
+    height:100%;
 }
-.SBDropDown{
-    background-color: white;
-    color: black;
-    font-style: italic;
-    font-size: smaller;
-    padding:10px;
-    margin: 10px;
-    border-radius: 14px;
-
-}
-.SBDropDown.hidden {
-    display: none;
-} 
 
 
-.searchBarContainer {
+
+/* .searchBarContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
     height: 40px; 
     background: white;   
-     border-radius: 6px;
+     border-radius: 6px; 
+} */
+.SBcontainer11111111{
+    display:flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color:yellowgreen
+
+}
+.SBInputWrap{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: calc(var(--bh) * 0.2);
   
+
+}
+.SBInput1111111{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    
 }
 
+.SBDropDown{
+    display:flex;
+    align-items: center;
+    color: black;
+    font-style: italic;
+    font-size: smaller;
+    padding:10px;
+    margin: 10px;
+    border-radius: 14px;
+    background-color: aqua;
 
+}
+.SBDropDown.hidden {
+    display: none;
+} 
+#buttonSB{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    height: var(--bh);
+    width: calc(var(--bh) * 1.7);
+    
+    background-color: var(--two);
+    color: white;
+    border-radius: 0px 7px 7px 0px;
+   
+}
+/*////////////////??????????/////////////
 
 /* .rightSearchBar {
     display: flex;
@@ -116,14 +151,8 @@
     
 } */
 
-.SBcontainer {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    width:100%;
-    height:100%;
-}
-.searchButton {
+
+/* .searchButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,8 +167,8 @@
     width: 100%;
     height: 100%;
     flex-grow: 1;
-}
-.SBInput {
+} */
+/* .SBInput {
     border: none;
     outline: none;
 
@@ -157,9 +186,7 @@
 }
 .SBDropDown.hidden {
     display: none;
-   
-
-} 
+}  */
 
 /* <form className="searchBarContainer">
                 <SearchBarTag

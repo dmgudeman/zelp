@@ -12,6 +12,7 @@ import { showModal, hideModal } from '../../../store/ui';
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
 import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
+import SearchBarButton from "./SearchBarButton/SearchBarButton";
 import store from '../../../store';
 
 import Modal from '../../Modal/Modal';
@@ -171,11 +172,10 @@ const SearchBar = (props) => {
                         searchData={searchData}
                         handleSearchEvent={handleSearchEvent}
                     />
-               
-
-                    <div id="buttonSB" onClick={handleSearchSubmit}>
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                    </div>
+                    <SearchBarButton 
+                    className="inputSB"
+                    handleSearchSubmit={handleSearchSubmit}/>
+                    
                     {/* <input type="text" placeholder="Search..." onClick={handleSearchBarClick} /> */}
 
                 </form>
