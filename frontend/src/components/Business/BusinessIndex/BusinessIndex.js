@@ -12,9 +12,9 @@ const BusinessIndex = (props) => {
     let businesses = useSelector(getBusinesses);
     const [cardTotal, setCardTotal] = useState(6);
 
-    useEffect(() => {
-        dispatch(fetchBusinesses());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(fetchBusinesses());
+    // }, [dispatch]);
 
     if (!businesses) return null;
     return (
@@ -23,7 +23,7 @@ const BusinessIndex = (props) => {
             <div id="businessContainer">
                 <div id="bannerContainer">
                     <BannerBackground businesses={businesses} />
-                    <Banner />
+                    {/* <Banner /> */}
                 </div>
 
                 <div id="cardContainer">
@@ -33,7 +33,7 @@ const BusinessIndex = (props) => {
                     />
                 </div>
             </div>
-            <ZelpMap businesses={businesses} />
+            {/* <ZelpMap businesses={businesses} /> */}
         </>
     );
 };

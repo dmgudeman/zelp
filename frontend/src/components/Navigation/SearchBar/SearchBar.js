@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
     getBusinesses,
     fetchBusinesses,
@@ -13,81 +14,25 @@ import "./SearchBar.css";
 
 const SearchBar = (props) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     let businesses = useSelector(getBusinesses);
     let tags = useSelector(getTags);
-    const [queryTag, setQueryTag] = useState("");
+    // const [queryTag, setQueryTag] = useState("");
     const [selectTag, setSelectTag] = useState(null);
     const [hideTagList, setHideTagList] = useState(true);
-    const [queryBus, setQueryBus] = useState("");
+    // const [queryBus, setQueryBus] = useState("");
     const [selectBus, setSelectBus] = useState(null);
     const [hideBusList, setHideBusList] = useState(true);
-    const [queryAdd, setQueryAdd] = useState("");
-    const [searchData, setSearchData] = useState({tag:'', bus:'', add:''})
-    
+    // const [queryAdd, setQueryAdd] = useState("");
+    const [searchData, setSearchData] = useState({ tag: "", bus: "", add: "" });
+    const [isSearchDataUpdated, setIsSearchDataUpdated] = useState(false);
     const filterBusinesses = () => {
         return businesses.filter((business) => {
             return business.name
                 .toLowerCase()
-                .includes(queryBus.toLowerCase());
+                .includes(searchData.bus.toLowerCase());
         });
     };
-
-    const handleSearchEvent =(e) => {
-        const {name, value } = e.target;
-        setSearchData(prevState => ({
-            ...prevState,
-            [name]: value
-        }))
-
-        if(name==='tag'){
-            setHideTagList(false);
-            setSelectTag(null);}
-        if(name==='bus'){
-            setHideBusList(false);
-            setSelectBus(null);
-        }
-    }
-
-    const handleTagListClick = (tag) => {
-        setSelectTag(tag);
-        setHideTagList(true);
-    };
-
-    const handleTagSearchEvent = (e) => {
-        e.preventDefault();
-        setHideTagList(false);
-        setQueryTag(e.target.value);
-        setSelectTag(null);
-    };
-
-    const handleBusListClick = (bus) => {
-        setSelectBus(bus);
-        setHideBusList(true);
-    }
-
-    const handleBusSearchEvent = (e) => {
-        e.preventDefault();
-        setHideBusList(false);
-        setQueryBus(e.target.value);
-        setSelectBus(null);
-    }
-
-    const handleSearchSubmit = () => {
-        dispatch(fetchBusinessesSearch(searchData))
-    }
-
-    const filterTags = () => {
-        return tags.filter((tag) => {
-           
-            return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
-        });
-    };
-
-    const handleAddSearchEvent = (e) => {
-        e.preventDefault();
-        setQueryAdd(e.target.value);
-    };
-
     useEffect(() => {
         dispatch(fetchTags());
         dispatch(fetchBusinesses());
@@ -98,11 +43,102 @@ const SearchBar = (props) => {
     }, [searchData.bus]);
 
     useEffect(() => {
+       
+        // setSearchData((prevState) => (
+        //     { ...prevState, tag: selectTag }
+        // ));
         filterTags();
 
-
     }, [searchData.tag]);
+   
+   
+   
+    useEffect(() => {
+        if (isSearchDataUpdated) {
+          dispatch(fetchBusinessesSearch(searchData)).then(() => {
+            history.push("./businesses");
+          });
+          setIsSearchDataUpdated(false);
+        }
+      }, [dispatch, history, isSearchDataUpdated, searchData]);
+      
 
+
+    const handleSearchEvent = (e) => {
+        const { name, value } = e.target;
+        setSearchData((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+
+        if (name === "tag") {
+            setHideTagList(false);
+            setSelectTag(null);
+        }
+        if (name === "bus") {
+            setHideBusList(false);
+            setSelectBus(null);
+        }
+    };
+
+    const handleTagListClick = (tag) => {
+        setSelectTag(tag);
+        setHideTagList(true);
+    };
+
+    // const handleTagSearchEvent = (e) => {
+    //     e.preventDefault();
+    //     setHideTagList(false);
+    //     setQueryTag(e.target.value);
+    //     setSelectTag(null);
+    // };
+
+    const handleBusListClick = (bus) => {
+        setSelectBus(bus);
+        setHideBusList(true);
+    };
+
+    // const handleBusSearchEvent = (e) => {
+    //     e.preventDefault();
+    //     setHideBusList(false);
+    //     setQueryBus(e.target.value);
+    //     setSelectBus(null);
+    // }
+
+    const handleSearchSubmit = () => {
+       
+        if (selectTag) {
+            setSearchData((prevState) => (
+                { ...prevState, tag: selectTag }
+            ));
+        }
+
+        if (selectBus) {
+            setSearchData((prevState) => ({
+                ...prevState,
+            bus: selectBus 
+            }));
+        }
+        setIsSearchDataUpdated(true);
+
+
+        dispatch(fetchBusinessesSearch(searchData)).then(() => {
+            history.push("./businesses");
+        });
+    };
+
+    const filterTags = () => {
+        return tags.filter((tag) => {
+            return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
+        });
+    };
+
+    // const handleAddSearchEvent = (e) => {
+    //     e.preventDefault();
+    //     setQueryAdd(e.target.value);
+    // };
+
+  
 
     return (
         <>
@@ -119,8 +155,8 @@ const SearchBar = (props) => {
                 <SearchBarBus
                     businesses={businesses}
                     searchData={searchData}
-                    selectBus={selectBus}    
-                    hideBusList={hideBusList}               
+                    selectBus={selectBus}
+                    hideBusList={hideBusList}
                     handleSearchEvent={handleSearchEvent}
                     handleBusListClick={handleBusListClick}
                     filterBusinesses={filterBusinesses}
@@ -129,14 +165,9 @@ const SearchBar = (props) => {
                 <SearchBarAdd
                     searchData={searchData}
                     handleSearchEvent={handleSearchEvent}
-                   
-                   
-                    
                 />
 
-                <div className="searchButton"
-                   onClick={handleSearchSubmit}
-                >
+                <div className="searchButton" onClick={handleSearchSubmit}>
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
             </form>

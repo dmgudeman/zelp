@@ -19,9 +19,6 @@ export const receiveBusiness = (business) => {
 export const getBusinesses = (state) => {
     return state.businesses ? Object.values(state.businesses) : [];
 };
-// export const getBusinesses2 = (state) => {
-//     return state.businesses ?state.businesses : {};
-// };
 
 export const getBusiness =(businessId) => (state)=> {
     return state.businesses ? state.businesses[businessId] : {};
@@ -43,10 +40,14 @@ export const fetchBusinessesWithTag = (tag) => async (dispatch) => {
     return res;
 };
 
-export const fetchBusinessesSearch = ({tag, bus, add}) => async (dispatch) => {
+export const fetchBusinessesSearch = (searchItems) => async (dispatch) => {
     // const res = await csrfFetch(`/api/businesses?tag=Grocery&bus=Sprouts&add=123+mMain`);
+   
+    console.log('ttttttttttttttttttt', searchItems)
+   
     const res = await csrfFetch(`/api/businesses?add=Lake`);
-    
+   
+ 
     // const res = await csrfFetch(`/api/businesses?tag=${tag}&bus=${bus}&add=${add}`);
     const data = await res.json();
      console.log('in business reducer data', data)
