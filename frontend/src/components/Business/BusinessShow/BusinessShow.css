@@ -1,27 +1,28 @@
 
 
 #businessShowContainer {
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
-    width: 100vw;
     height: 2000px;
+    width: 100vw;
+
     overflow-y: scroll;
     /* background-color: blue; */
 }
 
 
 
-#heroContainer {
+#heroContainer{
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 600px;;
+    /* height: 600px;; */
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: start;
-    z-index: -1;
+    /* z-index: -1; */
     /* background-color: aqua; */
 }
 .businessName {
@@ -33,29 +34,30 @@
     margin-left: 100px;
     margin-bottom: 20px;
     text-shadow: 3px 3px var(--two);
+   
     
   }
 
-#businessGroup {
+#businessGroup1 {
     display:flex;
     width: 100%;
     padding-left: 200px;
 }
 
-#lowerContainer {
+#lowerContainer1 {
     display: flex;
     width: 100vw;
     height: 100%;
     /* background-color: aqua; */
 }
 
-#l-1, #l-4{
+#l-1, #l-4d{
     display: flex;
   width: 10%;
   /* background-color: blueviolet; */
 }
 
-#l-2 {
+#l-2d {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -66,7 +68,7 @@
     /* background-color: bisque; */
 }
 
-#l-3{
+#l-3d{
     display: flex;
 
     width: 2%;
@@ -74,23 +76,13 @@
 
 }
 
-#l-4 {
+#l-4d {
 
 }
-.buttons{
+.buttonsd{
     display: flex;
     justify-content: center;
     padding: 20px;
     
 }
 
-.blue-button {
-    height: 35px;
-    padding: 3px;
-    border-radius: 5px;
-    color: white;
-    /* background-color: rgb(102, 102, 174); */
-    background-color: var(--two);
-    padding-left: 20px;
-    padding-right: 20px;
-}

@@ -7,6 +7,7 @@ const SearchBarTag = (props) => {
         handleTagListClick,
         filterTags,
     } = { ...props };
+    
 
     return (
         <>

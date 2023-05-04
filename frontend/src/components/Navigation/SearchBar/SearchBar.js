@@ -177,7 +177,7 @@ const SearchBar = (props) => {
                     handleSearchSubmit={handleSearchSubmit}/>
                     
                     {/* <input type="text" placeholder="Search..." onClick={handleSearchBarClick} /> */}
-
+                    
                 </form>
             </div>
         </>

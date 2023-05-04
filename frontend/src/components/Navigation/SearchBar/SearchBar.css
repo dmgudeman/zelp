@@ -119,6 +119,8 @@
     padding:10px;
     margin: 10px;
     border-radius: 14px;
+    border: none;
+    background-color: var(--two);
 }
 .SBDropDown.hidden {
     display: none;

@@ -30,9 +30,11 @@ const BusinessShow = (props) => {
     if (!business) return null;
 
     return (
-        <>
+        <> 
+        <NavBar showFlag={true} />
             <div id="businessShowContainer">
-                <NavBar showFlag={true} />
+            
+               
                 {/* 
                     <div className="businessName">{business.name}</div>
                 </div> */}
@@ -47,13 +49,13 @@ const BusinessShow = (props) => {
                         display: "flex",
                         alignItems: "end",
                         justifyContent: "start",
-                        // color: "#fff",
-                        // fontSize: "2rem",
-                        // fontWeight: "bold",
+                       
                         textShadow: "3px 3px #000",
+                        zIndex: 2
                     }}
                 >
-                    <div className="businessName">{business.name}</div>
+                    
+                    <div className="businessName" >{business.name}</div>
                 </div>
 
                 <BusinessShowDisplay business={business} />
