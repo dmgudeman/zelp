@@ -7,7 +7,6 @@
     align-items: center;
     width:min(80px, 100%);
     height:min(var(--nbh),100%);
-    background-color: yellow;
 }
 #logo {
     height: calc(var(--nbh) * 0.7);

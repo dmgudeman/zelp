@@ -5,8 +5,7 @@
    align-items: center;
    width: calc(var(--nbh) * 10);;
    height: var(--nbh);
-   background-color: blueviolet;
-  
+   margin-left: 15px;
 }
 
 #formSB{ 
@@ -18,7 +17,7 @@
     height: var(--bh);
     padding-left: 7px;
     border-radius: 6px;
-    background-color: blue;
+    background-color: white;
 }
 
 
@@ -118,8 +117,6 @@
     padding:10px;
     margin: 10px;
     border-radius: 14px;
-    background-color: aqua;
-
 }
 .SBDropDown.hidden {
     display: none;
@@ -128,14 +125,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     height: var(--bh);
-    width: calc(var(--bh) * 1.7);
-    
+    width: calc(var(--bh) * 1.7); 
     background-color: var(--two);
     color: white;
-    border-radius: 0px 7px 7px 0px;
-   
+    border-radius: 0px 7px 7px 0px;  
 }
 /*////////////////??????????/////////////
 

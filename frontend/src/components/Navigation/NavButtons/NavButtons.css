@@ -5,10 +5,9 @@
     /* flex-grow:1; */
     justify-content: space-around;
     align-items: center;
-    background-color: brown;
     width: calc(var(--nbh) * 6);
     height: var(--nbh);
-    padding-right: 150px;
+    padding-right: 50px;
 
 }
 
