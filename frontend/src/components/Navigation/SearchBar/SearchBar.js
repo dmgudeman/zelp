@@ -29,7 +29,7 @@ const SearchBar = (props) => {
 
     useEffect(() => {
         dispatch(fetchTags());
-        dispatch(fetchBusinesses());
+        // dispatch(fetchBusinesses());
     }, [dispatch]);
 
     useEffect(() => {
@@ -42,8 +42,9 @@ const SearchBar = (props) => {
 
     useEffect(() => {
         if (isSearchDataUpdated) {
-            dispatch(fetchBusinessesSearch(searchData)).then(() => {
-                history.push("./businesses");
+            dispatch(fetchBusinessesSearch(searchData))
+                .then(() => {
+                    history.push("/businesses");
             });
             setIsSearchDataUpdated(false);
         }
@@ -116,9 +117,10 @@ const SearchBar = (props) => {
         }
         setIsSearchDataUpdated(true);
 
-        dispatch(fetchBusinessesSearch(searchData)).then(() => {
-            history.push("./businesses");
-        });
+        // dispatch(fetchBusinessesSearch(searchData))
+        //     .then(() => {
+        //     history.push("./businesses");
+        // });
     };
 
     // const handleAddSearchEvent = (e) => {
