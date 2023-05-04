@@ -4,7 +4,7 @@ import sessionReducer from './session';
 import businessesReducer from './businesses';
 import reviewsReducer from './reviews';
 import tagsReducer from './tags';
-import uiReducer from './ui/ui';
+import uiReducer from './ui';
 
 
 export const rootReducer = combineReducers({

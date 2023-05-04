@@ -44,7 +44,7 @@
 }
 
 #submitLIF {
-    background-color:var(--two);
+    /* background-color:var(--two); */
     color: white;
     font-weight:bolder;
 }

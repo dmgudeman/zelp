@@ -17,6 +17,8 @@ body {
     --one: #509CAF;
     --two: #506CAF;
     --three: #50AF93;
+    --bh: 35px;
+    --nbh: 75px;
 }
 
 /* #18E7C1
@@ -25,20 +27,21 @@ body {
 #18E75A */
 
  .blueButton {
-    height: 35px;
-    padding: 3px;
+    /* margin-left: 25px; */
+    height: var(--bh);
     border-radius: 5px;
-    color: white;
+    /* margin: 10px; */
     background-color: var(--two);
-   
-    padding-left: 10px;
-    padding-right: 10px;
+    color: white;
+    
+    font-weight:bolder;
     transition: all 0.3s;
 } 
 
 
 .blueButton:hover { 
-    /* height: 40px; */
-    border: 2px solid var(--one);
+    height: calc(var(--bh) * 1.1);
+    border: 3px solid var(--three);
+    color: var(--three)
     /* background-color: var(--aqua); */
  }

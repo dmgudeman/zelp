@@ -3,6 +3,7 @@ import { closeModal } from '../../store/ui';
 import { connect } from 'react-redux';
 import LoginForm from '../Auth/LoginForm/LoginForm';
 import SignupForm from '../Auth/SignupForm/SignupForm';
+import './Modal.css';
 
 function Modal({modal, closeModal}) {
   if (!modal) {

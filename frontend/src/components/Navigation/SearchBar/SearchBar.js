@@ -132,6 +132,7 @@ const SearchBar = (props) => {
             <div id="containerSB">
                 <form id="formSB">
                     <SearchBarTag
+                        className="inputSB"
                         searchData={searchData}
                         selectTag={selectTag}
                         hideTagList={hideTagList}
@@ -141,6 +142,7 @@ const SearchBar = (props) => {
                     />
 
                     <SearchBarBus
+                       className="inputSB"
                         businesses={businesses}
                         searchData={searchData}
                         selectBus={selectBus}
@@ -151,6 +153,7 @@ const SearchBar = (props) => {
                     />
 
                     <SearchBarAdd
+                        className="inputSB"
                         searchData={searchData}
                         handleSearchEvent={handleSearchEvent}
                     />

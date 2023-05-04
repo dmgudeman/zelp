@@ -1,13 +1,12 @@
 
 
 #containerSB{
-   display:flex;
+   
    display: flex;
-   flex-direction: row;
-   justify-content: center;
+   justify-content: space-between;
    align-items: center;
-   width:100%;
-   height: 100%;
+   width: calc(var(--nbh) * 10);;
+   height: var(--nbh);
    background-color: blueviolet;
   
 }
@@ -15,8 +14,11 @@
 #formSB{ 
     display: flex;
     flex-direction: row;
+    justify-content: space-between ;
+    align-items: center;
     width: 100%;
-    height: 40px; 
+    height: var(--bh);
+    padding-left: 7px;
     border-radius: 6px;
     background-color: blue;
 }
@@ -40,8 +42,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 60px;
+    height: var(--bh);
+    width: calc(var(--bh) * 1.4);
     background-color: var(--two);
     color: white;
     border-radius: 0px 7px 7px 0px;
@@ -53,10 +55,14 @@
     height: 100%;
     */
 /* } */
-.SBInput {
+.inputSB {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     outline: none;
-    width: 80%;
+    width: 100%;
     z-index: 1;
     
 }

@@ -9,40 +9,30 @@ const NavBar = ({ showFlag }) => {
     switch (showFlag) {
         case true:
             return (content = (
-                <div id="navContainer">
-                    <div id="logoContainer">
-                        <NavLogo />
-                    </div>
-                    <div id="searchBarContainer">
-                        <SearchBar />
-                    </div>
-                    <div id="buttonsContainer">
-                        <NavButtons />
-                    </div>
+                <div class="navContainer">
+                    <NavLogo />
+
+                    <SearchBar />
+
+                    <NavButtons />
                 </div>
             ));
         case false:
             return (content = (
-                <div id="navContainer">
-                    <div id="logoContainer">
-                        <NavLogo />
-                    </div>
-                </div>
-            ));
-        case 'index':
-            return (content =(
-                <div id="navContainer"  className="index">
-                <div id="logoContainer">
+                <div class="navContainer">
                     <NavLogo />
                 </div>
-                <div id="searchBarContainer">
+            ));
+        case "index":
+            return (content = (
+                <div class="navContainer" className="index">
+                    <NavLogo />
+
                     <SearchBar />
-                </div>
-                <div id="buttonsContainer">
+
                     <NavButtons />
                 </div>
-            </div>
-            ))
+            ));
         default:
             return null;
     }

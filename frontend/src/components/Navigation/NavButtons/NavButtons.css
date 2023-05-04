@@ -1,13 +1,14 @@
 
-#containerNB {
+#containerNBut {
     display: flex;
     flex-direction: row;
-    flex-grow:1;
-    /* justify-content: space-around; */
+    /* flex-grow:1; */
+    justify-content: space-around;
     align-items: center;
     background-color: brown;
-    width: 100%;
-    height: 100%
+    width: calc(var(--nbh) * 6);
+    height: var(--nbh);
+    padding-right: 150px;
 
 }
 

@@ -9,7 +9,7 @@ const NavButtons = (props) => {
     let sessionUser = useSelector(getCurrentUser);
 
     const withoutSessionUser = (
-        <div id="containerNB">
+        <div id="containerNBut">
             <Link to="/businesses">
                 <button id="review-button">Write a Review</button>
             </Link>
@@ -24,7 +24,7 @@ const NavButtons = (props) => {
     );
 
     const withSessionUser = (
-        <div id="containerNB">
+        <div id="containerNBut">
             <Link to="/businesses">
                 <button className="blueButton">Write a Review</button>
             </Link>

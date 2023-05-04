@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
 import { login, getCurrentUser } from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import DemoUserForm from '../DemoUserForm'
 import "./LoginForm.css";
+import { closeModal } from "../../../store/ui";
 
 const LoginForm = (props) => {
     const dispatch = useDispatch();
@@ -18,11 +20,13 @@ const LoginForm = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(login({ credential, password })).catch(async (res) => {
+        // return dispatch(login({ credential, password })).catch(async (res) => {
+        dispatch(login({ credential, password })).catch(async (res) => {
             let data;
             try {
                 // .clone()  essentially allows you to read the response body twice
                 data = await res.clone().json();
+                closeModal()
             } catch {
                 data = await res.text(); // Will hit this case if the server is down
             }
@@ -63,7 +67,7 @@ const LoginForm = (props) => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <input id="submitLIF" type="submit" value="Log In" />
+                    <input className="blueButton" type="submit" value="Log In" />
                     <ul id="ulLogin">
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
@@ -76,4 +80,16 @@ const LoginForm = (props) => {
     );
 };
 
-export default LoginForm;
+const mapDispatchToProps = dispatch => {
+    return {
+    //   processForm: (user) => dispatch(login(user)),
+    //   otherForm: (
+        // <button onClick={() => dispatch(openModal('signup'))}>
+        //   Signup
+        // </button>
+    //   ),
+      closeModal: () => dispatch(closeModal())
+    };
+  };
+  
+  export default connect( mapDispatchToProps)(LoginForm)
