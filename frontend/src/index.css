@@ -27,7 +27,7 @@ body {
 #18E75A */
 
  .blueButton {
-    height: 35px;
+    height: var(--bh);
     padding: 3px;
     border-radius: 5px;
     color: white;
@@ -40,7 +40,7 @@ body {
 
 
 .blueButton:hover { 
-    /* height: 40px; */
     border: 2px solid var(--one);
-    /* background-color: var(--aqua); */
+    cursor: pointer;
+
  }

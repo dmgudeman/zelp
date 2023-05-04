@@ -11,13 +11,13 @@ const NavButtons = (props) => {
     const withoutSessionUser = (
         <div id="container">
             <Link to="/businesses">
-                <button id="review-button">Write a Review</button>
+                <button className="blueButton">Write a Review</button>
             </Link>
             <Link to="/login">
                 <button className="blueButton" id="login-button">Log In</button>
             </Link>
             <Link to="/signup">
-                <button onClick={() => console.log("sign up")}>Sign Up</button>
+                <button className="blueButton" onClick={() => console.log("sign up")}>Sign Up</button>
             </Link>
             <ProfileButton />
         </div>
