@@ -20,9 +20,9 @@ export const getBusinesses = (state) => {
     return state.businesses ? Object.values(state.businesses) : [];
 };
 
-export const getBusiness =(businessId) => (state)=> {
+export const getBusiness = (businessId) => (state) => {
     return state.businesses ? state.businesses[businessId] : {};
-}
+};
 
 export const fetchBusinesses = () => async (dispatch) => {
     const res = await csrfFetch("/api/businesses");
@@ -32,40 +32,31 @@ export const fetchBusinesses = () => async (dispatch) => {
 };
 
 export const fetchBusinessesWithTag = (tag) => async (dispatch) => {
-    console.log('inreducer tag ', tag)
     const res = await csrfFetch(`/api/businesses?tag=${tag}`);
     const data = await res.json();
-     console.log('in business reducer data', data)
     dispatch(receiveBusinesses(data));
     return res;
 };
 
-export const fetchBusinessesSearch = (searchItems) => async (dispatch) => {
-    // const res = await csrfFetch(`/api/businesses?tag=Grocery&bus=Sprouts&add=123+mMain`);
-   
-    console.log('ttttttttttttttttttt', searchItems)
-   
-    const res = await csrfFetch(`/api/businesses?add=Lake`);
-   
- 
-    // const res = await csrfFetch(`/api/businesses?tag=${tag}&bus=${bus}&add=${add}`);
-    const data = await res.json();
-     console.log('in business reducer data', data)
-    dispatch(receiveBusinesses(data));
-    return res;
-};
-
-
-
+export const fetchBusinessesSearch =
+    ({ tag, bus, add }) =>
+    async (dispatch) => {
+        const res = await csrfFetch(
+            `/api/businesses?tag=${tag}&bus=${bus}&add=${add}`
+        );
+        const data = await res.json();
+        dispatch(receiveBusinesses(data));
+        return res;
+    };
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
     const res = await csrfFetch(`/api/businesses/${businessId}`);
     const data = await res.json();
-    if(res.ok){
-    dispatch(receiveBusiness(data));
-    return res;
+    if (res.ok) {
+        dispatch(receiveBusiness(data));
+        return res;
     } else {
-        console.error('fetchBusiness did not work, in reducer')
+        console.error("fetchBusiness did not work, in reducer");
     }
 };
 
@@ -74,7 +65,7 @@ const businessesReducer = (state = {}, action) => {
         case RECEIVE_BUSINESSES:
             return { ...action.businesses };
         case RECEIVE_BUSINESS:
-            return {...state, [action.business.id] : action.business };
+            return { ...state, [action.business.id]: action.business };
         default:
             return state;
     }

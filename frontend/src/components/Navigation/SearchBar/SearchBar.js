@@ -26,13 +26,7 @@ const SearchBar = (props) => {
     // const [queryAdd, setQueryAdd] = useState("");
     const [searchData, setSearchData] = useState({ tag: "", bus: "", add: "" });
     const [isSearchDataUpdated, setIsSearchDataUpdated] = useState(false);
-    const filterBusinesses = () => {
-        return businesses.filter((business) => {
-            return business.name
-                .toLowerCase()
-                .includes(searchData.bus.toLowerCase());
-        });
-    };
+
     useEffect(() => {
         dispatch(fetchTags());
         dispatch(fetchBusinesses());
@@ -43,26 +37,30 @@ const SearchBar = (props) => {
     }, [searchData.bus]);
 
     useEffect(() => {
-       
-        // setSearchData((prevState) => (
-        //     { ...prevState, tag: selectTag }
-        // ));
         filterTags();
-
     }, [searchData.tag]);
-   
-   
-   
+
     useEffect(() => {
         if (isSearchDataUpdated) {
-          dispatch(fetchBusinessesSearch(searchData)).then(() => {
-            history.push("./businesses");
-          });
-          setIsSearchDataUpdated(false);
+            dispatch(fetchBusinessesSearch(searchData)).then(() => {
+                history.push("./businesses");
+            });
+            setIsSearchDataUpdated(false);
         }
-      }, [dispatch, history, isSearchDataUpdated, searchData]);
-      
+    }, [dispatch, history, isSearchDataUpdated, searchData]);
 
+    const filterTags = () => {
+        return tags.filter((tag) => {
+            return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
+        });
+    };
+    const filterBusinesses = () => {
+        return businesses.filter((business) => {
+            return business.name
+                .toLowerCase()
+                .includes(searchData.bus.toLowerCase());
+        });
+    };
 
     const handleSearchEvent = (e) => {
         const { name, value } = e.target;
@@ -106,30 +104,20 @@ const SearchBar = (props) => {
     // }
 
     const handleSearchSubmit = () => {
-       
         if (selectTag) {
-            setSearchData((prevState) => (
-                { ...prevState, tag: selectTag }
-            ));
+            setSearchData((prevState) => ({ ...prevState, tag: selectTag }));
         }
 
         if (selectBus) {
             setSearchData((prevState) => ({
                 ...prevState,
-            bus: selectBus 
+                bus: selectBus,
             }));
         }
         setIsSearchDataUpdated(true);
 
-
         dispatch(fetchBusinessesSearch(searchData)).then(() => {
             history.push("./businesses");
-        });
-    };
-
-    const filterTags = () => {
-        return tags.filter((tag) => {
-            return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
         });
     };
 
@@ -137,8 +125,6 @@ const SearchBar = (props) => {
     //     e.preventDefault();
     //     setQueryAdd(e.target.value);
     // };
-
-  
 
     return (
         <>
