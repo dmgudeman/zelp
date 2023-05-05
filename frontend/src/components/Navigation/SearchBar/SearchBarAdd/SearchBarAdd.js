@@ -4,10 +4,10 @@ const SearchBarAdd = (props) => {
     const { searchData, handleSearchEvent } = { ...props };
     return (
         <>
-            <div className="SBcontainer">
-                <div className="SBInputWrap">
+            <div className="containerInputSB">
+                <div className="wrapInputSB">
                     <input
-                        className="SBInput"
+                        className="inputSB"
                         type="text"
                         name="add"
                         value={searchData.add}

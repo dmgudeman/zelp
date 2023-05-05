@@ -1,5 +1,69 @@
+.containerSB{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+    height:var(--nbh);
+}
 
 
+
+.formSB {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapInputSB {
+    
+    display: flex;
+    align-items:normal;
+    justify-content: center;
+       
+}
+.wrapInputSB  input[type="text"] {
+    flex-grow: 1;
+  }
+
+
+.inputSB {
+    display: flex;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    width: 200px;
+    height: var(--bh)   
+} 
+
+.dropdownSB {
+    position: absolute;
+    top: 100%;
+    left: 20;
+  }
+
+  
+  
+  .dropdown ul li {
+    padding: 5px;
+  }
+  
+  .dropdown ul li:hover {
+    background-color: #f4f4f4;
+  }
+.leftEnd {
+    border-radius: 7px 0px 0px 7px;
+}
+
+.buttonSB {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--bh);
+    height: var(--bh);
+    border-radius: 0px 7px 7px 0px;
+}
 /* .searchBarContainer {
     display: flex;
     flex-direction: row;
@@ -49,7 +113,7 @@
     width: 40px;
     background-color: var(--two);
     color: white;
-    border-radius: 0px 7px 7px 0px;
+    
 
 } */
 /* .SBInputWrap {
@@ -57,12 +121,12 @@
     height: 100%;
     flex-grow: 1;
 }
-.SBInput {
+ .SBInput {
     border: none;
     outline: none;
 
     
-} */
+} 
 /* .SBDropDown{
     background-color: white;
     color: black;

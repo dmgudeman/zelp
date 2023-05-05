@@ -10,10 +10,10 @@ const SearchBarTag = (props) => {
 
     return (
         <>
-            <div className="SBcontainer">
-                <div className="SBInputWrap">
+            <div className="containerInputSB">
+                <div className="wrapInputSB">
                     <input
-                        className="SBInput"
+                        className="inputSB leftEnd"
                         type="text"
                         name="tag"
                         value={selectTag ? selectTag : searchData.tag}
@@ -23,7 +23,7 @@ const SearchBarTag = (props) => {
                 </div>
 
                 {hideTagList ? null : (
-                    <div className="SBDropDown">
+                    <div className="dropDownSB">
                         <ul>
                             {filterTags().map((tag) => (
                                 <li

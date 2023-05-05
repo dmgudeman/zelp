@@ -130,7 +130,8 @@ const SearchBar = (props) => {
 
     return (
         <>
-            <form className="searchBarContainer">
+            <div className="containerSB">
+            <form className="formSB">
                 <SearchBarTag
                     searchData={searchData}
                     selectTag={selectTag}
@@ -155,11 +156,12 @@ const SearchBar = (props) => {
                     handleSearchEvent={handleSearchEvent}
                 />
                
-                    <div  onClick={handleSearchSubmit}>
+                    <div className="blueButton buttonSB" onClick={handleSearchSubmit}>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
                
             </form>
+            </div>
         </>
     );
 };
