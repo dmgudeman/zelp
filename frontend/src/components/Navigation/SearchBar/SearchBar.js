@@ -89,6 +89,7 @@ const SearchBar = (props) => {
             setSelectTag(null);
         }
         if (name === "bus") {
+            dispatch(fetchBusinessesSearch(searchData))
             setHideBusList(false);
             setSelectBus(null);
         }
