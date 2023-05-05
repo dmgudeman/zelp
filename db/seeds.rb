@@ -23,8 +23,108 @@ ApplicationRecord.transaction do
   User.create!(
     username: 'Demo-lition',
     email: 'demo@user.io',
-    password: 'password'
+    password: 'password',
+    name: 'Steve Garvey'
   )
+  
+  User.create!(
+    username: 'RubyFan',
+    email: 'rubyfan@example.com',
+    password: 'password',
+    name: 'Emma Lee'
+  )
+  
+  User.create!(
+    username: 'CodeWizard',
+    email: 'codewizard@example.com',
+    password: 'password',
+    name: 'Maxwell Wong'
+  )
+  
+  User.create!(
+    username: 'JavaScripter',
+    email: 'javascripter@example.com',
+    password: 'password',
+    name: 'Lucy Chen'
+  )
+  
+  User.create!(
+    username: 'RailsGuru',
+    email: 'railsguru@example.com',
+    password: 'password',
+    name: 'John Smith'
+  )
+  
+  User.create!(
+    username: 'DesignQueen',
+    email: 'designqueen@example.com',
+    password: 'password',
+    name: 'Mia Johnson'
+  )
+  
+  User.create!(
+    username: 'FrontendDev',
+    email: 'frontenddev@example.com',
+    password: 'password',
+    name: 'Aiden Chen'
+  )
+  
+  User.create!(
+    username: 'BackendDev',
+    email: 'backenddev@example.com',
+    password: 'password',
+    name: 'Leah Brown'
+  )
+  
+  User.create!(
+    username: 'Pythonista',
+    email: 'pythonista@example.com',
+    password: 'password',
+    name: 'Oliver Davis'
+  )
+  
+  User.create!(
+    username: 'NodeNinja',
+    email: 'nodeninja@example.com',
+    password: 'password',
+    name: 'Ella Lee'
+  )
+  
+  User.create!(
+    username: 'ReactLover',
+    email: 'reactlover@example.com',
+    password: 'password',
+    name: 'Andrew Kim'
+  )
+  
+  User.create!(
+    username: 'VueFan',
+    email: 'vuefan@example.com',
+    password: 'password',
+    name: 'Sophie Wang'
+  )
+  
+  User.create!(
+    username: 'FullStackDev',
+    email: 'fullstackdev@example.com',
+    password: 'password',
+    name: 'Ryan Lee'
+  )
+  
+  User.create!(
+    username: 'JavaDeveloper',
+    email: 'javaddeveloper@example.com',
+    password: 'password',
+    name: 'Grace Chen'
+  )
+  
+  User.create!(
+    username: 'PHPPro',
+    email: 'phppro@example.com',
+    password: 'password',
+    name: 'Daniel Kim'
+  )
+  
 
   # More users
   # 10.times do
