@@ -13,8 +13,7 @@ const BusinessShowDisplay = ({ business }) => {
         setCoords(JSON.parse(business.latlng))
     },[business])
    
-    console.log('JSON>PARSE business.latlng in BusinessShow', JSON.parse(business.latlng))
-    console.log('coords in BSD', coords)
+
     if (!business) return null;
     return (
         <>
