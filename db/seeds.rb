@@ -283,6 +283,18 @@ Business.create!(
   }
 )
 
+Business.create!(
+  name: 'Advanced Plumbing',
+  address: '123 Main St, San Francisco, CA 94118',
+  phone: '(415) 555-1234',
+  website: 'http://www.advancedplumbing.com',
+  cost: '$$$',
+  latlng: make_coord('37.7749, -122.4194'),
+  hours: { "Mon": { "time": '8:00 AM - 5:00 PM' }, "Tue": { "time": '8:00 AM - 5:00 PM' }, "Wed": { "time": '8:00 AM - 5:00 PM' },
+           "Thu": { "time": '8:00 AM - 5:00 PM' }, "Fri": { "time": '8:00 AM - 5:00 PM' }, "Sat": { "time": 'Closed' }, "Sun": { "time": 'Closed' } }
+)
+
+
   puts 'Done with Businesses'
   # 10.times do
   #   Business.create!({
@@ -358,7 +370,16 @@ Business.create!(
         { rating: 4, body: "I've had good experiences shopping at The Home Depot. The staff is generally friendly and knowledgeable, and the store is well-organized. The prices are reasonable and there are often good deals to be had. I appreciate that they offer a wide selection of products and that they have a rental center for larger tools. The only downside is that the store can be crowded on weekends." },
         { rating: 5, body: "The Home Depot is my go-to for all my home improvement needs. The staff is knowledgeable and helpful, and the prices are competitive. The store is clean and well-organized, and I appreciate that they have a wide selection of products. I also like that they offer free workshops and classes for DIYers. Overall, highly recommended!" },
         { rating: 3, body: "I have mixed feelings about The Home Depot. While the selection is good, the prices can be a bit high. The staff is hit or miss - sometimes they're helpful, but other times they seem disinterested. The store can also be crowded and difficult to navigate. However, I do appreciate that they offer free DIY workshops and classes. Overall, it's an average home improvement store." }
-        ]
+        ],
+        Advanced_Plumbing: [
+          { rating: 4, body: "I had a great experience with Advanced Plumbing. The staff was knowledgeable and helpful, and they were able to quickly diagnose and fix the issue with my plumbing. The prices were reasonable and the work was done efficiently. Overall, I would definitely recommend them." },
+          { rating: 2, body: "I wasn't impressed with Advanced Plumbing. While they were able to fix the issue with my plumbing, the staff wasn't particularly friendly or helpful. The prices were also higher than I expected. Overall, it was an okay experience, but I don't think I would use them again." },
+          { rating: 5, body: "I highly recommend Advanced Plumbing. The staff was friendly and professional, and they were able to fix my plumbing issue quickly and efficiently. The prices were also very reasonable. Overall, a great experience." },
+          { rating: 4, body: "I had a positive experience with Advanced Plumbing. The staff was knowledgeable and able to fix the issue with my plumbing quickly. The prices were also reasonable. The only downside was that it took a little longer than I expected to schedule an appointment. Overall, I would recommend them." },
+          { rating: 3, body: "My experience with Advanced Plumbing was average. The staff was able to fix the issue with my plumbing, but they weren't particularly friendly or helpful. The prices were also a bit higher than I expected. Overall, it was an okay experience." },
+          { rating: 5, body: "I had a great experience with Advanced Plumbing. The staff was friendly and knowledgeable, and they were able to fix my plumbing issue quickly and efficiently. The prices were also very reasonable. I would definitely use them again in the future." },
+          { rating: 2, body: "I wasn't impressed with Advanced Plumbing. The staff was unfriendly and unhelpful, and the prices were higher than I expected. The work they did also didn't fully fix the issue with my plumbing. Overall, I wouldn't recommend them." }
+          ]
 
   }
   puts 'writing reviews....'
@@ -415,7 +436,8 @@ tags = [
   'Restaurant',
   'Furnishings',
   'Italian Cuisine',
-  'Asian Cuisine'
+  'Asian Cuisine',
+  'Services'
 ]
 
 tags.each do |tag|
@@ -466,7 +488,10 @@ allTags = [
   ['Olive Garden', 'Restaurant'],
   ['Olive Garden', 'Italian Cuisine'],
   ['Asian Box', 'Restaurant'],
-  ['Asian Box', 'Asian Cuisine']
+  ['Asian Box', 'Asian Cuisine'],
+  ['Advanced Plumbing', 'Plumbing Services'],
+  ['Advanced Plumbing', 'Services']
+
 
 
 ]
