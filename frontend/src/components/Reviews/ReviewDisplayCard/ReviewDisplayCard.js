@@ -14,7 +14,7 @@ const ReviewDisplayCard = ({ review}) => {
                 <div id="bodyContainer">
                     <div id="bodyCell">
                         <DisplayRating rating={rating} starClass="starCard" />
-                        {truncBody}
+                        <div id="truncWidth">{truncBody} </div>
                       
                     </div>
                 </div>
