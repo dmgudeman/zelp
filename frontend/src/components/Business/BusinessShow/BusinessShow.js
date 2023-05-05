@@ -51,7 +51,7 @@ const BusinessShow = (props) => {
                         justifyContent: "start",
                        
                         textShadow: "3px 3px #000",
-                        zIndex: 2
+                        zIndex: -1
                     }}
                 >
                     
