@@ -42,9 +42,8 @@ const SearchBar = (props) => {
 
     useEffect(() => {
         if (isSearchDataUpdated) {
-            dispatch(fetchBusinessesSearch(searchData))
-                .then(() => {
-                    history.push("/businesses");
+            dispatch(fetchBusinessesSearch(searchData)).then(() => {
+                history.push("/businesses");
             });
             setIsSearchDataUpdated(false);
         }
@@ -154,9 +153,10 @@ const SearchBar = (props) => {
                     searchData={searchData}
                     handleSearchEvent={handleSearchEvent}
                 />
-
-                <div className="searchButton" onClick={handleSearchSubmit}>
-                    <i className="fa-solid fa-magnifying-glass"></i>
+                <div className="outerSB">
+                    <div className="innerSB" onClick={handleSearchSubmit}>
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </div>
                 </div>
             </form>
         </>
