@@ -1,5 +1,5 @@
 
-#demoUserFormContainer {
+/* #demoUserFormContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -9,9 +9,9 @@
     /* background-color: lightblue; */
 
 
-}
 
-h2 {
+
+/* h2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,19 +23,19 @@ h2 {
     background-color: white;
    
     
-}
-form {
+} */
+/* form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 400px;
     /* background-color: pink; */
-    margin: 20px 20px 20px 0px;
+    /* margin: 20px 20px 20px 0px; */
    
-}
 
 
 
+/* 
 input {
     height: 30px;
     border-radius: 5px;
@@ -44,10 +44,10 @@ input {
 }
 input:not(#submit) {
     padding-left: 20px;
-}
+} */
 
-#submit {
+/* #submit {
     background-color: #5cb9ff;;
     color: white;
     font-weight:bolder;
-}
+} */

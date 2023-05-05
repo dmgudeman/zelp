@@ -1,6 +1,6 @@
 
 
-#loginFormContainer {
+/* #loginFormContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -8,9 +8,9 @@
     margin: 75px 300px 300px 300px;
     width: 450px;
     /* background-color: lightblue; */
-}
 
-h2 {
+
+/* h2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,18 +22,18 @@ h2 {
     background-color: white;
    
     
-}
-#inputForm {
+} */
+/* #inputForm {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 400px;
     /* background-color: pink; */
-    margin: 20px;
+    /* margin: 20px; */
    
-}
+/* }  */
 
-input {
+/* input {
     height: 30px;
     border-radius: 5px;
     margin: 5px;
@@ -41,9 +41,9 @@ input {
 }
 input:not(#submit) {
     padding-left: 20px;
-}
+} */
 
-#submit {
+/* #submit {
     background-color: #5cb9ff;
     color: white;
     font-weight:bolder;
@@ -61,7 +61,7 @@ input:not(#submit) {
     width: 100%;
    
     /* z-index: 100; */
-}
+
 
 #ulLogin {
     color: red;

@@ -74,6 +74,7 @@ const SearchBar = (props) => {
             setSelectTag(null);
         }
         if (name === "bus") {
+            dispatch(fetchBusinessesSearch(searchData));
             setHideBusList(false);
             setSelectBus(null);
         }
@@ -153,11 +154,11 @@ const SearchBar = (props) => {
                     searchData={searchData}
                     handleSearchEvent={handleSearchEvent}
                 />
-                <div className="outerSB">
-                    <div className="innerSB" onClick={handleSearchSubmit}>
+               
+                    <div  onClick={handleSearchSubmit}>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
-                </div>
+               
             </form>
         </>
     );
