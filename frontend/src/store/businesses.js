@@ -45,8 +45,8 @@ export const fetchBusinessesSearch =
             `/api/businesses?tag=${tag}&bus=${bus}&add=${add}`
         );
         const data = await res.json();
-        dispatch(receiveBusinesses(data));
-        return res;
+        return dispatch(receiveBusinesses(data));
+        
     };
 
 export const fetchBusiness = (businessId) => async (dispatch) => {

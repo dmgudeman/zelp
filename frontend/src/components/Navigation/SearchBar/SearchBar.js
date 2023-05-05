@@ -38,7 +38,7 @@ const SearchBar = (props) => {
 
     useEffect(() => {
         dispatch(fetchTags());
-        dispatch(fetchBusinesses());
+        // dispatch(fetchBusinesses());
     }, [dispatch]);
 
     useEffect(() => {
