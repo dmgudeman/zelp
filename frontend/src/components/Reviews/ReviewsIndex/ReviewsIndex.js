@@ -16,7 +16,7 @@ const ReviewsIndex = ({ reviews, business }) => {
     return (
         <>
            <div id="containerRI">
-           <div className="buttons">
+           <div className="buttons marginTop">
                             <Link to={`/reviewNew/${business.id}`}>
                                 <button className="blue-button">
                                     {/* <i className="fa-regular fa-star"></i>  */}

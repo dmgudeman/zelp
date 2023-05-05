@@ -9,6 +9,7 @@ import Splash5 from '../Caroursel/Splashes/Splash5';
 const Carousel = () => {
     const [currentImage, setCurrentImage] = useState(0);
     const [fadeIn, setFadeIn] = useState(true);
+    let interval;
 
     const images = [
         { component: Splash1, altText: "Image 1" },
@@ -18,9 +19,9 @@ const Carousel = () => {
         { component: Splash5, altText: "Image 5" },
         
     ];
-
+    
     useEffect(() => {
-        const interval = setInterval(() => {
+      interval = setInterval(() => {
             setFadeIn(false);
             setTimeout(() => {
                 setCurrentImage(
@@ -28,10 +29,16 @@ const Carousel = () => {
                 );
 
                 setFadeIn(true);
-            }, 300);
+            }, 100);
         }, 6000);
         return () => clearInterval(interval);
-    }, [currentImage]);
+      }, [currentImage]);
+
+      useEffect(() => {
+        return () => {
+          clearInterval(interval);
+        };
+      }, []);
 
     return (
         <div className="slider">
@@ -48,7 +55,8 @@ const Carousel = () => {
                                 index === currentImage && fadeIn
                                     ? "fadeIn"
                                     : "fadeOut"
-                            } 2s linear forwards`,
+                            } 0.5s linear forwards`,
+                            // marginLeft: index === currentImage ? "-50px" : "0",
                         }}
                     >
                         <Component alt={image.altText} />

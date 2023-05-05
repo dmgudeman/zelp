@@ -10,7 +10,7 @@ const ReviewDisplayCard = ({ review}) => {
 
     return (
         <>
-            <div id="reviewCardContainerRDC">
+            <div id="reviewCardContainer">
                 <div id="bodyContainer">
                     <div id="bodyCell">
                         <DisplayRating rating={rating} starClass="starCard" />

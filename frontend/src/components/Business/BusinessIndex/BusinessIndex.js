@@ -13,20 +13,25 @@ const BusinessIndex = (props) => {
     const [cardTotal, setCardTotal] = useState(6);
 
     // useEffect(() => {
+  
     //     dispatch(fetchBusinesses());
     // }, [dispatch]);
 
-    if (!businesses) return null;
+    // if (!businesses) return null;
     return (
         <>
             <div id="businessContainer">
             <NavBar showFlag={true} />
                 <div id="bannerContainer">
                     <BannerBackground businesses={businesses} />
+                    <div classNmae="containerCAR1">
+                    <div className="carTitle1 greenText">Review A Business</div>
+                    <div className="carTitle1 greenText">Of Your Choice</div>
+                    </div>
                     {/* <Banner /> */}
                 </div>
 
-                <div id="cardContainer">
+                <div className="cardContainer">
                     <BusinessIndexDisplay
                         businesses={businesses}
                         cardTotal={cardTotal}
@@ -53,6 +58,7 @@ const BannerBackground = ({ businesses }) => {
                     backgroundSize: "cover",
                     backgroundPosition: "top",
                     opacity: 0.3,
+                    zIndex: -1
                 }}
             ></div>
         </>

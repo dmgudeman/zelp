@@ -20,9 +20,7 @@
     font-size: 20px;
     font-weight: bolder;
     color: var(--two);
-    background-color: white;
-   
-    
+    background-color: white;  
 }
 #formDUF {
     display: flex;

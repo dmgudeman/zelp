@@ -26,6 +26,19 @@ body {
 #18A5E7
 #18E75A */
 
+.blueTitle {
+ 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 400px;
+        font-size: 20px;
+        font-weight: bolder;
+        color: var(--two);
+        background-color: white;  
+}
+
  .blueButton {
     /* margin-left: 25px; */
     height: var(--bh);
@@ -45,3 +58,92 @@ body {
     color: var(--three)
     /* background-color: var(--aqua); */
  }
+
+
+
+ .carTitle2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 50px;
+    font-size: 0.5in;
+    font-weight: 800;
+    color: white;  
+  }
+
+  .carTitleSpace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 200px;
+    font-size: 0.7in;
+    font-weight: 800;
+    letter-spacing: 0.25in;
+    color: white; 
+
+  }
+
+  .carTitle4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 150px;
+    font-size: 0.7in;
+    font-weight: 800;
+    letter-spacing: 0.25in;
+    color: white;
+    margin-right: 500px; 
+    background-color: var(--two); 
+    border-radius: 50px;
+    
+  }
+  .carTitle44 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 150px;
+    font-size: 0.7in;
+    font-weight: 800;
+    letter-spacing: 0.25in;
+    color: white;
+    margin-left: 500px; 
+    background-color: var(--two); 
+    border-radius: 50px;
+    
+  }
+  .carTitle444 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 150px;
+    font-size: 0.7in;
+    font-weight: 800;
+    letter-spacing: 0.25in;
+    color: white;
+    background-color: var(--two); 
+    border-radius: 50px;
+    
+  }
+
+  .containerCAR1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .titleCar {
+    font-size: 1.3in;
+    font-weight: 400;
+    opacity: 0.8;
+    letter-spacing: 0.25in;
+    color: var(--one);
+    margin-left: 100px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px var(--two);
+
+  }

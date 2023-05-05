@@ -1,64 +1,48 @@
- /* from a starting state to an ending state */
- @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
+.slider-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-/* fadein is name of animation */
-/* there are 7 animation properties */
-.fadeIn {
-    animation-name: fadeIn; /* animation name refers to the name of the keyframe */
-    animation-duration: 1s; /* duration of one animation lap */
-    animation-timing-function: linear; /* defines the accelaration curve for the animation */
-    /* animation-delay: 0s; */
-    /* animation-iteration-count: 1; */
-    /* animation-direction: ; */
-    animation-fill-mode: forwards;
-  }
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
 
-  
- 
-  
-  .fadeOut {
-    animation-name: fadeOut;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-  }
-  
- 
-  .slider {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .slide.active {
-    opacity: 1;
-  }
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.active {
+  z-index: 1;
+}
+
+.slide > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
   #heroContainer{
     background-size: cover;
     background-position: center;
@@ -71,18 +55,22 @@
     /* z-index: -1; */
     /* background-color: aqua; */
 }
-  #businessShowContainer {
+  .businessShowContainer2{
     /* position: relative; */
     display: flex;
-    flex-direction: column;
-    height: 2000px;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
+    height: 100vh;
 
-    overflow-y: scroll;
+   
     /* background-color: blue; */
 }
 
   .carTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.3in;
     font-weight: 400;
     opacity: 0.8;
@@ -95,7 +83,88 @@
     
   }
 
-  .containerCAR {
+  .carTitle1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100px;
+    font-size: 0.7in;
+    font-weight: 800;
+    
+    color: white;   
+  }
+
+  .carTitle2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 50px;
+    font-size: 0.5in;
+    font-weight: 800;
+    color: white;  
+  }
+
+  .carTitleSpace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 200px;
+    font-size: 0.7in;
+    font-weight: 800;
+    letter-spacing: 0.25in;
+    color: white; 
+
+  }
+
+  .carTitle4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 150px;
+    font-size: 0.7in;
+    font-weight: 800;
+    letter-spacing: 0.25in;
+    color: white;
+    margin-right: 500px; 
+    background-color: var(--two); 
+    border-radius: 50px;
+    
+  }
+  .carTitle44 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 150px;
+    font-size: 0.7in;
+    font-weight: 800;
+    letter-spacing: 0.25in;
+    color: white;
+    margin-left: 500px; 
+    background-color: var(--two); 
+    border-radius: 50px;
+    
+  }
+  .carTitle444 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 150px;
+    font-size: 0.7in;
+    font-weight: 800;
+    letter-spacing: 0.25in;
+    color: white;
+    background-color: var(--two); 
+    border-radius: 50px;
+    
+  }
+
+  .containerCAR1{
     display: flex;
     justify-content: center;
     align-items: center;

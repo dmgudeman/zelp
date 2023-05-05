@@ -1,18 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getCurrentUser, logout } from "../../../store/session";
 import ProfileButton from "./ProfileButton/ProfileButton";
 import "./NavButtons.css";
+import { fetchBusinesses } from "../../../store/businesses";
 
 const NavButtons = (props) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     let sessionUser = useSelector(getCurrentUser);
+
+    const handleReviewRequest = () => {
+
+        dispatch(fetchBusinesses());
+        history.push("/businesses")
+
+    }
 
     const withoutSessionUser = (
         <div id="containerNBut">
-            <Link to="/businesses">
-                <button id="review-button">Write a Review</button>
-            </Link>
+           
+                <button id="review-button" onClick={handleReviewRequest}>Write a Review</button>
+       
             <Link to="/login">
                 <button className="blueButton" id="login-button">Log In</button>
             </Link>
@@ -25,10 +34,8 @@ const NavButtons = (props) => {
 
     const withSessionUser = (
         <div id="containerNBut">
-            <Link to="/businesses">
-                <button className="blueButton">Write a Review</button>
-            </Link>
-
+          
+          <button id="review-button" onClick={handleReviewRequest}>Write a Review</button>
             <Link to="/logout">
                 <button className="blueButton" onClick={() => dispatch(logout())}>
                     Log Out

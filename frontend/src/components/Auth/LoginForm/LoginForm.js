@@ -44,7 +44,7 @@ const LoginForm = ({ dispatchShowModal }) => {
          <Navigation id="app-nav" showFlag={false}/>
             <div id="loginFormContainer">
                
-                <h2>Log in to Zelp</h2>
+                <div className="blueTitle marginTop2">Log in to Zelp</div>
                 <h1>
                     New to Zelp?{" "}
                     <NavLink className="nav-link" to="/signup">
@@ -71,8 +71,7 @@ const LoginForm = ({ dispatchShowModal }) => {
 
                     <input className="blueButton" type="submit" value="Log In" />
                     <div>
-    <h2>Login</h2>
-    <button onClick={() => dispatchShowModal('login')}>Open Modal</button>
+  
   </div>
                     <ul id="ulLogin">
                         {errors.map((error) => (
