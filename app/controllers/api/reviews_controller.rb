@@ -8,14 +8,12 @@ class Api::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id]);
-   
     render show
   end
 
   def create
     
     @review = Review.new(review_params)
-
     if @review.save!
       render partial: 'api/reviews/review', locals: {review: @review}
     else
