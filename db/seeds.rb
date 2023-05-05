@@ -175,28 +175,6 @@ ApplicationRecord.transaction do
              "Thu": { "time": '6:00 AM - 9:00 PM' }, "Fri": { "time": '6:00 AM - 9:00 PM' }, "Sat": { "time": '6:00 AM - 9:00 PM' }, "Sun": { "time": '6:00 AM - 9:00 PM' } }
   )
 
-  # lat: '37.76900125791264',
-  # lng: '-122.4279027620785'
-  # )
-  # Business.create!(
-  #   name: 'Lucky',
-  #   address: '1515 Sloat Blvd San Francisco, CA 94132',
-  #   phone: '4156814300',
-  #   website: 'https://www.yelp.com/biz_redir?url=https%3A%2F%2Fluckysupermarkets.com&cachebuster=1682870824&website_link_type=website&src_bizid=t2BIu94PpNJqzxKw18c4VQ&s=7670519fdc03d9e0f47aaf45fc5766ecb8ac2ff17256777c2124c783db5419fa',
-  #   cost: '$$',
-  #   lat: '37.73330576338074',
-  #   lng: '-122.48960835881019'
-  # )
-
-  # Business.create!(
-  #   name: 'Nijiya Market',
-  #   address: '1737 Post St San Francisco, CA 94115',
-  #   phone: '4155631901',
-  #   website: 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.nijiya.com&cachebuster=1682871302&website_link_type=website&src_bizid=3-QftDg5y7rqLfCVt_Ja-g&s=1687d1d6ea880d6ea99ab048c9baeeac95f97508e1e2ea8e633175643007d8b6',
-  #   cost: '$$',
-  #   lat: '37.78539647974665',
-  #   lng: '-122.43114328949343'
-  # )
 
   Business.create!(
     name: 'Trader Joe\'s',
@@ -209,15 +187,28 @@ ApplicationRecord.transaction do
              "Thu": { "time": '8:00 AM - 9:00 PM' }, "Fri": { "time": '8:00 AM - 9:00 PM' }, "Sat": { "time": '8:00 AM - 9:00 PM' }, "Sun": { "time": '8:00 AM - 9:00 PM' } }
   )
 
-  # Business.create!(
-  #   name: 'Lucky',
-  #   address: '',
-  #   phone: '',
-  #   website: '',
-  #   cost: '$$',
-  #   lat: '',
-  #   lng: ''
-  # )
+  Business.create!(
+    name: 'Lucky',
+    address: '615 W Hamilton Ave, Campbell, CA 95008',
+    phone: '(408) 374-5065',
+    website: 'https://www.luckysupermarkets.com/',
+    cost: '$$',
+    latlng: make_coord('37.287455950172295, -121.95481244340749'),
+    hours: { "Mon": { "time": '6:00 AM - 12:00 AM' }, "Tue": { "time": '6:00 AM - 12:00 AM' },
+             "Wed": { "time": '6:00 AM - 12:00 AM' }, "Thu": { "time": '6:00 AM - 12:00 AM' }, "Fri": { "time": '6:00 AM - 12:00 AM' }, "Sat": { "time": '6:00 AM - 12:00 AM' }, "Sun": { "time": '6:00 AM - 12:00 AM' } }
+  )
+  
+  Business.create!(
+    name: 'Nijiya Market',
+    address: '1737 Post St, San Francisco, CA 94115',
+    phone: '(415) 563-1901',
+    website: 'https://www.nijiya.com/',
+    cost: '$$$',
+    latlng: make_coord('37.78472936082476, -122.42987330310264'),
+    hours: { "Mon": { "time": '9:00 AM - 9:00 PM' }, "Tue": { "time": '9:00 AM - 9:00 PM' },
+             "Wed": { "time": '9:00 AM - 9:00 PM' }, "Thu": { "time": '9:00 AM - 9:00 PM' }, "Fri": { "time": '9:00 AM - 9:00 PM' }, "Sat": { "time": '9:00 AM - 9:00 PM' }, "Sun": { "time": '9:00 AM - 9:00 PM' } }
+  )
+
 
   Business.create!(
     name: 'The Home Depot',
@@ -230,6 +221,68 @@ ApplicationRecord.transaction do
 
     latlng: make_coord('37.69900782936481, -122.48302795878271')
   )
+
+  Business.create!(
+    name: 'Lowes',
+    address: '2175 S Mooney Blvd, Visalia, CA 93277',
+    phone: '(559) 739-7195',
+    website: 'https://www.lowes.com',
+    cost: '$$',
+    latlng: make_coord('36.31240681985834, -119.31515220293288'),
+    hours: { "Mon": { "time": '6:00 AM - 9:00 PM' }, "Tue": { "time": '6:00 AM - 9:00 PM' },
+             "Wed": { "time": '6:00 AM - 9:00 PM' }, "Thu": { "time": '6:00 AM - 9:00 PM' },
+             "Fri": { "time": '6:00 AM - 9:00 PM' }, "Sat": { "time": '7:00 AM - 9:00 PM' },
+             "Sun": { "time": '8:00 AM - 8:00 PM' } }
+  )
+
+  Business.create!(
+    name: 'Restoration Hardware',
+    address: '8772 Beverly Blvd West Hollywood, CA 90048',
+    phone: '(310) 652-0323',
+    website: 'https://www.restorationhardware.com',
+    cost: '$$$',
+    latlng: make_coord('34.07659670841554, -118.37635411303434'),
+    hours: {
+      "Mon": { "time": '10:00 AM - 7:00 PM' }, 
+      "Tue": { "time": '10:00 AM - 7:00 PM' },
+      "Wed": { "time": '10:00 AM - 7:00 PM' }, 
+      "Thu": { "time": '10:00 AM - 7:00 PM' }, 
+      "Fri": { "time": '10:00 AM - 7:00 PM' }, 
+      "Sat": { "time": '10:00 AM - 7:00 PM' }, 
+      "Sun": { "time": '11:00 AM - 6:00 PM' }
+    }
+  )
+  
+
+Business.create!(
+  name: 'Olive Garden',
+  address: '430 Bayshore Blvd San Francisco, CA 94124',
+  phone: '(415) 648-0406',
+  website: 'https://www.olivegarden.com',
+  cost: '$$',
+  latlng: make_coord('37.72701908211721, -122.40307634149791'),
+  hours: { "Mon": { "time": '11:00 AM - 10:00 PM' }, "Tue": { "time": '11:00 AM - 10:00 PM' },
+           "Wed": { "time": '11:00 AM - 10:00 PM' }, "Thu": { "time": '11:00 AM - 10:00 PM' }, "Fri": { "time": '11:00 AM - 11:00 PM' }, "Sat": { "time": '11:00 AM - 11:00 PM' }, "Sun": { "time": '11:00 AM - 10:00 PM' } }
+)
+
+Business.create!(
+  name: 'Asian Box',
+  address: '855 El Camino Real #109, Palo Alto, CA 94301',
+  phone: '(650) 391-9305',
+  website: 'https://www.asianbox.com/',
+  cost: '$$',
+  latlng: make_coord('37.442046, -122.161495'),
+  hours: {
+    "Mon": { "time": '11:00 AM - 9:00 PM' },
+    "Tue": { "time": '11:00 AM - 9:00 PM' },
+    "Wed": { "time": '11:00 AM - 9:00 PM' },
+    "Thu": { "time": '11:00 AM - 9:00 PM' },
+    "Fri": { "time": '11:00 AM - 9:00 PM' },
+    "Sat": { "time": '11:00 AM - 9:00 PM' },
+    "Sun": { "time": '11:00 AM - 9:00 PM' }
+  }
+)
+
   puts 'Done with Businesses'
   # 10.times do
   #   Business.create!({
@@ -287,7 +340,17 @@ ApplicationRecord.transaction do
           Parking is one of the major issues.  On one hand, it is awesome that they have their own parking lot (major plus in San Francisco), however, the spots seem tiny and it is always packed.  Another issue is the fact that there are a great many derelicts walking about near the store or in the parking lot.
           Here's What I Think... We will continue shopping here for the next two and a half years." }
 
-    ]
+    ],
+    Safeway: [
+      { rating: 3, body: "I come to Safeway mainly because it is close to my house, but it's not my favorite grocery store. The selection is fine, but the prices are higher than other stores in the area. The produce section is hit or miss - sometimes things look great, but other times they're pretty picked over and sad looking. The staff is generally friendly and helpful, but I've had a few negative interactions in the past. Overall, it's an okay option if you're in a pinch, but I prefer other grocery stores." },
+      { rating: 2, body: "I'm not a fan of this Safeway. It always seems to be out of stock on items that I need and the layout of the store can be confusing. The produce section is decent, but the rest of the store is lacking. The staff is hit or miss - sometimes they're helpful, but other times they're not interested in helping at all. Parking can also be a nightmare, especially during peak hours. I'll only come here if I have to." },
+      { rating: 4, body: "I've been shopping at this Safeway for a few years now and it's generally been a good experience. The store is clean and well-organized and I can usually find what I need. The prices are reasonable and there are often good deals to be had. The staff is friendly and helpful and the checkout lines move quickly. My only complaint is that the parking lot can be crowded and difficult to navigate, especially on weekends." },
+      { rating: 5, body: "I love this Safeway! The selection is great and the prices are competitive. The store is always clean and well-stocked and the staff is friendly and helpful. I also appreciate that they have a good selection of organic and natural foods. The parking lot can get crowded, but I've never had too much trouble finding a spot. Overall, I highly recommend this Safeway." },
+      { rating: 3, body: "This Safeway is just okay. The selection is fine, but the prices can be a bit high. The staff is hit or miss - some are friendly and helpful, while others seem disinterested. Parking can also be a challenge during peak hours. Overall, it's an average grocery store that gets the job done." },
+      { rating: 1, body: "This Safeway is terrible. The produce is always sad looking and the prices are way too high. The store is poorly organized and the staff is unhelpful. I've had a few negative interactions with them in the past. The parking lot is also a nightmare - it's always crowded and difficult to navigate. I'll never shop here again." },
+      { rating: 4, body: "I'm a fan of this Safeway. The selection is good and the prices are reasonable. The staff is generally friendly and helpful, although there have been a few exceptions. The store is clean and well-organized and the checkout lines move quickly. Parking can be a bit of a challenge, but I've always been able to find a spot eventually." }
+      ]
+
   }
   puts 'writing reviews....'
 
@@ -340,7 +403,10 @@ tags = [
   'Lumber',
   'Plumbing Service',
   'Plumbing Supplies',
-  'Restaurant'
+  'Restaurant',
+  'Furnishings',
+  'Italian Cuisine',
+  'Asian Cuisine'
 ]
 
 tags.each do |tag|
@@ -373,10 +439,27 @@ end
 allTags = [
   ['Sprouts', 'Grocery'],
   ['Trader Joe\'s', 'Grocery'],
+  ['Lucky', 'Grocery'],
+  ['Safeway', 'Grocery'],
+  ['Nijiya Market', 'Grocery'],
   ['The Home Depot', 'Lumber'],
   ['The Home Depot', 'Appliances'],
   ['The Home Depot', 'Gardening'],
-  ['The Home Depot', 'Plumbing Supplies']
+  ['The Home Depot', 'Plumbing Supplies'],
+  ['The Home Depot', 'Hardware'],
+  ['Lowes', 'Lumber'],
+  ['Lowes', 'Appliances'],
+  ['Lowes', 'Gardening'],
+  ['Lowes', 'Plumbing Supplies'],
+  ['Lowes', 'Hardware'],
+  ['Restoration Hardware', 'Furnishings'],
+  ['Restoration Hardware', 'Hardware'],
+  ['Olive Garden', 'Restaurant'],
+  ['Olive Garden', 'Italian Cuisine'],
+  ['Asian Box', 'Restaurant'],
+  ['Asian Box', 'Asian Cuisine']
+
+
 ]
 
 allTags.each do |data|
