@@ -82,13 +82,14 @@ const ReviewNew = (props) => {
             <div id="newReviewContainer">
                 <div id="leftGutter"></div>
                 <div id="center">
-                    <form>
+                    <form id="reviewForm">
                         <h2 className="title">{business.name}</h2>
                         <h1 className="italic">
                             Leave a Rating, a Review and attach photos if you
                             would like
                         </h1>
                         <RatingInput
+                            id="ratingReview"
                             name="rating"
                             value={formData.rating}
                             rating={rating}
@@ -97,6 +98,7 @@ const ReviewNew = (props) => {
                         />
                         {rating > 0 ? (
                             <ReviewNewForm
+                            id="ratingReview"
                                 name="body"
                                 value={formData.body}
                                 // handleBodyChange={handleBodyChange}
@@ -106,13 +108,13 @@ const ReviewNew = (props) => {
                             <h2>First a rating</h2>
                         )}
 
-                        {rating > 0 && body ? (
+                       
                             <PhotoUpload
                                 name="photo"
                                 value={formData.photo}
                                 handleChange={handleFile}
                             />
-                        ) : null}
+                      
                         <ReviewNewSubmit submitHandler={submitHandler} />
                     </form>
                 </div>

@@ -5,6 +5,7 @@
     justify-content: space-between;
     width: 100vw;
     height: 100vh;
+   
 }
 
 #leftGutter {
@@ -15,10 +16,29 @@
 #center {
     display: flex;
     flex-direction: column;
-    width: min(800px, 40%);
-    height: 100vh;
-    /* background-color: bisque;   */
+    justify-content: center;
+    align-items: center;
+ 
     
+}
+#reviewForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max(500px, 40%);
+    height: 100vh;
+
+
+}
+
+#ratingReview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: 50px;
+ 
 }
 .title {
     padding: 20px 0px;
@@ -33,6 +53,9 @@
     border-radius: 15px;
     padding: 20px;
     font-size: 12pt;
+    font-style: italic;
+    color:var(--two);
+  
 }
 
 #rightGutter {

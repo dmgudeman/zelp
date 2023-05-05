@@ -82,13 +82,14 @@ const ReviewNew = (props) => {
             <div id="newReviewContainer">
                 <div id="leftGutter"></div>
                 <div id="center">
-                    <form>
-                        <h2 className="title">{business.name}</h2>
+                    <form id="reviewForm">
+                        <h2 className="blueTitle">{business.name}</h2>
                         <h1 className="italic">
                             Leave a Rating, a Review and attach photos if you
                             would like
                         </h1>
                         <RatingInput
+                            className="ratingReview"
                             name="rating"
                             value={formData.rating}
                             rating={rating}
