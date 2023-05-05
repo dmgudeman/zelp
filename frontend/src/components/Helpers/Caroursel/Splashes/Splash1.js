@@ -17,14 +17,17 @@ const Splash1 = (props) => {
                         flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
-                        textShadow: "3px 3px #000",
+                        textShadow: "4px 4px #000",
                         zIndex: -1,
                     }}
                 >    
                      <div className="carTitle1">Find what you need</div> 
-                     <div className="carTitle2">Search By Catgeory</div>
                      <div className="carTitleSpace"></div>  
-                     <div className="carTitle4">Lawn Services</div>
+                     <div className="carTitle444">Lawn Services</div>
+                     <div className="carTitleSpace"></div>  
+                     <div className="carTitle2">Search By Catgeory</div>
+                   
+                    
                     {/* <div className="businessName" >{business.name}</div> */}
                 </div>
             </div>

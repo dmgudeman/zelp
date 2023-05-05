@@ -16,7 +16,7 @@ const Splash3 = (props) => {
                         flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
-                        textShadow: "3px 3px #000",
+                        textShadow: "4px 4px #000",
                         zIndex: -1,
                     }}
                 >
