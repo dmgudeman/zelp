@@ -59,4 +59,60 @@
   .slide.active {
     opacity: 1;
   }
+  #heroContainer{
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    /* height: 600px;; */
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    /* z-index: -1; */
+    /* background-color: aqua; */
+}
+  #businessShowContainer {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    height: 2000px;
+    width: 100vw;
+
+    overflow-y: scroll;
+    /* background-color: blue; */
+}
+
+  .carTitle {
+    font-size: 1.3in;
+    font-weight: 400;
+    opacity: 0.8;
+    letter-spacing: 0.25in;
+    color: var(--one);
+    margin-left: 100px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px var(--two);
+   
+    
+  }
+
+  .containerCAR {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .titleCar {
+    font-size: 1.3in;
+    font-weight: 400;
+    opacity: 0.8;
+    letter-spacing: 0.25in;
+    color: var(--one);
+    margin-left: 100px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px var(--two);
+
+  }
+
+
+
   

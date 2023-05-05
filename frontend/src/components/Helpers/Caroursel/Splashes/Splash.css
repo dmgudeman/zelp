@@ -1,0 +1,86 @@
+
+#businessShowContainer {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    height: 2000px;
+    width: 100vw;
+
+    overflow-y: scroll;
+    /* background-color: blue; */
+}
+
+
+
+#heroContainer{
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    /* height: 600px;; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* z-index: -1; */
+    /* background-color: aqua; */
+}
+.businessName {
+    font-size: 1.3in;
+    font-weight: 400;
+    opacity: 0.8;
+    letter-spacing: 0.25in;
+    color: white;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px var(--two);
+   
+    
+  }
+
+#businessGroup1 {
+    display:flex;
+    width: 100%;
+    padding-left: 200px;
+}
+
+#lowerContainer1 {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    /* background-color: aqua; */
+}
+
+#l-1, #l-4d{
+    display: flex;
+  width: 10%;
+  /* background-color: blueviolet; */
+}
+
+#l-2d {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: flex-start; */
+  width: 900px;
+  flex: 1;
+    /* flex: 1; */
+    /* background-color: bisque; */
+}
+
+#l-3d{
+    display: flex;
+
+    width: 2%;
+    /* background-color: blueviolet; */
+
+}
+
+#l-4d {
+
+}
+.buttonsd{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import car1 from "../../../assets/images/car1.jpeg";
+import Splash1 from '../Caroursel/Splashes/Splash1';
 import car2 from "../../../assets/images/car2.jpeg";
 import car3 from "../../../assets/images/car3.jpeg";
 import car4 from "../../../assets/images/car4.jpeg";
@@ -10,7 +11,7 @@ const Carousel = () => {
     const [currentImage, setCurrentImage] = useState(0);
     const [fadeIn, setFadeIn] = useState(true);
 
-    const images = [car1, car2, car3, car4, car5];
+    const images = [Splash1, car2, car3, car4, car5];
 
     useEffect(() => {
         const interval = setInterval(() => {
