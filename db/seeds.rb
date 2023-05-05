@@ -431,7 +431,7 @@ tags = [
   'Hardware',
   'Lawn Service',
   'Lumber',
-  'Plumbing Service',
+  'Plumbing Services',
   'Plumbing Supplies',
   'Restaurant',
   'Furnishings',
