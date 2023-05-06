@@ -2,7 +2,6 @@ import './BusinessCard.css'
 import { Link } from "react-router-dom";
 import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
 
-
 const BusinessCard = ({ business }) => {
 
     if(!business) return null;
@@ -17,9 +16,9 @@ const BusinessCard = ({ business }) => {
                         <Link to={`/businesses/${business.id}`}>
                             <p>{business.name}</p>
                         </Link>
-                        {/* <p>
+                        <p>
                             <i id="x" className="fa-solid fa-x"></i>
-                        </p> */}
+                        </p>
                     </div>
                     <RatingDisplay rating={business.rating} />
                 </div>
