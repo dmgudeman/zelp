@@ -1,5 +1,5 @@
 import NavButtons from "../NavButtons";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import NavLogo from "../NavLogo";
 import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.css";
@@ -14,7 +14,6 @@ const NavBar = ({ showFlag }) => {
                     <NavLogo />
 
                     <SearchBar />
-                  
 
                     <NavButtons />
                 </div>
@@ -38,8 +37,6 @@ const NavBar = ({ showFlag }) => {
         default:
             return null;
     }
-
-    return <>{content}</>;
 };
 
 export default NavBar;

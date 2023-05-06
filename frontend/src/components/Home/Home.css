@@ -2,12 +2,13 @@
 
 #homeContainer {
     display: flex;
+    flex-direction: column;
 
 }
 
-.heroContainer {
+/* .heroContainer { */
     /* background-image: url("../../assets/lawn.jpg"); */
-    position: absolute;
+    /* position: absolute;
     top:0;
     left: 0;
     background-size: cover;
@@ -19,9 +20,8 @@
     justify-content: center;
     align-items: center;
     z-index: -1;
-    /* background-color: aqua; */
     background-color: var(--three);
-}
+} */
 
 #app-nav {
     position: fixed;
@@ -29,13 +29,13 @@
     left: 0;
     width: 100%;
    
-    /* z-index: 100; */
+    z-index: 100;
 }
 
-.heroContainer h1, .heroContainer p {
+/* .heroContainer h1, .heroContainer p {
     color: #fff;
     text-align: center;
     max-width: 800px;
     padding: 0 20px;
     margin-bottom: 20px;
-  }
+  } */

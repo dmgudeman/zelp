@@ -28,7 +28,7 @@ function App() {
             <Switch>
                 <Route path="/login" component={LoginFormPage} />
                 <Route path="/signup" component={SignupFormPage} />
-                <Route path="/home" component={Home} />
+                {/* <Route path="/home" component={Home} /> */}
                 {/* <Route path="/reviews" component={ReviewsIndex} /> */}
                 <PrivateRoute
                     path="/businesses/:busId"
