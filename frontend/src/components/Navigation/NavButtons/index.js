@@ -1,9 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
 import { Link, useHistory } from "react-router-dom";
-=======
-import { Link } from "react-router-dom";
->>>>>>> main
 import { getCurrentUser, logout } from "../../../store/session";
 import ProfileButton from "./ProfileButton/ProfileButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
