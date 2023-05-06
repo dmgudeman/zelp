@@ -36,3 +36,6 @@ log/development.log
 /hosting
 
 /tmp
+
+/pids
+server.pid
