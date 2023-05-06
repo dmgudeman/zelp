@@ -29,7 +29,7 @@ function App() {
                 <Route path="/login" component={LoginFormPage} />
                 <Route path="/signup" component={SignupFormPage} />
                 <Route path="/home" component={Home} />
-                <Route path="/reviews" component={ReviewsIndex} />
+                {/* <Route path="/reviews" component={ReviewsIndex} /> */}
                 <PrivateRoute
                     path="/businesses/:busId"
                     component={BusinessShow}
