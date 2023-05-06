@@ -17,6 +17,7 @@ ApplicationRecord.transaction do
   ApplicationRecord.connection.reset_pk_sequence!('businesses')
   ApplicationRecord.connection.reset_pk_sequence!('reviews')
   ApplicationRecord.connection.reset_pk_sequence!('tags')
+  ApplicationRecord.connection.reset_pk_sequence!('business_tags')
 
   puts 'Creating users...'
   # Create one user with an easy to remember username, email, and password:
@@ -216,10 +217,9 @@ ApplicationRecord.transaction do
     phone: '(650) 755-0178',
     website: 'https://www.homedepot.com',
     cost: '$$',
+    latlng: make_coord('37.69900782936481, -122.48302795878271'),
     hours: { "Mon": { "time": '6:00 AM - 10:00 PM' }, "Tue": { "time": '6:00 AM - 10:00 PM' }, "Wed": { "time": '6:00 AM - 10:00 PM' },
-             "Thu": { "time": '6:00 AM - 10:00 PM' }, "Fri": { "time": '6:00 AM - 10:00 PM' }, "Sat": { "time": '6:00 AM - 10:00 PM' }, "Sun": { "time": '7:00 AM - 8:00 PM' } },
-
-    latlng: make_coord('37.69900782936481, -122.48302795878271')
+             "Thu": { "time": '6:00 AM - 10:00 PM' }, "Fri": { "time": '6:00 AM - 10:00 PM' }, "Sat": { "time": '6:00 AM - 10:00 PM' }, "Sun": { "time": '7:00 AM - 8:00 PM' } }
   )
 
   Business.create!(
