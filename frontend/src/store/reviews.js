@@ -2,6 +2,7 @@ import csrfFetch from "./csrf";
 import { RECEIVE_BUSINESS } from "./businesses";
 export const RECEIVE_REVIEWS = "reviews/RECEIVE_REVIEWS";
 export const RECEIVE_REVIEW = "reviews/RECEIVE_REVIEW";
+export const REMOVE_REVIEW = "reviews/REMOVE_REVIEW";
 
 export const receiveReviews = (reviews) => {
     return {
@@ -16,6 +17,12 @@ export const receiveReview = (review) => {
         review,
     };
 };
+export const removeReview = (reviewId) => {
+    return {
+        type: REMOVE_REVIEW,
+        reviewId,
+    };
+};
 
 export const getReview = (reviewId) => (state) => {
     return state.reviews ? state.reviews[reviewId] : {};
@@ -24,6 +31,9 @@ export const getReview = (reviewId) => (state) => {
 export const getReviews = (state) => {
     return state.reviews ? Object.values(state.reviews) : [];
 };
+// export const getReviewsByBusiness = (reviewId) => (state) => {
+//     return state.reviews ? Object.values(state.reviews) : [];
+// };
 
 export const fetchReviews = () => async (dispatch) => {
     const res = await csrfFetch("/api/reviews");
@@ -86,7 +96,20 @@ export const updateReview = (review) => async (dispatch) => {
     }
 };
 
+export const deleteReview = (reviewId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: "DELETE",
+    });
+    if (res.ok) {
+        dispatch(removeReview(reviewId));
+        return res;
+    } else {
+        console.error("error in updating review");
+    }
+};
+
 const reviewsReducer = (state = {}, action) => {
+    const newState = {...state}
     switch (action.type) {
         case RECEIVE_REVIEWS:
             return { ...action.reviews };
@@ -94,6 +117,9 @@ const reviewsReducer = (state = {}, action) => {
             return { ...state, [action.review.id]: action.review };
         case RECEIVE_BUSINESS:
             return { ...action.business.reviews };
+        case REMOVE_REVIEW:
+            delete newState[action.reviewId]
+            return newState;
         default:
             return state;
     }

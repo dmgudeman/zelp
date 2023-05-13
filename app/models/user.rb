@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { in: 6..255 }, allow_nil: true
 
-  has_many :reviews, dependent: :destroy
+  has_many :reviews, foreign_key: :author_id, dependent: :destroy
 
   before_validation :ensure_session_token
 

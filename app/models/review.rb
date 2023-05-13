@@ -5,11 +5,12 @@ class Review < ApplicationRecord
                      allow_blank: true
 
   has_one_attached :photo
-  belongs_to :author,
-             class_name: 'User',
-             dependent: :destroy
+  belongs_to :author, class_name: 'User', foreign_key: :author_id
 
   belongs_to  :business,
-              class_name: 'Business',
-              dependent: :destroy
+              class_name: 'Business'
 end
+
+
+# belongs_to :author, class_name: "User"
+# belongs_to :business

@@ -1,17 +1,28 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchReviews, getReviews } from "../../../store/reviews";
+import { fetchReviewsByBusiness, getReviews, deleteReview  } from "../../../store/reviews";
 import { useParams, Link, Redirect } from "react-router-dom";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 
-const ReviewsIndex = ({ reviews, business }) => {
+const ReviewsIndex = ({ business }) => {
+    const dispatch = useDispatch();
+    const reviews = useSelector(getReviews)
     const [cardTotal, setCardTotal] = useState(6);
+    
 
+    const deleteHandler =(reviewId) => {
+    
+        dispatch(deleteReview(reviewId))
+        dispatch(fetchReviewsByBusiness(business.id))
+    }
     const extendHandler = () => {
         setCardTotal(cardTotal + 6);
     };
+    useEffect(()=>{
+       dispatch(fetchReviewsByBusiness(business.id))
+    }, [dispatch])
 
     return (
         <>
@@ -32,6 +43,7 @@ const ReviewsIndex = ({ reviews, business }) => {
                                 <ReviewDisplayCard
                                     review={review}
                                     key={review.id}
+                                    deleteHandler={deleteHandler}
                                 />
                             );
                         }

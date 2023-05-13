@@ -7,15 +7,14 @@ class Api::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id]);
+    @review = Review.find(params[:id])
     render show
   end
 
   def create
-    
     @review = Review.new(review_params)
     if @review.save!
-      render partial: 'api/reviews/review', locals: {review: @review}
+      render partial: 'api/reviews/review', locals: { review: @review }
     else
       render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
     end
@@ -23,7 +22,16 @@ class Api::ReviewsController < ApplicationController
 
   def update; end
 
-  def destroy; end
+  def destroy
+    review = Review.find(params[:id])
+
+    begin
+      review.destroy!
+      render json: { message: 'Review deleted successfully' }, status: :ok
+    rescue => e
+      render json:  review.errors.full_messages, status: :unprocessable_entity
+    end
+  end
 
   private
 
