@@ -20,7 +20,14 @@ class Api::ReviewsController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      render partial: 'api/reviews/review', locals: { review: @review }
+    else
+      render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
 
   def destroy
     review = Review.find(params[:id])
@@ -28,8 +35,8 @@ class Api::ReviewsController < ApplicationController
     begin
       review.destroy!
       render json: { message: 'Review deleted successfully' }, status: :ok
-    rescue => e
-      render json:  review.errors.full_messages, status: :unprocessable_entity
+    rescue StandardError => e
+      render json: review.errors.full_messages, status: :unprocessable_entity
     end
   end
 

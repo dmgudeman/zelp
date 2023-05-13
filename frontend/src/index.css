@@ -147,3 +147,32 @@ body {
     text-shadow: 3px 3px var(--two);
 
   }
+
+  .delButton { 
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 38px;
+    height: 15px;
+    color: white;
+    background-color: red;
+    border-radius: 7px;
+    font-size: x-small;
+ 
+    text-align: center;
+
+  }
+  .editButton {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 38px;
+    height: 15px;
+    color: white;
+    background-color: var(--two);
+    border-radius: 7px;
+    font-size: x-small;
+ 
+    text-align: center;
+
+  }

@@ -81,6 +81,19 @@ export const createReview = (review) => async (dispatch) => {
         return error;
     }
 };
+export const editReview = (review) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews`, {
+        method: "PATCH",
+        body: review,
+    });
+    const data = await res.json();
+    try {
+        dispatch(receiveReview(data));
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
 
 export const updateReview = (review) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews/${review.id}`, {

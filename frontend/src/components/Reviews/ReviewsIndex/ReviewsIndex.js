@@ -1,22 +1,29 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchReviewsByBusiness, getReviews, deleteReview  } from "../../../store/reviews";
-import { useParams, Link, Redirect } from "react-router-dom";
+import { fetchReviewsByBusiness, getReviews, editReview, deleteReview  } from "../../../store/reviews";
+import { useParams, Link, Redirect, useHistory } from "react-router-dom";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 
 const ReviewsIndex = ({ business }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const reviews = useSelector(getReviews)
     const [cardTotal, setCardTotal] = useState(6);
     
 
     const deleteHandler =(reviewId) => {
-    
         dispatch(deleteReview(reviewId))
         dispatch(fetchReviewsByBusiness(business.id))
     }
+
+    const editHandler =(reviewId) => {
+        history.push(`./reviewEdit/${reviewId}`)
+        // dispatch(editReview(reviewId))
+        // dispatch(fetchReviewsByBusiness(business.id))
+    }
+
     const extendHandler = () => {
         setCardTotal(cardTotal + 6);
     };
@@ -24,7 +31,7 @@ const ReviewsIndex = ({ business }) => {
        dispatch(fetchReviewsByBusiness(business.id))
     }, [dispatch])
 
-    
+
 
     return (
         <>
@@ -46,6 +53,7 @@ const ReviewsIndex = ({ business }) => {
                                     review={review}
                                     key={review.id}
                                     deleteHandler={deleteHandler}
+                                    editHandler={editHandler}
                                 />
                             );
                         }

@@ -9,17 +9,13 @@ import BusinessIndex from "./components/Business/BusinessIndex/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow/BusinessShow";
 import ReviewsIndex from "./components/Reviews/ReviewsIndex/ReviewsIndex";
 import ReviewNew from "./components/Reviews/ReviewNew";
+import ReviewEdit from "./components/Reviews/ReviewEdit/ReviewEdit";
 
 import Jupon from "./components/Jupon/Jupon";
 
 
-import store from './store';
-
 function App() {
-    const isLoggedIn = useSelector(getCurrentUser);
-
-  
-    
+    const isLoggedIn = useSelector(getCurrentUser); 
     return (
         <>
 
@@ -42,6 +38,11 @@ function App() {
                 />
                 <PrivateRoute
                     path="/reviewNew/:busId"
+                    component={ReviewNew}
+                    isLoggedIn={isLoggedIn}
+                />
+                 <PrivateRoute
+                    path="/reviewEdit/:reviewId"
                     component={ReviewNew}
                     isLoggedIn={isLoggedIn}
                 />
