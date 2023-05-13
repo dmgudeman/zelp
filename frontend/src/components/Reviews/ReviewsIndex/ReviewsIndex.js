@@ -24,6 +24,8 @@ const ReviewsIndex = ({ business }) => {
        dispatch(fetchReviewsByBusiness(business.id))
     }, [dispatch])
 
+    
+
     return (
         <>
            <div id="containerRI">
