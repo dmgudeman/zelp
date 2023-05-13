@@ -13,7 +13,7 @@ const ZelpMap = (props) => {
         mapEventHandlers = {},
     } = props;
     const myLatLng = { lat: 37.7749, lng: -122.4194 };
-    // const [map, setMap] = useState(null);
+    const [map, setMap] = useState(null);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const history = useHistory();
@@ -64,7 +64,7 @@ const ZelpMap = (props) => {
       
       
          
-        let   map  =    new window.google.maps.Map(mapRef.current, {
+       map  =    new window.google.maps.Map(mapRef.current, {
                     center: {
                         lat: coords.lat,
                         lng: coords.lng,

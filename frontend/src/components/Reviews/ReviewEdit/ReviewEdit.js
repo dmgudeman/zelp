@@ -11,6 +11,7 @@ import { editReview, getReview} from "../../../store/reviews";
 import { getUser } from "../../../store/session";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import "./ReviewEdit.css";
+import { getBusiness } from "../../../store/businesses";
 
 const ReviewEdit = (props) => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const ReviewEdit = (props) => {
     const history = useHistory();
   
     const review = useSelector(getReview(reviewId))
-
+    // const business = useSelector(getBusiness(review.business_id))
     const sessionUser = useSelector(getUser);
     const [body, setBody] = useState(review.body || "");
     const [rating, setRating] = useState(review.rating || 0);
@@ -33,7 +34,7 @@ const ReviewEdit = (props) => {
         setBody(body);
     }, [sessionUser, rating, body]);
 
-    if (!review) history.goBack;
+    if (!review) history.goBack();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -73,8 +74,7 @@ const ReviewEdit = (props) => {
             setFormData(null);
             setBody(null);
             setRating(null);
-
-            history.push(`/businesses/${review.business_id}`)
+            // history.push(`/businesses/${review.business_id}`)
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }
@@ -87,7 +87,7 @@ const ReviewEdit = (props) => {
                 <div id="leftGutter"></div>
                 <div id="center">
                     <form id="reviewForm">
-                        <h2 className="blueTitle">{business.name}</h2>
+                        {/* <h2 className="blueTitle">{business.name}</h2> */}
                         <h1 className="italic">
                             Leave a Rating, a Review and attach photos if you
                             would like
