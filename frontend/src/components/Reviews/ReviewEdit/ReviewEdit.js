@@ -62,7 +62,7 @@ const ReviewEdit = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        formData.set("review[author_id]", +sessionUser.id);
+        // formData.set("review[author_id]", +sessionUser.id);
         // formData.set("review[business_id]", +;
         formData.set("review[rating]", +rating);
         // for (const [key, value] of formData.entries()) {
@@ -70,10 +70,11 @@ const ReviewEdit = (props) => {
         //   }
 
         try {
+            console.log('frrrommmData', formData)
             dispatch(editReview(formData));
-            setFormData(null);
-            setBody(null);
-            setRating(null);
+            // setFormData(null);
+            // setBody(null);
+            // setRating(null);
             // history.push(`/businesses/${review.business_id}`)
         } catch (errors) {
             console.error("dispatch redirect did not work");

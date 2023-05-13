@@ -64,7 +64,7 @@ const ZelpMap = (props) => {
       
       
          
-       map  =    new window.google.maps.Map(mapRef.current, {
+      let map1 =   new window.google.maps.Map(mapRef.current, {
                     center: {
                         lat: coords.lat,
                         lng: coords.lng,
@@ -75,7 +75,7 @@ const ZelpMap = (props) => {
                 })
                 
         
-        map ?  marker.setMap(map) : Map.setMap(map) ;
+        map1 ?  marker.setMap(map) : Map.setMap(map) ;
                          
                 
     }, [coords]);
