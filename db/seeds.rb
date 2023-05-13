@@ -27,105 +27,104 @@ ApplicationRecord.transaction do
     password: 'password',
     name: 'Steve Garvey'
   )
-  
+
   User.create!(
     username: 'RubyFan',
     email: 'rubyfan@example.com',
     password: 'password',
     name: 'Emma Lee'
   )
-  
+
   User.create!(
     username: 'CodeWizard',
     email: 'codewizard@example.com',
     password: 'password',
     name: 'Maxwell Wong'
   )
-  
+
   User.create!(
     username: 'JavaScripter',
     email: 'javascripter@example.com',
     password: 'password',
     name: 'Lucy Chen'
   )
-  
+
   User.create!(
     username: 'RailsGuru',
     email: 'railsguru@example.com',
     password: 'password',
     name: 'John Smith'
   )
-  
+
   User.create!(
     username: 'DesignQueen',
     email: 'designqueen@example.com',
     password: 'password',
     name: 'Mia Johnson'
   )
-  
+
   User.create!(
     username: 'FrontendDev',
     email: 'frontenddev@example.com',
     password: 'password',
     name: 'Aiden Chen'
   )
-  
+
   User.create!(
     username: 'BackendDev',
     email: 'backenddev@example.com',
     password: 'password',
     name: 'Leah Brown'
   )
-  
+
   User.create!(
     username: 'Pythonista',
     email: 'pythonista@example.com',
     password: 'password',
     name: 'Oliver Davis'
   )
-  
+
   User.create!(
     username: 'NodeNinja',
     email: 'nodeninja@example.com',
     password: 'password',
     name: 'Ella Lee'
   )
-  
+
   User.create!(
     username: 'ReactLover',
     email: 'reactlover@example.com',
     password: 'password',
     name: 'Andrew Kim'
   )
-  
+
   User.create!(
     username: 'VueFan',
     email: 'vuefan@example.com',
     password: 'password',
     name: 'Sophie Wang'
   )
-  
+
   User.create!(
     username: 'FullStackDev',
     email: 'fullstackdev@example.com',
     password: 'password',
     name: 'Ryan Lee'
   )
-  
+
   User.create!(
     username: 'JavaDeveloper',
     email: 'javaddeveloper@example.com',
     password: 'password',
     name: 'Grace Chen'
   )
-  
+
   User.create!(
     username: 'PHPPro',
     email: 'phppro@example.com',
     password: 'password',
     name: 'Daniel Kim'
   )
-  
 
   # More users
   # 10.times do
@@ -176,7 +175,6 @@ ApplicationRecord.transaction do
              "Thu": { "time": '6:00 AM - 9:00 PM' }, "Fri": { "time": '6:00 AM - 9:00 PM' }, "Sat": { "time": '6:00 AM - 9:00 PM' }, "Sun": { "time": '6:00 AM - 9:00 PM' } }
   )
 
-
   Business.create!(
     name: 'Trader Joe\'s',
     address: '3 Masonic Ave San Francisco, CA 94118',
@@ -198,7 +196,7 @@ ApplicationRecord.transaction do
     hours: { "Mon": { "time": '6:00 AM - 12:00 AM' }, "Tue": { "time": '6:00 AM - 12:00 AM' },
              "Wed": { "time": '6:00 AM - 12:00 AM' }, "Thu": { "time": '6:00 AM - 12:00 AM' }, "Fri": { "time": '6:00 AM - 12:00 AM' }, "Sat": { "time": '6:00 AM - 12:00 AM' }, "Sun": { "time": '6:00 AM - 12:00 AM' } }
   )
-  
+
   Business.create!(
     name: 'Nijiya Market',
     address: '1737 Post St, San Francisco, CA 94115',
@@ -209,7 +207,6 @@ ApplicationRecord.transaction do
     hours: { "Mon": { "time": '9:00 AM - 9:00 PM' }, "Tue": { "time": '9:00 AM - 9:00 PM' },
              "Wed": { "time": '9:00 AM - 9:00 PM' }, "Thu": { "time": '9:00 AM - 9:00 PM' }, "Fri": { "time": '9:00 AM - 9:00 PM' }, "Sat": { "time": '9:00 AM - 9:00 PM' }, "Sun": { "time": '9:00 AM - 9:00 PM' } }
   )
-
 
   Business.create!(
     name: 'The Home Depot',
@@ -243,57 +240,55 @@ ApplicationRecord.transaction do
     cost: '$$$',
     latlng: make_coord('34.07659670841554, -118.37635411303434'),
     hours: {
-      "Mon": { "time": '10:00 AM - 7:00 PM' }, 
+      "Mon": { "time": '10:00 AM - 7:00 PM' },
       "Tue": { "time": '10:00 AM - 7:00 PM' },
-      "Wed": { "time": '10:00 AM - 7:00 PM' }, 
-      "Thu": { "time": '10:00 AM - 7:00 PM' }, 
-      "Fri": { "time": '10:00 AM - 7:00 PM' }, 
-      "Sat": { "time": '10:00 AM - 7:00 PM' }, 
+      "Wed": { "time": '10:00 AM - 7:00 PM' },
+      "Thu": { "time": '10:00 AM - 7:00 PM' },
+      "Fri": { "time": '10:00 AM - 7:00 PM' },
+      "Sat": { "time": '10:00 AM - 7:00 PM' },
       "Sun": { "time": '11:00 AM - 6:00 PM' }
     }
   )
-  
 
-Business.create!(
-  name: 'Olive Garden',
-  address: '430 Bayshore Blvd San Francisco, CA 94124',
-  phone: '(415) 648-0406',
-  website: 'https://www.olivegarden.com',
-  cost: '$$',
-  latlng: make_coord('37.72701908211721, -122.40307634149791'),
-  hours: { "Mon": { "time": '11:00 AM - 10:00 PM' }, "Tue": { "time": '11:00 AM - 10:00 PM' },
-           "Wed": { "time": '11:00 AM - 10:00 PM' }, "Thu": { "time": '11:00 AM - 10:00 PM' }, "Fri": { "time": '11:00 AM - 11:00 PM' }, "Sat": { "time": '11:00 AM - 11:00 PM' }, "Sun": { "time": '11:00 AM - 10:00 PM' } }
-)
+  Business.create!(
+    name: 'Olive Garden',
+    address: '430 Bayshore Blvd San Francisco, CA 94124',
+    phone: '(415) 648-0406',
+    website: 'https://www.olivegarden.com',
+    cost: '$$',
+    latlng: make_coord('37.72701908211721, -122.40307634149791'),
+    hours: { "Mon": { "time": '11:00 AM - 10:00 PM' }, "Tue": { "time": '11:00 AM - 10:00 PM' },
+             "Wed": { "time": '11:00 AM - 10:00 PM' }, "Thu": { "time": '11:00 AM - 10:00 PM' }, "Fri": { "time": '11:00 AM - 11:00 PM' }, "Sat": { "time": '11:00 AM - 11:00 PM' }, "Sun": { "time": '11:00 AM - 10:00 PM' } }
+  )
 
-Business.create!(
-  name: 'Asian Box',
-  address: '855 El Camino Real #109, Palo Alto, CA 94301',
-  phone: '(650) 391-9305',
-  website: 'https://www.asianbox.com/',
-  cost: '$$',
-  latlng: make_coord('37.442046, -122.161495'),
-  hours: {
-    "Mon": { "time": '11:00 AM - 9:00 PM' },
-    "Tue": { "time": '11:00 AM - 9:00 PM' },
-    "Wed": { "time": '11:00 AM - 9:00 PM' },
-    "Thu": { "time": '11:00 AM - 9:00 PM' },
-    "Fri": { "time": '11:00 AM - 9:00 PM' },
-    "Sat": { "time": '11:00 AM - 9:00 PM' },
-    "Sun": { "time": '11:00 AM - 9:00 PM' }
-  }
-)
+  Business.create!(
+    name: 'Asian Box',
+    address: '855 El Camino Real #109, Palo Alto, CA 94301',
+    phone: '(650) 391-9305',
+    website: 'https://www.asianbox.com/',
+    cost: '$$',
+    latlng: make_coord('37.442046, -122.161495'),
+    hours: {
+      "Mon": { "time": '11:00 AM - 9:00 PM' },
+      "Tue": { "time": '11:00 AM - 9:00 PM' },
+      "Wed": { "time": '11:00 AM - 9:00 PM' },
+      "Thu": { "time": '11:00 AM - 9:00 PM' },
+      "Fri": { "time": '11:00 AM - 9:00 PM' },
+      "Sat": { "time": '11:00 AM - 9:00 PM' },
+      "Sun": { "time": '11:00 AM - 9:00 PM' }
+    }
+  )
 
-Business.create!(
-  name: 'Advanced Plumbing',
-  address: '123 Main St, San Francisco, CA 94118',
-  phone: '(415) 555-1234',
-  website: 'http://www.advancedplumbing.com',
-  cost: '$$$',
-  latlng: make_coord('37.7749, -122.4194'),
-  hours: { "Mon": { "time": '8:00 AM - 5:00 PM' }, "Tue": { "time": '8:00 AM - 5:00 PM' }, "Wed": { "time": '8:00 AM - 5:00 PM' },
-           "Thu": { "time": '8:00 AM - 5:00 PM' }, "Fri": { "time": '8:00 AM - 5:00 PM' }, "Sat": { "time": 'Closed' }, "Sun": { "time": 'Closed' } }
-)
-
+  Business.create!(
+    name: 'Advanced Plumbing',
+    address: '123 Main St, San Francisco, CA 94118',
+    phone: '(415) 555-1234',
+    website: 'http://www.advancedplumbing.com',
+    cost: '$$$',
+    latlng: make_coord('37.7749, -122.4194'),
+    hours: { "Mon": { "time": '8:00 AM - 5:00 PM' }, "Tue": { "time": '8:00 AM - 5:00 PM' }, "Wed": { "time": '8:00 AM - 5:00 PM' },
+             "Thu": { "time": '8:00 AM - 5:00 PM' }, "Fri": { "time": '8:00 AM - 5:00 PM' }, "Sat": { "time": 'Closed' }, "Sun": { "time": 'Closed' } }
+  )
 
   puts 'Done with Businesses'
   # 10.times do
@@ -354,32 +349,53 @@ Business.create!(
 
     ],
     Safeway: [
-      { rating: 3, body: "I come to Safeway mainly because it is close to my house, but it's not my favorite grocery store. The selection is fine, but the prices are higher than other stores in the area. The produce section is hit or miss - sometimes things look great, but other times they're pretty picked over and sad looking. The staff is generally friendly and helpful, but I've had a few negative interactions in the past. Overall, it's an okay option if you're in a pinch, but I prefer other grocery stores." },
-      { rating: 2, body: "I'm not a fan of this Safeway. It always seems to be out of stock on items that I need and the layout of the store can be confusing. The produce section is decent, but the rest of the store is lacking. The staff is hit or miss - sometimes they're helpful, but other times they're not interested in helping at all. Parking can also be a nightmare, especially during peak hours. I'll only come here if I have to." },
-      { rating: 4, body: "I've been shopping at this Safeway for a few years now and it's generally been a good experience. The store is clean and well-organized and I can usually find what I need. The prices are reasonable and there are often good deals to be had. The staff is friendly and helpful and the checkout lines move quickly. My only complaint is that the parking lot can be crowded and difficult to navigate, especially on weekends." },
-      { rating: 5, body: "I love this Safeway! The selection is great and the prices are competitive. The store is always clean and well-stocked and the staff is friendly and helpful. I also appreciate that they have a good selection of organic and natural foods. The parking lot can get crowded, but I've never had too much trouble finding a spot. Overall, I highly recommend this Safeway." },
-      { rating: 3, body: "This Safeway is just okay. The selection is fine, but the prices can be a bit high. The staff is hit or miss - some are friendly and helpful, while others seem disinterested. Parking can also be a challenge during peak hours. Overall, it's an average grocery store that gets the job done." },
-      { rating: 1, body: "This Safeway is terrible. The produce is always sad looking and the prices are way too high. The store is poorly organized and the staff is unhelpful. I've had a few negative interactions with them in the past. The parking lot is also a nightmare - it's always crowded and difficult to navigate. I'll never shop here again." },
-      { rating: 4, body: "I'm a fan of this Safeway. The selection is good and the prices are reasonable. The staff is generally friendly and helpful, although there have been a few exceptions. The store is clean and well-organized and the checkout lines move quickly. Parking can be a bit of a challenge, but I've always been able to find a spot eventually." }
-      ],
-      The_Home_Depot: [
-        { rating: 5, body: "I always have a great experience shopping at The Home Depot. The staff is knowledgeable and helpful, and I can usually find everything I need for my projects. The prices are competitive and there are often good deals to be had. The store is clean and well-organized, and I appreciate that they have a wide selection of products. Overall, highly recommended!" },
-        { rating: 3, body: "The Home Depot is a decent home improvement store, but it's not my favorite. While the selection is good, the prices can be a bit high. The staff is generally friendly and helpful, although I've had a few negative interactions in the past. The store can also be crowded and difficult to navigate during peak hours. Overall, it's a decent option if you need home improvement supplies." },
-        { rating: 4, body: "I'm a fan of The Home Depot. The prices are reasonable and the selection is good. The staff is generally friendly and helpful, although I've had a few experiences where they weren't as knowledgeable as I would have liked. The store is clean and well-organized, and I appreciate that they offer classes and workshops for DIYers. The only downside is that the store can be crowded on weekends." },
-        { rating: 2, body: "I'm not a fan of The Home Depot. While they have a good selection of products, the prices are often higher than other home improvement stores in the area. The staff is hit or miss - sometimes they're helpful, but other times they seem disinterested. The store can also be difficult to navigate and it's often crowded. Overall, I prefer to shop elsewhere for my home improvement needs." },
-        { rating: 4, body: "I've had good experiences shopping at The Home Depot. The staff is generally friendly and knowledgeable, and the store is well-organized. The prices are reasonable and there are often good deals to be had. I appreciate that they offer a wide selection of products and that they have a rental center for larger tools. The only downside is that the store can be crowded on weekends." },
-        { rating: 5, body: "The Home Depot is my go-to for all my home improvement needs. The staff is knowledgeable and helpful, and the prices are competitive. The store is clean and well-organized, and I appreciate that they have a wide selection of products. I also like that they offer free workshops and classes for DIYers. Overall, highly recommended!" },
-        { rating: 3, body: "I have mixed feelings about The Home Depot. While the selection is good, the prices can be a bit high. The staff is hit or miss - sometimes they're helpful, but other times they seem disinterested. The store can also be crowded and difficult to navigate. However, I do appreciate that they offer free DIY workshops and classes. Overall, it's an average home improvement store." }
-        ],
-        Advanced_Plumbing: [
-          { rating: 4, body: "I had a great experience with Advanced Plumbing. The staff was knowledgeable and helpful, and they were able to quickly diagnose and fix the issue with my plumbing. The prices were reasonable and the work was done efficiently. Overall, I would definitely recommend them." },
-          { rating: 2, body: "I wasn't impressed with Advanced Plumbing. While they were able to fix the issue with my plumbing, the staff wasn't particularly friendly or helpful. The prices were also higher than I expected. Overall, it was an okay experience, but I don't think I would use them again." },
-          { rating: 5, body: "I highly recommend Advanced Plumbing. The staff was friendly and professional, and they were able to fix my plumbing issue quickly and efficiently. The prices were also very reasonable. Overall, a great experience." },
-          { rating: 4, body: "I had a positive experience with Advanced Plumbing. The staff was knowledgeable and able to fix the issue with my plumbing quickly. The prices were also reasonable. The only downside was that it took a little longer than I expected to schedule an appointment. Overall, I would recommend them." },
-          { rating: 3, body: "My experience with Advanced Plumbing was average. The staff was able to fix the issue with my plumbing, but they weren't particularly friendly or helpful. The prices were also a bit higher than I expected. Overall, it was an okay experience." },
-          { rating: 5, body: "I had a great experience with Advanced Plumbing. The staff was friendly and knowledgeable, and they were able to fix my plumbing issue quickly and efficiently. The prices were also very reasonable. I would definitely use them again in the future." },
-          { rating: 2, body: "I wasn't impressed with Advanced Plumbing. The staff was unfriendly and unhelpful, and the prices were higher than I expected. The work they did also didn't fully fix the issue with my plumbing. Overall, I wouldn't recommend them." }
-          ]
+      { rating: 3,
+        body: "I come to Safeway mainly because it is close to my house, but it's not my favorite grocery store. The selection is fine, but the prices are higher than other stores in the area. The produce section is hit or miss - sometimes things look great, but other times they're pretty picked over and sad looking. The staff is generally friendly and helpful, but I've had a few negative interactions in the past. Overall, it's an okay option if you're in a pinch, but I prefer other grocery stores." },
+      { rating: 2,
+        body: "I'm not a fan of this Safeway. It always seems to be out of stock on items that I need and the layout of the store can be confusing. The produce section is decent, but the rest of the store is lacking. The staff is hit or miss - sometimes they're helpful, but other times they're not interested in helping at all. Parking can also be a nightmare, especially during peak hours. I'll only come here if I have to." },
+      { rating: 4,
+        body: "I've been shopping at this Safeway for a few years now and it's generally been a good experience. The store is clean and well-organized and I can usually find what I need. The prices are reasonable and there are often good deals to be had. The staff is friendly and helpful and the checkout lines move quickly. My only complaint is that the parking lot can be crowded and difficult to navigate, especially on weekends." },
+      { rating: 5,
+        body: "I love this Safeway! The selection is great and the prices are competitive. The store is always clean and well-stocked and the staff is friendly and helpful. I also appreciate that they have a good selection of organic and natural foods. The parking lot can get crowded, but I've never had too much trouble finding a spot. Overall, I highly recommend this Safeway." },
+      { rating: 3,
+        body: "This Safeway is just okay. The selection is fine, but the prices can be a bit high. The staff is hit or miss - some are friendly and helpful, while others seem disinterested. Parking can also be a challenge during peak hours. Overall, it's an average grocery store that gets the job done." },
+      { rating: 1,
+        body: "This Safeway is terrible. The produce is always sad looking and the prices are way too high. The store is poorly organized and the staff is unhelpful. I've had a few negative interactions with them in the past. The parking lot is also a nightmare - it's always crowded and difficult to navigate. I'll never shop here again." },
+      { rating: 4,
+        body: "I'm a fan of this Safeway. The selection is good and the prices are reasonable. The staff is generally friendly and helpful, although there have been a few exceptions. The store is clean and well-organized and the checkout lines move quickly. Parking can be a bit of a challenge, but I've always been able to find a spot eventually." }
+    ],
+    The_Home_Depot: [
+      { rating: 5,
+        body: 'I always have a great experience shopping at The Home Depot. The staff is knowledgeable and helpful, and I can usually find everything I need for my projects. The prices are competitive and there are often good deals to be had. The store is clean and well-organized, and I appreciate that they have a wide selection of products. Overall, highly recommended!' },
+      { rating: 3,
+        body: "The Home Depot is a decent home improvement store, but it's not my favorite. While the selection is good, the prices can be a bit high. The staff is generally friendly and helpful, although I've had a few negative interactions in the past. The store can also be crowded and difficult to navigate during peak hours. Overall, it's a decent option if you need home improvement supplies." },
+      { rating: 4,
+        body: "I'm a fan of The Home Depot. The prices are reasonable and the selection is good. The staff is generally friendly and helpful, although I've had a few experiences where they weren't as knowledgeable as I would have liked. The store is clean and well-organized, and I appreciate that they offer classes and workshops for DIYers. The only downside is that the store can be crowded on weekends." },
+      { rating: 2,
+        body: "I'm not a fan of The Home Depot. While they have a good selection of products, the prices are often higher than other home improvement stores in the area. The staff is hit or miss - sometimes they're helpful, but other times they seem disinterested. The store can also be difficult to navigate and it's often crowded. Overall, I prefer to shop elsewhere for my home improvement needs." },
+      { rating: 4,
+        body: "I've had good experiences shopping at The Home Depot. The staff is generally friendly and knowledgeable, and the store is well-organized. The prices are reasonable and there are often good deals to be had. I appreciate that they offer a wide selection of products and that they have a rental center for larger tools. The only downside is that the store can be crowded on weekends." },
+      { rating: 5,
+        body: 'The Home Depot is my go-to for all my home improvement needs. The staff is knowledgeable and helpful, and the prices are competitive. The store is clean and well-organized, and I appreciate that they have a wide selection of products. I also like that they offer free workshops and classes for DIYers. Overall, highly recommended!' },
+      { rating: 3,
+        body: "I have mixed feelings about The Home Depot. While the selection is good, the prices can be a bit high. The staff is hit or miss - sometimes they're helpful, but other times they seem disinterested. The store can also be crowded and difficult to navigate. However, I do appreciate that they offer free DIY workshops and classes. Overall, it's an average home improvement store." }
+    ],
+    Advanced_Plumbing: [
+      { rating: 4,
+        body: 'I had a great experience with Advanced Plumbing. The staff was knowledgeable and helpful, and they were able to quickly diagnose and fix the issue with my plumbing. The prices were reasonable and the work was done efficiently. Overall, I would definitely recommend them.' },
+      { rating: 2,
+        body: "I wasn't impressed with Advanced Plumbing. While they were able to fix the issue with my plumbing, the staff wasn't particularly friendly or helpful. The prices were also higher than I expected. Overall, it was an okay experience, but I don't think I would use them again." },
+      { rating: 5,
+        body: 'I highly recommend Advanced Plumbing. The staff was friendly and professional, and they were able to fix my plumbing issue quickly and efficiently. The prices were also very reasonable. Overall, a great experience.' },
+      { rating: 4,
+        body: 'I had a positive experience with Advanced Plumbing. The staff was knowledgeable and able to fix the issue with my plumbing quickly. The prices were also reasonable. The only downside was that it took a little longer than I expected to schedule an appointment. Overall, I would recommend them.' },
+      { rating: 3,
+        body: "My experience with Advanced Plumbing was average. The staff was able to fix the issue with my plumbing, but they weren't particularly friendly or helpful. The prices were also a bit higher than I expected. Overall, it was an okay experience." },
+      { rating: 5,
+        body: 'I had a great experience with Advanced Plumbing. The staff was friendly and knowledgeable, and they were able to fix my plumbing issue quickly and efficiently. The prices were also very reasonable. I would definitely use them again in the future.' },
+      { rating: 2,
+        body: "I wasn't impressed with Advanced Plumbing. The staff was unfriendly and unhelpful, and the prices were higher than I expected. The work they did also didn't fully fix the issue with my plumbing. Overall, I wouldn't recommend them." }
+    ]
 
   }
   puts 'writing reviews....'
@@ -402,7 +418,6 @@ end
 puts 'Done!'
 
 puts 'attaching photos....'
-
 def preprocessName(name)
   modName = name.gsub(' ', '_')
   modName.gsub("'", '__')
@@ -413,12 +428,19 @@ Business.all.each do |bus|
   (1..5).each do |i|
     next unless business.images
 
-    business.images.attach(
-      io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/#{preprocessName(business.name)}_a#{i}.jpeg"),
-      filename: "#{preprocessName(business.name)}_a#{i}.jpeg"
-    )
+    begin
+      business.images.attach(
+        io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/#{preprocessName(business.name)}_a#{i}.jpeg"),
+        filename: "#{preprocessName(business.name)}_a#{i}.jpeg"
+      )
+      puts "Attached photo for #{business.name} (#{i})"
+    rescue StandardError => e
+      puts "Error attaching photo for #{business.name} (#{i}): #{e.message}"
+    end
   end
 end
+
+puts 'Done!'
 
 puts 'Done!'
 
@@ -491,8 +513,6 @@ puts 'Done with creating tags'
 #   ['Asian Box', 'Asian Cuisine'],
 #   ['Advanced Plumbing', 'Plumbing Services'],
 #   ['Advanced Plumbing', 'Services']
-
-
 
 # ]
 
