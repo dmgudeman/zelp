@@ -442,33 +442,33 @@ end
 
 puts 'Done!'
 
-puts 'Done!'
 
-puts 'creating tags...'
 
-tags = [
-  'Appliances',
-  'Gardening',
-  'Grocery',
-  'Hardware',
-  'Lawn Service',
-  'Lumber',
-  'Plumbing Services',
-  'Plumbing Supplies',
-  'Restaurant',
-  'Furnishings',
-  'Italian Cuisine',
-  'Asian Cuisine',
-  'Services'
-]
+# puts 'creating tags...'
 
-tags.each do |tag|
-  Tag.create!(
-    tag:
-  )
-end
+# tags = [
+#   'Appliances',
+#   'Gardening',
+#   'Grocery',
+#   'Hardware',
+#   'Lawn Service',
+#   'Lumber',
+#   'Plumbing Services',
+#   'Plumbing Supplies',
+#   'Restaurant',
+#   'Furnishings',
+#   'Italian Cuisine',
+#   'Asian Cuisine',
+#   'Services'
+# ]
 
-puts 'Done with creating tags'
+# tags.each do |tag|
+#   Tag.create!(
+#     tag:
+#   )
+# end
+
+# puts 'Done with creating tags'
 
 # puts 'attaching tags'
 
