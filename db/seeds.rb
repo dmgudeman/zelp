@@ -448,56 +448,56 @@ end
 
 puts 'Done with creating tags'
 
-puts 'attaching tags'
+# puts 'attaching tags'
 
-# bus = Business.find_by(name: 'Sprouts')
-# tag = Tag.find_by(tag: 'Grocery')
+# # bus = Business.find_by(name: 'Sprouts')
+# # tag = Tag.find_by(tag: 'Grocery')
 
-# BusinessTag.create!(
-#   business_id: bus.id,
-#   tag_id: tag.id
-# )
+# # BusinessTag.create!(
+# #   business_id: bus.id,
+# #   tag_id: tag.id
+# # )
 
-def attachTag(data)
-  bus = Business.find_by(name: data[0])
-  tag = Tag.find_by(tag: data[1])
-  BusinessTag.create!(
-    business_id: bus.id,
-    tag_id: tag.id
-  )
-end
+# def attachTag(data)
+#   bus = Business.find_by(name: data[0])
+#   tag = Tag.find_by(tag: data[1])
+#   BusinessTag.create!(
+#     business_id: bus.id,
+#     tag_id: tag.id
+#   )
+# end
 
-allTags = [
-  ['Sprouts', 'Grocery'],
-  ['Trader Joe\'s', 'Grocery'],
-  ['Lucky', 'Grocery'],
-  ['Safeway', 'Grocery'],
-  ['Nijiya Market', 'Grocery'],
-  ['The Home Depot', 'Lumber'],
-  ['The Home Depot', 'Appliances'],
-  ['The Home Depot', 'Gardening'],
-  ['The Home Depot', 'Plumbing Supplies'],
-  ['The Home Depot', 'Hardware'],
-  ['Lowes', 'Lumber'],
-  ['Lowes', 'Appliances'],
-  ['Lowes', 'Gardening'],
-  ['Lowes', 'Plumbing Supplies'],
-  ['Lowes', 'Hardware'],
-  ['Restoration Hardware', 'Furnishings'],
-  ['Restoration Hardware', 'Hardware'],
-  ['Olive Garden', 'Restaurant'],
-  ['Olive Garden', 'Italian Cuisine'],
-  ['Asian Box', 'Restaurant'],
-  ['Asian Box', 'Asian Cuisine'],
-  ['Advanced Plumbing', 'Plumbing Services'],
-  ['Advanced Plumbing', 'Services']
+# allTags = [
+#   ['Sprouts', 'Grocery'],
+#   ['Trader Joe\'s', 'Grocery'],
+#   ['Lucky', 'Grocery'],
+#   ['Safeway', 'Grocery'],
+#   ['Nijiya Market', 'Grocery'],
+#   ['The Home Depot', 'Lumber'],
+#   ['The Home Depot', 'Appliances'],
+#   ['The Home Depot', 'Gardening'],
+#   ['The Home Depot', 'Plumbing Supplies'],
+#   ['The Home Depot', 'Hardware'],
+#   ['Lowes', 'Lumber'],
+#   ['Lowes', 'Appliances'],
+#   ['Lowes', 'Gardening'],
+#   ['Lowes', 'Plumbing Supplies'],
+#   ['Lowes', 'Hardware'],
+#   ['Restoration Hardware', 'Furnishings'],
+#   ['Restoration Hardware', 'Hardware'],
+#   ['Olive Garden', 'Restaurant'],
+#   ['Olive Garden', 'Italian Cuisine'],
+#   ['Asian Box', 'Restaurant'],
+#   ['Asian Box', 'Asian Cuisine'],
+#   ['Advanced Plumbing', 'Plumbing Services'],
+#   ['Advanced Plumbing', 'Services']
 
 
 
-]
+# ]
 
-allTags.each do |data|
-  attachTag(data)
-end
+# allTags.each do |data|
+#   attachTag(data)
+# end
 
-puts 'Done attaching tags'
+# puts 'Done attaching tags'
