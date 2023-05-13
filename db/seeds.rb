@@ -442,8 +442,6 @@ end
 
 puts 'Done!'
 
-
-
 puts 'creating tags...'
 
 tags = [
@@ -463,19 +461,15 @@ tags = [
 ]
 
 tags.each do |tag_name|
-  begin
-    Tag.create!(tag: tag_name)
-  rescue StandardError => e
-    puts "Error creating tag: #{tag_name}"
-    puts e.message
-  end
+  Tag.create!(tag: tag_name)
+rescue StandardError => e
+  puts "Error creating tag: #{tag_name}"
+  puts e.message
 end
-
-
 
 puts 'Done with creating tags'
 
-# puts 'attaching tags'
+puts 'attaching tags'
 
 # # bus = Business.find_by(name: 'Sprouts')
 # # tag = Tag.find_by(tag: 'Grocery')
@@ -484,45 +478,55 @@ puts 'Done with creating tags'
 # #   business_id: bus.id,
 # #   tag_id: tag.id
 # # )
+def attach_tag(data)
+  bus = Business.find_by(name: data[0])
+  tag = Tag.find_by(tag: data[1])
 
-# def attachTag(data)
-#   bus = Business.find_by(name: data[0])
-#   tag = Tag.find_by(tag: data[1])
-#   BusinessTag.create!(
-#     business_id: bus.id,
-#     tag_id: tag.id
-#   )
-# end
+  if bus.nil? || tag.nil?
+    puts "Error: Failed to find business or tag for #{data[0]} - #{data[1]}"
+    return
+  end
 
-# allTags = [
-#   ['Sprouts', 'Grocery'],
-#   ['Trader Joe\'s', 'Grocery'],
-#   ['Lucky', 'Grocery'],
-#   ['Safeway', 'Grocery'],
-#   ['Nijiya Market', 'Grocery'],
-#   ['The Home Depot', 'Lumber'],
-#   ['The Home Depot', 'Appliances'],
-#   ['The Home Depot', 'Gardening'],
-#   ['The Home Depot', 'Plumbing Supplies'],
-#   ['The Home Depot', 'Hardware'],
-#   ['Lowes', 'Lumber'],
-#   ['Lowes', 'Appliances'],
-#   ['Lowes', 'Gardening'],
-#   ['Lowes', 'Plumbing Supplies'],
-#   ['Lowes', 'Hardware'],
-#   ['Restoration Hardware', 'Furnishings'],
-#   ['Restoration Hardware', 'Hardware'],
-#   ['Olive Garden', 'Restaurant'],
-#   ['Olive Garden', 'Italian Cuisine'],
-#   ['Asian Box', 'Restaurant'],
-#   ['Asian Box', 'Asian Cuisine'],
-#   ['Advanced Plumbing', 'Plumbing Services'],
-#   ['Advanced Plumbing', 'Services']
+  begin
+    BusinessTag.create!(
+      business_id: bus.id,
+      tag_id: tag.id
+    )
+    puts "BusinessTag created for #{bus.name} - #{tag.tag}"
+  rescue StandardError => e
+    puts "Error: Failed to create BusinessTag - #{e.message}"
+  end
+end
 
-# ]
+all_tags = [
+  ['Sprouts', 'Grocery'],
+  ['Trader Joe\'s', 'Grocery'],
+  ['Lucky', 'Grocery'],
+  ['Safeway', 'Grocery'],
+  ['Nijiya Market', 'Grocery'],
+  ['The Home Depot', 'Lumber'],
+  ['The Home Depot', 'Appliances'],
+  ['The Home Depot', 'Gardening'],
+  ['The Home Depot', 'Plumbing Supplies'],
+  ['The Home Depot', 'Hardware'],
+  ['Lowes', 'Lumber'],
+  ['Lowes', 'Appliances'],
+  ['Lowes', 'Gardening'],
+  ['Lowes', 'Plumbing Supplies'],
+  ['Lowes', 'Hardware'],
+  ['Restoration Hardware', 'Furnishings'],
+  ['Restoration Hardware', 'Hardware'],
+  ['Olive Garden', 'Restaurant'],
+  ['Olive Garden', 'Italian Cuisine'],
+  ['Asian Box', 'Restaurant'],
+  ['Asian Box', 'Asian Cuisine'],
+  ['Advanced Plumbing', 'Plumbing Services'],
+  ['Advanced Plumbing', 'Services']
 
-# allTags.each do |data|
-#   attachTag(data)
-# end
+]
 
-# puts 'Done attaching tags'
+all_tags.each do |data|
+  attach_tag(data)
+end
+
+puts 'Done attaching tags'
