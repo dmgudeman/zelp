@@ -444,31 +444,36 @@ puts 'Done!'
 
 
 
-# puts 'creating tags...'
+puts 'creating tags...'
 
-# tags = [
-#   'Appliances',
-#   'Gardening',
-#   'Grocery',
-#   'Hardware',
-#   'Lawn Service',
-#   'Lumber',
-#   'Plumbing Services',
-#   'Plumbing Supplies',
-#   'Restaurant',
-#   'Furnishings',
-#   'Italian Cuisine',
-#   'Asian Cuisine',
-#   'Services'
-# ]
+tags = [
+  'Appliances',
+  'Gardening',
+  'Grocery',
+  'Hardware',
+  'Lawn Service',
+  'Lumber',
+  'Plumbing Services',
+  'Plumbing Supplies',
+  'Restaurant',
+  'Furnishings',
+  'Italian Cuisine',
+  'Asian Cuisine',
+  'Services'
+]
 
-# tags.each do |tag|
-#   Tag.create!(
-#     tag:
-#   )
-# end
+tags.each do |tag_name|
+  begin
+    Tag.create!(tag: tag_name)
+  rescue StandardError => e
+    puts "Error creating tag: #{tag_name}"
+    puts e.message
+  end
+end
 
-# puts 'Done with creating tags'
+
+
+puts 'Done with creating tags'
 
 # puts 'attaching tags'
 
