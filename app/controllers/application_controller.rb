@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
   rescue_from StandardError, with: :unhandled_error
   rescue_from ActionController::InvalidAuthenticityToken, with: :invalid_authenticity_token
 
+
   # def test
   #   if params.has_key?(:login)
   #      login!(User.first)
@@ -12,7 +13,7 @@ class ApplicationController < ActionController::API
   #   elsif params.has_key?(:logout)
   #     logout!
   #   end
-  
+
   #   if current_user
   #     render json: { user: current_user.slice('id', 'username', 'session_token') }
   #   else
@@ -55,6 +56,7 @@ class ApplicationController < ActionController::API
     render json: { message: 'Invalid authenticity token' },
            status: :unprocessable_entity
   end
+
 
   def unhandled_error(error)
     raise error if request.accepts.first.html?

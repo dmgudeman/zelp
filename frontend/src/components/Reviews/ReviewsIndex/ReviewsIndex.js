@@ -20,8 +20,10 @@ const ReviewsIndex = ({ business }) => {
 
     const editHandler =(reviewId) => {
        console.log('rrreeevvviiieewwwId',reviewId)
-        // history.push(`./reviewEdit/${reviewId}`)
-        dispatch(editReview(reviewId))
+       
+ 
+        
+         history.push(`/reviewEdit/${reviewId}`)
         // dispatch(fetchReviewsByBusiness(business.id))
     }
 

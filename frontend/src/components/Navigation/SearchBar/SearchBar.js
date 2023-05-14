@@ -58,12 +58,9 @@ const SearchBar = (props) => {
         }
     }, [dispatch, history, isSearchDataUpdated, searchData]);
 
-  
-
       const handleSearchBarClick = () => {
         store.dispatch(showModal('LOGIN'));
       }
-
     const filterTags = () => {
         return tags.filter((tag) => {
             return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());

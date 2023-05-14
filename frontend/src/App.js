@@ -43,7 +43,7 @@ function App() {
                 />
                  <PrivateRoute
                     path="/reviewEdit/:reviewId"
-                    component={ReviewNew}
+                    component={ReviewEdit}
                     isLoggedIn={isLoggedIn}
                 />
                 <Route path="/jupon" component={Jupon} />
