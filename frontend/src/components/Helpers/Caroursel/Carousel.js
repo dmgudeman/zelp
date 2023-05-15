@@ -13,19 +13,23 @@ const Carousel = () => {
 
     const images = [Splash1, car2, car3, car4, car5];
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setFadeIn(false);
-            setTimeout(() => {
-                setCurrentImage(
-                    currentImage === images.length - 1 ? 0 : currentImage + 1
-                );
+    const startInterval = () => {
+       return setInterval(() => {
+        setFadeIn(false);
+        setTimeout(() => {
+            setCurrentImage(
+                currentImage === images.length - 1 ? 0 : currentImage + 1
+            );
 
-                setFadeIn(true);
-            }, 300);
-        }, 1000);
+            setFadeIn(true);
+        }, 300);
+    }, 1000);
+    }
+
+    useEffect(() => {
+        const interval = startInterval();
         return () => clearInterval(interval);
-    }, [currentImage]);
+    }, []);
 
     return (
         <div className="slider">
