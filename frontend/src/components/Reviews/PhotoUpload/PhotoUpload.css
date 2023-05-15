@@ -9,9 +9,7 @@
 }
 .form-photo-upload {
     display: flex;
-    
     height: max(200px, 30%);
-    /* background-color: aquamarine; */
     padding: 20px;
     border: blue 1px solid;
     border-radius: 15px;
