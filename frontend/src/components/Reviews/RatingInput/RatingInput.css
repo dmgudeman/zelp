@@ -13,6 +13,14 @@
     
     
 }
+.colored-in {
+  color: var(--two)
+
+}
+
+.not-colored-in {
+ color: gray;
+}
 
 #ratingContainer input[type="radio"] {
   display: none;

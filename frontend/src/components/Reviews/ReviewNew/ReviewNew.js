@@ -21,7 +21,13 @@ const ReviewNew = (props) => {
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
     const [rating, setRating] = useState(0);
+    const [photoFile, setPhotoFile] = useState(null);
+    const [photoUrl, setPhotoUrl] = useState(null);
+    // const [photoUrl, setPhotoUrl] = useState('');
     const flag = formData.get("review[body]");
+    let preview = null;
+    if (photoUrl) preview = <img src={photoUrl} alt="" />;
+ 
 
     useEffect(() => {
         setUserId(sessionUser.id);
@@ -39,18 +45,40 @@ const ReviewNew = (props) => {
         if (name === "body") setBody(value);
     };
 
+    // const handleFile = ({ currentTarget }) => {
+    //     const file = currentTarget.files[0];
+    //     formData.append("review[photo]", file);
+    //     setFormData(formData);
+    // };
     const handleFile = ({ currentTarget }) => {
+        console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
         const file = currentTarget.files[0];
-        formData.append("review[photo]", file);
-        setFormData(formData);
-    };
 
+        console.log('FIIILLLEEE', file)
+        setPhotoFile(file);
+        if (file) {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = () => setPhotoUrl(fileReader.result);
+          }
+        
+        else setPhotoUrl(null);
+      }
+    const handleMouseOver = e => {
+        e.preventDefault();
+        console.log('KKKKKKKK', e.target.value)
+    }
     const submitHandler = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        // formData.set("review[author_id]", +sessionUser.id);
-        // formData.set("review[business_id]", +busId);
+        formData.set("review[author_id]", +sessionUser.id);
+        formData.set("review[business_id]", +busId);
+        formData.set("review[body]", body);
         formData.set("review[rating]", +rating);
+        if (photoFile) {
+            formData.append('post[photo]', photoFile);
+          }
+        
         // for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
         //   }
@@ -99,11 +127,13 @@ const ReviewNew = (props) => {
                             <h2>First a rating</h2>
                         )}
 
-                       
+                
                             <PhotoUpload
                                 name="photo"
-                                value={formData.photo}
-                                handleChange={handleFile}
+                                value={photo}
+                                handleFile={handleFile}
+                                preview='preview'
+                                
                             />
                       
                         <ReviewNewSubmit submitHandler={submitHandler} />

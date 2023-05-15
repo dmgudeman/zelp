@@ -64,3 +64,12 @@
     
 }
 
+#photoRatingCell {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+
+    /* padding-left: 10px; */
+    background-color: aquamarine;
+}

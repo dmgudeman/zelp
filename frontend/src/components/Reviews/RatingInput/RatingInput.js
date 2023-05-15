@@ -1,6 +1,7 @@
 import "./RatingInput.css";
 
-const RatingInput = ({ rating, name, value, handleChange }) => {
+const RatingInput = ({ name, rating, handleChange }) => {
+  
     return (
         <div id="ratingContainer" className="rating-input">
             <label

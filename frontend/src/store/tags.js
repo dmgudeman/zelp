@@ -14,14 +14,12 @@ export const getTags = (state) => {
 
 export const fetchTags = () => async (dispatch) => {
     const res = await csrfFetch("/api/tags");
-    console.log("in fetchTagsssssssssssss", res);
 
     const data = await res.json();
     dispatch(receiveTags(data));
 };
 
 const tagsReducer = (state = {}, action) => {
-    console.log("in tagsReducer action.type", action.type);
     switch (action.type) {
         case RECEIVE_TAGS:
             return { ...state, ...action.tags };

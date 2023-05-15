@@ -1,6 +1,7 @@
 import "./PhotoUpload.css";
 
 const PhotoUpload = ({ name, value, handleChange }) => {
+   
     return (
         <div id="uploadContainer">
             <h3 className="title">Attach Photos</h3>

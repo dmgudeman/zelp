@@ -28,6 +28,16 @@ export const getReview = (reviewId) => (state) => {
     return state.reviews ? state.reviews[reviewId] : {};
 };
 
+export const fetchReview = (reviewId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${reviewId}`);
+    const data = await res.json();
+    if (res.ok) {
+        dispatch(receiveReview(data));
+        return data;
+    } else {
+        console.error("error in saving review");
+    }
+};
 export const getReviews = (state) => {
     return state.reviews ? Object.values(state.reviews) : [];
 };
@@ -56,16 +66,6 @@ export const fetchReviewsByBusiness = (busId) => async (dispatch) => {
     }
 };
 
-export const fetchReview = (reviewId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/reviews/${reviewId}`);
-    const data = await res.json();
-    if (res.ok) {
-        dispatch(receiveReview(data));
-        return res;
-    } else {
-        console.error("error in saving review");
-    }
-};
 
 export const createReview = (review) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews`, {
@@ -128,7 +128,8 @@ const reviewsReducer = (state = {}, action) => {
         case RECEIVE_REVIEWS:
             return { ...action.reviews };
         case RECEIVE_REVIEW:
-            return { ...state, [action.review.id]: action.review };
+            console.log('ACTION', action)
+            return { ...state, [action.review.id]: action.review};
         case RECEIVE_BUSINESS:
             return { ...action.business.reviews };
         case REMOVE_REVIEW:
