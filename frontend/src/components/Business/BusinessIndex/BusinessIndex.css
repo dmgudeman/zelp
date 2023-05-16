@@ -16,10 +16,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: min(500px, 50%);
+    height: max(800px, 50%);
     /* z-index:20; */
      /* background-color: red; */
     background-color: transparent;
+    margin-top: 75px;
 }
 
 /* #businessFrontContainer {
