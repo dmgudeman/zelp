@@ -4,8 +4,7 @@
     flex-direction: row;
     height: 400px;
     width: 100vw;
-    /* background-color: var(--one); */
-    background-color: rgba(80, 156, 175, 0.3);
+    background-color: var(--four);
 }
 
 #BSDLgutter{

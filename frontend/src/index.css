@@ -9,6 +9,7 @@ body {
     --one: #509CAF;
     --two: #506CAF;
     --three: #50AF93;
+    --four: rgba(80, 156, 175, 0.3);
     --bh: 35px;
     --nbh: 75px;
 }
@@ -45,6 +46,7 @@ body {
     font-weight:bolder;
     transition: all 0.3s;
     cursor:pointer;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
 } 
 
 .blueButton:hover { 
