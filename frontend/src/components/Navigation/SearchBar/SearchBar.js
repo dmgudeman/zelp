@@ -8,16 +8,15 @@ import {
 } from "../../../store/businesses";
 import { fetchTags, getTags } from "../../../store/tags";
 
-import { showModal, hideModal } from '../../../store/ui';
+import { showModal, hideModal } from "../../../store/ui";
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
 import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
 import SearchBarButton from "./SearchBarButton/SearchBarButton";
-import store from '../../../store';
+import store from "../../../store";
 
-import Modal from '../../Modal/Modal';
-import LoginForm from '../../Auth/LoginForm/LoginForm';
-
+import Modal from "../../Modal/Modal";
+import LoginForm from "../../Auth/LoginForm/LoginForm";
 
 import "./SearchBar.css";
 
@@ -58,9 +57,9 @@ const SearchBar = (props) => {
         }
     }, [dispatch, history, isSearchDataUpdated, searchData]);
 
-      const handleSearchBarClick = () => {
-        store.dispatch(showModal('LOGIN'));
-      }
+    const handleSearchBarClick = () => {
+        store.dispatch(showModal("LOGIN"));
+    };
     const filterTags = () => {
         return tags.filter((tag) => {
             return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
@@ -86,7 +85,7 @@ const SearchBar = (props) => {
             setSelectTag(null);
         }
         if (name === "bus") {
-            dispatch(fetchBusinessesSearch(searchData))
+            dispatch(fetchBusinessesSearch(searchData));
             setHideBusList(false);
             setSelectBus(null);
         }
@@ -130,7 +129,7 @@ const SearchBar = (props) => {
         setIsSearchDataUpdated(true);
 
         dispatch(fetchBusinessesSearch(searchData)).then(() => {
-            history.push("./businesses");
+            history.push("/businesses");
         });
     };
 
@@ -141,7 +140,6 @@ const SearchBar = (props) => {
 
     return (
         <>
-            
             <div id="containerSB">
                 <form id="formSB">
                     <SearchBarTag
@@ -155,7 +153,7 @@ const SearchBar = (props) => {
                     />
 
                     <SearchBarBus
-                       className="inputSB"
+                        className="inputSB"
                         businesses={businesses}
                         searchData={searchData}
                         selectBus={selectBus}
@@ -173,12 +171,11 @@ const SearchBar = (props) => {
                     {/* <SearchBarButton 
                     className="inputSB"
                     handleSearchSubmit={handleSearchSubmit}/> */}
-                      <div className="searchButton" onClick={handleSearchSubmit}>
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                </div>
-                    
+                    <div className="searchButton" onClick={handleSearchSubmit}>
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
                     {/* <input type="text" placeholder="Search..." onClick={handleSearchBarClick} /> */}
-                    
                 </form>
             </div>
         </>
@@ -186,9 +183,8 @@ const SearchBar = (props) => {
 };
 export default SearchBar;
 
-
 // const mapDispatchToProps = (dispatch) => ({
 //     dispatchShowModal: (modalType, modalProps) => dispatch(showModal(modalType, modalProps)),
 //   });
-  
+
 //   export default connect(null, mapDispatchToProps)(SearchBar);

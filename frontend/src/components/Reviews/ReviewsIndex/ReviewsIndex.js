@@ -19,8 +19,7 @@ const ReviewsIndex = ({ business }) => {
     }
 
     const editHandler =(reviewId) => {
-       console.log('rrreeevvviiieewwwId',reviewId)
-       
+      
  
         
          history.push(`/reviewEdit/${reviewId}`)
@@ -41,7 +40,7 @@ const ReviewsIndex = ({ business }) => {
            <div id="containerRI">
            <div className="buttons marginTop">
                             <Link to={`/reviewNew/${business.id}`}>
-                                <button className="blue-button">
+                                <button className="blueButton ">
                                     {/* <i className="fa-regular fa-star"></i>  */}
                                     Leave your opinions, and optional photo(s)
                                 </button>
