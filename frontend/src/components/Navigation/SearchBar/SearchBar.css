@@ -154,11 +154,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 40px;
+    height: var(--bh);
+    width: 120px;
     background-color: var(--two);
     color: white;
-    border-radius: 0px 7px 7px 0px;
+    border-radius: 0px 6px 6px 0px;
 }
 
 .SBInputWrap {

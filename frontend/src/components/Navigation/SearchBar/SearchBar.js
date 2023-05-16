@@ -171,7 +171,7 @@ const SearchBar = (props) => {
                     {/* <SearchBarButton 
                     className="inputSB"
                     handleSearchSubmit={handleSearchSubmit}/> */}
-                    <div className="searchButton" onClick={handleSearchSubmit}>
+                    <div className="blueButton searchButton" onClick={handleSearchSubmit}>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
 
