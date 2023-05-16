@@ -14,6 +14,9 @@ This is a full CRUD app with capabilities to read, write, update and delete revi
 reviews can have custom images of your choice attached.  This functionality utilizes
 the AWS S3 service to provide access to the images.  
 
+Full user authorization functionality, with communication to the user of missing data, 
+is implemented. Demo User button is to facilitate showing the site.
+
 The app integrates the Google Maps api and shows the location of the business with a 
 custom pointer on the business show page. 
 
