@@ -38,6 +38,18 @@ body {
         color: var(--two);
         background-color: white;  
 }
+.blueTitleBig {
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 400px;
+  font-size: 35px;
+  font-weight: bolder;
+  color: var(--two);
+  background-color: white;  
+}
 
  .blueButton {
     /* margin-left: 25px; */

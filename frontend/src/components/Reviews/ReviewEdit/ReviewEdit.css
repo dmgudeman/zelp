@@ -6,6 +6,14 @@
     /* background-color: blue; */
    
 }
+.test {
+    width:100%;
+    height: 150px;
+    background-color: aqua;
+    margin-top: 75px;
+
+
+}
 
 #leftGutter {
     display: flex;
@@ -65,4 +73,13 @@
     justify-content: center;
     align-items: center;
     width: 130px;
+}
+
+.ratingReview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reviewButton {
+    width: 250px;
 }

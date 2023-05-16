@@ -137,7 +137,10 @@ const ReviewEdit = (props) => {
             <div id="newReviewContainer">
                 <div id="leftGutter"></div>
                 <div id="center">
+               
                     <form id="reviewForm">
+                    <h2 className="blueTitleBig">Edit Your Review</h2>
+                       <div className="ratingReview">
                         <RatingInput
                             id="ratingReview"
                             name="rating"
@@ -145,8 +148,9 @@ const ReviewEdit = (props) => {
                             setRating={setRating}
                             handleChange={handleChange}
                         />
+                        </div>
                        <div className="reviewInput">
-                        <div className="blueTitle">Edit Your Review</div>
+                      
                         <ReviewNewForm
                             name="body"
                             value={body}
@@ -166,8 +170,9 @@ const ReviewEdit = (props) => {
                             setPhotoUrl={setPhotoUrl}
                             handleChange={handleFile}
                         />
-
+                        <div className="reviewButton">
                         <ReviewNewSubmit submitHandler={submitHandler} />
+                        </div>
                     </form>
                 </div>
                 <div id="rightGutter"></div>
