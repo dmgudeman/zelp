@@ -12,6 +12,8 @@
     height: var(--nbh);  
     background-color: var(--one); 
     z-index: 10;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+    
     
 }
 

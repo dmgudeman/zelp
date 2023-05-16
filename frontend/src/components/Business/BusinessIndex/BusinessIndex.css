@@ -4,7 +4,7 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    background-color: black;
+    /* background-color: black; */
     background-color: transparent;
    
     overflow-y: scroll;
@@ -126,7 +126,9 @@
 }
 
 .greenText {
-    color:var(--three)
+    color:var(--three);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+   
 }
 
 

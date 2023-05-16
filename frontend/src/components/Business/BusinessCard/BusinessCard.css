@@ -6,8 +6,8 @@
     /* height: max(50%, 120px); */
     height: 120px; 
     margin: 20px;
-    border: solid 2px transparent;
     border-radius: 7px;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
    
 
      /* width:400px; */
@@ -30,7 +30,7 @@
 #busPic {
     width:100%;
     height: 100%;
-    border: 1px solid transparent;
+    border: 1px solid;
     border-radius: 14px 0px 0px 14px;
 }
 

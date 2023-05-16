@@ -12,4 +12,5 @@
     /* background-color: #efe9b8; */
     /* background-color: rgba(92,185,255, 0.4);   */
     background-color: var(--three);
+    box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
 }
