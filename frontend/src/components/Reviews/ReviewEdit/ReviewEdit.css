@@ -54,18 +54,14 @@
     font-size: 12pt;
     font-style: italic;
     color:var(--two);
-  
 }
 
 #rightGutter {
     display: flex;
-    width: max(700px, 100%);
-    /* background-color: pink; */
-    
+    width: max(700px, 100%); 
 }
 
 #photoRatingCell {
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     width: 130px;
