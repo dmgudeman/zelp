@@ -4,7 +4,7 @@ import DisplayRating from "../RatingDisplay/RatingDisplay";
 
 const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
     const { body, photoUrl, rating, businessId } = { ...review };
-    const [truncBody, setTruncBody] = useState(body.substring(0, 100) + "...");
+    const [truncBody, setTruncBody] = useState(body.substring(0, 80) + "...");
     const [cardTotal, setCardTotal] = useState(6);
 
     return (

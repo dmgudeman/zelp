@@ -14,11 +14,12 @@
 #bodyCell {
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
+    justify-content: start;
+    align-items: space-between;
     width: 100%;
     padding-left: 20px;
     padding-top: 10px;
+   
 }
 
 #photoRatingCell {
@@ -53,7 +54,11 @@
 
 
 #truncWidth {
-    width: 90%;
+    box-sizing: border-box;
+    width: 225px;
+    word-wrap: break-word;
+   
+      
 }
 .miniButtonContainer {
     display: flex;
