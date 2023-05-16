@@ -31,7 +31,7 @@ const BusinessShow = (props) => {
 
     return (
         <> 
-        <NavBar showFlag={true} />
+        <NavBar className="navIndexBackground" showFlag={true} />
             <div id="businessShowContainer">
             
                

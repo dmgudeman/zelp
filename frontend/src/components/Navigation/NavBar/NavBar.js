@@ -10,7 +10,7 @@ const NavBar = ({ showFlag }) => {
     switch (showFlag) {
         case true:
             return (content = (
-                <div class="navContainer">
+                <div className="navContainer">
                     <NavLogo />
 
                     <SearchBar />
@@ -20,13 +20,13 @@ const NavBar = ({ showFlag }) => {
             ));
         case false:
             return (content = (
-                <div class="navContainer">
+                <div className="navContainer">
                     <NavLogo />
                 </div>
             ));
         case "index":
             return (content = (
-                <div class="navContainer" className="index">
+                <div className="index navContainer">
                     <NavLogo />
 
                     <SearchBar />

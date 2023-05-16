@@ -11,6 +11,9 @@
     /* background-color: blue; */
 }
 
+.navBackground {
+    background-color: var(--three);
+}
 
 
 #heroContainer{
