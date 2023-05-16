@@ -11,6 +11,15 @@
     border-radius: 15px;
     margin: 20px;
 }
+#bodyCell {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 10px;
+}
 
 #photoRatingCell {
     /* display: flex; */
@@ -42,15 +51,15 @@
   }
 
 
-#bodyCell {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: start;
-    width: 100%;
-    padding-left: 20px;
-    padding-top: 10px;
-}
+
 #truncWidth {
     width: 90%;
+}
+.miniButtonContainer {
+    display: flex;
+
+}
+.miniButton {
+    margin-right: 7px;
+    margin-top: 10px;
 }
