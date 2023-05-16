@@ -20,6 +20,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def update
+   
     @review = Review.find(params[:id])
     if @review.update(review_params)
       render partial: 'api/reviews/review', locals: { review: @review }

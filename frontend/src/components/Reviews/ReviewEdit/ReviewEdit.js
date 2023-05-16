@@ -78,57 +78,65 @@ const ReviewEdit = (props) => {
         setPhotoUrl(file);
     };
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
+       console.log('TTTTTTTTTTTT', reviewId)
         e.preventDefault();
         e.stopPropagation();
+        try {
 
+        console.log('RRRRRRRRRRRRR', reviewId)
+      
+        const formData = new FormData();
         formData.set("review[author_id]", +sessionUser.id);
         formData.set("review[business_id]", +review.businessId);
         formData.set("review[rating]", +rating);
         formData.set("review[body]", body);
         formData.set("review[photoUrl]", photoUrl);
+        formData.set("review[id]", reviewId)
 
-        for (const [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
+        // for (const [key, value] of formData.entries()) {
+        //     console.log(`${key}: ${value}`);
+        // }
+        // return  formData
 
-        try {
-            console.log("formData", formData);
-            dispatch(editReview(formData));
+
+       
+            console.log("formDataaaaaaa", formData);
+        dispatch(editReview(  formData, reviewId));
             // ...
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }
     };
 
-    const submit1Handler = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        // formData.set("review[author_id]", +sessionUser.id);
-        // formData.set("review[business_id]", +;
-        // formData.set("review[rating]", +rating);
+    // const submit1Handler = (e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     // formData.set("review[author_id]", +sessionUser.id);
+    //     // formData.set("review[business_id]", +;
+    //     // formData.set("review[rating]", +rating);
 
-        for (const [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
+    //     for (const [key, value] of formData.entries()) {
+    //         console.log(`${key}: ${value}`);
+    //     }
 
-        try {
-            console.log("frrrommmData", formData);
-            dispatch(editReview(formData));
-            setFormData(null);
-            setBody(null);
-            setRating(null);
-            history.push(`/businesses/${review.business_id}`)
-        } catch (errors) {
-            console.error("dispatch redirect did not work");
-        }
-        // };
-        // // if ( true) return <h2>Hi there</h2>
-        // if (!review) {
-        //     // Handle the case when the review is not found
-        //     // For example, you can redirect or display an error message
-        //     return <p>Review not found</p>;
-    };
+    //     try {
+    //         console.log("frrrommmData", formData);
+    //         dispatch(editReview(formData));
+    //         setFormData(null);
+    //         setBody(null);
+    //         setRating(null);
+    //         history.push(`/businesses/${review.business_id}`)
+    //     } catch (errors) {
+    //         console.error("dispatch redirect did not work");
+    //     }
+    //     // };
+    //     // // if ( true) return <h2>Hi there</h2>
+    //     // if (!review) {
+    //     //     // Handle the case when the review is not found
+    //     //     // For example, you can redirect or display an error message
+    //     //     return <p>Review not found</p>;
+    // };
     if (!review) return null;
 
     return (
