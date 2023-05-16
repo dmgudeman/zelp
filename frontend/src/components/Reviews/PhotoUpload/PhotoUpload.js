@@ -4,10 +4,11 @@ const PhotoUpload = ({ name, value, handleChange }) => {
    
     return (
         <div id="uploadContainer">
-            <h3 className="title">Attach Photos</h3>
+            <h3 className="photoTitle blueTitle">Attach Photos</h3>
 
-            <label for="profile_pic">Choose file to upload</label>
+            <label for="profile_pic"></label>
             <input
+                className="photoInput"
                 type="file"
                 id="profile_pic"
                 name={name}
@@ -15,9 +16,7 @@ const PhotoUpload = ({ name, value, handleChange }) => {
                 // multiple
                 onChange={handleChange}
             />
-            <p>Drag and Drop a file or choose from your file directory</p>
 
-            {/* <p>Number of files chosen: {files.length}</p> */}
         </div>
     );
 };

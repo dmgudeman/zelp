@@ -31,12 +31,12 @@
 
 }
 
-#ratingReview{
+.reviewInput{
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    margin-left: 50px;
+    margin-top: 10px;
+   
  
 }
 .title {

@@ -115,10 +115,10 @@ const ReviewEdit = (props) => {
         try {
             console.log("frrrommmData", formData);
             dispatch(editReview(formData));
-            // setFormData(null);
-            // setBody(null);
-            // setRating(null);
-            // history.push(`/businesses/${review.business_id}`)
+            setFormData(null);
+            setBody(null);
+            setRating(null);
+            history.push(`/businesses/${review.business_id}`)
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }
@@ -138,7 +138,6 @@ const ReviewEdit = (props) => {
                 <div id="leftGutter"></div>
                 <div id="center">
                     <form id="reviewForm">
-                        <h2>rating {rating}</h2>
                         <RatingInput
                             id="ratingReview"
                             name="rating"
@@ -146,13 +145,14 @@ const ReviewEdit = (props) => {
                             setRating={setRating}
                             handleChange={handleChange}
                         />
-
+                       <div className="reviewInput">
+                        <div className="blueTitle">Edit Your Review</div>
                         <ReviewNewForm
-                            id="ratingReview"
                             name="body"
                             value={body}
                             handleChange={handleChange}
                         />
+                        </div>
                         {photoUrl ? (
                             <div id="photoRatingCell">
                                 <img id="imgRDC" src={photoUrl} alt="" />
