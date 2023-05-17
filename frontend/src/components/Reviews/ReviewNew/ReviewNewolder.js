@@ -74,20 +74,20 @@ const ReviewNew = (props) => {
             formData.append('post[photo]', photoFile);
           }
         
-        // for (const [key, value] of formData.entries()) {
-        //     console.log(`${key}: ${value}`);
-        //   }
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+          }
 
-        try {
-            dispatch(editReview(formData));
-            setFormData(null);
-            setBody(null);
-            setRating(null);
+        // try {
+        //     dispatch(editReview(formData));
+        //     setFormData(null);
+        //     setBody(null);
+        //     setRating(null);
 
-            history.push(`/businesses/${busId}`)
-        } catch (errors) {
-            console.error("dispatch redirect did not work");
-        }
+        //     history.push(`/businesses/${busId}`)
+        // } catch (errors) {
+        //     console.error("dispatch redirect did not work");
+        // }
     };
 
     return (

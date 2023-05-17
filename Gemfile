@@ -8,7 +8,7 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "bcrypt"
 gem "jbuilder"
 gem "aws-sdk-s3"
-# gem "ruby-vips"
+gem "ruby-vips"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

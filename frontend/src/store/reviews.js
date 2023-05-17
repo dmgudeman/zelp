@@ -66,31 +66,33 @@ export const fetchReviewsByBusiness = (busId) => async (dispatch) => {
     }
 };
 
-
 export const createReview = (review) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews`, {
         method: "POST",
         body: review,
     });
     const data = await res.json();
-
+    console.log('DDDAAATTTTAAAAAA', data)
     try {
-        dispatch(receiveReview(data));
+       
+
+       await  dispatch(receiveReview(data));
         return data;
     } catch (error) {
         return error;
     }
 };
 export const editReview = (review, reviewId) => async (dispatch) => {
-
     const res = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: "PATCH",
         body: review,
     });
     const data = await res.json();
+
     try {
-        dispatch(receiveReview(data));
-        return data;
+        dispatch(receiveReview(data))
+        .then(data => data)
+        
     } catch (error) {
         return error;
     }
@@ -123,17 +125,17 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 };
 
 const reviewsReducer = (state = {}, action) => {
-    const newState = {...state}
+    const newState = { ...state };
     switch (action.type) {
         case RECEIVE_REVIEWS:
             return { ...action.reviews };
         case RECEIVE_REVIEW:
-            console.log('ACTION', action)
-            return { ...state, [action.review.id]: action.review};
+            console.log("ACTION", action);
+            return { ...state, [action.review.id]: action.review };
         case RECEIVE_BUSINESS:
             return { ...action.business.reviews };
         case REMOVE_REVIEW:
-            delete newState[action.reviewId]
+            delete newState[action.reviewId];
             return newState;
         default:
             return state;

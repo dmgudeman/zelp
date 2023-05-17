@@ -12,7 +12,7 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    if @review.save!
+    if @review.save
       render partial: 'api/reviews/review', locals: { review: @review }
     else
       render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity

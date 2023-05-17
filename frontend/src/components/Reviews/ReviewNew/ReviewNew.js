@@ -21,13 +21,15 @@ const ReviewNew = (props) => {
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
     const [rating, setRating] = useState(0);
+    const [file, setFile] = useState(null)
     const flag = formData.get("review[body]");
 
     useEffect(() => {
         setUserId(sessionUser.id);
         setRating(rating);
         setBody(body);
-    }, [sessionUser, rating, body]);
+        setFile(file)
+    }, [sessionUser, rating, body, file]);
 
     if (!business) <Redirect to="/home" />;
 
@@ -50,28 +52,39 @@ const ReviewNew = (props) => {
 
     const handleFile = ({ currentTarget }) => {
         const file = currentTarget.files[0];
+        setFile(file);
         formData.append("review[photo]", file);
-        setFormData(formData);
+        // setFormData(formData);
+        //    for (const [key, value] of formData.entries()) {
+        //     console.log(`${key}: ${value}`);
+        //   }
+        
     };
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         e.stopPropagation();
         formData.set("review[author_id]", +sessionUser.id);
         formData.set("review[business_id]", +busId);
         formData.set("review[rating]", +rating);
-        // for (const [key, value] of formData.entries()) {
+        // formData.set("review[photo]", file)
+        // console.log('IN SUBMITHANDLER')
+        // setFormData(formData);
+        //    for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
         //   }
+        // // for (const [key, value] of formData.entries()) {
+        // //     console.log(`${key}: ${value}`);
+        // //   }
 
         try {
-            dispatch(createReview(formData));
-            setFormData(null);
-            setBody(null);
-            setRating(null);
+            await dispatch(createReview(formData));
+            // setFormData(null);
+            // setBody(null);
+            // setRating(null);
             history.push(`/businesses/${busId}`)
         } catch (errors) {
-            console.error("dispatch redirect did not work");
+            console.error(errors);
         }
     };
 
