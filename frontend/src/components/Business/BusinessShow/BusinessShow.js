@@ -1,15 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams, Link, Redirect } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import NavBar from "../../Navigation/NavBar/NavBar";
-import {
-    getBusiness,
-    fetchBusiness,
-    getBusinesses,
-    fetchBusinesses,
-} from "../../../store/businesses";
+import { getBusiness, fetchBusiness } from "../../../store/businesses";
 import { getReviews } from "../../../store/reviews";
 import { getTags } from "../../../store/tags";
 import "./BusinessShow.css";
@@ -30,11 +25,9 @@ const BusinessShow = (props) => {
     if (!business) return null;
 
     return (
-        <> 
-        <NavBar className="navIndexBackground" showFlag={true} />
+        <>
+            <NavBar className="navIndexBackground" showFlag={true} />
             <div id="businessShowContainer">
-            
-               
                 {/* 
                     <div className="businessName">{business.name}</div>
                 </div> */}
@@ -49,19 +42,18 @@ const BusinessShow = (props) => {
                         display: "flex",
                         alignItems: "end",
                         justifyContent: "start",
-                       
+
                         textShadow: "3px 3px #000",
-                        zIndex: -1
+                        zIndex: -1,
                     }}
                 >
-                    
-                    <div className="businessName" >{business.name}</div>
+                    <div className="businessName">{business.name}</div>
                 </div>
 
                 <BusinessShowDisplay business={business} />
                 {/* <div id="lowerContainer"> */}
-                    <ReviewsIndex reviews={reviews} business={business} />
-                </div>
+                <ReviewsIndex reviews={reviews} business={business} />
+            </div>
             {/* </div> */}
         </>
     );
@@ -69,45 +61,45 @@ const BusinessShow = (props) => {
 
 export default BusinessShow;
 
-const BannerBackground = ({ businesses }) => {
-    const imgUrl = businesses[0]?.imageUrls
-        ? businesses[0].imageUrls[0]
-        : "https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg";
-    return (
-        <>
-            <div
-                className="backgroundContainer"
-                style={{
-                    backgroundImage: `url(${imgUrl})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "top",
-                    opacity: 0.5,
-                }}
-            ></div>
-        </>
-    );
-};
+// const BannerBackground = ({ businesses }) => {
+//     const imgUrl = businesses[0]?.imageUrls
+//         ? businesses[0].imageUrls[0]
+//         : "https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg";
+//     return (
+//         <>
+//             <div
+//                 className="backgroundContainer"
+//                 style={{
+//                     backgroundImage: `url(${imgUrl})`,
+//                     backgroundSize: "cover",
+//                     backgroundPosition: "top",
+//                     opacity: 0.5,
+//                 }}
+//             ></div>
+//         </>
+//     );
+// };
 
-const Banner = (props) => {
-    return (
-        <>
-            <div className="businessContainer">
-                <div className="bannerContainer">
-                    <div className={"leftBanner"}></div>
-                    <div className="centerBanner">
-                        <h2>Find a business to review</h2>
-                        <p className="secondLine">
-                            Review anything from your favorite patios spot to
-                            your local flower shop.
-                        </p>
+// const Banner = (props) => {
+//     return (
+//         <>
+//             <div className="businessContainer">
+//                 <div className="bannerContainer">
+//                     <div className={"leftBanner"}></div>
+//                     <div className="centerBanner">
+//                         <h2>Find a business to review</h2>
+//                         <p className="secondLine">
+//                             Review anything from your favorite patios spot to
+//                             your local flower shop.
+//                         </p>
 
-                        <div className="bottomBanner">
-                            <div>Visited one of these places recently?</div>
-                        </div>
-                    </div>
-                    <div className="rightBanner"></div>
-                </div>
-            </div>
-        </>
-    );
-};
+//                         <div className="bottomBanner">
+//                             <div>Visited one of these places recently?</div>
+//                         </div>
+//                     </div>
+//                     <div className="rightBanner"></div>
+//                 </div>
+//             </div>
+//         </>
+//     );
+// };

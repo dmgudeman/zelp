@@ -19,7 +19,7 @@ const ReviewEdit = (props) => {
     const history = useHistory();
     const [rating, setRating] = useState(0);
     const [body, setBody] = useState("");
-    const [photoUrl, setPhotoUrl] = useState('');
+    const [photoUrl, setPhotoUrl] = useState("");
 
     const review = useSelector(getReview(reviewId));
     const sessionUser = useSelector(getUser);
@@ -29,14 +29,12 @@ const ReviewEdit = (props) => {
 
     useEffect(() => {
         if (reviewId) {
-            dispatch(fetchReview(reviewId))
-            .then((res) => {
+            dispatch(fetchReview(reviewId)).then((res) => {
                 setBody(res.body);
                 setRating(res.rating);
-                setPhotoUrl(res.photoUrl)
-            })
+                setPhotoUrl(res.photoUrl);
+            });
         }
-      
     }, [dispatch, reviewId]);
 
     // useEffect(() => {
@@ -47,8 +45,7 @@ const ReviewEdit = (props) => {
     //         // console.log('review.id', review.id)
     //         // console.log('photoURL', photoUrl)
     //     }
-      
-      
+
     // }, [review]);
 
     useEffect(() => {
@@ -72,38 +69,35 @@ const ReviewEdit = (props) => {
     };
 
     const handleFile = ({ currentTarget }) => {
-        console.log('CURRENT TARGET', currentTarget.files[0])
+        console.log("CURRENT TARGET", currentTarget.files[0]);
         const file = currentTarget.files[0];
         //  const file = "https://zelp99-dev.s3.us-west-1.amazonaws.com/3926ucminwqy77j47uuk1yd1lcao?response-content-disposition=inline%3B%20filename%3D%22logo.png%22%3B%20filename%2A%3DUTF-8%27%27logo.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAV35DSJ5S7XULJXUL%2F20230514%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20230514T204416Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=68a990b0d14ada1fc4baedfd155873b94ba37295b97fb38e08fbd7f043059fb4"
         setPhotoUrl(file);
     };
 
     const submitHandler = async (e) => {
-       console.log('TTTTTTTTTTTT', reviewId)
+        console.log("TTTTTTTTTTTT", reviewId);
         e.preventDefault();
         e.stopPropagation();
         try {
+            console.log("RRRRRRRRRRRRR", reviewId);
 
-        console.log('RRRRRRRRRRRRR', reviewId)
-      
-        const formData = new FormData();
-        formData.set("review[author_id]", +sessionUser.id);
-        formData.set("review[business_id]", +review.businessId);
-        formData.set("review[rating]", +rating);
-        formData.set("review[body]", body);
-        formData.set("review[photoUrl]", photoUrl);
-        formData.set("review[id]", reviewId)
+            const formData = new FormData();
+            formData.set("review[author_id]", +sessionUser.id);
+            formData.set("review[business_id]", +review.businessId);
+            formData.set("review[rating]", +rating);
+            formData.set("review[body]", body);
+            formData.set("review[photoUrl]", photoUrl);
+            formData.set("review[id]", reviewId);
 
-        // for (const [key, value] of formData.entries()) {
-        //     console.log(`${key}: ${value}`);
-        // }
-        // return  formData
+            // for (const [key, value] of formData.entries()) {
+            //     console.log(`${key}: ${value}`);
+            // }
+            // return  formData
 
-
-       
             console.log("formDataaaaaaa", formData);
-        dispatch(editReview(  formData, reviewId));
-            // ...
+            dispatch(editReview(formData, reviewId));
+            history.goBack();
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }
@@ -145,30 +139,27 @@ const ReviewEdit = (props) => {
             <div id="newReviewContainer">
                 <div id="leftGutter"></div>
                 <div id="center">
-               
                     <form id="reviewForm">
-                    <h2 className="blueTitleBig">Edit Your Review</h2>
-                       <div className="ratingReview">
-                        <RatingInput
-                            id="ratingReview"
-                            name="rating"
-                            rating={rating}
-                            setRating={setRating}
-                            handleChange={handleChange}
-                        />
+                        <h2 className="blueTitleBig">Edit Your Review</h2>
+                        <div className="ratingReview">
+                            <RatingInput
+                                id="ratingReview"
+                                name="rating"
+                                rating={rating}
+                                setRating={setRating}
+                                handleChange={handleChange}
+                            />
                         </div>
-                       <div className="reviewInput">
-                      
-                        <ReviewNewForm
-                            name="body"
-                            value={body}
-                            handleChange={handleChange}
-                        />
+                        <div className="reviewInput">
+                            <ReviewNewForm
+                                name="body"
+                                value={body}
+                                handleChange={handleChange}
+                            />
                         </div>
                         {photoUrl ? (
                             <div id="photoRatingCell">
                                 <img id="imgRDC" src={photoUrl} alt="" />
-                                
                             </div>
                         ) : null}
 
@@ -179,7 +170,7 @@ const ReviewEdit = (props) => {
                             handleChange={handleFile}
                         />
                         <div className="reviewButton">
-                        <ReviewNewSubmit submitHandler={submitHandler} />
+                            <ReviewNewSubmit submitHandler={submitHandler} />
                         </div>
                     </form>
                 </div>

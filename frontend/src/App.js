@@ -8,7 +8,7 @@ import Home from "./components/Home/Home";
 import BusinessIndex from "./components/Business/BusinessIndex/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow/BusinessShow";
 import ReviewsIndex from "./components/Reviews/ReviewsIndex/ReviewsIndex";
-import ReviewNew from "./components/Reviews/ReviewNew";
+import ReviewNew from "./components/Reviews/ReviewNew/ReviewNew";
 import ReviewEdit from "./components/Reviews/ReviewEdit/ReviewEdit";
 
 import Jupon from "./components/Jupon/Jupon";
