@@ -60,7 +60,7 @@ const ReviewNew = (props) => {
             setFormData(null);
             setBody(null);
             setRating(null);
-            history.push(`/businesses/${busId}`)
+            history.push(`/businesses/${busId}`);
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }
@@ -73,7 +73,7 @@ const ReviewNew = (props) => {
                 <div id="leftGutter"></div>
                 <div id="center">
                     <form id="reviewForm">
-                        <h2 className="blueTitle">{business.name}</h2>
+                        <h2 className="blueTitleBig">{business.name}</h2>
                         <h1 className="italic">
                             Leave a Rating, a Review and attach photos if you
                             would like
@@ -86,27 +86,28 @@ const ReviewNew = (props) => {
                             handleChange={handleChange}
                             // handleRatingChange={handleRatingChange}
                         />
-                        
-                        {rating > 0 ? (
-                            <ReviewNewForm
-                            id="ratingReview"
-                                name="body"
-                                value={formData.body}
-                                // handleBodyChange={handleBodyChange}
-                                handleChange={handleChange}
-                            />
-                        ) : (
-                            <h2>First a rating</h2>
-                        )}
 
-                      
-                            <PhotoUpload
-                                name="photo"
-                                value={formData.photo}
-                                handleChange={handleFile}
-                            />
-                       
-                        <ReviewNewSubmit submitHandler={submitHandler} />
+                        {rating > 0 ? (
+                            <>
+                                <ReviewNewForm
+                                    id="ratingReview"
+                                    name="body"
+                                    value={formData.body}
+                                    // handleBodyChange={handleBodyChange}
+                                    handleChange={handleChange}
+                                />
+                                <PhotoUpload
+                                    name="photo"
+                                    value={formData.photo}
+                                    handleChange={handleFile}
+                                />
+                                <ReviewNewSubmit
+                                    submitHandler={submitHandler}
+                                />
+                            </>
+                        ) : (
+                            <h2 className="blueTitle">Rate this business</h2>
+                        )}
                     </form>
                 </div>
                 <div id="rightGutter"></div>
