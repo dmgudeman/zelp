@@ -87,12 +87,18 @@ const ReviewNew = (props) => {
                             // handleRatingChange={handleRatingChange}
                         />
                         
+                        {rating > 0 ? (
                             <ReviewNewForm
+                            id="ratingReview"
                                 name="body"
                                 value={formData.body}
                                 // handleBodyChange={handleBodyChange}
                                 handleChange={handleChange}
                             />
+                        ) : (
+                            <h2>First a rating</h2>
+                        )}
+
                       
                             <PhotoUpload
                                 name="photo"
