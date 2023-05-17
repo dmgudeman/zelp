@@ -38,15 +38,6 @@ const ReviewNew = (props) => {
         if (name === "rating") setRating(value);
         if (name === "body") setBody(value);
     };
-    // const handleRatingChange = (newRating) => {
-    //     console.log('nreRating', rating)
-    //     setRating(newRating);
-    //     // ratingOnChange(newRating);
-    // };
-    // const handleBodyChange = ({currentTarget}) => {
-    //     console.log(currentTarget.value)
-    //     setBody(currentTarget.value)
-    // }
 
     const handleFile = ({ currentTarget }) => {
         const file = currentTarget.files[0];
