@@ -98,7 +98,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    margin-top: calc(var(--bh) * 0.2);
+    /* margin-top: calc(var(--bh) * 0.2); */
   
 
 }
@@ -109,10 +109,12 @@
     background-color: green; */
     width: 170px;
     border: none;
+    /* outline: none; */
     
 }
 
 .SBDropDown{
+    /* position: absolute; */
     display:flex;
     align-items: center;
     color: white;
@@ -123,6 +125,7 @@
     border-radius: 14px;
     border: none;
     background-color: var(--two);
+    margin-top: 30px;
 }
 .SBDropDown.hidden {
     display: none;
