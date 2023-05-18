@@ -39,6 +39,8 @@ export const fetchReview = (reviewId) => async (dispatch) => {
     }
 };
 export const getReviews = (state) => {
+
+    console.log('allllll', state.reviews)
     return state.reviews ? Object.values(state.reviews) : [];
 };
 // export const getReviewsByBusiness = (reviewId) => (state) => {
@@ -75,7 +77,7 @@ export const createReview = (review) => async (dispatch) => {
     const data = await res.json();
 
     try {
-        dispatch(receiveReview(data));
+        // dispatch(receiveReview(data));
         return data;
     } catch (error) {
         return error;
@@ -126,10 +128,10 @@ const reviewsReducer = (state = {}, action) => {
     const newState = {...state}
     switch (action.type) {
         case RECEIVE_REVIEWS:
-            return { ...action.reviews };
+            return {...action.reviews };
         case RECEIVE_REVIEW:
             console.log('ACTION', action)
-            return { ...state, [action.review.id]: action.review};
+            return { ...state, new: action.review};
         case RECEIVE_BUSINESS:
             return { ...action.business.reviews };
         case REMOVE_REVIEW:

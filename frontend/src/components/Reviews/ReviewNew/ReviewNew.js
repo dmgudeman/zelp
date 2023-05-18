@@ -21,13 +21,14 @@ const ReviewNew = (props) => {
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
     const [rating, setRating] = useState(0);
+    const [photo, setPhoto] = useState(null);
     const flag = formData.get("review[body]");
 
     useEffect(() => {
         setUserId(sessionUser.id);
         setRating(rating);
         setBody(body);
-    }, [sessionUser, rating, body]);
+    }, [sessionUser, rating, body, photo]);
 
     if (!business) <Redirect to="/home" />;
 
@@ -42,6 +43,7 @@ const ReviewNew = (props) => {
     const handleFile = ({ currentTarget }) => {
         const file = currentTarget.files[0];
         formData.append("review[photo]", file);
+        setPhoto(file);
         setFormData(formData);
     };
 

@@ -12,7 +12,7 @@ const ReviewNewForm = ({ name, value, handleChange}) => {
                 name={name}
                 value={value}
                 onChange={handleChange}
-                placeholder="Leave a comment or explain your rating if you would like. This will be posted on the site"
+                placeholder="Leave a comment or explain your rating."
             >
                 {value}
             </textarea>
