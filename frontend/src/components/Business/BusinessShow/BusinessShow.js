@@ -5,7 +5,7 @@ import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import { getBusiness, fetchBusiness } from "../../../store/businesses";
-import { getReviews } from "../../../store/reviews";
+import { fetchReviewsByBusiness, getReviews } from "../../../store/reviews";
 import { getTags } from "../../../store/tags";
 import "./BusinessShow.css";
 
@@ -19,6 +19,7 @@ const BusinessShow = (props) => {
     useEffect(() => {
         if (busId) {
             dispatch(fetchBusiness(busId));
+            dispatch(fetchReviewsByBusiness(busId));
         }
     }, [dispatch, busId]);
 

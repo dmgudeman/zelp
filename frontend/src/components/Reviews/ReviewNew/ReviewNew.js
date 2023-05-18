@@ -5,8 +5,9 @@ import ReviewNewForm from "../ReviewNewForm/ReviewNewForm";
 import RatingInput from "../RatingInput/RatingInput";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import ReviewNewSubmit from "../ReviewNewSubmit/ReviewNewSubmit";
-import { getBusiness } from "../../../store/businesses";
-import { createReview } from "../../../store/reviews";
+import { getBusiness} from "../../../store/businesses";
+
+import { createReview, fetchReviewsByBusiness } from "../../../store/reviews";
 import { getUser } from "../../../store/session";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import "./ReviewNew.css";
@@ -25,10 +26,12 @@ const ReviewNew = (props) => {
     const flag = formData.get("review[body]");
 
     useEffect(() => {
+        dispatch(fetchReviewsByBusiness(busId));
         setUserId(sessionUser.id);
         setRating(rating);
         setBody(body);
-    }, [sessionUser, rating, body, photo]);
+        // setPhoto(photo);
+    }, [sessionUser, rating]);
 
     if (!business) <Redirect to="/home" />;
 
@@ -101,6 +104,7 @@ const ReviewNew = (props) => {
                                 <PhotoUpload
                                     name="photo"
                                     value={formData.photo}
+                                    title="Add Photo"
                                     handleChange={handleFile}
                                 />
                                 <ReviewNewSubmit

@@ -20,6 +20,7 @@ const ReviewEdit = (props) => {
     const [rating, setRating] = useState(0);
     const [body, setBody] = useState("");
     const [photoUrl, setPhotoUrl] = useState("");
+    const [photo, setPhoto] = useState(null)
 
     const review = useSelector(getReview(reviewId));
     const sessionUser = useSelector(getUser);
@@ -37,16 +38,11 @@ const ReviewEdit = (props) => {
         }
     }, [dispatch, reviewId]);
 
-    // useEffect(() => {
-    //     if (review) {
-    //         setBody(review.body);
-    //         setRating(review.rating);
-    //         setPhotoUrl(review.photoUrl)
-    //         // console.log('review.id', review.id)
-    //         // console.log('photoURL', photoUrl)
-    //     }
-
-    // }, [review]);
+    useEffect(() => {
+        setUserId(sessionUser.id);
+        setRating(rating);
+        setBody(body);
+    }, [sessionUser, rating, body, photo]);
 
     useEffect(() => {
         setUserId(sessionUser.id);
@@ -158,8 +154,8 @@ const ReviewEdit = (props) => {
                             />
                         </div>
                         {photoUrl ? (
-                            <div id="photoRatingCell">
-                                <img id="imgRDC" src={photoUrl} alt="" />
+                            <div >
+                                <img className="formPhoto" src={photoUrl} alt="" />
                             </div>
                         ) : null}
 
@@ -167,6 +163,7 @@ const ReviewEdit = (props) => {
                             name="photo"
                             photoUrl={photoUrl}
                             setPhotoUrl={setPhotoUrl}
+                            title="Change Photo"
                             handleChange={handleFile}
                         />
                         <div className="reviewButton">

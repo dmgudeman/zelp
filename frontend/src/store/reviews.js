@@ -4,12 +4,14 @@ export const RECEIVE_REVIEWS = "reviews/RECEIVE_REVIEWS";
 export const RECEIVE_REVIEW = "reviews/RECEIVE_REVIEW";
 export const REMOVE_REVIEW = "reviews/REMOVE_REVIEW";
 
+
 export const receiveReviews = (reviews) => {
     return {
         type: RECEIVE_REVIEWS,
         reviews,
     };
 };
+
 
 export const receiveReview = (review) => {
     return {
@@ -39,8 +41,6 @@ export const fetchReview = (reviewId) => async (dispatch) => {
     }
 };
 export const getReviews = (state) => {
-
-    console.log('allllll', state.reviews)
     return state.reviews ? Object.values(state.reviews) : [];
 };
 // export const getReviewsByBusiness = (reviewId) => (state) => {
@@ -77,7 +77,7 @@ export const createReview = (review) => async (dispatch) => {
     const data = await res.json();
 
     try {
-        // dispatch(receiveReview(data));
+        dispatch(receiveReview(data));
         return data;
     } catch (error) {
         return error;
@@ -125,15 +125,20 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 };
 
 const reviewsReducer = (state = {}, action) => {
-    const newState = {...state}
+    let newState = {...state}
     switch (action.type) {
         case RECEIVE_REVIEWS:
-            return {...action.reviews };
+            for(let i=0; i < action.reviews.length ; i++) {
+               
+                newState = { ...newState, [action.reviews[i].id]:action.reviews[i]};
+            }
+
+            return newState;
         case RECEIVE_REVIEW:
             console.log('ACTION', action)
-            return { ...state, new: action.review};
-        case RECEIVE_BUSINESS:
-            return { ...action.business.reviews };
+            return { ...state, [action.review.id]:action.review};
+        // case RECEIVE_BUSINESS_REVIEWS:
+        //     return { ...action.business.reviews };
         case REMOVE_REVIEW:
             delete newState[action.reviewId]
             return newState;

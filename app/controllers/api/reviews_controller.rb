@@ -12,8 +12,9 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    if @review.save!
-      render partial: 'api/reviews/review', locals: { review: @review }
+    if @review.save
+      # render partial: 'api/reviews/review', locals: { review: @review }
+      render :show
     else
       render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
     end
@@ -23,7 +24,8 @@ class Api::ReviewsController < ApplicationController
    
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      render partial: 'api/reviews/review', locals: { review: @review }
+      # render partial: 'api/reviews/review', locals: { review: @review }
+      render :show
     else
       render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
     end
