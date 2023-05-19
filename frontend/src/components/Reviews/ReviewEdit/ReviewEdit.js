@@ -16,33 +16,35 @@ import "./ReviewEdit.css";
 const ReviewEdit = (props) => {
     const dispatch = useDispatch();
     const { reviewId } = useParams();
-    const history = useHistory();
-    const [rating, setRating] = useState(0);
-    const [body, setBody] = useState("");
-    const [photoUrl, setPhotoUrl] = useState("");
-    const [photo, setPhoto] = useState(null)
-
     const review = useSelector(getReview(reviewId));
+    const history = useHistory();
+    const [rating, setRating] = useState(review?.rating);
+    const [body, setBody] = useState(review?.body);
+    const [photoUrl, setPhotoUrl] = useState(review?.photoUrl);
+    const [photo, setPhoto] = useState(null);
+
     const sessionUser = useSelector(getUser);
+    console.log("reviewId", reviewId);
+    console.log("REVIEEW", review);
 
     const [formData, setFormData] = useState(new FormData());
     const [userId, setUserId] = useState(sessionUser.id || "");
 
     useEffect(() => {
         if (reviewId) {
-            dispatch(fetchReview(reviewId)).then((res) => {
-                setBody(res.body);
-                setRating(res.rating);
-                setPhotoUrl(res.photoUrl);
-            });
+            try {
+                dispatch(fetchReview(reviewId));
+            } catch (error) {
+                console.error(error);
+            }
         }
-    }, [dispatch, reviewId]);
+    }, [reviewId]);
 
-    useEffect(() => {
-        setUserId(sessionUser.id);
-        setRating(rating);
-        setBody(body);
-    }, [sessionUser, rating, body, photo]);
+    // useEffect(() => {
+    //     setUserId(sessionUser.id);
+    //     setRating(rating);
+    //     setBody(body);
+    // }, [sessionUser, rating, body, photo]);
 
     useEffect(() => {
         setUserId(sessionUser.id);
@@ -93,7 +95,8 @@ const ReviewEdit = (props) => {
 
             console.log("formDataaaaaaa", formData);
             dispatch(editReview(formData, reviewId));
-            history.goBack();
+            history.push(`/businesses/${review.businessId}`);
+            // history.goBack();
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }
@@ -127,7 +130,6 @@ const ReviewEdit = (props) => {
     //     //     // For example, you can redirect or display an error message
     //     //     return <p>Review not found</p>;
     // };
-    if (!review) return null;
 
     return (
         <>
@@ -154,8 +156,12 @@ const ReviewEdit = (props) => {
                             />
                         </div>
                         {photoUrl ? (
-                            <div >
-                                <img className="formPhoto" src={photoUrl} alt="" />
+                            <div>
+                                <img
+                                    className="formPhoto"
+                                    src={photoUrl}
+                                    alt=""
+                                />
                             </div>
                         ) : null}
 

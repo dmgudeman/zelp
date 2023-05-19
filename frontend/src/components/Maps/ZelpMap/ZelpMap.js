@@ -75,10 +75,32 @@ const ZelpMap = (props) => {
                 })
                 
         
-        map1 ?  marker.setMap(map) : Map.setMap(map) ;
+        // map1 ?  marker.setMap(map) : Map.setMap(map) ;
+        marker.setMap(map1);
                          
                 
     }, [coords]);
+
+    return (
+        <>
+            <div className="mapContainer" ref={mapRef}>
+                <p>map</p>
+            </div>
+        </>
+    );
+};
+
+const ZelpMapWrapper = (props) => {
+    return (
+        <>
+            <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
+                <ZelpMap {...props} />
+            </Wrapper>
+        </>
+    );
+};
+
+export default ZelpMapWrapper;
 
     // Update map markers whenever `businesses` changes
     // useEffect(() => {
@@ -160,23 +182,4 @@ const ZelpMap = (props) => {
     //     }
     // }, [map, mapEventHandlers]);
 
-    return (
-        <>
-            <div className="mapContainer" ref={mapRef}>
-                <p>map</p>
-            </div>
-        </>
-    );
-};
-
-const ZelpMapWrapper = (props) => {
-    return (
-        <>
-            <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
-                <ZelpMap {...props} />
-            </Wrapper>
-        </>
-    );
-};
-
-export default ZelpMapWrapper;
+  
