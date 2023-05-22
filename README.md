@@ -27,4 +27,4 @@ The carousel of images on the splash page was made out of standard html and css.
 Developing the search functionality allowed me to see some of the full capabilities
 of the query string when interfacing with a sql database. The utility of this allows for
 creative, deterministic access to subsets of data. 
-![Code Snippet](./frontend/src/assets/images/searchSnippet.png)
+![Code Snippet](../frontend/src/assets/images/searchSnippet.png)
