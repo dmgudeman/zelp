@@ -41,12 +41,15 @@ export const fetchBusinessesWithTag = (tag) => async (dispatch) => {
 export const fetchBusinessesSearch =
     ({ tag, bus, add }) =>
     async (dispatch) => {
-        const res = await csrfFetch(
-            `/api/businesses?tag=${tag}&bus=${bus}&add=${add}`
-        );
-        const data = await res.json();
-        return dispatch(receiveBusinesses(data));
-        
+        try {
+            const res = await csrfFetch(
+                `/api/businesses?tag=${tag}&bus=${bus}&add=${add}`
+            );
+            const data = await res.json();
+            return dispatch(receiveBusinesses(data));
+        } catch (error) {
+            console.error("Error fetching businesses: ", error);
+        }
     };
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
