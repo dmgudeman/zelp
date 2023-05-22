@@ -1,0 +1,131 @@
+name: CI
+on:
+  pull_request: {}
+  push:
+    branches: [main]
+    tags: ['v*']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Check out code (full depth for tags)
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: caching deps
+        run: make deps
+      # this version will be a git describe-tags output, so if the commit is the most recent tag
+      # it will BE the tag, or will be of the form `v0.1.0-N-aabbccdd`. We then append to it
+      # `-$1-$kernel-$arch`.
+      - name: outputting version
+        run: ./_build/write-version.bash gha > version.ts
+      - name: running tests
+        run: make test
+      - name: compiling executable for x86_64-unknown-linux-gnu
+        run: make build-linux-x86_64
+      - name: compiling executable for x86_64-apple-darwin
+        run: make build-macos-x86_64
+      - name: compiling executable for aarch64-apple-darwin
+        run: make build-macos-aarch64
+      - name: compiling executable for x86_64-pc-windows-msvc
+        run: make build-windows-x86_64
+      - name: setting chmod
+        run: chmod +x /tmp/render-*
+      - name: test-running linux artifact just to be sure...
+        run: /tmp/render-linux-x86_64 version
+      - name: uploading artifacts (all)
+        uses: actions/upload-artifact@v2
+        # if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: render-binaries
+          path: /tmp/render-*
+
+  make-nupkg:
+    runs-on: ubuntu-latest
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      # we need to remove the 'v' from this, choco doesn't like it
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Create temp directories
+        run:
+          mkdir -p ./tmp/artifacts ./tmp/nupkg
+      - uses: actions/download-artifact@v3
+        with:
+          name: render-binaries
+          path: ./tmp/artifacts
+      - name: Prep executable
+        run: cp ./tmp/artifacts/render-windows-x86_64.exe ./tmp/nupkg/render.exe
+      - name: copy tools to nupkg
+        run:
+          cp -r ./_build/nupkg/tools ./tmp/nupkg/tools
+      - name: output templated nuspec
+        run:
+          cat ./_build/nupkg/rendercli.nuspec.template | sed "s/NUSPEC_PACKAGE_VERSION/${GITHUB_REF/refs\/tags\/v/}/g" > ./tmp/nupkg/rendercli.nuspec
+      - name: show templated nuspec
+        run: cat ./tmp/nupkg/rendercli.nuspec
+      - name: enumerating nupkg files
+        run: find ./tmp/nupkg
+      - name: pack nupkg
+        uses: crazy-max/ghaction-chocolatey@v2
+        with:
+          args: pack ./tmp/nupkg/rendercli.nuspec
+      - name: check for nupkg
+        run: ls . && find ./tmp
+      - name: uploading nupkg
+        uses: actions/upload-artifact@v2
+        # if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: nupkg
+          path: ./rendercli.*.nupkg
+
+  make-release:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - make-nupkg
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - run: mkdir -p /tmp/artifacts /tmp/nupkg
+      - uses: actions/download-artifact@v3
+        with:
+          name: render-binaries
+          path: /tmp/artifacts
+      - uses: actions/download-artifact@v3
+        with:
+          name: nupkg
+          path: /tmp/nupkg
+      - name: Do GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: |
+            /tmp/artifacts/*
+            /tmp/nupkg/*
+            LICENSE
+            README.md
+
+  push-nupkg:
+    runs-on: ubuntu-latest
+    needs:
+      - make-release
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: nupkg
+          path: ./tmp/nupkg
+      - name: rename nupkg for action
+        run: cp ./tmp/nupkg/rendercli.${GITHUB_REF/refs\/tags\/v/}.nupkg ./tmp/nupkg/rendercli.nupkg
+      - name: "push nupkg to chocolatey"
+        uses: crazy-max/ghaction-chocolatey@v2
+        with:
+          args: push --key ${{ secrets.CHOCOLATEY_APIKEY }} --source https://push.chocolatey.org ./tmp/nupkg/rendercli.nupkg
+

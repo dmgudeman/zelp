@@ -82,6 +82,7 @@ const ReviewEdit = (props) => {
         formData.set("review[business_id]", +busId);
         formData.set("review[rating]", +rating);
         formData.set("review[body]", body);
+        formData.set("review[photoUrl]", photoUrl)
         // for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
         // }

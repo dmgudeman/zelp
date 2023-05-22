@@ -1,0 +1,21 @@
+~*
+*~
+.DS_Store
+
+build/
+dist/
+tmp/
+vendor/
+node_modules/
+
+*.log
+
+# executables and build artifacts
+/share
+/bin
+render
+render-*
+!render-cli.nuspec.template
+
+# this is now automatically updated
+version.ts
