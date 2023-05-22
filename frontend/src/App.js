@@ -11,7 +11,6 @@ import ReviewsIndex from "./components/Reviews/ReviewsIndex/ReviewsIndex";
 import ReviewNew from "./components/Reviews/ReviewNew/ReviewNew";
 import ReviewEdit from "./components/Reviews/ReviewEdit/ReviewEdit";
 
-import Jupon from "./components/Jupon/Jupon";
 
 
 function App() {
@@ -46,7 +45,6 @@ function App() {
                     component={ReviewEdit}
                     isLoggedIn={isLoggedIn}
                 />
-                <Route path="/jupon" component={Jupon} />
                 <Route path="/" component={Home} />
             </Switch>
            
