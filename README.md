@@ -1,7 +1,7 @@
-[Zelp](https://zelp1.onrender.com)
+[See Zelp live](https://zelp1.onrender.com)
 
-The purpose of this exercise was to recreate some of the functionalities
-of Yelp. The application utilizes a Rails backend with React frontend. The styling
+The app allows the user to find businesses through an advanced search implementation. 
+The application utilizes a Rails backend with React frontend. The styling
 is css and html. I avoided using libraries to facilitate developing a better
 grounding in these areas. This app took about 100hrs to make. I focussed efforts
 on the searching functionality.  The search function is tripartite. It takes in
@@ -12,7 +12,9 @@ on Lake street, the could use the 'Lumbar' category and 'Lake' in the address an
 
 This is a full CRUD app with capabilities to read, write, update and delete reviews. The
 reviews can have custom images of your choice attached.  This functionality utilizes
-the AWS S3 service to provide access to the images.  
+the AWS S3 service to provide access to the images. The reviews, including the attached 
+photos may be updated or deleted by the user who authored them. The reviews for the business
+can be seen by anyone who is signed in. 
 
 Full user authorization functionality, with communication to the user of missing data, 
 is implemented. Demo User button is to facilitate showing the site.
