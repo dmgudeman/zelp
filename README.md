@@ -20,7 +20,7 @@ grounding in these areas. This app took about 100hrs to make. I focussed efforts
 on the searching functionality.  The search function is tripartite. It takes in
 search constraints from pre-determined categories, the title of the business and also
 any part of the address.  So a person if could remember that he/she saw a lumbar yard
-on Lake street, the could use the 'Lumbar' category and 'Lake' in the address and 
+on Lake street, the could use the 'Lumber' category and 'Lake' in the address and 
 'The Home Depot' on Lake street is yielded. 
 
 This is a full CRUD app with capabilities to read, write, update and delete reviews. The
