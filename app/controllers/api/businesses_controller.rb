@@ -2,7 +2,6 @@ class Api::BusinessesController < ApplicationController
   wrap_parameters include: Business.attribute_names + %i[bus add tag images]
 
   def index
-
     @businesses = if params[:tag].present?
                     Business.joins(:tags).where(tags: { tag: params[:tag] })
                   else
@@ -14,7 +13,6 @@ class Api::BusinessesController < ApplicationController
      end
 
 if params[:add]
-
     @businesses = @businesses.where('address LIKE ?', "%#{params[:add]}%")
 end
   end

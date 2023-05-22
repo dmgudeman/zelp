@@ -2,11 +2,14 @@ class Api::ReviewsController < ApplicationController
   wrap_parameters :review, include: Review.attribute_names + [:photo]
 
   def index
+  
     @reviews = Review.all.sort { |a, b| b.created_at <=> a.created_at }
+    puts @reviews
     # @reviews = Review.where(business_id: desired_business_id)
   end
 
   def show
+  
     @review = Review.find(params[:id])
   end
 

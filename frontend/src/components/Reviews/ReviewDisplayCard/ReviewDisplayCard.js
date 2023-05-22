@@ -1,16 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector } from 'react-redux';
 import "./ReviewDisplayCard.css";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
 
 const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
     const { body, photoUrl, rating, businessId, authorId } = { ...review };
+    const sessionUser = useSelector((state) => state.session.user);
     const [truncBody, setTruncBody] = useState(body.length > 80 ? body.substring(0, 80) + "..." : body);
     const [cardTotal, setCardTotal] = useState(6);
-    useEffect(()=> {
-       console.log('review', review.authorName)
+    const [showButtons, setShowButtons] = useState(authorId === sessionUser.id)
 
-
-    },[])
+    let editButtons;
+    if (showButtons) {
+        editButtons =  (<div className="miniButtonContainer">
+        <button
+            className="editButton miniButton"
+            onClick={() => editHandler(review.id)}
+        >
+            edit
+        </button>
+        <button
+            className="delButton miniButton"
+            onClick={() => deleteHandler(review.id)}
+        >
+            del
+        </button>
+    </div>)
+    } else {
+        editButtons = null;
+    }
+        
 
     return (
         <>
@@ -19,21 +38,8 @@ const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
                     <div id="bodyCell">
                         <DisplayRating rating={rating} starClass="starCard" />
                         <div id="truncWidth">{truncBody} </div>
-                        <div className="miniButtonContainer">
-                            <button
-                                className="editButton miniButton"
-                                onClick={() => editHandler(review.id)}
-                            >
-                                edit
-                            </button>
-                            <button
-                                className="delButton miniButton"
-                                onClick={() => deleteHandler(review.id)}
-                            >
-                                del
-                            </button>
-                        </div>
-                        <div>{review.authorName}</div>
+                        {editButtons}
+                        <div className="authorName">{`by: ${review.authorName}`}</div>
                     </div>
                 </div>
                 {photoUrl ? (

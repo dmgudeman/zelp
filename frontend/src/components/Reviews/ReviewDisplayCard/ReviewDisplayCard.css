@@ -74,3 +74,8 @@
     margin-right: 7px;
     margin-top: 10px;
 }
+.authorName{
+    font-style: italic;
+    font-size: smaller;
+    margin-top: 4px;
+}
