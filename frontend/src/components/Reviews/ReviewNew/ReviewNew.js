@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import ReviewNewForm from "../ReviewNewForm/ReviewNewForm";
@@ -22,6 +22,7 @@ const ReviewNew = (props) => {
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
     const [rating, setRating] = useState(0);
+    const fileRef = useRef(null);
     // photo is an actual file
     const [photo, setPhoto] = useState(null);
     // photoUrl is for preview
@@ -29,11 +30,11 @@ const ReviewNew = (props) => {
     const flag = formData.get("review[body]");
 
     useEffect(() => {
-        dispatch(fetchReviewsByBusiness(busId));
+        dispatch(fetchReviewsByBusiness(busId));  
         setUserId(sessionUser.id);
         setRating(rating);
         setBody(body);
-        // setPhoto(photo);
+        setPhoto(photo);
     }, [sessionUser, rating]);
 
     if (!business) <Redirect to="/home" />;
@@ -71,12 +72,12 @@ const ReviewNew = (props) => {
         // for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
         //   }
-
         try {
             dispatch(createReview(formData));
             setFormData(null);
             setBody(null);
             setRating(null);
+            fileRef.current.value=null;
             history.push(`/businesses/${busId}`);
         } catch (errors) {
             console.error("dispatch redirect did not work");
@@ -118,6 +119,7 @@ const ReviewNew = (props) => {
                                 {preview}
                                 <PhotoUpload
                                     name="photo"
+                                    fileRef={fileRef}
                                     value={formData.photo}
                                     title="Add Photo"
                                     handleChange={handleFile}

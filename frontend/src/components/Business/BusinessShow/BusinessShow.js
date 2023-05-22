@@ -23,6 +23,10 @@ const BusinessShow = (props) => {
         }
     }, [dispatch, busId]);
 
+    useEffect(()=>{
+        dispatch(fetchReviewsByBusiness(busId))
+    }, [dispatch])
+
     if (!business) return null;
 
     return (

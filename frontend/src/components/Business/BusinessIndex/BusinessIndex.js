@@ -10,6 +10,7 @@ import "./BusinessIndex.css";
 const BusinessIndex = (props) => {
     const dispatch = useDispatch();
     let businesses = useSelector(getBusinesses);
+   
     const [cardTotal, setCardTotal] = useState(6);
 
     // useEffect(() => {

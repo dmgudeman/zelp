@@ -11,11 +11,20 @@ import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 
-const ReviewsIndex = ({ business }) => {
+const ReviewsIndex = ({ business}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const reviews = useSelector(getReviews);
+    const reviews = useSelector(getReviews)
+   
     const [cardTotal, setCardTotal] = useState(6);
+
+
+    useEffect(()=> {
+        if (business?.id){
+            dispatch(fetchReviewsByBusiness(business.id))
+        }
+
+    }, [])
 
     const deleteHandler = (reviewId) => {
         dispatch(deleteReview(reviewId));
@@ -30,9 +39,9 @@ const ReviewsIndex = ({ business }) => {
     const extendHandler = () => {
         setCardTotal(cardTotal + 6);
     };
-    useEffect(() => {
-        dispatch(fetchReviewsByBusiness(business.id));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(fetchReviewsByBusiness(business.id));
+    // }, [dispatch]);
 
     return (
         <>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./PhotoUpload.css";
 
-const PhotoUpload = ({ name, value, handleChange, title}) => {
+const PhotoUpload = ({ name, value, handleChange, title, fileRef}) => {
     useEffect(()=>{
       
     },[value])
@@ -15,6 +15,7 @@ const PhotoUpload = ({ name, value, handleChange, title}) => {
                 className="photoInput"
                 type="file"
                 id="profile_pic"
+                ref={fileRef}
                 name={name}
                 value={value}
                 onChange={handleChange}
