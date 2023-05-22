@@ -21,6 +21,7 @@ const ReviewEdit = (props) => {
     const [rating, setRating] = useState(review?.rating);
     const [body, setBody] = useState(review?.body);
     const [photoUrl, setPhotoUrl] = useState(review?.photoUrl);
+    const [showPhoto, setShowPhoto] = useState(true)
     const [photo, setPhoto] = useState(null);
 
     const sessionUser = useSelector(getUser);
@@ -41,10 +42,11 @@ const ReviewEdit = (props) => {
     }, [reviewId]);
 
     // useEffect(() => {
-    //     setUserId(sessionUser.id);
+    //     // setUserId(sessionUser.id);
     //     setRating(rating);
     //     setBody(body);
-    // }, [sessionUser, rating, body, photo]);
+    //     setPhotoUrl(photoUrl)
+    // }, [sessionUser, rating, body, photoUrl]);
 
     useEffect(() => {
         setUserId(sessionUser.id);
@@ -66,11 +68,14 @@ const ReviewEdit = (props) => {
         setBody(currentTarget.value);
     };
 
-    const handleFile = ({ currentTarget }) => {
+    const handleFile = async ({ currentTarget }) => {
         console.log("CURRENT TARGET", currentTarget.files[0]);
-        const file = currentTarget.files[0];
+        const file = await currentTarget.files[0];
+        formData.set("review[photo]", file);
         //  const file = "https://zelp99-dev.s3.us-west-1.amazonaws.com/3926ucminwqy77j47uuk1yd1lcao?response-content-disposition=inline%3B%20filename%3D%22logo.png%22%3B%20filename%2A%3DUTF-8%27%27logo.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAV35DSJ5S7XULJXUL%2F20230514%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20230514T204416Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=68a990b0d14ada1fc4baedfd155873b94ba37295b97fb38e08fbd7f043059fb4"
         setPhotoUrl(file);
+        setShowPhoto(false)
+    
     };
 
     const submitHandler = async (e) => {
@@ -155,7 +160,7 @@ const ReviewEdit = (props) => {
                                 handleChange={handleChange}
                             />
                         </div>
-                        {photoUrl ? (
+                        {showPhoto ? (
                             <div>
                                 <img
                                     className="formPhoto"

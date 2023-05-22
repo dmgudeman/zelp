@@ -22,7 +22,10 @@ const ReviewNew = (props) => {
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");
     const [rating, setRating] = useState(0);
+    // photo is an actual file
     const [photo, setPhoto] = useState(null);
+    // photoUrl is for preview
+    const [photoUrl, setPhotoUrl] = useState('')
     const flag = formData.get("review[body]");
 
     useEffect(() => {
@@ -48,6 +51,15 @@ const ReviewNew = (props) => {
         formData.append("review[photo]", file);
         setPhoto(file);
         setFormData(formData);
+
+        // to set a preview
+        if (file) {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => setPhotoUrl(fileReader.result);
+            
+          }
+          else setPhotoUrl(null);
     };
 
     const submitHandler = (e) => {
@@ -70,6 +82,8 @@ const ReviewNew = (props) => {
             console.error("dispatch redirect did not work");
         }
     };
+    let preview = null;
+    if (photoUrl) preview = <img className="imgRN" src={photoUrl} alt="" />;
 
     return (
         <>
@@ -101,6 +115,7 @@ const ReviewNew = (props) => {
                                     // handleBodyChange={handleBodyChange}
                                     handleChange={handleChange}
                                 />
+                                {preview}
                                 <PhotoUpload
                                     name="photo"
                                     value={formData.photo}
