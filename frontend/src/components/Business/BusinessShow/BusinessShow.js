@@ -16,6 +16,8 @@ const BusinessShow = (props) => {
     let reviews = useSelector(getReviews);
     let tags = useSelector(getTags);
 
+    
+
     useEffect(() => {
         if (busId) {
             dispatch(fetchBusiness(busId));

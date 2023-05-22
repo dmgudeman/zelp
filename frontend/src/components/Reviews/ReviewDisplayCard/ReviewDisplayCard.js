@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./ReviewDisplayCard.css";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
 
 const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
-    const { body, photoUrl, rating, businessId } = { ...review };
-    const [truncBody, setTruncBody] = useState(body.substring(0, 80) + "...");
+    const { body, photoUrl, rating, businessId, authorId } = { ...review };
+    const [truncBody, setTruncBody] = useState(body.length > 80 ? body.substring(0, 80) + "..." : body);
     const [cardTotal, setCardTotal] = useState(6);
+    useEffect(()=> {
+       console.log('review', review.authorName)
+
+
+    },[])
 
     return (
         <>
@@ -28,6 +33,7 @@ const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
                                 del
                             </button>
                         </div>
+                        <div>{review.authorName}</div>
                     </div>
                 </div>
                 {photoUrl ? (

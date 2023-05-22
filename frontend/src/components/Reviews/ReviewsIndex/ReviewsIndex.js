@@ -57,6 +57,7 @@ const ReviewsIndex = ({ business}) => {
                 <div id="reviewsIndexContainer">
                     {reviews.length ? (
                         reviews.map((review, idx) => {
+                            
                             if (idx < cardTotal) {
                                 return (
                                     <ReviewDisplayCard
