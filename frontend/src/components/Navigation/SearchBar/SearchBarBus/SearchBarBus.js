@@ -8,6 +8,7 @@ const SearchBarBus = (props) => {
         searchData,
         selectBus,
         hideBusList,
+        searchError,
         handleSearchEvent,
         handleBusListClick,
         filterBusinesses,

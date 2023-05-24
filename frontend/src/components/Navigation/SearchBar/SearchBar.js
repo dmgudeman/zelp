@@ -25,16 +25,14 @@ const SearchBar = (props) => {
     const history = useHistory();
     let businesses = useSelector(getBusinesses);
     let tags = useSelector(getTags);
-    // const [queryTag, setQueryTag] = useState("");
     const [selectTag, setSelectTag] = useState(null);
-    const [hideTagList, setHideTagList] = useState(true);
-    // const [queryBus, setQueryBus] = useState("");
     const [selectBus, setSelectBus] = useState(null);
+    const [hideTagList, setHideTagList] = useState(true);
     const [hideBusList, setHideBusList] = useState(true);
-    // const [queryAdd, setQueryAdd] = useState("");
     const [searchData, setSearchData] = useState({ tag: "", bus: "", add: "" });
     const [isSearchDataUpdated, setIsSearchDataUpdated] = useState(false);
-
+    const [searchError, setSearchError] = useState(null);
+    
     useEffect(() => {
         dispatch(fetchTags());
         // dispatch(fetchBusinesses());
@@ -81,19 +79,33 @@ const SearchBar = (props) => {
         }));
 
         if (name === "tag") {
-            // two conditions if the value is length zero 
-           if(value.length > 0) {
-            setHideTagList(false);
-            setSelectTag(null);
-           } else {
-            setHideTagList(true);
-            setSelectTag(null);
-           }
+            // two conditions if the value is length zero
+            if (value.length > 0) {
+                setHideTagList(false);
+                setSelectTag(null);
+            } else {
+                setHideTagList(true);
+                setSelectTag(null);
+            }
         }
         if (name === "bus") {
-            dispatch(fetchBusinessesSearch(searchData));
-            setHideBusList(false);
-            setSelectBus(null);
+            if(filterBusinesses().length > 0){
+            if (value.length > 0) {
+                dispatch(fetchBusinessesSearch(searchData));
+                setHideBusList(false);
+                setSelectBus(null);
+            } else {
+                setHideBusList(true);
+                setSelectBus(null);
+            }
+        } else {
+            if (value.length = 0){
+                setHideBusList(true);
+                setSelectBus(null);
+            } else {
+                setSearchError("Try another name");
+            }
+        }
         }
     };
 
@@ -164,6 +176,7 @@ const SearchBar = (props) => {
                         searchData={searchData}
                         selectBus={selectBus}
                         hideBusList={hideBusList}
+                        searchError={searchError}
                         handleSearchEvent={handleSearchEvent}
                         handleBusListClick={handleBusListClick}
                         filterBusinesses={filterBusinesses}
@@ -177,7 +190,10 @@ const SearchBar = (props) => {
                     {/* <SearchBarButton 
                     className="inputSB"
                     handleSearchSubmit={handleSearchSubmit}/> */}
-                    <div className="blueButton searchButton" onClick={handleSearchSubmit}>
+                    <div
+                        className="blueButton searchButton"
+                        onClick={handleSearchSubmit}
+                    >
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
 
