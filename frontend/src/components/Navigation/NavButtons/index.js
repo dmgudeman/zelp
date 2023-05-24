@@ -34,7 +34,8 @@ const NavButtons = (props) => {
             </Link>
             {/* <ProfileButton /> */}
             <a to="https://github.com/dmgudeman" className="git">
-                <FaGithub />
+                <FaGithub  />
+                {/* <FontAwesomeIcon icon={FaGithub} size="1x" /> */}
             </a>
             <div>
                 <a
@@ -42,7 +43,7 @@ const NavButtons = (props) => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <FontAwesomeIcon icon={faLinkedin} />
+                    <FontAwesomeIcon size="4x" icon={faLinkedin} />
                 </a>
             </div>
 
@@ -60,7 +61,8 @@ const NavButtons = (props) => {
                 </button>
             </Link>
             <a href="https://github.com/dmgudeman" className="git">
-                <FaGithub />
+                 <FaGithub style={{ fontSize: '40px' }} />
+                 {/* <FontAwesomeIcon icon={FaGithub} size="1x" /> */}
             </a>
             <div>
                 <a
@@ -68,7 +70,7 @@ const NavButtons = (props) => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <FontAwesomeIcon icon={faLinkedin} />
+                    <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '40px' }} />
                 </a>
             </div>
             {/* <button id="review-button" onClick={handleReviewRequest}>Write a Review</button> */}

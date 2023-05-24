@@ -13,7 +13,7 @@ const Home = (props) => {
         // Simulate a 3-second loading delay
         const timer = setTimeout(() => {
           setLoading(false);
-        }, 2000);
+        }, 4000);
     
         return () => clearTimeout(timer);
       }, []);

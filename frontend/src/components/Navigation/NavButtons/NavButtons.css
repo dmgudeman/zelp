@@ -2,13 +2,11 @@
 #containerNBut {
     display: flex;
     flex-direction: row;
-    /* flex-grow:1; */
     justify-content: space-around;
     align-items: center;
     width: calc(var(--nbh) * 4);
     height: var(--nbh);
     padding-right: 50px;
-
 }
 
 #login-button {
@@ -16,7 +14,6 @@
     background-color: transparent;
     padding-left: 13px;
     padding-right: 13px;
-
 }
 
 #review-button {
@@ -24,7 +21,6 @@
     border: none;
 }
 
-.git {
-   
+.git {  
     color:black;
 }

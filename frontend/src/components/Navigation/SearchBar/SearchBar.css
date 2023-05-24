@@ -109,12 +109,17 @@
     background-color: green; */
     width: 170px;
     border: none;
+
     /* outline: none; */
     
 }
+.SBInput:focus {
+    outline: none;
+    border: none;
+}
 
 .SBDropDown{
-    /* position: absolute; */
+    position: absolute;
     display:flex;
     align-items: center;
     color: white;

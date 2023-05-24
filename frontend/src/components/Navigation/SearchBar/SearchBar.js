@@ -81,8 +81,14 @@ const SearchBar = (props) => {
         }));
 
         if (name === "tag") {
+            // two conditions if the value is length zero 
+           if(value.length > 0) {
             setHideTagList(false);
             setSelectTag(null);
+           } else {
+            setHideTagList(true);
+            setSelectTag(null);
+           }
         }
         if (name === "bus") {
             dispatch(fetchBusinessesSearch(searchData));
