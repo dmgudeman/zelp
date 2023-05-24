@@ -1,29 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getCurrentUser, logout } from "../../../store/session";
-import ProfileButton from "./ProfileButton/ProfileButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FaGithub } from "react-icons/fa";
-
 import "./NavButtons.css";
 import { fetchBusinesses } from "../../../store/businesses";
 
 const NavButtons = (props) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     let sessionUser = useSelector(getCurrentUser);
-
-    const handleReviewRequest = () => {
-        dispatch(fetchBusinesses());
-        history.push("/businesses");
-    };
 
     const withoutSessionUser = (
         <div id="containerNBut">
-           
-            {/* <button id="review-button" onClick={handleReviewRequest}>Write a Review</button> */}
-
             <Link to="/login">
                 <button className="blueButton" id="login-button">
                     Log In
@@ -32,10 +21,8 @@ const NavButtons = (props) => {
             <Link to="/signup">
                 <button onClick={() => console.log("sign up")}>Sign Up</button>
             </Link>
-            {/* <ProfileButton /> */}
             <a to="https://github.com/dmgudeman" className="git">
-                <FaGithub  />
-                {/* <FontAwesomeIcon icon={FaGithub} size="1x" /> */}
+                <FaGithub style={{ fontSize: "40px" }} />
             </a>
             <div>
                 <a
@@ -43,10 +30,12 @@ const NavButtons = (props) => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <FontAwesomeIcon size="4x" icon={faLinkedin} />
+                    <FontAwesomeIcon
+                        icon={faLinkedin}
+                        style={{ fontSize: "40px" }}
+                    />
                 </a>
             </div>
-
         </div>
     );
 
@@ -61,8 +50,7 @@ const NavButtons = (props) => {
                 </button>
             </Link>
             <a href="https://github.com/dmgudeman" className="git">
-                 <FaGithub style={{ fontSize: '40px' }} />
-                 {/* <FontAwesomeIcon icon={FaGithub} size="1x" /> */}
+                <FaGithub style={{ fontSize: "40px" }} />
             </a>
             <div>
                 <a
@@ -70,12 +58,12 @@ const NavButtons = (props) => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '40px' }} />
+                    <FontAwesomeIcon
+                        icon={faLinkedin}
+                        style={{ fontSize: "40px" }}
+                    />
                 </a>
             </div>
-            {/* <button id="review-button" onClick={handleReviewRequest}>Write a Review</button> */}
-            
-            {/* <ProfileButton /> */}
         </div>
     );
 
