@@ -114,7 +114,7 @@
 }
 
 .SBDropDown{
-    /* position: absolute; */
+    position: absolute;
     display:flex;
     align-items: center;
     color: white;
