@@ -1,0 +1,30 @@
+
+.searchButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--bh);
+    border: 2px solid transparent; 
+    width: calc(var(--bh) * 3);
+    background-color: var(--two);
+    color: white;
+    border-radius: 0px 6px 6px 0px;
+}
+
+.SBblueButton {
+    height: var(--bh);
+    border-radius: 5px;
+    background-color: var(--two);
+    color: white;  
+    font-weight:bolder;
+    transition: all 0.3s;
+    cursor:pointer;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+    background-color: blueviolet;
+} 
+
+.SBblueButton:hover { 
+    height: var(--bh);
+    border: 2px solid var(--three);
+    color: var(--three)
+ }

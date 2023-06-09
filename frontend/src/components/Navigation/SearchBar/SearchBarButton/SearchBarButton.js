@@ -1,3 +1,5 @@
+import './SearchBarButton.css'
+
 const SearchBarButton = ({ handleSearchSubmit }) => {
     return (
         <>
@@ -5,8 +7,7 @@ const SearchBarButton = ({ handleSearchSubmit }) => {
                 {" "}
                 {/*  NEED THIS OUTER DIV*/}
                 <div
-                    id="buttonSB"
-                    className="blueButton"
+                    className="SBblueButton"
                     onClick={handleSearchSubmit}
                 >
                     <i className="fa-solid fa-magnifying-glass "></i>

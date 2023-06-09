@@ -1,9 +1,8 @@
-import { useState, CSSProperties } from "react";
+import { useState } from "react";
 import GridLoader from "react-spinners/GridLoader";
 import './LoadingSpinner.css'
 
-
-const override: CSSProperties = {
+const override = {
     display: "block",
     margin: "0 auto",
     borderColor: "blue"
@@ -12,8 +11,6 @@ const override: CSSProperties = {
 
 const LoadingSpinner = ({loading}) => {
     let [color, setColor] = useState('#50AF93');
-   
-    
 
    return (
     <>
@@ -21,7 +18,7 @@ const LoadingSpinner = ({loading}) => {
      <GridLoader
         color={color}
         loading={loading}
-        cssOverride={override}
+        css={override}
         size={75}
         aria-label="Loading Spinner"
         data-testid="loader"

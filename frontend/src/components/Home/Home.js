@@ -1,5 +1,5 @@
 import NavBar from "../Navigation/NavBar/NavBar";
-import Carousel from "../Helpers/Caroursel/Carousel3";
+import Carousel from "../Helpers/Caroursel/Carousel5";
 import "./Home.css";
 
 const Home = (props) => {
