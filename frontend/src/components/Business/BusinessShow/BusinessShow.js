@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
@@ -13,7 +13,10 @@ const BusinessShow = (props) => {
     const dispatch = useDispatch();
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
-    let reviews = useSelector(getReviews);
+    const [localReviews, setLocalReviews] = useState([]);
+    console.log('BUSINESS>REVIEWWWWWWWWWWWWW', localReviews)
+ 
+    // let reviews = useSelector(getReviews);
     let tags = useSelector(getTags);
 
     
@@ -21,13 +24,17 @@ const BusinessShow = (props) => {
     useEffect(() => {
         if (busId) {
             dispatch(fetchBusiness(busId));
-            dispatch(fetchReviewsByBusiness(busId));
+            // dispatch(fetchReviewsByBusiness(busId));
+            
         }
     }, [dispatch, busId]);
 
-    useEffect(()=>{
-        dispatch(fetchReviewsByBusiness(busId))
-    }, [dispatch])
+    useEffect(() => {
+        if (business?.reviews) {
+            setLocalReviews(business.reviews);
+        }
+    }, [business]);
+
 
     if (!business) return null;
 
@@ -59,7 +66,7 @@ const BusinessShow = (props) => {
 
                 <BusinessShowDisplay business={business} />
                 {/* <div id="lowerContainer"> */}
-                <ReviewsIndex reviews={reviews} business={business} />
+                <ReviewsIndex business={business} />
             </div>
             {/* </div> */}
         </>

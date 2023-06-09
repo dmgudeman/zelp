@@ -17,7 +17,7 @@ const ReviewsIndex = ({ business}) => {
     const reviews = useSelector(getReviews)
    
     const [cardTotal, setCardTotal] = useState(6);
-
+    console.log("REVIEWS", reviews)
 
     useEffect(()=> {
         if (business?.id){
@@ -28,7 +28,7 @@ const ReviewsIndex = ({ business}) => {
 
     const deleteHandler = (reviewId) => {
         dispatch(deleteReview(reviewId));
-        dispatch(fetchReviewsByBusiness(business.id));
+        // dispatch(fetchReviewsByBusiness(business.id));
     };
 
     const editHandler = (reviewId) => {
@@ -43,6 +43,11 @@ const ReviewsIndex = ({ business}) => {
     //     dispatch(fetchReviewsByBusiness(business.id));
     // }, [dispatch]);
 
+    let sortedReviews = reviews.slice().sort((a, b) => {
+        // parse the dates and return the comparison
+        return new Date(b.updatedAt) - new Date(a.updatedAt);
+    });
+
     return (
         <>
             <div id="containerRI">
@@ -56,7 +61,7 @@ const ReviewsIndex = ({ business}) => {
                 </div>
                 <div id="reviewsIndexContainer">
                     {reviews.length ? (
-                        reviews.map((review, idx) => {
+                        sortedReviews.map((review, idx) => {
                             
                             if (idx < cardTotal) {
                                 return (

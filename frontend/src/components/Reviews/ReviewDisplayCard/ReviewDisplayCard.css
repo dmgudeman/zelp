@@ -79,3 +79,16 @@
     font-size: smaller;
     margin-top: 4px;
 }
+
+#reviewDate{
+    font-style: italic;
+    font-size: smaller;
+    margin-top: 4px;
+    padding-right: 1rem;
+
+}
+
+#ratingDateContainer {
+    display:flex;
+    justify-content: space-between;
+}

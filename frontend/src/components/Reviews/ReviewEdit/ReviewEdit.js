@@ -78,11 +78,12 @@ const ReviewEdit = (props) => {
         e.stopPropagation();
         dispatch(deleteReview(reviewId));
         setBusId(review.business_id);
+        console.log( 'Session User', sessionUser)
         formData.set("review[author_id]", +sessionUser.id);
         formData.set("review[business_id]", +busId);
         formData.set("review[rating]", +rating);
-        // formData.set("review[body]", body);
-        // formData.set("review[photoUrl]", photoUrl)
+        formData.set("review[body]", body);
+        formData.set("review[photoUrl]", photoUrl)
         // for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
         // }

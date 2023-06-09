@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { receiveReviews } from "./reviews";
 export const RECEIVE_BUSINESSES = "businesses/RECEIVE_BUSINESSES";
 export const RECEIVE_BUSINESS = "businesses/RECEIVE_BUSINESS";
 
@@ -55,7 +56,11 @@ export const fetchBusinessesSearch =
 export const fetchBusiness = (businessId) => async (dispatch) => {
     const res = await csrfFetch(`/api/businesses/${businessId}`);
     const data = await res.json();
+
     if (res.ok) {
+        if (data.reviews) {
+            dispatch(receiveReviews(data.reviews))
+        }
         dispatch(receiveBusiness(data));
         return res;
     } else {

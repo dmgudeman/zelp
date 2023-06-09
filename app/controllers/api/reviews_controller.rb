@@ -3,13 +3,17 @@ class Api::ReviewsController < ApplicationController
 
   def index
   
-    @reviews = Review.all.sort { |a, b| b.created_at <=> a.created_at }
-    puts @reviews
+    # @reviews = Review.all.sort { |a, b| b.created_at <=> a.created_at }
+    # @reviews = Review.all.sort { |a, b| b.created_at <=> a.created_at }
+    @reviews = Review.order(created_at: :desc)
+ 
+
+    
+    # puts @reviews
     # @reviews = Review.where(business_id: desired_business_id)
   end
 
   def show
-  
     @review = Review.find(params[:id])
   end
 
@@ -25,7 +29,7 @@ class Api::ReviewsController < ApplicationController
 
   def update
    
-    @review = Review.find(params[:id])
+    @review = Review.includes(:author).find(params[:id])
     if @review.update(review_params)
       # render partial: 'api/reviews/review', locals: { review: @review }
       render :show

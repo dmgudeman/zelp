@@ -19,7 +19,8 @@ end
 
   def show
     @business = Business.find(params[:id])
-    @reviews = @business.reviews
+    # @reviews = @business.reviews
+    @reviews = @business.reviews.order(created_at: :desc)
     @tags = @business.tags
   end
 
