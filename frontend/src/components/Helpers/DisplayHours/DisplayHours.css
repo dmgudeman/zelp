@@ -1,38 +1,29 @@
-
-
 #containerDH {
     display: flex;
     height: 100%;
     width: 100%;
 }
 #lineDH {
-   display:flex; 
-   margin:10px;
+    display: flex;
+    margin: 10px;
 }
 
-
-#daysDH{
+#daysDH {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 40px;
-    height:25px;
-
+    height: 25px;
     color: white;
     margin-right: 15px;
     background-color: var(--three);
     border-radius: 3px;
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
-
 }
 
 #hoursDH {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--one)
-  
-
+    color: var(--one);
 }
-
