@@ -29,7 +29,7 @@ class Api::ReviewsController < ApplicationController
 
   def update
    
-    @review = Review.includes(:author).find(params[:id])
+    @review = Review.find(params[:id])
     if @review.update(review_params)
       # render partial: 'api/reviews/review', locals: { review: @review }
       render :show

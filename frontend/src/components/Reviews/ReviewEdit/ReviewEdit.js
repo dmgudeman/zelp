@@ -18,12 +18,12 @@ import "./ReviewEdit.css";
 const ReviewEdit = (props) => {
     const dispatch = useDispatch();
     const { reviewId } = useParams();
-    const review = useSelector(getReview(reviewId));
+    // const review = useSelector(getReview(reviewId));
     const history = useHistory();
-    const [busId, setBusId] = useState(review?.businessId);
-    const [rating, setRating] = useState(review?.rating);
-    const [body, setBody] = useState(review?.body);
-    const [photoUrl, setPhotoUrl] = useState(review?.photoUrl);
+    const [busId, setBusId] = useState(null);
+    const [rating, setRating] = useState(null);
+    const [body, setBody] = useState(null);
+    const [photoUrl, setPhotoUrl] = useState(null);
     const [showPhoto, setShowPhoto] = useState(true);
     const [photo, setPhoto] = useState(null);
     const sessionUser = useSelector(getUser);
@@ -31,16 +31,20 @@ const ReviewEdit = (props) => {
     const [userId, setUserId] = useState(sessionUser.id || "");
 
     useEffect(() => {
-        let rev;
         if (reviewId) {
-            try {
-                rev = dispatch(fetchReview(reviewId));
-            } catch (error) {
-                console.error(error);
-            }
+            dispatch(fetchReview(reviewId))
+                .then(review => {
+                    setBusId(review.businessId);
+                    setRating(review.rating);
+                    setBody(review.body);
+                    setPhotoUrl(review.photoUrl);
+                })
+                .catch(error => console.error(error));
         }
-    }, [reviewId]);
+    }, [reviewId, dispatch]);
+    
 
+    console.log('pppppppppppppppppppppppppphotoUrl', photoUrl)
     useEffect(() => {
         setUserId(sessionUser.id);
     }, [sessionUser.id]);
@@ -66,11 +70,11 @@ const ReviewEdit = (props) => {
         } else setPhotoUrl(null);
     };
 
+    // creates a new review
     const submitHandler = (e) => {
         e.preventDefault();
         e.stopPropagation();
         dispatch(deleteReview(reviewId));
-        setBusId(review.business_id);
         console.log( 'Session User', sessionUser)
         formData.set("review[author_id]", +sessionUser.id);
         formData.set("review[business_id]", +busId);

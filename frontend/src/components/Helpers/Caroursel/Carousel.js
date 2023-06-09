@@ -1,103 +1,70 @@
 import React, { useState, useEffect } from "react";
-import car1 from "../../../assets/images/car1.jpeg";
-import Splash1 from '../Caroursel/Splashes/Splash1';
-import car2 from "../../../assets/images/car2.jpeg";
-import car3 from "../../../assets/images/car3.jpeg";
-import car4 from "../../../assets/images/car4.jpeg";
-import car5 from "../../../assets/images/car5.jpeg";
-import "./Carousel.css";
+import Splash1 from './Splashes/Splash1';
+import Splash2 from './Splashes/Splash2';
+import Splash3 from './Splashes/Splash3';
+import Splash4 from './Splashes/Splash4';
+import Splash5 from './Splashes/Splash5';
+
 
 const Carousel = () => {
     const [currentImage, setCurrentImage] = useState(0);
     const [fadeIn, setFadeIn] = useState(true);
+    let interval;
 
-    const images = [Splash1, car2, car3, car4, car5];
-
-    const startInterval = () => {
-       return setInterval(() => {
-        setFadeIn(false);
-        setTimeout(() => {
-            setCurrentImage(
-                currentImage === images.length - 1 ? 0 : currentImage + 1
-            );
-
-            setFadeIn(true);
-        }, 300);
-    }, 1000);
-    }
-
+    const images = [
+        { component: Splash1, altText: "Image 1" },
+        { component: Splash2, altText: "Image 2" },
+        { component: Splash3, altText: "Image 3" },
+        { component: Splash4, altText: "Image 4" },
+        { component: Splash5, altText: "Image 5" },
+        
+    ];
+    
     useEffect(() => {
-        const interval = startInterval();
+      interval = setInterval(() => {
+            setFadeIn(false);
+            setTimeout(() => {
+                setCurrentImage(
+                    currentImage === images.length - 1 ? 0 : currentImage + 1
+                );
+
+                setFadeIn(true);
+            }, 100);
+        }, 6000);
         return () => clearInterval(interval);
-    }, []);
+      }, [currentImage]);
+
+      useEffect(() => {
+        return () => {
+          clearInterval(interval);
+        };
+      }, []);
 
     return (
         <div className="slider">
-            {images.map((image, index) => (
-                <img
-                    key={image}
-                    src={image}
-                    alt={`Image ${index + 1}`}
-                    className={`slide ${
-                        index === currentImage ? "active" : ""
-                    }`}
-                    style={{
-                        animation: `${
-                            index === currentImage && fadeIn
-                                ? "fadeIn"
-                                : "fadeOut"
-                        } 2s linear forwards`,
-                    }}
-                />
-            ))}
+            {images.map((image, index) => {
+                const Component = image.component;
+                return (
+                    <div
+                        key={index}
+                        className={`slide ${
+                            index === currentImage ? "active" : ""
+                        }`}
+                        style={{
+                            animation: `${
+                                index === currentImage && fadeIn
+                                    ? "fadeIn"
+                                    : "fadeOut"
+                            } 0.5s linear forwards`,
+                            // marginLeft: index === currentImage ? "-50px" : "0",
+                        }}
+                    >
+                        <Component alt={image.altText} />
+                    </div>
+                );
+            })}
         </div>
     );
 };
 
 export default Carousel;
-
-
-// animation-name: fadeIn; /* animation name refers to the name of the keyframe */
-// animation-duration: 1s; /* duration of one animation lap */
-// animation-timing-function: linear; /* defines the accelaration curve for the animation */
-// /* animation-delay: 0s; */
-// /* animation-iteration-count: 1; */
-// /* animation-direction: ; */
-// animation-fill-mode: forwards;
-
-// animation short hand:
-// animation: name duration timing-function delay iteration-count direction fill-mode
-
-
-// import { useState } from "react";
-
-// function ImageSlider() {
-//   const [currentImage, setCurrentImage] = useState(0);
-//   const images = [car1,  car2, car3, car4, car5];
-
-//   const handleNextImage = () => {
-//     const nextImage = currentImage === images.length - 1 ? 0 : currentImage + 1;
-//     setCurrentImage(nextImage);
-//   };
-
-//   return (
-//     <div className="slider">
-//       {images.map((image, index) => (
-//         <img
-//           key={image}
-//           src={image}
-//           alt={`Image ${index + 1}`}
-//           className={`slide ${index === currentImage ? "active" : ""}`}
-//           style={{
-//             animation: `${
-//               index === currentImage ? "fadeIn" : "fadeOut"
-//             } 1s linear forwards`,
-//           }}
-//         />
-//       ))}
-//       <button onClick={handleNextImage}>Next Image</button>
-//     </div>
-//   );
-// }
-
-// export default ImageSlider;
