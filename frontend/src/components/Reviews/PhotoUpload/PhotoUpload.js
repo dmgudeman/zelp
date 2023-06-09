@@ -1,11 +1,7 @@
-import { useEffect } from "react";
 import "./PhotoUpload.css";
 
-const PhotoUpload = ({ name, value, handleChange, title, fileRef}) => {
-    useEffect(()=>{
-      
-    },[value])
-   
+const PhotoUpload = ({ name, value, handleChange, title, fileRef }) => {
+
     return (
         <div id="uploadContainer">
             <h3 className="photoTitle blueTitle">{title}</h3>
@@ -20,7 +16,6 @@ const PhotoUpload = ({ name, value, handleChange, title, fileRef}) => {
                 value={value}
                 onChange={handleChange}
             />
-
         </div>
     );
 };

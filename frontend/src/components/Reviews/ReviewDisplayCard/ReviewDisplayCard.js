@@ -10,7 +10,6 @@ const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
         body?.length > 80 ? body.substring(0, 80) + "..." : body
     );
     const [cardTotal, setCardTotal] = useState(6);
-
     const [showButtons, setShowButtons] = useState(authorId === sessionUser.id);
     const formatDate = (dateString) => {
         let date = new Date(dateString);

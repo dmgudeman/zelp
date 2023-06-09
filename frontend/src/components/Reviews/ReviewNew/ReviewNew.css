@@ -1,25 +1,19 @@
-
-
 #newReviewContainer {
     display: flex;
     justify-content: space-between;
     width: 100vw;
     height: 100vh;
-   
 }
 
 #leftGutter {
     display: flex;
     width: 700px;
-    /* background-color: pink; */
- }
+}
 #center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
- 
-    
 }
 #reviewForm {
     display: flex;
@@ -28,51 +22,37 @@
     align-items: center;
     width: max(500px, 40%);
     height: 100vh;
-
-
 }
 
-#ratingReview{
+#ratingReview {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     margin-left: 50px;
- 
 }
 .title {
     padding: 20px 0px;
 }
 
 .italic {
-    font-style:italic
+    font-style: italic;
 }
 .textareaLarge {
-    /* height: min(600px, 60%); */
     height: 300px;
     border-radius: 15px;
     padding: 20px;
     font-size: 12pt;
     font-style: italic;
-    color:var(--two);
-  
+    color: var(--two);
 }
 
 #rightGutter {
     display: flex;
     width: max(700px, 100%);
-    /* background-color: pink; */
-    
 }
 .imgRN {
-
     height: 100px;
     margin-top: 15px;
     border-radius: 15px;
 }
-
-
-
-
-
-

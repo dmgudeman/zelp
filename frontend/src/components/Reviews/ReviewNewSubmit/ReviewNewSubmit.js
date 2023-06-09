@@ -1,15 +1,18 @@
+import "./ReviewNewSubmit.css";
 
-
-import './ReviewNewSubmit.css';
-
-const ReviewNewSubmit = ({submitHandler}) => {
+const ReviewNewSubmit = ({ submitHandler }) => {
     return (
         <>
-        <div id="reviewNewSubmitContainer">
-        <button className="newReviewSubmit blueButton" onClick={submitHandler}>Submit Review</button>
-        </div>
+            <div id="reviewNewSubmitContainer">
+                <button
+                    className="newReviewSubmit blueButton"
+                    onClick={submitHandler}
+                >
+                    Submit Review
+                </button>
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default ReviewNewSubmit;

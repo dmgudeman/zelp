@@ -1,5 +1,3 @@
-
-
 #reviewCardContainer {
     display: flex;
     flex-direction: row;
@@ -11,84 +9,68 @@
     border-radius: 15px;
     margin: 20px;
     background-color: rgba(221, 239, 245, 0.8);
-    /* background-color: var(--four); */
-    
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
-    
 }
 #bodyCell {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: space-between;
     width: 100%;
     padding-left: 20px;
     padding-top: 10px;
-   
 }
 
 #photoRatingCell {
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     width: 130px;
-
-    /* padding-left: 10px; */
-    /* background-color: aquamarine; */
 }
 
 #imgRDC {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     border-radius: 0px 14px 14px 0px;
-    
 }
 
 #bodyContainerRDC {
     display: flex;
     flex-direction: row;
-     flex: 1;
+    flex: 1;
 }
 
 .star {
     transform: scale(1.5);
     margin: 7px;
- 
-  }
-
-
+}
 
 #truncWidth {
     box-sizing: border-box;
     width: 225px;
     word-wrap: break-word;
-    font-size:small;
-   
-      
+    font-size: small;
 }
 .miniButtonContainer {
     display: flex;
-
 }
 .miniButton {
     margin-right: 7px;
     margin-top: 10px;
 }
-.authorName{
+.authorName {
     font-style: italic;
     font-size: smaller;
     margin-top: 4px;
 }
 
-#reviewDate{
+#reviewDate {
     font-style: italic;
     font-size: smaller;
     margin-top: 4px;
     padding-right: 1rem;
-
 }
 
 #ratingDateContainer {
-    display:flex;
+    display: flex;
     justify-content: space-between;
 }

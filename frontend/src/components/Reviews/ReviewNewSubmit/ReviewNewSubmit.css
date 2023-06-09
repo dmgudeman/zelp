@@ -1,11 +1,9 @@
-
 #reviewNewSubmitContainer {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     margin-top: 50px;
-    width:100%;
- 
+    width: 100%;
 }
 
 .newReviewSubmit {

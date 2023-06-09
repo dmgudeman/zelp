@@ -1,8 +1,3 @@
-import { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-
-import "./SearchBarBus.css";
-
 const SearchBarBus = (props) => {
     const {
         searchData,

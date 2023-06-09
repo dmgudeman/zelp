@@ -7,7 +7,6 @@ const SearchBarTag = (props) => {
         handleTagListClick,
         filterTags,
     } = { ...props };
-    
 
     return (
         <>
@@ -31,7 +30,7 @@ const SearchBarTag = (props) => {
                                     key={tag.tag}
                                     onClick={() => handleTagListClick(tag.tag)}
                                 >
-                                    {tag.tag} 
+                                    {tag.tag}
                                 </li>
                             ))}
                         </ul>

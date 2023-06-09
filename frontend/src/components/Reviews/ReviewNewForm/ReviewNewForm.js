@@ -1,10 +1,6 @@
-import { useState, useEffect } from "react";
-
 import "./ReviewNewForm.css";
 
-const ReviewNewForm = ({ name, value, handleChange}) => {
-    
-    
+const ReviewNewForm = ({ name, value, handleChange }) => {
     return (
         <>
             <textarea

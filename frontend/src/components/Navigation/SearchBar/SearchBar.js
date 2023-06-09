@@ -25,19 +25,15 @@ const SearchBar = (props) => {
     const history = useHistory();
     let businesses = useSelector(getBusinesses);
     let tags = useSelector(getTags);
-    // const [queryTag, setQueryTag] = useState("");
     const [selectTag, setSelectTag] = useState(null);
     const [hideTagList, setHideTagList] = useState(true);
-    // const [queryBus, setQueryBus] = useState("");
     const [selectBus, setSelectBus] = useState(null);
     const [hideBusList, setHideBusList] = useState(true);
-    // const [queryAdd, setQueryAdd] = useState("");
     const [searchData, setSearchData] = useState({ tag: "", bus: "", add: "" });
     const [isSearchDataUpdated, setIsSearchDataUpdated] = useState(false);
 
     useEffect(() => {
         dispatch(fetchTags());
-        // dispatch(fetchBusinesses());
     }, [dispatch]);
 
     useEffect(() => {
@@ -96,24 +92,10 @@ const SearchBar = (props) => {
         setHideTagList(true);
     };
 
-    // const handleTagSearchEvent = (e) => {
-    //     e.preventDefault();
-    //     setHideTagList(false);
-    //     setQueryTag(e.target.value);
-    //     setSelectTag(null);
-    // };
-
     const handleBusListClick = (bus) => {
         setSelectBus(bus);
         setHideBusList(true);
     };
-
-    // const handleBusSearchEvent = (e) => {
-    //     e.preventDefault();
-    //     setHideBusList(false);
-    //     setQueryBus(e.target.value);
-    //     setSelectBus(null);
-    // }
 
     const handleSearchSubmit = () => {
         if (selectTag) {
@@ -168,23 +150,15 @@ const SearchBar = (props) => {
                         searchData={searchData}
                         handleSearchEvent={handleSearchEvent}
                     />
-                    {/* <SearchBarButton 
-                    className="inputSB"
-                    handleSearchSubmit={handleSearchSubmit}/> */}
-                    <div className="blueButton searchButton" onClick={handleSearchSubmit}>
+                    <div
+                        className="blueButton searchButton"
+                        onClick={handleSearchSubmit}
+                    >
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
-
-                    {/* <input type="text" placeholder="Search..." onClick={handleSearchBarClick} /> */}
                 </form>
             </div>
         </>
     );
 };
 export default SearchBar;
-
-// const mapDispatchToProps = (dispatch) => ({
-//     dispatchShowModal: (modalType, modalProps) => dispatch(showModal(modalType, modalProps)),
-//   });
-
-//   export default connect(null, mapDispatchToProps)(SearchBar);

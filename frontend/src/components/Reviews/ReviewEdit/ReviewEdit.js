@@ -41,13 +41,6 @@ const ReviewEdit = (props) => {
         }
     }, [reviewId]);
 
-    // useEffect(() => {
-    //     // setUserId(sessionUser.id);
-    //     setRating(rating);
-    //     setBody(body);
-    //     setPhotoUrl(photoUrl)
-    // }, [sessionUser, rating, body, photoUrl]);
-
     useEffect(() => {
         setUserId(sessionUser.id);
     }, [sessionUser.id]);
@@ -84,9 +77,7 @@ const ReviewEdit = (props) => {
         formData.set("review[rating]", +rating);
         formData.set("review[body]", body);
         formData.set("review[photoUrl]", photoUrl)
-        // for (const [key, value] of formData.entries()) {
         //     console.log(`${key}: ${value}`);
-        // }
         try {
             dispatch(createReview(formData));
             setFormData(null);

@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import ReviewNewForm from "../ReviewNewForm/ReviewNewForm";
 import RatingInput from "../RatingInput/RatingInput";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import ReviewNewSubmit from "../ReviewNewSubmit/ReviewNewSubmit";
-import { getBusiness} from "../../../store/businesses";
+import { getBusiness } from "../../../store/businesses";
 
 import { createReview, fetchReviewsByBusiness } from "../../../store/reviews";
 import { getUser } from "../../../store/session";
@@ -26,11 +26,11 @@ const ReviewNew = (props) => {
     // photo is an actual file
     const [photo, setPhoto] = useState(null);
     // photoUrl is for preview
-    const [photoUrl, setPhotoUrl] = useState('')
+    const [photoUrl, setPhotoUrl] = useState("");
     const flag = formData.get("review[body]");
 
     useEffect(() => {
-        dispatch(fetchReviewsByBusiness(busId));  
+        dispatch(fetchReviewsByBusiness(busId));
         setUserId(sessionUser.id);
         setRating(rating);
         setBody(body);
@@ -58,9 +58,7 @@ const ReviewNew = (props) => {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
             fileReader.onload = () => setPhotoUrl(fileReader.result);
-            
-          }
-          else setPhotoUrl(null);
+        } else setPhotoUrl(null);
     };
 
     const submitHandler = (e) => {
@@ -69,15 +67,12 @@ const ReviewNew = (props) => {
         formData.set("review[author_id]", +sessionUser.id);
         formData.set("review[business_id]", +busId);
         formData.set("review[rating]", +rating);
-        // for (const [key, value] of formData.entries()) {
-        //     console.log(`${key}: ${value}`);
-        //   }
         try {
             dispatch(createReview(formData));
             setFormData(null);
             setBody(null);
             setRating(null);
-            fileRef.current.value=null;
+            fileRef.current.value = null;
             history.push(`/businesses/${busId}`);
         } catch (errors) {
             console.error("dispatch redirect did not work");
@@ -104,7 +99,6 @@ const ReviewNew = (props) => {
                             value={formData.rating}
                             rating={rating}
                             handleChange={handleChange}
-                            // handleRatingChange={handleRatingChange}
                         />
 
                         {rating > 0 ? (
@@ -113,7 +107,6 @@ const ReviewNew = (props) => {
                                     id="ratingReview"
                                     name="body"
                                     value={formData.body}
-                                    // handleBodyChange={handleBodyChange}
                                     handleChange={handleChange}
                                 />
                                 {preview}

@@ -11,38 +11,32 @@ import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 
-const ReviewsIndex = ({ business}) => {
+const ReviewsIndex = ({ business }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const reviews = useSelector(getReviews)
-   
+    const reviews = useSelector(getReviews);
+
     const [cardTotal, setCardTotal] = useState(6);
-    console.log("REVIEWS", reviews)
+    console.log("REVIEWS", reviews);
 
-    useEffect(()=> {
-        if (business?.id){
-            dispatch(fetchReviewsByBusiness(business.id))
+    useEffect(() => {
+        if (business?.id) {
+            dispatch(fetchReviewsByBusiness(business.id));
         }
-
-    }, [])
+    }, []);
 
     const deleteHandler = (reviewId) => {
         dispatch(deleteReview(reviewId));
-        // dispatch(fetchReviewsByBusiness(business.id));
     };
 
     const editHandler = (reviewId) => {
         history.push(`/reviewEdit/${reviewId}`);
-        // dispatch(fetchReviewsByBusiness(business.id))
     };
 
-    const extendHandler = () => {    
+    const extendHandler = () => {
         setCardTotal(reviews.length);
     };
-    // useEffect(() => {
-    //     dispatch(fetchReviewsByBusiness(business.id));
-    // }, [dispatch]);
-
+    // not as good as soring on back end but sufficient for this size app
     let sortedReviews = reviews.slice().sort((a, b) => {
         // parse the dates and return the comparison
         return new Date(b.updatedAt) - new Date(a.updatedAt);
@@ -62,7 +56,6 @@ const ReviewsIndex = ({ business}) => {
                 <div id="reviewsIndexContainer">
                     {reviews.length ? (
                         sortedReviews.map((review, idx) => {
-                            
                             if (idx < cardTotal) {
                                 return (
                                     <ReviewDisplayCard
