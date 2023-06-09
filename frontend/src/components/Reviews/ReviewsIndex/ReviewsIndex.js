@@ -36,8 +36,8 @@ const ReviewsIndex = ({ business}) => {
         // dispatch(fetchReviewsByBusiness(business.id))
     };
 
-    const extendHandler = () => {
-        setCardTotal(cardTotal + 6);
+    const extendHandler = () => {    
+        setCardTotal(reviews.length);
     };
     // useEffect(() => {
     //     dispatch(fetchReviewsByBusiness(business.id));
@@ -76,7 +76,7 @@ const ReviewsIndex = ({ business}) => {
                         </div>
                     )}
                 </div>
-                {reviews.length > 6 ? (
+                {reviews.length > 6 && reviews.length !== cardTotal ? (
                     <ExtendIndex extendHandler={extendHandler} />
                 ) : null}
             </div>

@@ -6,7 +6,7 @@ import DisplayRating from "../RatingDisplay/RatingDisplay";
 const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
     const { body, photoUrl, rating, businessId, authorId } = { ...review };
     const sessionUser = useSelector((state) => state.session.user);
-    const [truncBody, setTruncBody] = useState(body.length > 80 ? body.substring(0, 80) + "..." : body);
+    const [truncBody, setTruncBody] = useState(body?.length > 80 ? body.substring(0, 80) + "..." : body);
     const [cardTotal, setCardTotal] = useState(6);
     const [showButtons, setShowButtons] = useState(authorId === sessionUser.id)
 
