@@ -66,7 +66,7 @@ const LoginForm = ({ dispatchShowModal }) => {
                         id="submitSUF"
                         className="inputSUF"
                         type="submit"
-                        value="Sign Up"
+                        value="Log In"
                     />
                     <ul id="errorLIF">
                         {errors.map((error) => (

@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { getCurrentUser, logout } from "../../../store/session";
 import NewModal from '../../Modal/NewModal/NewModal';
 import SignupForm from "../../Auth/SignupForm/SignupForm";
+import LoginForm from '../../Auth/LoginForm/LoginForm';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FaGithub } from "react-icons/fa";
@@ -16,27 +17,31 @@ const NavButtons = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
     let sessionUser = useSelector(getCurrentUser);
-    const [showModal, setShowModal] = useState(false);
+    const [showSignupModal, setShowSignupModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
     const handleReviewRequest = () => {
         dispatch(fetchBusinesses());
         history.push("/businesses");
     };
-    const closeModal = () => {setShowModal(false)};
-    const openModal = () => {setShowModal(true)}
+    const closeSignupModal = () => {setShowSignupModal(false)};
+    const openSignupModal = () => {setShowSignupModal(true)};
+    const closeLoginModal = () => {setShowLoginModal(false)};
+    const openLoginModal = () => {setShowLoginModal(true)}
 
     const withoutSessionUser = (
         <>
-        {showModal && (<NewModal  closeModal={closeModal} form = {<SignupForm/>}/>)}
+        {showSignupModal && (<NewModal  closeModal={closeSignupModal} form = {<SignupForm/>}/>)}
+        {showLoginModal && (<NewModal  closeModal={closeLoginModal} form = {<LoginForm/>}/>)}
         <div id="containerNBut">
         
-            <Link to="/login">
-                <button className="blueButton" id="login-button">
+            {/* <Link to="/login"> */}
+                <button id="login-button" className="blueButton"  onClick={() => openLoginModal()}>
                     Log In
                 </button>
-            </Link>
+            {/* </Link> */}
             {/* <Link to="/signup"> */}
-                <button onClick={() => openModal()}>Sign Up</button>
+                <button onClick={() => openSignupModal()}>Sign Up</button>
             {/* </Link> */}
             {/* <ProfileButton /> */}
             <a to="https://github.com/dmgudeman" className="git">

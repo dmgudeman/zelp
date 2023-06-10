@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: var(--bh);
+    height: calc(var(--bh) * 0.90);
     border: 2px solid transparent; 
     width: calc(var(--bh) * 3);
     background-color: var(--two);
