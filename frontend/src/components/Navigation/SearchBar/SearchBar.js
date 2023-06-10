@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
     getBusinesses,
+    fetchBusinesses,
     fetchBusinessesSearch,
 } from "../../../store/businesses";
 import { fetchTags, getTags } from "../../../store/tags";
+
+import { showModal, hideModal } from "../../../store/ui";
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
 import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
+import SearchBarButton from "./SearchBarButton/SearchBarButton";
+import store from "../../../store";
+
+import Modal from "../../Modal/Modal";
+import LoginForm from "../../Auth/LoginForm/LoginForm";
+
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
@@ -44,6 +53,9 @@ const SearchBar = (props) => {
         }
     }, [dispatch, history, isSearchDataUpdated, searchData]);
 
+    const handleSearchBarClick = () => {
+        store.dispatch(showModal("LOGIN"));
+    };
     const filterTags = () => {
         return tags.filter((tag) => {
             return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
@@ -102,6 +114,11 @@ const SearchBar = (props) => {
             history.push("/businesses");
         });
     };
+
+    // const handleAddSearchEvent = (e) => {
+    //     e.preventDefault();
+    //     setQueryAdd(e.target.value);
+    // };
 
     return (
         <>

@@ -72,7 +72,7 @@ const NavButtons = (props) => {
                 </button>
             </Link>
             <a href="https://github.com/dmgudeman" className="git">
-                <FaGithub />
+                <FaGithub size={40} />
             </a>
             <a
                 href="https://www.linkedin.com/in/davidmgudeman/"
@@ -80,7 +80,7 @@ const NavButtons = (props) => {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <FaLinkedin size={32} />
+                <FaLinkedin size={40} />
             </a>
         </div>
     );
