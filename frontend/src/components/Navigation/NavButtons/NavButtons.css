@@ -2,14 +2,11 @@
 #containerNBut {
     display: flex;
     flex-direction: row;
-    /* flex-grow:1; */
     justify-content: space-around;
     align-items: center;
     width: calc(var(--nbh) * 7);
     height: var(--nbh);
     padding-right: 3rem;
-    /* background-color: aquamarine; */
-
 }
 
 #login-button {

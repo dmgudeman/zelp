@@ -6,9 +6,7 @@ import Modal from "../../Modal/Modal";
 import SignupForm from "../../Auth/SignupForm/SignupForm";
 import LoginForm from "../../Auth/LoginForm/LoginForm";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-
 import "./NavButtons.css";
-import { fetchBusinesses } from "../../../store/businesses";
 
 const NavButtons = (props) => {
     const dispatch = useDispatch();
@@ -17,10 +15,6 @@ const NavButtons = (props) => {
     const [showSignupModal, setShowSignupModal] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
 
-    const handleReviewRequest = () => {
-        dispatch(fetchBusinesses());
-        history.push("/businesses");
-    };
     const closeSignupModal = () => {
         setShowSignupModal(false);
     };
@@ -50,11 +44,9 @@ const NavButtons = (props) => {
                 >
                     Log In
                 </button>
-
                 <button onClick={() => openSignupModal()}>Sign Up</button>
-
                 <a to="https://github.com/dmgudeman" className="git">
-                    <FaGithub size={40}/>
+                    <FaGithub size={40} />
                 </a>
                 <div>
                     <a
@@ -62,7 +54,7 @@ const NavButtons = (props) => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                          <FaLinkedin size={40} />
+                        <FaLinkedin size={40} />
                     </a>
                 </div>
             </div>
@@ -82,18 +74,14 @@ const NavButtons = (props) => {
             <a href="https://github.com/dmgudeman" className="git">
                 <FaGithub />
             </a>
-                <a
-                    href="https://www.linkedin.com/in/davidmgudeman/"
-                    className ="myCustomIcon"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                   <FaLinkedin size={32} />
-
-                </a>
-            {/* <button id="review-button" onClick={handleReviewRequest}>Write a Review</button> */}
-
-            {/* <ProfileButton /> */}
+            <a
+                href="https://www.linkedin.com/in/davidmgudeman/"
+                className="myCustomIcon"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <FaLinkedin size={32} />
+            </a>
         </div>
     );
 
