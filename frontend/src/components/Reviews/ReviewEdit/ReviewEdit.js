@@ -43,8 +43,6 @@ const ReviewEdit = (props) => {
         }
     }, [reviewId, dispatch]);
     
-
-    console.log('pppppppppppppppppppppppppphotoUrl', photoUrl)
     useEffect(() => {
         setUserId(sessionUser.id);
     }, [sessionUser.id]);

@@ -1,6 +1,6 @@
 import "./Modal.css";
 
-const NewModal = ({ closeModal, openModal, form }) => {
+const Modal = ({ closeModal, openModal, form }) => {
     return (
         <div className="modal-background" onClick={closeModal}>
             <div className="modal-child" onClick={(e) => e.stopPropagation()}>
@@ -10,4 +10,4 @@ const NewModal = ({ closeModal, openModal, form }) => {
     );
 };
 
-export default NewModal;
+export default Modal;

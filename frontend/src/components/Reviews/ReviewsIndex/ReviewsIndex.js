@@ -9,15 +9,15 @@ import {
 import { useParams, Link, Redirect, useHistory } from "react-router-dom";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
+import ReviewEdit from '../ReviewEdit/ReviewEdit';
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 
 const ReviewsIndex = ({ business }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const reviews = useSelector(getReviews);
-
     const [cardTotal, setCardTotal] = useState(6);
-    console.log("REVIEWS", reviews);
+
 
     useEffect(() => {
         if (business?.id) {
@@ -25,17 +25,15 @@ const ReviewsIndex = ({ business }) => {
         }
     }, []);
 
-    const deleteHandler = (reviewId) => {
-        dispatch(deleteReview(reviewId));
-    };
-
-    const editHandler = (reviewId) => {
-        history.push(`/reviewEdit/${reviewId}`);
-    };
+ 
 
     const extendHandler = () => {
         setCardTotal(reviews.length);
     };
+    const openEditReviewModal = () => {
+        
+    }
+  
     // not as good as soring on back end but sufficient for this size app
     let sortedReviews = reviews.slice().sort((a, b) => {
         // parse the dates and return the comparison
@@ -44,6 +42,8 @@ const ReviewsIndex = ({ business }) => {
 
     return (
         <>
+         
+          
             <div id="containerRI">
                 <div className="buttons marginTop">
                     <Link to={`/reviewNew/${business.id}`}>
@@ -61,8 +61,7 @@ const ReviewsIndex = ({ business }) => {
                                     <ReviewDisplayCard
                                         review={review}
                                         key={review.id}
-                                        deleteHandler={deleteHandler}
-                                        editHandler={editHandler}
+                                      
                                     />
                                 );
                             }

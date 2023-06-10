@@ -83,11 +83,8 @@ const ReviewNew = (props) => {
 
     return (
         <>
-            <Navigation showFlag={false} />
-            <div id="newReviewContainer">
-                <div id="leftGutter"></div>
-                <div id="center">
-                    <form id="reviewForm">
+            <div id="combinedFormContainerNR">
+                    <form id="formNR">
                         <h2 className="blueTitleBig">{business.name}</h2>
                         <h1 className="italic">
                             Leave a Rating, a Review and attach photos if you
@@ -125,8 +122,6 @@ const ReviewNew = (props) => {
                             <h2 className="blueTitle">Rate this business</h2>
                         )}
                     </form>
-                </div>
-                <div id="rightGutter"></div>
             </div>
         </>
     );

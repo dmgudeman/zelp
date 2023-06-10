@@ -1,16 +1,23 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import "./ReviewDisplayCard.css";
+import { useDispatch, useSelector } from "react-redux";
+import ReviewEdit from "../ReviewEdit/ReviewEdit";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
+import Modal from "../../Modal/Modal";
+import {
+    deleteReview,
+} from "../../../store/reviews";
+import "./ReviewDisplayCard.css";
 
-const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
+const ReviewDisplayCard = ({ review}) => {
     const { body, photoUrl, rating, businessId, authorId } = { ...review };
+    const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [truncBody, setTruncBody] = useState(
         body?.length > 80 ? body.substring(0, 80) + "..." : body
     );
     const [cardTotal, setCardTotal] = useState(6);
     const [showButtons, setShowButtons] = useState(authorId === sessionUser.id);
+    const [showEditReviewModal, setEditReviewModal] = useState(false);
     const formatDate = (dateString) => {
         let date = new Date(dateString);
         return (
@@ -22,6 +29,19 @@ const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
             date.getFullYear().toString().substr(-2)
         );
     };
+    const deleteHandler = (reviewId) => {
+        dispatch(deleteReview(reviewId));
+    };
+
+    const editHandler = (reviewId) => {
+       let reviewForm = <ReviewEdit reviewId={reviewId}/>
+       
+
+    };
+
+    const closeEditReviewModal = () => {
+        setEditReviewModal(false);
+    }
     const [date, setDate] = useState(formatDate(review.updatedAt));
     let editButtons;
     if (showButtons) {
@@ -47,6 +67,9 @@ const ReviewDisplayCard = ({ review, deleteHandler, editHandler }) => {
 
     return (
         <>
+            {showEditReviewModal && (
+                <Modal closeModal={closeEditReviewModal} form={<ReviewEdit reviewId={review.id}/>} />
+            )}
             <div id="reviewCardContainer">
                 <div id="bodyContainer">
                     <div id="bodyCell">
