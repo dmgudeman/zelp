@@ -15,7 +15,7 @@ import SearchBarTag from "./SearchBarTag/SearchBarTag";
 import SearchBarButton from "./SearchBarButton/SearchBarButton";
 import store from "../../../store";
 
-import Modal from "../../Modal/Modal";
+import Modal from "../../Modals/AuthModal/AuthModal";
 import LoginForm from "../../Auth/LoginForm/LoginForm";
 
 import "./SearchBar.css";

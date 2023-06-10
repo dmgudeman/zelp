@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewEdit from "../ReviewEdit/ReviewEdit";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
-import Modal from "../../Modal/Modal";
+import Modal from "../../Modals/AuthModal/AuthModal";
 import {
     deleteReview,
 } from "../../../store/reviews";

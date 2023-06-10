@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getCurrentUser, logout } from "../../../store/session";
-import Modal from "../../Modal/Modal";
+import Modal from "../../Modals/AuthModal/AuthModal";
 import SignupForm from "../../Auth/SignupForm/SignupForm";
 import LoginForm from "../../Auth/LoginForm/LoginForm";
 import { FaGithub, FaLinkedin } from "react-icons/fa";

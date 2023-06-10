@@ -1,4 +1,4 @@
-import "./Modal.css";
+import "./AuthModal.css";
 
 const Modal = ({ closeModal, openModal, form }) => {
     return (
