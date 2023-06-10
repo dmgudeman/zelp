@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getCurrentUser, logout } from "../../../store/session";
-import ProfileButton from "./ProfileButton/ProfileButton";
+import NewModal from '../../Modal/NewModal/NewModal';
+import SignupForm from "../../Auth/SignupForm/SignupForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FaGithub } from "react-icons/fa";
+
 
 import "./NavButtons.css";
 import { fetchBusinesses } from "../../../store/businesses";
@@ -13,25 +16,28 @@ const NavButtons = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
     let sessionUser = useSelector(getCurrentUser);
+    const [showModal, setShowModal] = useState(false);
 
     const handleReviewRequest = () => {
         dispatch(fetchBusinesses());
         history.push("/businesses");
     };
+    const closeModal = () => {setShowModal(false)};
+    const openModal = () => {setShowModal(true)}
 
     const withoutSessionUser = (
+        <>
+        {showModal && (<NewModal  closeModal={closeModal} form = {<SignupForm/>}/>)}
         <div id="containerNBut">
-           
-            {/* <button id="review-button" onClick={handleReviewRequest}>Write a Review</button> */}
-
+        
             <Link to="/login">
                 <button className="blueButton" id="login-button">
                     Log In
                 </button>
             </Link>
-            <Link to="/signup">
-                <button onClick={() => console.log("sign up")}>Sign Up</button>
-            </Link>
+            {/* <Link to="/signup"> */}
+                <button onClick={() => openModal()}>Sign Up</button>
+            {/* </Link> */}
             {/* <ProfileButton /> */}
             <a to="https://github.com/dmgudeman" className="git">
                 <FaGithub />
@@ -47,6 +53,7 @@ const NavButtons = (props) => {
             </div>
 
         </div>
+        </>
     );
 
     const withSessionUser = (

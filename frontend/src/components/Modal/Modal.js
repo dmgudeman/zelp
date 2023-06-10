@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+
 import LoginForm from '../Auth/LoginForm/LoginForm';
 import SignupForm from '../Auth/SignupForm/SignupForm';
 import { showModal, hideModal } from '../../store/ui';
@@ -20,8 +20,8 @@ const Modal = ({ showModalType, closeModal }) => {
       form = null;
   }
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal-background">
+      <div className="modal-child">
         {form}
         <button onClick={closeModal}>Close Modal</button>
       </div>
@@ -29,18 +29,4 @@ const Modal = ({ showModalType, closeModal }) => {
   );
 };
 
-
-
-
-
-const mapStateToProps = (state) => ({
-  showModalType: state.showModalType,
-});
-
-const mapDispatchToProps = {
-  showModal,
-  hideModal,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
-
+export default Modal;

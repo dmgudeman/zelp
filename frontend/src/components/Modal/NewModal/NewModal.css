@@ -1,16 +1,14 @@
-/* .modal-background {
+.modal-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 10;
+    z-index: 998;
 }
 
 .modal-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */
+   
+    
+}

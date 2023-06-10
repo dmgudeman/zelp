@@ -1,26 +1,27 @@
-import NavButtons from "../NavButtons";
-import { Link } from "react-router-dom";
+import NavButtons from "../NavButtons/NavButtons";
 import NavLogo from "../NavLogo";
 import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.css";
 
 const NavBar = ({ showFlag }) => {
     let content;
+   
 
     switch (showFlag) {
         case true:
             return (content = (
-                <div className="navContainer">
-                    <NavLogo />
-
-                    <SearchBar />
-
-                    <NavButtons />
-                </div>
+                <>   
+                    <div className="navContainer">
+                        <NavLogo />
+                        <SearchBar />
+                        <NavButtons />
+                    </div>
+                </>
             ));
         case false:
             return (content = (
                 <div className="navContainer">
+             
                     <NavLogo />
                 </div>
             ));
@@ -28,9 +29,7 @@ const NavBar = ({ showFlag }) => {
             return (content = (
                 <div className="index navContainer">
                     <NavLogo />
-
                     <SearchBar />
-
                     <NavButtons />
                 </div>
             ));

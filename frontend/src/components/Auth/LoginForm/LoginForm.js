@@ -41,7 +41,7 @@ const LoginForm = ({ dispatchShowModal }) => {
 
     return (
         <>
-         <Navigation id="app-nav" showFlag={false}/>
+
             <div id="loginFormContainer">
                
                 <div className="blueTitle marginTop2">Log in to Zelp</div>

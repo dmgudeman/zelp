@@ -1,5 +1,5 @@
-import { useState} from "react";
-import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
+import { useState } from "react";
+import { connect, MapStateToProps, MapDispatchToProps } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../../store/session";
@@ -45,56 +45,63 @@ const SignupForm = (props) => {
 
     return (
         <>
-            <Navigation id="app-nav" showFlag={false} />
-            <div id="signupFormContainer">
-                <form id="inputForm" onSubmit={submitHandler}>
-                    <h2 id="titleSUF">Sign Up for Zelp</h2>
-                    <input
-                        className="inputSUF"
-                        type="text"
-                        value={username}
-                        placeholder="username"
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+            {" "}
+            <div id="combinedFormContainer">
+                <div id="signupFormContainer">
+                    <form id="inputForm" onSubmit={submitHandler}>
+                        <h2 id="titleSUF">Sign Up for Zelp</h2>
+                        <input
+                            className="inputSUF"
+                            type="text"
+                            value={username}
+                            placeholder="username"
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
 
-                    <input
-                        className="inputSUF"
-                        type="text"
-                        value={email}
-                        placeholder="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+                        <input
+                            className="inputSUF"
+                            type="text"
+                            value={email}
+                            placeholder="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
-                    <input
-                        className="inputSUF"
-                        type="password"
-                        value={password}
-                        placeholder="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                        <input
+                            className="inputSUF"
+                            type="password"
+                            value={password}
+                            placeholder="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
 
-                    <input
-                        className="inputSUF"
-                        type="password"
-                        value={confirmPassword}
-                        placeholder="confirm password"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
+                        <input
+                            className="inputSUF"
+                            type="password"
+                            value={confirmPassword}
+                            placeholder="confirm password"
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
 
-                    <input id="submitSUF" className="inputSUF" type="submit" value="Sign Up" />
-                    <ul id="ulSignUp">
-                        {errors.map((error) => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                </form>
-                <DemoUserForm />
-                <h1>
-                    Already a Zelp user?{" "}
-                    <NavLink className="nav-link" to="/login">
-                        Log In
-                    </NavLink>
-                </h1>
+                        <input
+                            id="submitSUF"
+                            className="inputSUF"
+                            type="submit"
+                            value="Sign Up"
+                        />
+                        <ul id="ulSignUp">
+                            {errors.map((error) => (
+                                <li key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    </form>
+                    <DemoUserForm />
+                    <h1>
+                        Already a Zelp user?{" "}
+                        <NavLink className="nav-link" to="/login">
+                            Log In
+                        </NavLink>
+                    </h1>
+                </div>
             </div>
         </>
     );
@@ -103,7 +110,7 @@ const SignupForm = (props) => {
 // const mapDispatchToProps = {
 //     dispatchShowModal: showModal
 //   };
-  
+
 //   export default connect(null, mapDispatchToProps)(SignupForm);
 
 export default SignupForm;
