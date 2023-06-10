@@ -5,9 +5,10 @@
     /* flex-grow:1; */
     justify-content: space-around;
     align-items: center;
-    width: calc(var(--nbh) * 4);
+    width: calc(var(--nbh) * 7);
     height: var(--nbh);
-    padding-right: 50px;
+    padding-right: 3rem;
+    /* background-color: aquamarine; */
 
 }
 
@@ -16,7 +17,6 @@
     background-color: transparent;
     padding-left: 13px;
     padding-right: 13px;
-
 }
 
 #review-button {
@@ -24,7 +24,12 @@
     border: none;
 }
 
-.git {
-   
+.git { 
     color:black;
+    
+}
+
+.myCustomIcon svg {
+    width: 50px !important;
+    height: 50px !important;
 }

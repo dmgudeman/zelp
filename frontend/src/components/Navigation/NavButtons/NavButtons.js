@@ -2,13 +2,10 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getCurrentUser, logout } from "../../../store/session";
-import NewModal from '../../Modal/NewModal/NewModal';
+import Modal from "../../Modal/Modal";
 import SignupForm from "../../Auth/SignupForm/SignupForm";
-import LoginForm from '../../Auth/LoginForm/LoginForm';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { FaGithub } from "react-icons/fa";
-
+import LoginForm from "../../Auth/LoginForm/LoginForm";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import "./NavButtons.css";
 import { fetchBusinesses } from "../../../store/businesses";
@@ -24,40 +21,51 @@ const NavButtons = (props) => {
         dispatch(fetchBusinesses());
         history.push("/businesses");
     };
-    const closeSignupModal = () => {setShowSignupModal(false)};
-    const openSignupModal = () => {setShowSignupModal(true)};
-    const closeLoginModal = () => {setShowLoginModal(false)};
-    const openLoginModal = () => {setShowLoginModal(true)}
+    const closeSignupModal = () => {
+        setShowSignupModal(false);
+    };
+    const openSignupModal = () => {
+        setShowSignupModal(true);
+    };
+    const closeLoginModal = () => {
+        setShowLoginModal(false);
+    };
+    const openLoginModal = () => {
+        setShowLoginModal(true);
+    };
 
     const withoutSessionUser = (
         <>
-        {showSignupModal && (<NewModal  closeModal={closeSignupModal} form = {<SignupForm/>}/>)}
-        {showLoginModal && (<NewModal  closeModal={closeLoginModal} form = {<LoginForm/>}/>)}
-        <div id="containerNBut">
-        
-            {/* <Link to="/login"> */}
-                <button id="login-button" className="blueButton"  onClick={() => openLoginModal()}>
+            {showSignupModal && (
+                <Modal closeModal={closeSignupModal} form={<SignupForm />} />
+            )}
+            {showLoginModal && (
+                <Modal closeModal={closeLoginModal} form={<LoginForm />} />
+            )}
+            <div id="containerNBut">
+                <button
+                    id="login-button"
+                    className="blueButton"
+                    onClick={() => openLoginModal()}
+                >
                     Log In
                 </button>
-            {/* </Link> */}
-            {/* <Link to="/signup"> */}
-                <button onClick={() => openSignupModal()}>Sign Up</button>
-            {/* </Link> */}
-            {/* <ProfileButton /> */}
-            <a to="https://github.com/dmgudeman" className="git">
-                <FaGithub />
-            </a>
-            <div>
-                <a
-                    href="https://www.linkedin.com/in/davidmgudeman/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <FontAwesomeIcon icon={faLinkedin} />
-                </a>
-            </div>
 
-        </div>
+                <button onClick={() => openSignupModal()}>Sign Up</button>
+
+                <a to="https://github.com/dmgudeman" className="git">
+                    <FaGithub size={40}/>
+                </a>
+                <div>
+                    <a
+                        href="https://www.linkedin.com/in/davidmgudeman/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                          <FaLinkedin size={40} />
+                    </a>
+                </div>
+            </div>
         </>
     );
 
@@ -74,17 +82,17 @@ const NavButtons = (props) => {
             <a href="https://github.com/dmgudeman" className="git">
                 <FaGithub />
             </a>
-            <div>
                 <a
                     href="https://www.linkedin.com/in/davidmgudeman/"
+                    className ="myCustomIcon"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <FontAwesomeIcon icon={faLinkedin} />
+                   <FaLinkedin size={32} />
+
                 </a>
-            </div>
             {/* <button id="review-button" onClick={handleReviewRequest}>Write a Review</button> */}
-            
+
             {/* <ProfileButton /> */}
         </div>
     );
