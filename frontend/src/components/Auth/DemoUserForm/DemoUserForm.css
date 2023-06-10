@@ -1,46 +1,60 @@
 
 #formContainerDUF {
-    display: flex;
+    position: relative;
+    display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 450px;
-   
-    /* background-color: lightblue; */
-
-
+    justify-content: center;
+    width: 17rem;
+    height: 28rem;
+    /* background-color: white; */
+    /* background-color: blueviolet; */
 }
 
 #titleDUF {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 400px;
+    width: 16rem;
+    height: 3rem;
     font-size: 20px;
     font-weight: bolder;
     color: var(--two);
-    background-color: white;  
+    /* background-color: white;   */
 }
-#formDUF {
+#inputFormDUF {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 400px;
+    align-items: center;
+    width: 16rem;
     /* background-color: pink; */
-    margin: 20px 20px 20px 20px;
    
-}
-
+} 
 
 #submitDUF {
- 
-    margin-left: 25px;
-    height: 35px;
-    border-radius: 5px;
-    margin: 10px;
-    background-color: var(--two);
+    width: 11rem;
+    height: 2;
     color: white;
-    
     font-weight:bolder;
+    background-color: var(--two);
+    margin-top: 0.35rem;
+    border-radius: 5px;
+}
+
+.inputDUF {
+    width: 14rem;
+    height: 1.95rem;
+    margin-top: 0.35rem;
+    border: 2px solid var(--two); 
+    border-radius: 5px;
+
+}
+.inputDUF:not(#submit) {
+    padding-left: 1rem;
+}
+.inputDUF:hover,
+.inputDUF:focus {
+    border-color: var(--inputOutline); /* Change this to the color you want */
+    outline: var(--inputOutline);
 }

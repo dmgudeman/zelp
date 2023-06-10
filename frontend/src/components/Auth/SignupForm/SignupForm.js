@@ -4,7 +4,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../../store/session";
 import Navigation from "../../Navigation/NavBar/NavBar";
-import DemoUserForm from "../DemoUserForm";
+import DemoUserForm from "../DemoUserForm/DemoUserForm";
 import { showModal, hideModal } from "../../../store/ui";
 import "./SignupForm.css";
 

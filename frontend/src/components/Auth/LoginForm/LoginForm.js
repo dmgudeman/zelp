@@ -4,7 +4,7 @@ import { login, getCurrentUser } from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import Navigation from "../../Navigation/NavBar/NavBar";
-import DemoUserForm from '../DemoUserForm'
+import DemoUserForm from '../DemoUserForm/DemoUserForm'
 import "./LoginForm.css";
 import { showModal, hideModal } from "../../../store/ui";
 
