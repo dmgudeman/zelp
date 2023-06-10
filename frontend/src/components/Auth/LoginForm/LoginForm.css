@@ -1,74 +1,93 @@
 
 
-#loginFormContainer {
-    display: flex;
+#combinedFormContainerLIF{
+    position: absolute;
+    display:flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    margin: 75px 300px 300px 300px;
-    width: 450px;
-    /* background-color: lightblue; */
+    justify-content: center;
+    width:18rem;
+    height:30rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--two);
+    border-radius: 1rem;
+    background-color: white;
+    background-color: var(--one);
+
 }
 
-/* h2 {
+#formContainerLIF {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 17rem;
+    height: 28rem;
+    /* background-color: white; */
+    /* background-color: blueviolet; */
+}
+
+#titleLIF {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 400px;
+    width: 16rem;
+    height: 3rem;
     font-size: 20px;
     font-weight: bolder;
-    color: #5cb9ff;
-    background-color: white;
-   
-    
-} */
+    color: var(--two);
+    /* background-color: white;   */
+}
 #inputFormLIF {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* width: 400px; */
+    align-items: center;
+    width: 16rem;
     /* background-color: pink; */
-    margin: 20px;
    
-}
+} 
 
 .inputLIF {
-    height: 30px;
+    width: 14rem;
+    height: 1.95rem;
+    margin-top: 0.35rem;
+    border: 2px solid var(--two); 
     border-radius: 5px;
-    margin: 5px;
 
 }
 .inputLIF:not(#submit) {
-    padding-left: 20px;
+    padding-left: 1rem;
+}
+.inputLIF:hover,
+.inputLIF:focus {
+    border-color: var(--inputOutline); /* Change this to the color you want */
+    outline: var(--inputOutline);
 }
 
 #submitLIF {
-    /* background-color:var(--two); */
+    width: 11rem;
+    height: 1.95;
     color: white;
     font-weight:bolder;
-}
-
-/* .nav-link {
-   text-decoration: none !important;
-   color: var(--two); 
-} */
-
-/* #app-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    background-color: var(--two);
+    margin-top: 0.75rem;
    
-    /* z-index: 100; */
-/* }  */
+    border-radius: 5px;
+}
 
-#ulLogin {
-    color: red;
+#errorLIF {
+    color: pink;
     font-style: italic;
-    padding-left: 20px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    /* padding-left: 20px; */
 }
 
-.marginTop2{
-    margin-top: 50px;
+#lastLineLIF {
+    margin-bottom: 10px;
 }
+

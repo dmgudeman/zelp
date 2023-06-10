@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
+import { connect, MapStateToProps, MapDispatchToProps } from "react-redux";
 import { login, getCurrentUser } from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import Navigation from "../../Navigation/NavBar/NavBar";
-import DemoUserForm from '../DemoUserForm/DemoUserForm'
+import DemoUserForm from "../DemoUserForm/DemoUserForm";
 import "./LoginForm.css";
 import { showModal, hideModal } from "../../../store/ui";
-
-
 
 const LoginForm = ({ dispatchShowModal }) => {
     const dispatch = useDispatch();
@@ -28,12 +26,13 @@ const LoginForm = ({ dispatchShowModal }) => {
             try {
                 // .clone()  essentially allows you to read the response body twice
                 data = await res.clone().json();
-                hideModal()
+                hideModal();
             } catch {
                 data = await res.text(); // Will hit this case if the server is down
             }
             // if (data?.errors) setErrors(data.errors);
-             if (data?.errors) setErrors(["username or email and/or password were invalid"]);
+            if (data?.errors)
+                setErrors(["username or email and/or password were invalid"]);
             else if (data) setErrors([data]);
             else setErrors([res.statusText]);
         });
@@ -41,16 +40,12 @@ const LoginForm = ({ dispatchShowModal }) => {
 
     return (
         <>
-            <div id="loginFormContainer">
-                <div className="blueTitle marginTop2">Log in to Zelp</div>
-                <h1>
-                    New to Zelp?{" "}
-                    <NavLink className="nav-link" to="/signup">
-                        Sign Up
-                    </NavLink>
-                </h1>
+           <div id="combinedFormContainerLIF">
+            <div id="formContainerLIF">
+                
+               
                 <form id="inputFormLIF" onSubmit={submitHandler}>
-                   
+                <h2 id="titleLIF">Log in to  Zelp</h2>
                     <input
                         className="inputLIF"
                         type="text"
@@ -67,17 +62,26 @@ const LoginForm = ({ dispatchShowModal }) => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <input className="blueButton" type="submit" value="Log In" />
-                    <div>
-  
-  </div>
-                    <ul id="ulLogin">
+                    <input
+                        id="submitSUF"
+                        className="inputSUF"
+                        type="submit"
+                        value="Sign Up"
+                    />
+                    <ul id="errorLIF">
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
                 </form>
                 <DemoUserForm />
+            </div>
+            <h1 id="lastLineLIF">
+                    New to Zelp?{" "}
+                    <NavLink className="nav-link" to="/signup">
+                        Sign Up
+                    </NavLink>
+                </h1>
             </div>
         </>
     );

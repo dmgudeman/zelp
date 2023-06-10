@@ -72,12 +72,12 @@
     color: white;
     font-weight:bolder;
     background-color: var(--two);
-    margin-top: 0.35rem;
+    margin-top: 0.75rem;
    
     border-radius: 5px;
 }
 
-#ulSignUp {
+#errorSUF {
     color: pink;
     font-style: italic;
     font-size: 0.8rem;

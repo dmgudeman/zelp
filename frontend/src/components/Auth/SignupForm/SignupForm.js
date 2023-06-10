@@ -88,7 +88,7 @@ const SignupForm = (props) => {
                             type="submit"
                             value="Sign Up"
                         />
-                        <ul id="ulSignUp">
+                        <ul id="errorSUF">
                             {errors.map((error) => (
                                 <li key={error}>{error}</li>
                             ))}
