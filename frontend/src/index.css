@@ -10,6 +10,7 @@ body {
     --two: #506CAF;
     --three: #50AF93;
     --four: rgba(80, 156, 175, 0.3);
+    --inputOutline: #59cbc0;
     --bh: 35px;
     --nbh: 75px;
 }

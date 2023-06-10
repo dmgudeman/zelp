@@ -41,9 +41,7 @@ const LoginForm = ({ dispatchShowModal }) => {
 
     return (
         <>
-
             <div id="loginFormContainer">
-               
                 <div className="blueTitle marginTop2">Log in to Zelp</div>
                 <h1>
                     New to Zelp?{" "}
@@ -51,7 +49,7 @@ const LoginForm = ({ dispatchShowModal }) => {
                         Sign Up
                     </NavLink>
                 </h1>
-                <form id="inputForm" onSubmit={submitHandler}>
+                <form id="inputFormLIF" onSubmit={submitHandler}>
                    
                     <input
                         className="inputLIF"
@@ -84,11 +82,5 @@ const LoginForm = ({ dispatchShowModal }) => {
         </>
     );
 };
-
-// const mapDispatchToProps = {
-//     dispatchShowModal: showModal
-//   };
-  
-//   export default connect(null, mapDispatchToProps)(LoginForm);
 
 export default LoginForm;

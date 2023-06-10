@@ -1,70 +1,86 @@
-#combinedFormContainer{
+#combinedFormContainerSUF{
     position: absolute;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width:30rem;
+    width:18rem;
     height:30rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: 2px solid var(--two);
     border-radius: 1rem;
     background-color: white;
+    background-color: var(--one);
+
 }
 
-#signupFormContainer {
+#formContainerSUF {
     position: relative;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 28rem;
+    width: 17rem;
     height: 28rem;
-    background-color: white;
+    /* background-color: white; */
+    /* background-color: blueviolet; */
 }
 
 #titleSUF {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 16rem;
     height: 3rem;
-    width: 23rem;
     font-size: 20px;
     font-weight: bolder;
     color: var(--two);
-    background-color: white;  
+    /* background-color: white;   */
 }
-#inputForm {
+#inputFormSUF {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 2rem;
+    align-items: center;
+    width: 16rem;
     /* background-color: pink; */
    
-}
+} 
 
 .inputSUF {
-    height: 30px;
+    width: 14rem;
+    height: 1.95rem;
+    margin-top: 0.35rem;
+    border: 2px solid var(--two); 
     border-radius: 5px;
-    margin: 0.25rem;
 
 }
 .inputSUF:not(#submit) {
-    padding-left: 20px;
+    padding-left: 1rem;
+}
+.inputSUF:hover,
+.inputSUF:focus {
+    border-color: var(--inputOutline); /* Change this to the color you want */
+    outline: var(--inputOutline);
 }
 
 #submitSUF {
-    height: 35px;
-    border-radius: 5px;
-    margin: 0.25rem;
-    background-color: var(--two);
+    width: 11rem;
+    height: 1.95;
     color: white;
     font-weight:bolder;
+    background-color: var(--two);
+    margin-top: 0.35rem;
+   
+    border-radius: 5px;
 }
 
 #ulSignUp {
-    color: red;
+    color: pink;
     font-style: italic;
-    padding-left: 20px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    /* padding-left: 20px; */
 }

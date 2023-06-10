@@ -1,5 +1,5 @@
 
-#demoUserFormContainer {
+#formContainerDUF {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,17 +32,6 @@
    
 }
 
-
-
-/* input {
-    height: 30px;
-    border-radius: 5px;
-    margin: 5px;
-
-}
-input:not(#submit) {
-    padding-left: 20px;
-} */
 
 #submitDUF {
  

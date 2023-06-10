@@ -23,11 +23,11 @@
    
     
 } */
-#inputForm {
+#inputFormLIF {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 400px;
+    /* width: 400px; */
     /* background-color: pink; */
     margin: 20px;
    

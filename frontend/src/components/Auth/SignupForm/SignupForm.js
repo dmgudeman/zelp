@@ -46,9 +46,9 @@ const SignupForm = (props) => {
     return (
         <>
             {" "}
-            <div id="combinedFormContainer">
-                <div id="signupFormContainer">
-                    <form id="inputForm" onSubmit={submitHandler}>
+            <div id="combinedFormContainerSUF">
+                <div id="formContainerSUF">
+                    <form id="inputFormSUF" onSubmit={submitHandler}>
                         <h2 id="titleSUF">Sign Up for Zelp</h2>
                         <input
                             className="inputSUF"
