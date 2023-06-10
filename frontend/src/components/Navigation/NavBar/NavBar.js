@@ -21,7 +21,6 @@ const NavBar = ({ showFlag }) => {
         case false:
             return (content = (
                 <div className="navContainer">
-             
                     <NavLogo />
                 </div>
             ));

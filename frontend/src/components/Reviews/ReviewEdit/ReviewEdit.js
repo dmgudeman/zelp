@@ -95,7 +95,7 @@ const ReviewEdit = (props) => {
     if (photoUrl) preview = <img className="imgRN" src={photoUrl} alt="" />;
     return (
         <>
-            <NavBar showFlag={false} />
+            <NavBar showFlag={'none'} />
             <div id="newReviewContainer">
                 <div id="leftGutter"></div>
                 <div id="center">

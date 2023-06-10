@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ReviewEdit from "../ReviewEdit/ReviewEdit";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
 import Modal from "../../Modals/AuthModal/AuthModal";
+import {showModal} from '../../../store/ui'
 import {
     deleteReview,
 } from "../../../store/reviews";
@@ -34,7 +35,8 @@ const ReviewDisplayCard = ({ review}) => {
     };
 
     const editHandler = (reviewId) => {
-       let reviewForm = <ReviewEdit reviewId={reviewId}/>
+      
+       dispatch(showModal(reviewId))
        
 
     };
@@ -67,9 +69,7 @@ const ReviewDisplayCard = ({ review}) => {
 
     return (
         <>
-            {showEditReviewModal && (
-                <Modal closeModal={closeEditReviewModal} form={<ReviewEdit reviewId={review.id}/>} />
-            )}
+          
             <div id="reviewCardContainer">
                 <div id="bodyContainer">
                     <div id="bodyCell">

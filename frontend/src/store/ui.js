@@ -2,31 +2,33 @@ const SHOW_MODAL = 'SHOW_MODAL';
 const HIDE_MODAL = 'HIDE_MODAL';
 
 // Action creators
-export const showModal = (showModalType) => ({
+export const showModal = (reviewId) => ({
   type: SHOW_MODAL,
-  showModalType,
+  reviewId
 });
 
 export const hideModal = () => ({
   type: HIDE_MODAL,
 });
 
+
+
 // Reducer
 const initialState = {
-  showModalType: null,
+  showModal:false,
+  reviewId: null,
 };
 
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_MODAL:
       return {
-        ...state,
-        showModalType: action.showModalType,
+       ...state, showModal:true, reviewId: action.reviewId
       };
     case HIDE_MODAL:
       return {
         ...state,
-        showModalType: null,
+        showModal: false, reviewId: null
       };
     default:
       return state;

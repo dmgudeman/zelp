@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import NavBar from "../../Navigation/NavBar/NavBar";
+import ReviewModal from "../../Modals/ReviewModal/ReviewModal";
 import { getBusiness, fetchBusiness } from "../../../store/businesses";
 import { fetchReviewsByBusiness, getReviews } from "../../../store/reviews";
 import { getTags } from "../../../store/tags";
@@ -14,13 +15,7 @@ const BusinessShow = (props) => {
     const { busId } = useParams();
     let business = useSelector(getBusiness(busId));
     const [localReviews, setLocalReviews] = useState([]);
-    console.log('BUSINESS>REVIEWWWWWWWWWWWWW', localReviews)
- 
-    // let reviews = useSelector(getReviews);
     let tags = useSelector(getTags);
-
-    
-
     useEffect(() => {
         if (busId) {
             dispatch(fetchBusiness(busId));
@@ -40,6 +35,7 @@ const BusinessShow = (props) => {
 
     return (
         <>
+            
             <NavBar className="navIndexBackground" showFlag={true} />
             <div id="businessShowContainer">
                 {/* 
