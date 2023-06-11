@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
-import ReviewNewForm from "../ReviewNewForm/ReviewNewForm";
+import ReviewNewForm from "../ReviewForm/ReviewForm";
 import RatingInput from "../RatingInput/RatingInput";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import ReviewNewSubmit from "../ReviewNewSubmit/ReviewNewSubmit";

@@ -8,14 +8,14 @@ export const showModal = (reviewId) => ({
 });
 
 export const hideModal = () => ({
-  type: HIDE_MODAL,
+  type: HIDE_MODAL
 });
 
 
 
 // Reducer
 const initialState = {
-  showModal:false,
+  hideModalFlag:true,
   reviewId: null,
 };
 
@@ -23,12 +23,12 @@ const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_MODAL:
       return {
-       ...state, showModal:true, reviewId: action.reviewId
+       ...state, hideModalFlag:false, reviewId: action.reviewId
       };
     case HIDE_MODAL:
       return {
         ...state,
-        showModal: false, reviewId: null
+        hideModalFlag: true, reviewId: null
       };
     default:
       return state;

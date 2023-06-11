@@ -1,95 +1,259 @@
-#newReviewContainer {
-    display: flex;
-    justify-content: space-between;
-    width: 100vw;
-    height: 100vh;
-    /* background-color: blue; */
-   
+
+#combinedFormContainerRE{
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:35rem;
+    height:50rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--two);
+    border-radius: 1rem;
+    background-color: white;
+    background-color: var(--one);
+
 }
-.test {
-    width:100%;
-    height: 150px;
-    background-color: aqua;
-    margin-top: 75px;
 
-
-}
-
-#leftGutter {
-    display: flex;
-    width: 700px;
-    /* background-color: pink; */
- }
-#center {
+#formRE {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 34rem;
  
-    
+    background-color: blue;
+
+
 }
-#reviewForm {
+#titleBigRE {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: max(500px, 40%);
-    height: 100vh;
-
+    width: 16rem;
+    height: 3rem;
+    font-size: 1.75rem;
+    font-weight: bolder;
+    color: var(--two);
+    background-color: white;  
+}
+#ratingContainerRE{
+    margin-bottom: 20px;
 
 }
 
-.reviewInput{
+.inputRE{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-top: 10px;
-   
- 
-}
-.title {
-    padding: 20px 0px;
+    justify-content: center; 
 }
 
 .italic {
     font-style:italic
 }
-.textareaLarge {
-    /* height: min(600px, 60%); */
-    height: 300px;
-    border-radius: 15px;
-    padding: 20px;
-    font-size: 12pt;
-    font-style: italic;
-    color:var(--two);
+
+#inputContainerRE{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 29rem;
+    /* height: 29rem; */
+
+   
+
 }
 
-#rightGutter {
-    display: flex;
-    width: max(700px, 100%); 
-}
 
-#photoRatingCell {
+
+/* #photoRatingCell {
     justify-content: center;
     align-items: center;
     width: 130px;
-   
     border-radius: 7px;
-}
+    background-color: bisque;
+} */
 
-.ratingReview {
+/* .ratingReview {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 .reviewButton {
     width: 250px;
 }
 
-.formPhoto {
-    width: 150px;
-    height: 150px;
-    margin-top: 35px;
-    border-radius: 15px;
-    
+#photoContainerNR {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    background-color: yellow; 
+}
+
+
+#combinedFormContainerSUF{
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:18rem;
+    height:30rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--two);
+    border-radius: 1rem;
+    background-color: white;
+    background-color: var(--one);
+
+}
+
+#formContainerSUF {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 17rem;
+    height: 28rem;
+    /* background-color: white; */
+    /* background-color: blueviolet; */
+}
+
+#titleSUF {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+    height: 3rem;
+    font-size: 20px;
+    font-weight: bolder;
+    color: var(--two);
+    /* background-color: white;   */
+}
+#inputFormSUF {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 16rem;
+    /* background-color: pink; */
+   
+} 
+
+.inputSUF {
+    width: 14rem;
+    height: 1.95rem;
+    margin-top: 0.35rem;
+    border: 2px solid var(--two); 
+    border-radius: 5px;
+
+}
+.inputSUF:not(#submit) {
+    padding-left: 1rem;
+}
+.inputSUF:hover,
+.inputSUF:focus {
+    border-color: var(--inputOutline); /* Change this to the color you want */
+    outline: var(--inputOutline);
+}
+
+#submitSUF {
+    width: 11rem;
+    height: 1.95;
+    color: white;
+    font-weight:bolder;
+    background-color: var(--two);
+    margin-top: 0.75rem;
+   
+    border-radius: 5px;
+}
+
+#errorSUF {
+    color: pink;
+    font-style: italic;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    /* padding-left: 20px; */
+}
+
+
+#combinedFormContainerSUF{
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:18rem;
+    height:30rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--two);
+    border-radius: 1rem;
+    background-color: white;
+    background-color: var(--one);
+
+}
+
+#formContainerSUF {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 17rem;
+    height: 28rem;
+    /* background-color: white; */
+    /* background-color: blueviolet; */
+}
+
+
+#inputFormSUF {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 16rem;
+    /* background-color: pink; */
+   
+} 
+
+.inputSUF {
+    width: 14rem;
+    height: 1.95rem;
+    margin-top: 0.35rem;
+    border: 2px solid var(--two); 
+    border-radius: 5px;
+
+}
+.inputSUF:not(#submit) {
+    padding-left: 1rem;
+}
+.inputSUF:hover,
+.inputSUF:focus {
+    border-color: var(--inputOutline); /* Change this to the color you want */
+    outline: var(--inputOutline);
+}
+
+#submitSUF {
+    width: 11rem;
+    height: 1.95;
+    color: white;
+    font-weight:bolder;
+    background-color: var(--two);
+    margin-top: 0.75rem;
+   
+    border-radius: 5px;
+}
+
+#errorSUF {
+    color: pink;
+    font-style: italic;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    /* padding-left: 20px; */
 }

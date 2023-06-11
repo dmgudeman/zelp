@@ -1,14 +1,14 @@
 
 
 import { useSelector, useDispatch } from 'react-redux';
-import { hideModal} from '../../../store/ui';
+import { hideModal, showModal } from '../../../store/ui';
 import ReviewEdit from '../../Reviews/ReviewEdit/ReviewEdit';
 import { useEffect } from 'react';
 import './ReviewModal.css';
 
 function ReviewModal() {
   const dispatch = useDispatch();
-  const showModal = useSelector(state => state.ui.showModal);
+  const hideModalFlag = useSelector(state => state.ui.hideModalFlag);
   const reviewId = useSelector(state => state.ui.reviewId);
 
   const handleClose = () => {
@@ -17,7 +17,7 @@ function ReviewModal() {
 
 
   return (
-    <div id="modalBackgroundRF"className={`modalBackgroundRF ${showModal ? '' : 'hide'}`} onClick={()=>handleClose()}>
+    <div id="modalBackgroundRF"className={`modalBackgroundRF ${hideModalFlag ? 'hide' : ''}`} onClick={()=>handleClose()}>
    
       <ReviewEdit reviewId={reviewId}/>
     </div>

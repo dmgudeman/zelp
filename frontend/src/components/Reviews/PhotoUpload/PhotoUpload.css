@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 0;
+    margin-top: 0;
     padding: 0;
 }
 .form-photo-upload {
@@ -15,9 +15,22 @@
     border-radius: 15px;
 }
 
-.photoInput {
+/* .photoInput {
     width: 200px;
-}
+} */
 .photoTitle {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+} 
+
+.photoInput {
+   display: none; /* This hides the actual input */
+}
+
+.customFileUpload {
+   padding: 10px;
+   background-color: #f0f0f0;
+   cursor: pointer;
+   border-radius: 5px;
+   /* Add more styles as needed */
 }

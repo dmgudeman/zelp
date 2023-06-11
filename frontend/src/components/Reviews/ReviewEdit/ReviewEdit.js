@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import ReviewNewForm from "../ReviewNewForm/ReviewNewForm";
+import ReviewForm from "../ReviewForm/ReviewForm";
 import RatingInput from "../RatingInput/RatingInput";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import ReviewNewSubmit from "../ReviewNewSubmit/ReviewNewSubmit";
@@ -15,9 +15,9 @@ import { getUser } from "../../../store/session";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import "./ReviewEdit.css";
 
-const ReviewEdit = (props) => {
+const ReviewEdit = ({ reviewId }) => {
     const dispatch = useDispatch();
-    const { reviewId } = useParams();
+    // const { reviewId } = useParams();
     // const review = useSelector(getReview(reviewId));
     const history = useHistory();
     const [busId, setBusId] = useState(null);
@@ -33,16 +33,16 @@ const ReviewEdit = (props) => {
     useEffect(() => {
         if (reviewId) {
             dispatch(fetchReview(reviewId))
-                .then(review => {
+                .then((review) => {
                     setBusId(review.businessId);
                     setRating(review.rating);
                     setBody(review.body);
                     setPhotoUrl(review.photoUrl);
                 })
-                .catch(error => console.error(error));
+                .catch((error) => console.error(error));
         }
     }, [reviewId, dispatch]);
-    
+
     useEffect(() => {
         setUserId(sessionUser.id);
     }, [sessionUser.id]);
@@ -55,8 +55,11 @@ const ReviewEdit = (props) => {
         if (name === "body") setBody(value);
     };
 
-    const handleFile = async ({ currentTarget }) => {
-        const file = currentTarget.files[0];
+    const handleFile = async (e) => {
+       e.preventDefault();
+       e.stopPropagation();
+        const file = e.target.files[0];
+        
         formData.append("review[photo]", file);
         setPhoto(file);
         setFormData(formData);
@@ -73,12 +76,12 @@ const ReviewEdit = (props) => {
         e.preventDefault();
         e.stopPropagation();
         dispatch(deleteReview(reviewId));
-        console.log( 'Session User', sessionUser)
+        console.log("Session User", sessionUser);
         formData.set("review[author_id]", +sessionUser.id);
         formData.set("review[business_id]", +busId);
         formData.set("review[rating]", +rating);
         formData.set("review[body]", body);
-        formData.set("review[photoUrl]", photoUrl)
+        formData.set("review[photoUrl]", photoUrl);
         //     console.log(`${key}: ${value}`);
         try {
             dispatch(createReview(formData));
@@ -95,42 +98,40 @@ const ReviewEdit = (props) => {
     if (photoUrl) preview = <img className="imgRN" src={photoUrl} alt="" />;
     return (
         <>
-            <NavBar showFlag={'none'} />
-            <div id="newReviewContainer">
-                <div id="leftGutter"></div>
-                <div id="center">
-                    <form id="reviewForm">
-                        <h2 className="blueTitleBig">Edit Your Review</h2>
-                        <div className="ratingReview">
-                            <RatingInput
-                                id="ratingReview"
-                                name="rating"
-                                rating={rating}
-                                setRating={setRating}
-                                handleChange={handleChange}
-                            />
-                        </div>
-                        <div className="reviewInput">
-                            <ReviewNewForm
-                                name="body"
-                                value={body}
-                                handleChange={handleChange}
-                            />
-                        </div>
-                        {preview}
-                        <PhotoUpload
-                            name="photo"
-                            photoUrl={photoUrl}
-                            setPhotoUrl={setPhotoUrl}
-                            title="Change Photo"
-                            handleChange={handleFile}
+            <NavBar showFlag={"none"} />
+            <div id="combinedFormContainerRE" onClick={(e)=> e.stopPropagation()}>
+                <form id="formRE">
+                    <h2 id="titleBigRE">Edit Your Review</h2>
+                    <div id="ratingContainerRE">
+                        <RatingInput
+                            id="ratingReview"
+                            name="rating"
+                            rating={rating}
+                            setRating={setRating}
+                            handleChange={handleChange}
                         />
-                        <div className="reviewButton">
-                            <ReviewNewSubmit submitHandler={submitHandler} />
-                        </div>
-                    </form>
-                </div>
-                <div id="rightGutter"></div>
+                    </div>
+                    <div id="inputContainerRE">
+                        <ReviewForm
+                            name="body"
+                            value={body}
+                            handleChange={handleChange}
+                        />
+                    </div>
+                    <div id="photoContainerRE">
+                    {preview}
+                    <PhotoUpload
+                        name="photo"
+                        photoUrl={photoUrl}
+                        setPhotoUrl={setPhotoUrl}
+                        title="Change Photo"
+                        handleChange={handleFile}
+                    />
+                    </div>
+                    <div className="reviewButton">
+                        <ReviewNewSubmit submitHandler={submitHandler} />
+                    </div>
+                </form>
             </div>
         </>
     );

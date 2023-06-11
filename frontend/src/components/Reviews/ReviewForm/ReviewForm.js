@@ -1,6 +1,6 @@
-import "./ReviewNewForm.css";
+import "./ReviewForm.css";
 
-const ReviewNewForm = ({ name, value, handleChange }) => {
+const ReviewForm = ({ name, value, handleChange }) => {
     return (
         <>
             <textarea
@@ -9,6 +9,7 @@ const ReviewNewForm = ({ name, value, handleChange }) => {
                 value={value}
                 onChange={handleChange}
                 placeholder="Leave a comment or explain your rating."
+                onClick={(e)=> e.stopPropagation()}
             >
                 {value}
             </textarea>
@@ -16,4 +17,4 @@ const ReviewNewForm = ({ name, value, handleChange }) => {
     );
 };
 
-export default ReviewNewForm;
+export default ReviewForm;
