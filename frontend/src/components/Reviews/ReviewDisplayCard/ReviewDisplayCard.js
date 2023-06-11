@@ -78,8 +78,9 @@ const ReviewDisplayCard = ({ review}) => {
                             <div id="reviewDate">{date}</div>
                         </div>
                         <div id="truncWidth">{truncBody} </div>
-                        {editButtons}
+                       
                         <div className="authorName">{`by: ${review.authorName}`}</div>
+                        {editButtons}
                     </div>
                 </div>
                 {photoUrl ? (
