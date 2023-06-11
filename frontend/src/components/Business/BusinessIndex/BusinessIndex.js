@@ -1,35 +1,30 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getBusinesses } from "../../../store/businesses";
 import BusinessIndexDisplay from "../BusinessIndexDisplay/BusinessIndexDisplay";
 import NavBar from "../../Navigation/NavBar/NavBar";
-import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
 import SearchBar from "../../Navigation/SearchBar/SearchBar";
 import "./BusinessIndex.css";
 
 const BusinessIndex = (props) => {
-    const dispatch = useDispatch();
     let businesses = useSelector(getBusinesses);
-   
+
     const [cardTotal, setCardTotal] = useState(6);
 
-    // useEffect(() => {
-  
-    //     dispatch(fetchBusinesses());
-    // }, [dispatch]);
-
-    // if (!businesses) return null;
     return (
         <>
             <div id="businessContainer">
-            <NavBar showFlag={true} />
+                <NavBar showFlag={true} />
                 <div id="bannerContainer">
                     <BannerBackground businesses={businesses} />
                     <div classNmae="containerCAR1">
-                    <div className="carTitle1 greenText">Review A Business</div>
-                    <div className="carTitle1 greenText">Of Your Choice</div>
+                        <div className="carTitle1 greenText">
+                            Review A Business
+                        </div>
+                        <div className="carTitle1 greenText">
+                            Of Your Choice
+                        </div>
                     </div>
-                    {/* <Banner /> */}
                 </div>
 
                 <div className="cardContainer">
@@ -39,7 +34,6 @@ const BusinessIndex = (props) => {
                     />
                 </div>
             </div>
-            {/* <ZelpMap businesses={businesses} /> */}
         </>
     );
 };
@@ -59,35 +53,10 @@ const BannerBackground = ({ businesses }) => {
                     backgroundSize: "cover",
                     backgroundPosition: "top",
                     opacity: 0.3,
-                    zIndex: -1
+                    zIndex: -1,
                 }}
             ></div>
         </>
     );
 };
 
-const Banner = (props) => {
-    return (
-        <>
-            <div id="businessFrontContainer">
-                <div ide="bannerFrontContainer">
-                    <div className={"leftBanner"}></div>
-                    <div className="centerBanner">
-                        <h2>Find a business to review</h2>
-                        <p className="secondLine">
-                            Review anything from your favorite patios spot to
-                            your local flower shop.
-                        </p>
-                        <div id="bannerSearchBar">
-                            <SearchBar />
-                        </div>
-                        <div className="bottomBanner">
-                            <div>Visited one of these places recently?</div>
-                        </div>
-                    </div>
-                    <div className="rightBanner"></div>
-                </div>
-            </div>
-        </>
-    );
-};
