@@ -15,7 +15,7 @@ import { getUser } from "../../../store/session";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import "./ReviewEdit.css";
 
-const ReviewEdit = ({ reviewId }) => {
+const ReviewEdit = ({ reviewId, handleClose}) => {
     const dispatch = useDispatch();
     // const { reviewId } = useParams();
     // const review = useSelector(getReview(reviewId));
@@ -88,6 +88,7 @@ const ReviewEdit = ({ reviewId }) => {
             setFormData(null);
             setBody(null);
             setRating(null);
+            handleClose();
             history.push(`/businesses/${busId}`);
         } catch (errors) {
             console.error("dispatch redirect did not work");

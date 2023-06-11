@@ -29,7 +29,7 @@ function ReviewModal() {
                 className={`modalBackgroundRF ${hideModalFlag ? "hide" : ""}`}
                 onClick={() => handleClose()}
             >
-                <ReviewEdit reviewId={reviewId} />
+                <ReviewEdit reviewId={reviewId} handleClose={handleClose}/>
             </div>
         );
     } else if (businessId) {
