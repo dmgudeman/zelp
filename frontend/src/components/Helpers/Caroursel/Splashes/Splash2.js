@@ -1,13 +1,12 @@
 import car2 from "../../../../assets/images/car2.jpeg";
 
-
-const Splash2 = (props) => {
+const Splash2 = ({ onLoad }) => {
     return (
         <>
             <div id="businessShowContainer1">
                 <div
                     style={{
-                        backgroundImage:  `url(${car2})`,
+                        backgroundImage: `url(${car2})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
                         backgroundSize: "cover",
@@ -19,13 +18,13 @@ const Splash2 = (props) => {
                         textShadow: "4px 4px #000",
                         zIndex: -1,
                     }}
-                >   <div className="carTitle4">Lumber</div>
+                    onLoad={onLoad}
+                >
+                    {" "}
+                    <div className="carTitle4">Lumber</div>
                     <div className="carTitleSpace"></div>
                     <div className="carTitle1">Be a</div>
                     <div className="carTitle1">Do it your selfer!</div>
-                   
-                   
-                    {/* <div className="businessName" >{business.name}</div> */}
                 </div>
             </div>
         </>

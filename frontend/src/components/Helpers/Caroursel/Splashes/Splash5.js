@@ -1,13 +1,12 @@
 import car5 from "../../../../assets/images/car5.jpeg";
 
-
-const Splash5 = (props) => {
+const Splash5 = ({ onLoad }) => {
     return (
         <>
             <div id="businessShowContainer1">
                 <div
                     style={{
-                        backgroundImage:  `url(${car5})`,
+                        backgroundImage: `url(${car5})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
                         backgroundSize: "cover",
@@ -19,12 +18,12 @@ const Splash5 = (props) => {
                         textShadow: "4px 4px #000",
                         zIndex: -1,
                     }}
+                    onLoad={onLoad}
                 >
                     <div className="carTitle1">Find Services</div>
                     <div className="carTitle1">FAST</div>
                     <div className="carTitleSpace"></div>
                     <div className="carTitle4">Plumbing</div>
-                    
                 </div>
             </div>
         </>

@@ -1,48 +1,50 @@
-import React, { useState, useEffect } from "react";
-import Splash1 from './Splashes/Splash1';
-import Splash2 from './Splashes/Splash2';
-import Splash3 from './Splashes/Splash3';
-import Splash4 from './Splashes/Splash4';
-import Splash5 from './Splashes/Splash5';
-
+import React, { useState, useEffect, useRef } from "react";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import Splash1 from "./Splashes/Splash1";
+import Splash2 from "./Splashes/Splash2";
+import Splash3 from "./Splashes/Splash3";
+import Splash4 from "./Splashes/Splash4";
+import Splash5 from "./Splashes/Splash5";
 
 const Carousel = () => {
     const [currentImage, setCurrentImage] = useState(0);
     const [fadeIn, setFadeIn] = useState(true);
-    let interval;
-
-    const images = [
+    const [isLoading, setIsLoading] = useState(true);
+    const [loadedImages, setLoadedImages] = useState(0);
+    const interval = useRef();
+    const splashes = [
         { component: Splash1, altText: "Image 1" },
         { component: Splash2, altText: "Image 2" },
         { component: Splash3, altText: "Image 3" },
         { component: Splash4, altText: "Image 4" },
         { component: Splash5, altText: "Image 5" },
-        
     ];
-    
+
     useEffect(() => {
-      interval = setInterval(() => {
+        interval.current = setInterval(() => {
             setFadeIn(false);
             setTimeout(() => {
                 setCurrentImage(
-                    currentImage === images.length - 1 ? 0 : currentImage + 1
+                    currentImage === splashes.length - 1 ? 0 : currentImage + 1
                 );
 
                 setFadeIn(true);
             }, 100);
         }, 6000);
-        return () => clearInterval(interval);
-      }, [currentImage]);
+        return () => clearInterval(interval.current);
+    }, [currentImage]);
 
-      useEffect(() => {
-        return () => {
-          clearInterval(interval);
-        };
-      }, []);
+    const handleImageLoad = () => {
+        setLoadedImages((prev) => prev + 1);
+        if (loadedImages >= splashes.length - 1) {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <div className="slider">
-            {images.map((image, index) => {
+            {isLoading ? <LoadingSpinner /> : null}
+            {splashes.map((image, index) => {
                 const Component = image.component;
                 return (
                     <div
@@ -56,7 +58,6 @@ const Carousel = () => {
                                     ? "fadeIn"
                                     : "fadeOut"
                             } 0.5s linear forwards`,
-                            // marginLeft: index === currentImage ? "-50px" : "0",
                         }}
                     >
                         <Component alt={image.altText} />
