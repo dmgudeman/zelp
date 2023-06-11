@@ -4,8 +4,9 @@ import {Business} from '../Types/Business'
 
 import csrfFetch from './csrf';
 import { receiveReviews } from './reviews';
+import { RootState } from 'store';
 
-const initialState: Record<string, any> = {};
+const initialState = {};
 
 
 const businessesSlice = createSlice({
@@ -22,11 +23,12 @@ const businessesSlice = createSlice({
   });
   
   export const { receiveBusinesses, receiveBusiness } = businessesSlice.actions;
-
+  export const getBusinesses = (state: RootState) => state.businesses;
+  
   export const getBusinessById = createSelector(
-    (state) => state.businesses,
+    (state:Root) => state.businesses,
     (_, busId:number) => busId,
-    (businesses:Business[], busId) => businesses[busId]
+    (businesses:Business[], busId:number) => businesses[busId]
   );
 
   export const fetchBusinesses = createAsyncThunk(
