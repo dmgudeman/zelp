@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import GridLoader from "react-spinners/GridLoader";
 import './LoadingSpinner.css'
 
@@ -6,7 +6,6 @@ const override = {
     display: "block",
     margin: "0 auto",
     borderColor: "blue"
-    // backgroundColor: "aquamarine"
   };
 
 const LoadingSpinner = ({loading}) => {

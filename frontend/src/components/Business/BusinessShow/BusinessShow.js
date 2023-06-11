@@ -5,7 +5,7 @@ import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import ReviewModal from "../../Modals/ReviewModal/ReviewModal";
-import { getBusiness, fetchBusiness } from "../../../store/businesses";
+import { getBusiness, fetchBusiness, getBusinessById } from "../../../store/businesses";
 import { fetchReviewsByBusiness, getReviews } from "../../../store/reviews";
 import { getTags } from "../../../store/tags";
 import "./BusinessShow.css";
@@ -13,7 +13,7 @@ import "./BusinessShow.css";
 const BusinessShow = (props) => {
     const dispatch = useDispatch();
     const { busId } = useParams();
-    let business = useSelector(getBusiness(busId));
+    let business = useSelector((state) => getBusinessById(state, busId));
     const [localReviews, setLocalReviews] = useState([]);
     let tags = useSelector(getTags);
     useEffect(() => {

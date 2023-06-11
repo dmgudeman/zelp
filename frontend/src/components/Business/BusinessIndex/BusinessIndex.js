@@ -7,7 +7,7 @@ import SearchBar from "../../Navigation/SearchBar/SearchBar";
 import "./BusinessIndex.css";
 
 const BusinessIndex = (props) => {
-    let businesses = useSelector(getBusinesses);
+    let businesses = useSelector((state) => state.businesses);
 
     const [cardTotal, setCardTotal] = useState(6);
 

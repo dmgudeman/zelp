@@ -8,9 +8,14 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@googlemaps/react-wrapper": "^1.1.35",
     "@react-google-maps/api": "^2.18.1",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/react": "^18.2.11",
+    "@types/react-dom": "^18.2.4",
+    "@types/react-redux": "^7.1.25",
+    "@types/react-router-dom": "^5.3.3",
     "fortawesome": "^0.0.1-security",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,7 +25,8 @@
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
