@@ -35,10 +35,7 @@ const ReviewDisplayCard = ({ review}) => {
     };
 
     const editHandler = (reviewId) => {
-      
        dispatch(showModal(reviewId))
-       
-
     };
 
     const closeEditReviewModal = () => {

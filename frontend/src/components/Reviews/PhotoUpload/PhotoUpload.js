@@ -5,7 +5,7 @@ const PhotoUpload = ({ name, value, handleChange, title, fileRef }) => {
         <div id="uploadContainer">
             <h3 className="photoTitle blueTitle">{title}</h3>
 
-            <label htmlFor="profile_pic" className="customFileUpload">
+            <label htmlFor="profile_pic" className="blueButton customFileUpload ">
                 Upload Photo
             </label>
 

@@ -6,6 +6,7 @@ import {
     editReview,
     deleteReview,
 } from "../../../store/reviews";
+import {showNewReviewModal} from '../../../store/ui';
 import { useParams, Link, Redirect, useHistory } from "react-router-dom";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
@@ -30,9 +31,12 @@ const ReviewsIndex = ({ business }) => {
     const extendHandler = () => {
         setCardTotal(reviews.length);
     };
-    const openEditReviewModal = () => {
+
+    const newReviewHandler = () => {
+        dispatch(showNewReviewModal(business.id))
         
     }
+   
   
     // not as good as soring on back end but sufficient for this size app
     let sortedReviews = reviews.slice().sort((a, b) => {
@@ -46,12 +50,10 @@ const ReviewsIndex = ({ business }) => {
           
             <div id="containerRI">
                 <div className="buttons marginTop">
-                    <Link to={`/reviewNew/${business.id}`}>
-                        <button className="blueButton ">
-                            {/* <i className="fa-regular fa-star"></i>  */}
-                            Leave your opinions, and optional photo(s)
+                 
+                        <button className="blueButton " onClick={newReviewHandler}>
+                            Leave your opinions, and optional photo
                         </button>
-                    </Link>
                 </div>
                 <div id="reviewsIndexContainer">
                     {reviews.length ? (

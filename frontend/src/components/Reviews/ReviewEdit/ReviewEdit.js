@@ -56,10 +56,10 @@ const ReviewEdit = ({ reviewId }) => {
     };
 
     const handleFile = async (e) => {
-       e.preventDefault();
-       e.stopPropagation();
+        e.preventDefault();
+        e.stopPropagation();
         const file = e.target.files[0];
-        
+
         formData.append("review[photo]", file);
         setPhoto(file);
         setFormData(formData);
@@ -99,7 +99,10 @@ const ReviewEdit = ({ reviewId }) => {
     return (
         <>
             <NavBar showFlag={"none"} />
-            <div id="combinedFormContainerRE" onClick={(e)=> e.stopPropagation()}>
+            <div
+                id="combinedFormContainerRE"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <form id="formRE">
                     <h2 id="titleBigRE">Edit Your Review</h2>
                     <div id="ratingContainerRE">
@@ -119,14 +122,14 @@ const ReviewEdit = ({ reviewId }) => {
                         />
                     </div>
                     <div id="photoContainerRE">
-                    {preview}
-                    <PhotoUpload
-                        name="photo"
-                        photoUrl={photoUrl}
-                        setPhotoUrl={setPhotoUrl}
-                        title="Change Photo"
-                        handleChange={handleFile}
-                    />
+                        {preview}
+                        <PhotoUpload
+                            name="photo"
+                            photoUrl={photoUrl}
+                            setPhotoUrl={setPhotoUrl}
+                            title="Change Photo"
+                            handleChange={handleFile}
+                        />
                     </div>
                     <div className="reviewButton">
                         <ReviewNewSubmit submitHandler={submitHandler} />

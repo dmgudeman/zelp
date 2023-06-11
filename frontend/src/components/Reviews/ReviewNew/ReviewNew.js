@@ -12,11 +12,10 @@ import { getUser } from "../../../store/session";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import "./ReviewNew.css";
 
-const ReviewNew = (props) => {
+const ReviewNew = ({businessId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { busId } = useParams();
-    let business = useSelector(getBusiness(busId));
+    let business = useSelector(getBusiness(businessId));
     const sessionUser = useSelector(getUser);
     const [formData, setFormData] = useState(new FormData());
     const [userId, setUserId] = useState(sessionUser.id || "");
@@ -30,7 +29,7 @@ const ReviewNew = (props) => {
     const flag = formData.get("review[body]");
 
     useEffect(() => {
-        dispatch(fetchReviewsByBusiness(busId));
+        dispatch(fetchReviewsByBusiness(businessId));
         setUserId(sessionUser.id);
         setRating(rating);
         setBody(body);
@@ -38,7 +37,7 @@ const ReviewNew = (props) => {
     }, [sessionUser, rating]);
 
     if (!business) <Redirect to="/home" />;
-
+    console.log('BBBUUUUSSSS ID', businessId)
     const handleChange = (e) => {
         const { name, value } = e.target;
         formData.set(`review[${name}]`, value);
@@ -65,7 +64,7 @@ const ReviewNew = (props) => {
         e.preventDefault();
         e.stopPropagation();
         formData.set("review[author_id]", +sessionUser.id);
-        formData.set("review[business_id]", +busId);
+        formData.set("review[business_id]", +businessId);
         formData.set("review[rating]", +rating);
         try {
             dispatch(createReview(formData));
@@ -73,7 +72,7 @@ const ReviewNew = (props) => {
             setBody(null);
             setRating(null);
             fileRef.current.value = null;
-            history.push(`/businesses/${busId}`);
+            history.push(`/businesses/${businessId}`);
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }

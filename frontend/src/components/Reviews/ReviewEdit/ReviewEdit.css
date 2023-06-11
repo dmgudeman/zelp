@@ -23,10 +23,6 @@
     justify-content: center;
     align-items: center;
     width: 34rem;
- 
-    background-color: blue;
-
-
 }
 #titleBigRE {
     display: flex;
@@ -37,7 +33,6 @@
     font-size: 1.75rem;
     font-weight: bolder;
     color: var(--two);
-    background-color: white;  
 }
 #ratingContainerRE{
     margin-bottom: 20px;
@@ -59,201 +54,17 @@
     align-items: center;
     justify-content: center;
     width: 29rem;
-    /* height: 29rem; */
-
-   
-
 }
 
+/* .reviewButton {
+    /* width: 250px; */
 
 
-/* #photoRatingCell {
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    border-radius: 7px;
-    background-color: bisque;
-} */
-
-/* .ratingReview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-.reviewButton {
-    width: 250px;
-}
-
-#photoContainerNR {
+#photoContainerRE {
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;  
-    background-color: yellow; 
 }
 
 
-#combinedFormContainerSUF{
-    position: absolute;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width:18rem;
-    height:30rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid var(--two);
-    border-radius: 1rem;
-    background-color: white;
-    background-color: var(--one);
-
-}
-
-#formContainerSUF {
-    position: relative;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 17rem;
-    height: 28rem;
-    /* background-color: white; */
-    /* background-color: blueviolet; */
-}
-
-#titleSUF {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 16rem;
-    height: 3rem;
-    font-size: 20px;
-    font-weight: bolder;
-    color: var(--two);
-    /* background-color: white;   */
-}
-#inputFormSUF {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 16rem;
-    /* background-color: pink; */
-   
-} 
-
-.inputSUF {
-    width: 14rem;
-    height: 1.95rem;
-    margin-top: 0.35rem;
-    border: 2px solid var(--two); 
-    border-radius: 5px;
-
-}
-.inputSUF:not(#submit) {
-    padding-left: 1rem;
-}
-.inputSUF:hover,
-.inputSUF:focus {
-    border-color: var(--inputOutline); /* Change this to the color you want */
-    outline: var(--inputOutline);
-}
-
-#submitSUF {
-    width: 11rem;
-    height: 1.95;
-    color: white;
-    font-weight:bolder;
-    background-color: var(--two);
-    margin-top: 0.75rem;
-   
-    border-radius: 5px;
-}
-
-#errorSUF {
-    color: pink;
-    font-style: italic;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-    /* padding-left: 20px; */
-}
-
-
-#combinedFormContainerSUF{
-    position: absolute;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width:18rem;
-    height:30rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid var(--two);
-    border-radius: 1rem;
-    background-color: white;
-    background-color: var(--one);
-
-}
-
-#formContainerSUF {
-    position: relative;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 17rem;
-    height: 28rem;
-    /* background-color: white; */
-    /* background-color: blueviolet; */
-}
-
-
-#inputFormSUF {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 16rem;
-    /* background-color: pink; */
-   
-} 
-
-.inputSUF {
-    width: 14rem;
-    height: 1.95rem;
-    margin-top: 0.35rem;
-    border: 2px solid var(--two); 
-    border-radius: 5px;
-
-}
-.inputSUF:not(#submit) {
-    padding-left: 1rem;
-}
-.inputSUF:hover,
-.inputSUF:focus {
-    border-color: var(--inputOutline); /* Change this to the color you want */
-    outline: var(--inputOutline);
-}
-
-#submitSUF {
-    width: 11rem;
-    height: 1.95;
-    color: white;
-    font-weight:bolder;
-    background-color: var(--two);
-    margin-top: 0.75rem;
-   
-    border-radius: 5px;
-}
-
-#errorSUF {
-    color: pink;
-    font-style: italic;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-    /* padding-left: 20px; */
-}
