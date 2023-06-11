@@ -1,14 +1,12 @@
-import { useState, useEffect } from "react";
-import { connect, MapStateToProps, MapDispatchToProps } from "react-redux";
+import { useState } from "react";
 import { login, getCurrentUser } from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
-import Navigation from "../../Navigation/NavBar/NavBar";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
 import "./LoginForm.css";
-import { showModal, hideModal } from "../../../store/ui";
+import { hideModal } from "../../../store/ui";
 
-const LoginForm = ({ dispatchShowModal }) => {
+const LoginForm = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(getCurrentUser);
     const [credential, setCredential] = useState("");
@@ -20,7 +18,6 @@ const LoginForm = ({ dispatchShowModal }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         setErrors([]);
-        // return dispatch(login({ credential, password })).catch(async (res) => {
         dispatch(login({ credential, password })).catch(async (res) => {
             let data;
             try {
@@ -30,7 +27,6 @@ const LoginForm = ({ dispatchShowModal }) => {
             } catch {
                 data = await res.text(); // Will hit this case if the server is down
             }
-            // if (data?.errors) setErrors(data.errors);
             if (data?.errors)
                 setErrors(["username or email and/or password were invalid"]);
             else if (data) setErrors([data]);

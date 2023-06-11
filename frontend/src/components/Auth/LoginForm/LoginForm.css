@@ -13,9 +13,7 @@
     transform: translate(-50%, -50%);
     border: 2px solid var(--two);
     border-radius: 1rem;
-    background-color: white;
     background-color: var(--one);
-
 }
 
 #formContainerLIF {
@@ -26,8 +24,6 @@
     justify-content: center;
     width: 17rem;
     height: 28rem;
-    /* background-color: white; */
-    /* background-color: blueviolet; */
 }
 
 #titleLIF {
@@ -39,7 +35,6 @@
     font-size: 20px;
     font-weight: bolder;
     color: var(--two);
-    /* background-color: white;   */
 }
 #inputFormLIF {
     display: flex;
@@ -47,7 +42,6 @@
     justify-content: space-around;
     align-items: center;
     width: 16rem;
-    /* background-color: pink; */
    
 } 
 
@@ -64,7 +58,7 @@
 }
 .inputLIF:hover,
 .inputLIF:focus {
-    border-color: var(--inputOutline); /* Change this to the color you want */
+    border-color: var(--inputOutline); 
     outline: var(--inputOutline);
 }
 
@@ -84,7 +78,6 @@
     font-style: italic;
     font-size: 0.8rem;
     margin-top: 0.5rem;
-    /* padding-left: 20px; */
 }
 
 #lastLineLIF {

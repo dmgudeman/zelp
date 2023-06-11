@@ -24,8 +24,6 @@
     justify-content: center;
     width: 17rem;
     height: 28rem;
-    /* background-color: white; */
-    /* background-color: blueviolet; */
 }
 
 #titleSUF {
@@ -37,7 +35,6 @@
     font-size: 20px;
     font-weight: bolder;
     color: var(--two);
-    /* background-color: white;   */
 }
 #inputFormSUF {
     display: flex;
@@ -45,8 +42,6 @@
     justify-content: space-around;
     align-items: center;
     width: 16rem;
-    /* background-color: pink; */
-   
 } 
 
 .inputSUF {
@@ -62,7 +57,7 @@
 }
 .inputSUF:hover,
 .inputSUF:focus {
-    border-color: var(--inputOutline); /* Change this to the color you want */
+    border-color: var(--inputOutline);
     outline: var(--inputOutline);
 }
 
@@ -82,9 +77,7 @@
     font-style: italic;
     font-size: 0.8rem;
     margin-top: 0.5rem;
-    /* padding-left: 20px; */
 }
-
 
 #combinedFormContainerSUF{
     position: absolute;
@@ -112,8 +105,6 @@
     justify-content: center;
     width: 17rem;
     height: 28rem;
-    /* background-color: white; */
-    /* background-color: blueviolet; */
 }
 
 #titleSUF {
@@ -125,7 +116,6 @@
     font-size: 20px;
     font-weight: bolder;
     color: var(--two);
-    /* background-color: white;   */
 }
 #inputFormSUF {
     display: flex;
@@ -133,8 +123,6 @@
     justify-content: space-around;
     align-items: center;
     width: 16rem;
-    /* background-color: pink; */
-   
 } 
 
 .inputSUF {
@@ -150,7 +138,7 @@
 }
 .inputSUF:hover,
 .inputSUF:focus {
-    border-color: var(--inputOutline); /* Change this to the color you want */
+    border-color: var(--inputOutline);
     outline: var(--inputOutline);
 }
 
@@ -161,7 +149,6 @@
     font-weight:bolder;
     background-color: var(--two);
     margin-top: 0.75rem;
-   
     border-radius: 5px;
 }
 
@@ -170,5 +157,4 @@
     font-style: italic;
     font-size: 0.8rem;
     margin-top: 0.5rem;
-    /* padding-left: 20px; */
 }
