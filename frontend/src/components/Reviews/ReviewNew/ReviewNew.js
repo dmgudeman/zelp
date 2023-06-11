@@ -26,8 +26,8 @@ const ReviewNew = ({businessId}) => {
     const [photo, setPhoto] = useState(null);
     // photoUrl is for preview
     const [photoUrl, setPhotoUrl] = useState("");
-    const flag = formData.get("review[body]");
-
+    // const flag = formData.get("review[body]");
+ 
     useEffect(() => {
         dispatch(fetchReviewsByBusiness(businessId));
         setUserId(sessionUser.id);
@@ -37,7 +37,6 @@ const ReviewNew = ({businessId}) => {
     }, [sessionUser, rating]);
 
     if (!business) <Redirect to="/home" />;
-    console.log('BBBUUUUSSSS ID', businessId)
     const handleChange = (e) => {
         const { name, value } = e.target;
         formData.set(`review[${name}]`, value);
@@ -82,7 +81,7 @@ const ReviewNew = ({businessId}) => {
 
     return (
         <>
-            <div id="combinedFormContainerNR">
+            <div id="combinedFormContainerNR" onClick={(e)=> e.stopPropagation()}>
                     <form id="formNR">
                         <h2 className="blueTitleBig">{business.name}</h2>
                         <h1 className="italic">
@@ -92,7 +91,7 @@ const ReviewNew = ({businessId}) => {
                         <RatingInput
                             className="ratingReview"
                             name="rating"
-                            value={formData.rating}
+                            value={rating}
                             rating={rating}
                             handleChange={handleChange}
                         />
@@ -102,14 +101,14 @@ const ReviewNew = ({businessId}) => {
                                 <ReviewNewForm
                                     id="ratingReview"
                                     name="body"
-                                    value={formData.body}
+                                    value={body}
                                     handleChange={handleChange}
                                 />
                                 {preview}
                                 <PhotoUpload
                                     name="photo"
                                     fileRef={fileRef}
-                                    value={formData.photo}
+                                    value={photo}
                                     title="Add Photo"
                                     handleChange={handleFile}
                                 />
