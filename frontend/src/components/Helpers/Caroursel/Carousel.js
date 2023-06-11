@@ -6,6 +6,11 @@ import Splash3 from "./Splashes/Splash3";
 import Splash4 from "./Splashes/Splash4";
 import Splash5 from "./Splashes/Splash5";
 
+// there was a problem with the splashes showing up half baked when
+// the app started.  I added hidden image loading state on each
+// of the splashes and the count in the state of the splashes in
+// the Carousel. A loading spinner is shown until all are loaded
+
 const Carousel = () => {
     const [currentImage, setCurrentImage] = useState(0);
     const [fadeIn, setFadeIn] = useState(true);
