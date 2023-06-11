@@ -12,7 +12,7 @@ import { getUser } from "../../../store/session";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import "./ReviewNew.css";
 
-const ReviewNew = ({businessId}) => {
+const ReviewNew = ({businessId, handleCloseReviewNew}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     let business = useSelector(getBusiness(businessId));
@@ -71,7 +71,9 @@ const ReviewNew = ({businessId}) => {
             setBody(null);
             setRating(null);
             fileRef.current.value = null;
+            handleCloseReviewNew();
             history.push(`/businesses/${businessId}`);
+
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }
@@ -83,7 +85,7 @@ const ReviewNew = ({businessId}) => {
         <>
             <div id="combinedFormContainerNR" onClick={(e)=> e.stopPropagation()}>
                     <form id="formNR">
-                        <h2 className="blueTitleBig">{business.name}</h2>
+                        <h2 className="blueTitleBig title">{business.name}</h2>
                         <h1 className="italic">
                             Leave a Rating, a Review and attach photos if you
                             would like

@@ -39,7 +39,7 @@ function ReviewModal() {
                 className={`modalBackgroundRF ${hideModalNewReviewFlag ? "hide" : ""}`}
                 onClick={() => handleCloseReviewNew()}
             >
-                <ReviewNew businessId={businessId} />
+                <ReviewNew businessId={businessId} handleCloseReviewNew={handleCloseReviewNew}/>
             </div>
         );
     }

@@ -11,7 +11,7 @@
     transform: translate(-50%, -50%);
     border: 2px solid var(--two);
     border-radius: 1rem;
-    background-color: white;
+    /* background-color: white; */
     background-color: var(--one);
 
 }
@@ -32,7 +32,7 @@
     margin-left: 50px;
 }
 .title {
-    padding: 20px 0px;
+    background-color: transparent;
 }
 
 .italic {
