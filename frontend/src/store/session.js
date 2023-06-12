@@ -1,6 +1,10 @@
+
+
 import csrfFetch from "./csrf";
 export const SET_SESSION_USER = "session/SET_SESSION_USER";
 export const REMOVE_SESSION_USER = "session/REMOVE_SESSION_USER";
+
+
 
 export const setSessionUser = (user) => {
     return {
@@ -15,11 +19,11 @@ export const removeSessionUser = () => {
     };
 };
 
-export const getCurrentUser = (state) => {
+export const getCurrentUser = (state:RootState) => {
     return state.session?.user ? state.session.user.email : null;
 };
 
-export const getUser = (state) => {
+export const getUser = (state:RootState) => {
     return state.session?.user ? state.session.user : null;
 };
 

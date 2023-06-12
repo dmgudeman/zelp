@@ -1,18 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { login } from "../../../store/session";
 import { useDispatch  } from "react-redux";
 import "./DemoUserForm.css";
 
-const DemoUserForm = (props) => {
+const DemoUserForm = () => {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("Demo-lition");
     const [password, setPassword] = useState("password");
-
-    const submitHandler = (e) => {
+    const submitHandler = (e => {
         e.preventDefault();
 
         return dispatch(login({ credential, password }));
-    };
+    });
 
     return (
         <>
