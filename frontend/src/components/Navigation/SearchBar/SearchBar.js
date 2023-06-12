@@ -101,11 +101,16 @@ const SearchBar = () => {
         setSelectTag(tag);
         setHideTagList(true);
     };
+  
 
     const handleBusListClick = (bus) => {
         setSelectBus(bus);
         setHideBusList(true);
     };
+
+    const handleHideTagList = () => {
+        setHideTagList(true);
+    }
     const handleInputClick = () => {
         // if (hideTagList) {
         //     tagInputRef.current.focus();
@@ -143,6 +148,7 @@ const SearchBar = () => {
                         handleSearchEvent={handleSearchEvent}
                         handleTagListClick={handleTagListClick}
                         handleInputClick={handleInputClick}
+                        handleHideTagList={handleHideTagList}
                         filterTags={filterTags}
                         // tagInputRef={tagInputRef}
                     />

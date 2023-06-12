@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import  useOutsideClick  from '../UseOutsideHook'; 
 const SearchBarTag = (props) => {
     const {
         searchData,
@@ -7,14 +8,21 @@ const SearchBarTag = (props) => {
         handleSearchEvent,
         handleTagListClick,
         filterTags,
-        handleInputClick
+        handleInputClick,
+        handleHideTagList
     } = { ...props };
 
     const filteredTags = filterTags();
+    const ref = useRef();
+    useOutsideClick(ref, () => {
+        if (!hideTagList) {
+            handleHideTagList(); 
+        }
+    });
 
     return (
         <>
-            <div className="SBcontainer">
+            <div className="SBcontainer" ref={ref}>
                 <div className="SBInputWrap" onClick={()=>handleInputClick()}>
                     <input
                         className="SBInput"
