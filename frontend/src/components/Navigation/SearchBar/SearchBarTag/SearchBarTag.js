@@ -1,3 +1,4 @@
+import { useRef } from "react";
 const SearchBarTag = (props) => {
     const {
         searchData,
@@ -6,24 +7,28 @@ const SearchBarTag = (props) => {
         handleSearchEvent,
         handleTagListClick,
         filterTags,
+        handleInputClick
     } = { ...props };
+
+    const filteredTags = filterTags();
 
     return (
         <>
             <div className="SBcontainer">
-                <div className="SBInputWrap">
+                <div className="SBInputWrap" onClick={()=>handleInputClick()}>
                     <input
                         className="SBInput"
                         type="text"
                         name="tag"
                         value={selectTag ? selectTag : searchData.tag}
-                        placeholder="Search by tag"
+                        placeholder="Business category search"
                         onChange={handleSearchEvent}
                     />
                 </div>
 
-                {hideTagList ? null : (
+                {!hideTagList && (
                     <div className="SBDropDown">
+                        {filteredTags.length > 0 ? (
                         <ul>
                             {filterTags().map((tag) => (
                                 <li
@@ -34,6 +39,9 @@ const SearchBarTag = (props) => {
                                 </li>
                             ))}
                         </ul>
+                          ) : (
+                            <p>No matches found</p>
+                        )}
                     </div>
                 )}
             </div>

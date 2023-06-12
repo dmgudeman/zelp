@@ -17,7 +17,7 @@ const SearchBarBus = (props) => {
                         type="text"
                         name="bus"
                         value={selectBus ? selectBus : searchData.bus}
-                        placeholder="Search by business name"
+                        placeholder="Business name search"
                         onChange={handleSearchEvent}
                     />
                 </div>

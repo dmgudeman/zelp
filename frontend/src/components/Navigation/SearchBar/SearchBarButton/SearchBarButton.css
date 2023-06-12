@@ -1,16 +1,4 @@
 
-/* .searchButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(var(--bh) * 0.90);
-    border: 2px solid transparent; 
-    width: calc(var(--bh) * 1);
-    background-color: var(--two);
-    color: white;
-    border-radius: 0px 6px 6px 0px;
-} */
-
 .blueButtonSB {
     display: flex;
     justify-content: center;

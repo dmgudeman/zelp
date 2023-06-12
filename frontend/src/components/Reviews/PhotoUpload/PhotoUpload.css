@@ -15,9 +15,6 @@
     border-radius: 15px;
 }
 
-/* .photoInput {
-    width: 200px;
-} */
 .photoTitle {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -25,7 +22,7 @@
 } 
 
 .photoInput {
-   display: none; /* This hides the actual input */
+   display: none; /* This hides the actual input element so the button can be styled*/
 }
 
 .customFileUpload {

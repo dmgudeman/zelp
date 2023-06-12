@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
@@ -25,6 +25,7 @@ const SearchBar = () => {
     const [hideBusList, setHideBusList] = useState(true);
     const [searchData, setSearchData] = useState({ tag: "", bus: "", add: "" });
     const [isSearchDataUpdated, setIsSearchDataUpdated] = useState(false);
+    const tagInputRef = useRef(null);
 
     useEffect(() => {
         dispatch(fetchTags());
@@ -47,9 +48,24 @@ const SearchBar = () => {
         }
     }, [dispatch, history, isSearchDataUpdated, searchData]);
 
-    const handleSearchBarClick = () => {
-        store.dispatch(showModal("LOGIN"));
-    };
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (tagInputRef.current && !tagInputRef.current.contains(event.target)) {
+                setHideTagList(true);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+
+    // const handleSearchBarClick = () => {
+    //     store.dispatch(showModal("LOGIN"));
+    // };
     const filterTags = () => {
         return tags.filter((tag) => {
             return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
@@ -90,6 +106,13 @@ const SearchBar = () => {
         setSelectBus(bus);
         setHideBusList(true);
     };
+    const handleInputClick = () => {
+        // if (hideTagList) {
+        //     tagInputRef.current.focus();
+
+        // }
+     
+    };
 
     const handleSearchSubmit = () => {
         if (selectTag) {
@@ -114,17 +137,17 @@ const SearchBar = () => {
             <div id="containerSB">
                 <form id="formSB">
                     <SearchBarTag
-                        className="inputSB"
                         searchData={searchData}
                         selectTag={selectTag}
                         hideTagList={hideTagList}
                         handleSearchEvent={handleSearchEvent}
                         handleTagListClick={handleTagListClick}
+                        handleInputClick={handleInputClick}
                         filterTags={filterTags}
+                        // tagInputRef={tagInputRef}
                     />
 
                     <SearchBarBus
-                        className="inputSB"
                         businesses={businesses}
                         searchData={searchData}
                         selectBus={selectBus}
@@ -135,7 +158,6 @@ const SearchBar = () => {
                     />
 
                     <SearchBarAdd
-                        className="inputSB"
                         searchData={searchData}
                         handleSearchEvent={handleSearchEvent}
                     />

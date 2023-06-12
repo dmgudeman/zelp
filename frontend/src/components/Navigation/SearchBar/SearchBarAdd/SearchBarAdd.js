@@ -1,4 +1,4 @@
-import "./SearchBarAdd.css";
+
 
 const SearchBarAdd = (props) => {
     const { searchData, handleSearchEvent } = { ...props };
@@ -11,7 +11,7 @@ const SearchBarAdd = (props) => {
                         type="text"
                         name="add"
                         value={searchData.add}
-                        placeholder="Search by address"
+                        placeholder="Address search"
                         onChange={handleSearchEvent}
                     />
                 </div>

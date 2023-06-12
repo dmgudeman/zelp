@@ -33,11 +33,15 @@
     justify-content: center;
     align-items: center;
 }
+
 .SBInput {
     width: 170px;
     border: none;
     outline: none;
 }
+.SBInput::placeholder {
+    color: var(--one)
+  }
 
 .SBDropDown {
     position: absolute;
