@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import configureStore from "./store";
-import {showModal, hideModal} from './store/ui'
+import { showModal, hideModal } from "./store/ui";
 import csrfFetch from "./store/csrf";
 import * as sessionActions from "./store/session";
-// import Modal from './components/Modal/Modal';
 
 const store = configureStore();
 
@@ -29,15 +28,9 @@ const store = configureStore();
 //   };
 
 function Root() {
+
     return (
         <Provider store={store}>
-
-{/* <div>
-        <button onClick={handleLoginClick}>Show Login Form</button>
-        <button onClick={handleSignUpClick}>Show Sign Up Form</button>
-        <button onClick={handleReviewClick}>Show Review Form</button>
-        <Modal closeModal={handleCloseModal} />
-      </div> */}
             <BrowserRouter>
                 <App />
             </BrowserRouter>

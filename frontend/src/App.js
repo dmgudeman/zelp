@@ -15,10 +15,13 @@ import ReviewModal from "./components/Modals/ReviewModal/ReviewModal";
 
 
 function App() {
-    const isLoggedIn = useSelector(getCurrentUser); 
+    const isLoggedIn = useSelector(getCurrentUser);
+
+ 
     return (
         <>
-<ReviewModal/>
+            <ReviewModal />
+     
             <Switch>
                 <Route path="/login" component={LoginFormPage} />
                 <Route path="/signup" component={SignupFormPage} />
@@ -39,14 +42,13 @@ function App() {
                     component={ReviewNew}
                     isLoggedIn={isLoggedIn}
                 />
-                 <PrivateRoute
+                <PrivateRoute
                     path="/reviewEdit/:reviewId"
                     component={ReviewEdit}
                     isLoggedIn={isLoggedIn}
                 />
                 <Route path="/" component={Home} />
             </Switch>
-           
         </>
     );
 }

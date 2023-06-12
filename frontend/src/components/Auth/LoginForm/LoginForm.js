@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { login, getCurrentUser } from "../../../store/session";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector  } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
 import "./LoginForm.css";
-import { hideModal } from "../../../store/ui";
+import { hideLoginModal, showSignupModal} from "../../../store/ui";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -15,6 +15,11 @@ const LoginForm = () => {
 
     if (sessionUser) return <Redirect to="/" />;
 
+    const handleShowSignupModal = () => {
+        dispatch(showSignupModal())
+        dispatch(hideLoginModal())
+    }
+
     const submitHandler = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -23,7 +28,6 @@ const LoginForm = () => {
             try {
                 // .clone()  essentially allows you to read the response body twice
                 data = await res.clone().json();
-                hideModal();
             } catch {
                 data = await res.text(); // Will hit this case if the server is down
             }
@@ -32,11 +36,12 @@ const LoginForm = () => {
             else if (data) setErrors([data]);
             else setErrors([res.statusText]);
         });
+        dispatch(hideLoginModal())
     };
 
     return (
         <>
-           <div id="combinedFormContainerLIF">
+           <div id="combinedFormContainerLIF" onClick={(e)=> e.stopPropagation()}>
             <div id="formContainerLIF">
                 
                
@@ -60,7 +65,7 @@ const LoginForm = () => {
 
                     <input
                         id="submitSUF"
-                        className="inputSUF"
+                        className="inputSUF blueButton"
                         type="submit"
                         value="Log In"
                     />
@@ -74,9 +79,9 @@ const LoginForm = () => {
             </div>
             <h1 id="lastLineLIF">
                     New to Zelp?{" "}
-                    <NavLink className="nav-link" to="/signup">
-                        Sign Up
-                    </NavLink>
+                    
+                        <button onClick={()=>handleShowSignupModal()}>Sign Up</button>
+                  
                 </h1>
             </div>
         </>

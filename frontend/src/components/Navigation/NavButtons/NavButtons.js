@@ -2,40 +2,37 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getCurrentUser, logout } from "../../../store/session";
-import Modal from "../../Modals/AuthModal/AuthModal";
-import SignupForm from "../../Auth/SignupForm/SignupForm";
-import LoginForm from "../../Auth/LoginForm/LoginForm";
+import ModalSignup from "../../Modals/ModalsAuth/ModalSignup/ModalSignup";
+import ModalLogin from "../../Modals/ModalsAuth/ModalLogin/ModalLogin";
+import {
+    showSignupModal,
+    hideSignupModal,
+    showLoginModal,
+    hideLoginModal,
+} from "../../../store/ui";
+
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "./NavButtons.css";
 
-const NavButtons = (props) => {
+const NavButtons = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     let sessionUser = useSelector(getCurrentUser);
-    const [showSignupModal, setShowSignupModal] = useState(false);
-    const [showLoginModal, setShowLoginModal] = useState(false);
+    const showSignup = useSelector((state) => state.ui.showSignup);
+    const showLogin = useSelector((state) => state.ui.showLogin);
 
-    const closeSignupModal = () => {
-        setShowSignupModal(false);
-    };
     const openSignupModal = () => {
-        setShowSignupModal(true);
-    };
-    const closeLoginModal = () => {
-        setShowLoginModal(false);
+        dispatch(showSignupModal());
     };
     const openLoginModal = () => {
-        setShowLoginModal(true);
+        dispatch(showLoginModal());
     };
 
     const withoutSessionUser = (
         <>
-            {showSignupModal && (
-                <Modal closeModal={closeSignupModal} form={<SignupForm />} />
-            )}
-            {showLoginModal && (
-                <Modal closeModal={closeLoginModal} form={<LoginForm />} />
-            )}
+            {showLogin && <ModalLogin />}
+            {showSignup && <ModalSignup />}
+
             <div id="containerNBut">
                 <button
                     id="login-button"

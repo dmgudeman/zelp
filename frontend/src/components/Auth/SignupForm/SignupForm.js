@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { connect, MapStateToProps, MapDispatchToProps } from "react-redux";
+
 import { NavLink, Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { signup } from "../../../store/session";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
-import { showModal, hideModal } from "../../../store/ui";
+import { showLoginModal, hideSignupModal} from "../../../store/ui";
 import "./SignupForm.css";
 
 const SignupForm = (props) => {
@@ -18,6 +18,11 @@ const SignupForm = (props) => {
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
+
+    const handleShowLoginModal = () => {
+        dispatch(hideSignupModal())
+        dispatch(showLoginModal())
+    }
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -41,12 +46,13 @@ const SignupForm = (props) => {
                 }
             );
         }
+        dispatch(hideSignupModal())
     };
 
     return (
         <>
             {" "}
-            <div id="combinedFormContainerSUF">
+            <div id="combinedFormContainerSUF" onClick={(e)=> e.stopPropagation()}>
                 <div id="formContainerSUF">
                     <form id="inputFormSUF" onSubmit={submitHandler}>
                         <h2 id="titleSUF">Sign Up for Zelp</h2>
@@ -84,7 +90,7 @@ const SignupForm = (props) => {
 
                         <input
                             id="submitSUF"
-                            className="inputSUF"
+                            className="inputSUF blueButton"
                             type="submit"
                             value="Sign Up"
                         />
@@ -97,9 +103,10 @@ const SignupForm = (props) => {
                     <DemoUserForm />
                     <h1>
                         Already a Zelp user?{" "}
-                        <NavLink className="nav-link" to="/login">
+                       <button onClick={()=>handleShowLoginModal()}>
                             Log In
-                        </NavLink>
+                     </button>
+                       
                     </h1>
                 </div>
             </div>

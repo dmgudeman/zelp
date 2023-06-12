@@ -1,7 +1,26 @@
+const SHOW_SIGNUP_MODAL = "SHOW_SIGNUP_MODAL";
+const HIDE_SIGNUP_MODAL = "HIDE_SIGNUP_MODAL";
+const SHOW_LOGIN_MODAL = "SHOW_LOGIN_MODAL";
+const HIDE_LOGIN_MODAL = "HIDE_LOGIN_MODAL";
 const SHOW_MODAL = "SHOW_MODAL";
 const HIDE_MODAL = "HIDE_MODAL";
 const SHOW_NEW_REVIEW_MODAL = "SHOW_NEW_REVIEW_MODAL";
 const HIDE_NEW_REVIEW_MODAL = "HIDE_NEW_REVIEW_MODAL";
+
+export const showSignupModal = () => ({
+    type: SHOW_SIGNUP_MODAL,
+});
+
+export const hideSignupModal = () => ({
+    type: HIDE_SIGNUP_MODAL,
+});
+
+export const showLoginModal = () => ({
+    type: SHOW_LOGIN_MODAL,
+});
+export const hideLoginModal = () => ({
+    type: HIDE_LOGIN_MODAL,
+});
 
 export const showModal = (reviewId) => ({
     type: SHOW_MODAL,
@@ -21,7 +40,8 @@ export const hideNewReviewModal = () => ({
 });
 
 const initialState = {
-    hideModalFlag: true,
+    showSignup: false,
+    showLogin: false,
     reviewId: null,
     hideNewReviewModalFlag: true,
     businessId: null,
@@ -29,6 +49,27 @@ const initialState = {
 
 const uiReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SHOW_SIGNUP_MODAL:
+            return {
+                ...state,
+                showSignup: true,
+            };
+        case SHOW_LOGIN_MODAL:
+            return {
+                ...state,
+                showLogin: true,
+            };
+        case HIDE_SIGNUP_MODAL:
+            return {
+                ...state,
+                showSignup: false,
+            };
+        case HIDE_LOGIN_MODAL:
+            return {
+                ...state,
+                showLogin: false,
+            };
+
         case SHOW_MODAL:
             return {
                 ...state,

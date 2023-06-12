@@ -7,7 +7,7 @@ const SearchBarButton = ({ handleSearchSubmit }) => {
                 {" "}
                 {/*  NEED THIS OUTER DIV*/}
                 <div
-                    className="SBblueButton"
+                    className="blueButtonSB searchButton "
                     onClick={handleSearchSubmit}
                 >
                     <i className="fa-solid fa-magnifying-glass "></i>

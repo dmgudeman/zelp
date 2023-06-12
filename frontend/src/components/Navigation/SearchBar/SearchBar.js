@@ -1,26 +1,20 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector, connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
     getBusinesses,
-    fetchBusinesses,
     fetchBusinessesSearch,
 } from "../../../store/businesses";
 import { fetchTags, getTags } from "../../../store/tags";
-
-import { showModal, hideModal } from "../../../store/ui";
+import { showModal } from "../../../store/ui";
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
 import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
-import SearchBarButton from "./SearchBarButton/SearchBarButton";
+import SearchBarButton from "./SearchBarButton/SearchBarButton"; // this is necessary
 import store from "../../../store";
-
-import Modal from "../../Modals/AuthModal/AuthModal";
-import LoginForm from "../../Auth/LoginForm/LoginForm";
-
 import "./SearchBar.css";
 
-const SearchBar = (props) => {
+const SearchBar = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     let businesses = useSelector(getBusinesses);
@@ -115,11 +109,6 @@ const SearchBar = (props) => {
         });
     };
 
-    // const handleAddSearchEvent = (e) => {
-    //     e.preventDefault();
-    //     setQueryAdd(e.target.value);
-    // };
-
     return (
         <>
             <div id="containerSB">
@@ -150,12 +139,8 @@ const SearchBar = (props) => {
                         searchData={searchData}
                         handleSearchEvent={handleSearchEvent}
                     />
-                    <div
-                        className="blueButton searchButton"
-                        onClick={handleSearchSubmit}
-                    >
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                    </div>
+
+                    <SearchBarButton handleSearchSubmit={handleSearchSubmit} />
                 </form>
             </div>
         </>

@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { hideModal, hideNewReviewModal } from "../../../store/ui";
 import ReviewEdit from "../../Reviews/ReviewEdit/ReviewEdit";
 import ReviewNew from '../../Reviews/ReviewNew/ReviewNew';
-import { useEffect } from "react";
 import "./ReviewModal.css";
 
 function ReviewModal() {
