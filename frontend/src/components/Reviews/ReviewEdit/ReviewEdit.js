@@ -30,6 +30,8 @@ const ReviewEdit = ({ reviewId, handleClose}) => {
     const [formData, setFormData] = useState(new FormData());
     const [userId, setUserId] = useState(sessionUser.id || "");
 
+    console.log('ReviewEdit', reviewId)
+
     useEffect(() => {
         if (reviewId) {
             dispatch(fetchReview(reviewId))

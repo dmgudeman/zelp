@@ -23,7 +23,7 @@ const ReviewsIndex: React.FC<IReviewIndexProps> = ({ business }) => {
         if (business?.id) {
             dispatch(fetchReviewsByBusiness(business.id));
         }
-    }, []);
+    }, [business]);
 
     const extendHandler = () => {
         setCardTotal(reviews.length);

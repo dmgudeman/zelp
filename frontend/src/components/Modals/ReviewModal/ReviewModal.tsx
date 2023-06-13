@@ -6,7 +6,7 @@ import ReviewNew from '../../Reviews/ReviewNew/ReviewNew';
 import { RootState } from '../../../store/store';
 import "./ReviewModal.css";
 
-function ReviewModal() {
+function ReviewModal(){
     const dispatch = useDispatch();
     const hideModalFlag = useSelector((state: RootState) => state.ui.hideModalFlag);
     const reviewId = useSelector((state: RootState) => state.ui.reviewId);
@@ -14,7 +14,7 @@ function ReviewModal() {
         (state: RootState) => state.ui.hideNewReviewModalFlag
     );
     const businessId = useSelector((state: RootState) => state.ui.businessId);
-    let content;
+    let content = null;
 
     const handleClose = () => {
         dispatch(hideModal());
@@ -33,18 +33,22 @@ function ReviewModal() {
                 <ReviewEdit reviewId={reviewId} handleClose={handleClose}/>
             </div>
         );
-    } else if (businessId) {
-        content = (
-            <div
-                id="modalBackgroundRF"
-                className={`modalBackgroundRF ${hideModalNewReviewFlag ? "hide" : ""}`}
-                onClick={() => handleCloseReviewNew()}
-            >
-                <ReviewNew businessId={businessId} handleCloseReviewNew={handleCloseReviewNew}/>
-            </div>
-        );
     }
+    //  else if (businessId) {
 
+    // if(!hideModalNewReviewFlag && businessId != null){
+    //     content = (
+    //         <div
+    //             id="modalBackgroundRF"
+    //             className={`modalBackgroundRF ${hideModalNewReviewFlag ? "" : "hide"}`}
+    //             onClick={() => handleCloseReviewNew()}
+    //         >
+    //             <ReviewNew businessId={businessId} handleCloseReviewNew={handleCloseReviewNew}/>
+    //         </div>
+    //     );
+    // }
+
+    
     return <>{content}</>;
 }
 

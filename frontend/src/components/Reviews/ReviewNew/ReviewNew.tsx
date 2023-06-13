@@ -39,7 +39,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}
         setRating(rating);
         setBody(body);
         setPhoto(photo);
-    }, [currentUser, rating]);
+    }, [currentUser]);
 
     if (!business) <Redirect to="/home" />;
     
@@ -94,7 +94,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}
 
     return (
         <>
-            <div id="combinedFormContainerNR" onClick={(e)=> e.stopPropagation()}>
+            {/* <div id="combinedFormContainerNR" onClick={(e)=> e.stopPropagation()}>
                     <form id="formNR">
                         <h2 className="blueTitleBig title">{business?.name}</h2>
                         <h1 className="italic">
@@ -133,7 +133,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}
                             <h2 className="blueTitle">Rate this business</h2>
                         )}
                     </form>
-            </div>
+            </div> */}
         </>
     );
 };

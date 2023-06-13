@@ -1,5 +1,5 @@
-import { configureStore, Middleware } from '@reduxjs/toolkit';
-// import logger from 'redux-logger';
+import { configureStore} from '@reduxjs/toolkit';
+import logger from 'redux-logger';
 import sessionReducer from './sessionSlice';
 import businessesReducer from './businessesSlice';
 import reviewsReducer from './reviewsSlice';
@@ -14,7 +14,7 @@ const reducer = {
   ui: uiReducer
 }
 
-// let middleware: Middleware[] = [];
+
 
 // if (process.env.NODE_ENV !== 'production') {
 //   middleware = [...middleware, logger];
@@ -22,7 +22,7 @@ const reducer = {
 
 export const store = configureStore({
   reducer,
-  // middleware,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
   devTools: process.env.NODE_ENV !== 'production',
 });
 export default store;
