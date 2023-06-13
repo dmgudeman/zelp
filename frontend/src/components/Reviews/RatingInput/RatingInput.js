@@ -4,7 +4,7 @@ const RatingInput = ({ name, rating, handleChange }) => {
     return (
         <div id="ratingContainer" className="rating-input">
             <label
-                for="radioButton1"
+                htmlFor="radioButton1"
                 className={rating >= 1 ? "colored-in" : "not-colored-in"}
             >
                 <i className="fa-solid fa-star star"></i>{" "}
@@ -20,7 +20,7 @@ const RatingInput = ({ name, rating, handleChange }) => {
             />
 
             <label
-                for="radioButton2"
+                htmlFor="radioButton2"
                 className={rating >= 2 ? "colored-in" : "not-colored-in"}
             >
                 <i className="fa-solid fa-star star"></i>
@@ -35,7 +35,7 @@ const RatingInput = ({ name, rating, handleChange }) => {
             />
 
             <label
-                for="radioButton3"
+                htmlFor="radioButton3"
                 className={rating >= 3 ? "colored-in" : "not-colored-in"}
             >
                 {" "}
@@ -51,7 +51,7 @@ const RatingInput = ({ name, rating, handleChange }) => {
             />
 
             <label
-                for="radioButton4"
+                htmlFor="radioButton4"
                 className={rating >= 4 ? "colored-in" : "not-colored-in"}
             >
                 {" "}
@@ -67,7 +67,7 @@ const RatingInput = ({ name, rating, handleChange }) => {
             />
 
             <label
-                for="radioButton5"
+                htmlFor="radioButton5"
                 className={rating >= 5 ? "colored-in" : "not-colored-in"}
             >
                 {" "}

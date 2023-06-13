@@ -15,14 +15,14 @@ import { getCurrentUser } from "../../../store/sessionSlice";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import "./ReviewEdit.css";
 
-const ReviewEdit = ({ reviewId, handleClose}) => {
+const ReviewEdit = ({ reviewId, handleClose }) => {
     const dispatch = useDispatch();
     // const { reviewId } = useParams();
     const review = useSelector(getReview(reviewId));
     const history = useHistory();
-    const [busId, setBusId] = useState( null);
-    const [rating, setRating] = useState( null);
-    const [body, setBody] = useState(null);
+    const [busId, setBusId] = useState(null);
+    const [rating, setRating] = useState(null);
+    const [body, setBody] = useState("");
     const [photoUrl, setPhotoUrl] = useState(null);
     const [showPhoto, setShowPhoto] = useState(true);
     const [photo, setPhoto] = useState(null);
@@ -37,18 +37,16 @@ const ReviewEdit = ({ reviewId, handleClose}) => {
     // console.log('photoUrl', photoUrl)
 
     useEffect(() => {
-
-        console.log('UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU', reviewId)
-       dispatch(fetchReview(reviewId)).then((review) => {
-                   console.log("inside",review)
-                    setBusId(review.payload.businessId);
-                    setRating(review.payload.rating);
-                    setBody(review.payload.body);
-                    setPhotoUrl(review.payload.photoUrl);
-      
-                })
-                .catch((error) => console.error(error));
-        
+        console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU", reviewId);
+        dispatch(fetchReview(reviewId))
+            .then((review) => {
+                console.log("inside", review);
+                setBusId(review.payload.businessId);
+                setRating(review.payload.rating);
+                setBody(review.payload.body);
+                setPhotoUrl(review.payload.photoUrl);
+            })
+            .catch((error) => console.error(error));
     }, [reviewId, dispatch]);
 
     useEffect(() => {
@@ -85,19 +83,22 @@ const ReviewEdit = ({ reviewId, handleClose}) => {
         e.stopPropagation();
 
         console.log("Session User", sessionUser);
-        formData.set("review[author_id]", +sessionUser.id);
+        formData.set("review[author_id]", +sessionUser.user.id);
         formData.set("review[business_id]", +busId);
         formData.set("review[rating]", +rating);
         formData.set("review[body]", body);
         formData.set("review[photoUrl]", photoUrl);
         //     console.log(`${key}: ${value}`);
 
-        console.log(sessionUser)
-        console.log('busId', busId)
-        console.log('rating', rating)
+        console.log(sessionUser);
+        console.log("sessionUser.id", sessionUser.user.id);
+        console.log("busId", busId);
+        console.log("rating", rating);
+        console.log("body", body);
+        console.log("photoUrl", photoUrl);
         try {
-            await  dispatch(deleteReview(reviewId));
-           await  dispatch(createReview(formData));
+            // await dispatch(deleteReview(reviewId));
+            await dispatch(createReview(formData));
             setFormData(null);
             setBody(null);
             setRating(null);
