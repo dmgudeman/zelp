@@ -1,9 +1,10 @@
+import React from 'react';
 import {Link} from 'react-router-dom';
 import logo from "../../../assets/logo.jpg";
 
 import './NavLogo.css'
 
-const NavLogo = (props) => {
+const NavLogo = () => {
     return (
         <>
         <div id="containerLOGO">

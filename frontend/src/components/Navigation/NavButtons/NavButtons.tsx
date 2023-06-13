@@ -1,25 +1,25 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import {  useSelector, useDispatch as _useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getCurrentUser, logout } from "../../../store/sessionSlice";
 import ModalSignup from "../../Modals/ModalsAuth/ModalSignup/ModalSignup";
 import ModalLogin from "../../Modals/ModalsAuth/ModalLogin/ModalLogin";
+import { RootState, AppDispatch } from "../../../store/store"
 import {
     showSignupModal,
-    hideSignupModal,
     showLoginModal,
-    hideLoginModal,
 } from "../../../store/uiSlice";
-
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "./NavButtons.css";
 
+// useDispatch expects a Redux action object but createAsyncThunk  returns a thunk function
+const useDispatch = () => _useDispatch<AppDispatch>();
+
 const NavButtons = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     let sessionUser = useSelector(getCurrentUser);
-    const showSignup = useSelector((state) => state.ui.showSignup);
-    const showLogin = useSelector((state) => state.ui.showLogin);
+    const showSignup = useSelector((state: RootState) => state.ui.showSignup);
+    const showLogin = useSelector((state: RootState) => state.ui.showLogin);
 
     const openSignupModal = () => {
         dispatch(showSignupModal());
@@ -42,7 +42,7 @@ const NavButtons = () => {
                     Log In
                 </button>
                 <button onClick={() => openSignupModal()}>Sign Up</button>
-                <a to="https://github.com/dmgudeman" className="git">
+                <a href="https://github.com/dmgudeman" className="git">
                     <FaGithub size={40} />
                 </a>
                 <div>
