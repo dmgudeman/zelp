@@ -5,7 +5,7 @@ import {
     createSelector,
 } from "@reduxjs/toolkit";
 import csrfFetch from "./csrf";
-import { Tag } from "../Types/TagTypes";
+import type { Tag, TagState } from "../Types/TagTypes";
 import type { RootState } from "./store";
 
 export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
@@ -16,9 +16,9 @@ export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
 
 export const getTags = createSelector(
     (state: RootState) => state.tags,
-    (tags: Record<string, Tag>) => Object.values(tags)
+    (tags: TagState) => Object.values(tags)
 );
-const initialState: Tag = {};
+const initialState: TagState = {};
 
 const tagsSlice = createSlice({
     name: "tags",
@@ -27,7 +27,7 @@ const tagsSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(
             fetchTags.fulfilled,
-            (state, action: PayloadAction<Tag>) => {
+            (state, action: PayloadAction<Tag[]>) => {
                 return action.payload;
             }
         );
@@ -35,3 +35,5 @@ const tagsSlice = createSlice({
 });
 
 export default tagsSlice.reducer;
+
+
