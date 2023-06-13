@@ -5,8 +5,8 @@ import {
     getReviews,
     editReview,
     deleteReview,
-} from "../../../store/reviews";
-import {showNewReviewModal} from '../../../store/ui';
+} from "../../../store/reviewsSlice";
+import {showNewReviewModal} from '../../../store/uiSlice';
 import { useParams, Link, Redirect, useHistory } from "react-router-dom";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";

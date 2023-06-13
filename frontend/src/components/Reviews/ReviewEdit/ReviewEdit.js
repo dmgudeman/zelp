@@ -10,8 +10,8 @@ import {
     createReview,
     getReview,
     fetchReview,
-} from "../../../store/reviews";
-import { getUser } from "../../../store/session";
+} from "../../../store/reviewsSlice";
+import { getCurrentUser } from "../../../store/sessionSlice";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import "./ReviewEdit.css";
 
@@ -26,7 +26,7 @@ const ReviewEdit = ({ reviewId, handleClose}) => {
     const [photoUrl, setPhotoUrl] = useState(null);
     const [showPhoto, setShowPhoto] = useState(true);
     const [photo, setPhoto] = useState(null);
-    const sessionUser = useSelector(getUser);
+    const sessionUser = useSelector(getCurrentUser);
     const [formData, setFormData] = useState(new FormData());
     const [userId, setUserId] = useState(sessionUser.id || "");
 

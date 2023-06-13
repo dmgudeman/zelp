@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { login } from "../../../store/session";
+import { login } from "../../../store/sessionSlice";
 import { useDispatch  } from "react-redux";
 import "./DemoUserForm.css";
 

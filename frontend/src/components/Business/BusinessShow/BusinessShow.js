@@ -5,9 +5,9 @@ import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import ReviewModal from "../../Modals/ReviewModal/ReviewModal";
-import { getBusiness, fetchBusiness } from "../../../store/businesses";
-import { fetchReviewsByBusiness, getReviews } from "../../../store/reviews";
-import { getTags } from "../../../store/tags";
+import { getBusiness, fetchBusiness } from "../../../store/businessesSlice";
+import { fetchReviewsByBusiness, getReviews } from "../../../store/reviewsSlice";
+import { getTags } from "../../../store/tagsSlice";
 import "./BusinessShow.css";
 
 const BusinessShow = (props) => {

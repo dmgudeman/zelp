@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getCurrentUser } from "./store/session";
+import { getCurrentUser } from "./store/sessionSlice";
 import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import LoginFormPage from "./components/Auth/LoginForm/LoginForm";

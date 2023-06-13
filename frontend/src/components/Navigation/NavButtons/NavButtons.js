@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getCurrentUser, logout } from "../../../store/session";
+import { getCurrentUser, logout } from "../../../store/sessionSlice";
 import ModalSignup from "../../Modals/ModalsAuth/ModalSignup/ModalSignup";
 import ModalLogin from "../../Modals/ModalsAuth/ModalLogin/ModalLogin";
 import {
@@ -9,7 +9,7 @@ import {
     hideSignupModal,
     showLoginModal,
     hideLoginModal,
-} from "../../../store/ui";
+} from "../../../store/uiSlice";
 
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "./NavButtons.css";

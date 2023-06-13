@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { login, getCurrentUser } from "../../../store/session";
+import { login, getCurrentUser } from "../../../store/sessionSlice";
 import { useDispatch, useSelector  } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
 import "./LoginForm.css";
-import { hideLoginModal, showSignupModal} from "../../../store/ui";
+import { hideLoginModal, showSignupModal} from "../../../store/uiSlice";
 
 const LoginForm = () => {
     const dispatch = useDispatch();

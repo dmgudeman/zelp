@@ -2,10 +2,10 @@ import { useState } from "react";
 
 import { NavLink, Redirect } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
-import { signup } from "../../../store/session";
+import { signup } from "../../../store/sessionSlice";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
-import { showLoginModal, hideSignupModal} from "../../../store/ui";
+import { showLoginModal, hideSignupModal} from "../../../store/uiSlice";
 import "./SignupForm.css";
 
 const SignupForm = (props) => {

@@ -28,6 +28,9 @@ export const removeReview = (reviewId) => {
 export const getReview = (reviewId) => (state) => {
     return state.reviews ? state.reviews[reviewId] : {};
 };
+export const getReviews = (state) => {
+    return state.reviews ? Object.values(state.reviews) : [];
+};
 
 export const fetchReview = (reviewId) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews/${reviewId}`);
@@ -39,9 +42,7 @@ export const fetchReview = (reviewId) => async (dispatch) => {
         console.error("error in saving review");
     }
 };
-export const getReviews = (state) => {
-    return state.reviews ? Object.values(state.reviews) : [];
-};
+
 // export const getReviewsByBusiness = (reviewId) => (state) => {
 //     return state.reviews ? Object.values(state.reviews) : [];
 // };
@@ -95,19 +96,19 @@ export const editReview = (review, reviewId) => async (dispatch) => {
     }
 };
 
-export const updateReview = (review) => async (dispatch) => {
-    const res = await csrfFetch(`/api/reviews/${review.id}`, {
-        method: "PASTE",
-        body: review,
-    });
-    const data = await res.json();
-    if (res.ok) {
-        dispatch(receiveReview(data));
-        return res;
-    } else {
-        console.error("error in updating review");
-    }
-};
+// export const updateReview = (review) => async (dispatch) => {
+//     const res = await csrfFetch(`/api/reviews/${review.id}`, {
+//         method: "PASTE",
+//         body: review,
+//     });
+//     const data = await res.json();
+//     if (res.ok) {
+//         dispatch(receiveReview(data));
+//         return res;
+//     } else {
+//         console.error("error in updating review");
+//     }
+// };
 
 export const deleteReview = (reviewId) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews/${reviewId}`, {

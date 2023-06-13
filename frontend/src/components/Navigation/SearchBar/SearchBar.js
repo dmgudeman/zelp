@@ -4,14 +4,14 @@ import { useHistory } from "react-router-dom";
 import {
     getBusinesses,
     fetchBusinessesSearch,
-} from "../../../store/businesses";
-import { fetchTags, getTags } from "../../../store/tags";
-import { showModal } from "../../../store/ui";
+} from "../../../store/businessesSlice";
+import { fetchTags, getTags } from "../../../store/tagsSlice";
+import { showModal } from "../../../store/uiSlice";
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
 import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
 import SearchBarButton from "./SearchBarButton/SearchBarButton"; // this is necessary
-import store from "../../../store";
+import store from "../../../store/store";
 import "./SearchBar.css";
 
 const SearchBar = () => {

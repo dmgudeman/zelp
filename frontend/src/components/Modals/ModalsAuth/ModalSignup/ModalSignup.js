@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { showSignupModal, hideSignupModal} from "../../../../store/ui";
+import { showSignupModal, hideSignupModal} from "../../../../store/uiSlice";
 import SignupForm from "../../../Auth/SignupForm/SignupForm";
 import "./ModalSignup.css";
 

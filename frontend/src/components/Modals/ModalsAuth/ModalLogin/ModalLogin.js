@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { showLoginModal, hideLoginModal } from "../../../../store/ui";
+import { showLoginModal, hideLoginModal } from "../../../../store/uiSlice";
 import LoginForm from "../../../Auth/LoginForm/LoginForm";
 import "./ModalLogin.css";
 

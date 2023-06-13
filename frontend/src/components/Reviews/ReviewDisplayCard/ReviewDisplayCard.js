@@ -2,11 +2,10 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewEdit from "../ReviewEdit/ReviewEdit";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
-import Modal from "../../Modals/ModalsAuth/AuthModal";
-import {showModal} from '../../../store/ui'
+import {showModal} from '../../../store/uiSlice'
 import {
     deleteReview,
-} from "../../../store/reviews";
+} from "../../../store/reviewsSlice";
 import "./ReviewDisplayCard.css";
 
 const ReviewDisplayCard = ({ review}) => {

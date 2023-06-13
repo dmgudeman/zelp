@@ -5,10 +5,10 @@ import ReviewNewForm from "../ReviewForm/ReviewForm";
 import RatingInput from "../RatingInput/RatingInput";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import ReviewNewSubmit from "../ReviewNewSubmit/ReviewNewSubmit";
-import { getBusiness } from "../../../store/businesses";
+import { getBusiness } from "../../../store/businessesSlice";
 
-import { createReview, fetchReviewsByBusiness } from "../../../store/reviews";
-import { getUser } from "../../../store/session";
+import { createReview, fetchReviewsByBusiness } from "../../../store/reviewsSlice";
+import { getCurrentUser } from "../../../store/sessionSlice";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import "./ReviewNew.css";
 
@@ -16,7 +16,7 @@ const ReviewNew = ({businessId, handleCloseReviewNew}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     let business = useSelector(getBusiness(businessId));
-    const sessionUser = useSelector(getUser);
+    const sessionUser = useSelector(getCurrentUser);
     const [formData, setFormData] = useState(new FormData());
     const [userId, setUserId] = useState(sessionUser.id || "");
     const [body, setBody] = useState("");

@@ -1,27 +1,17 @@
-export interface Review {
-    id: number;
-    authorId: number;
-    authorName: string;
-    body: string;
-    businessId: number;
-    photoUrl: string;
-    rating: number;
-    updatedAt: string;
-}
+import {Review} from './ReviewTypes';
 
 export interface Business {
     address: string;
     cost: string;
     hours: WeekHours;
     id: number;
-    imageUrls: string[];
+    imageUrls: string[] | null;
     latlng: Coordinates;
     name: string;
     phone: string;
-    reviews: Review[];
-    tag: string[];
-    website: string;
-    // other properties here
+    reviews: Review[] | null;
+    tag: string[] | null;
+    website: string | null;
 }
 
 interface Coordinates {

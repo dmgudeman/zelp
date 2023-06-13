@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { getBusinesses } from "../../../store/businesses";
+import { getBusinesses } from "../../../store/businessesSlice";
 import BusinessIndexDisplay from "../BusinessIndexDisplay/BusinessIndexDisplay";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import SearchBar from "../../Navigation/SearchBar/SearchBar";
