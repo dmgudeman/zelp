@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect, useRef} from "react";
+import {  useSelector, useDispatch as _useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
     getBusinesses,
@@ -11,21 +11,28 @@ import SearchBarBus from "./SearchBarBus/SearchBarBus";
 import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
 import SearchBarButton from "./SearchBarButton/SearchBarButton"; // this is necessary
-import store from "../../../store/store";
+import type {AppDispatch} from "../../../store/store";
 import "./SearchBar.css";
+import { Business } from "../../../Types/BusinessTypes";
+import { Tag } from '../../../Types/TagTypes';
+
+
+// useDispatch expects a Redux action object but createAsyncThunk  returns a thunk function
+const useDispatch = () => _useDispatch<AppDispatch>();
 
 const SearchBar = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     let businesses = useSelector(getBusinesses);
     let tags = useSelector(getTags);
-    const [selectTag, setSelectTag] = useState(null);
+    const [selectTag, setSelectTag] = useState<string | null>(null);
     const [hideTagList, setHideTagList] = useState(true);
-    const [selectBus, setSelectBus] = useState(null);
+    const [selectBus, setSelectBus] = useState<string | null>(null);
     const [hideBusList, setHideBusList] = useState(true);
     const [searchData, setSearchData] = useState({ tag: "", bus: "", add: "" });
     const [isSearchDataUpdated, setIsSearchDataUpdated] = useState(false);
-    const tagInputRef = useRef(null);
+    const tagInputRef = React.useRef<HTMLInputElement>(null);
+
 
     useEffect(() => {
         dispatch(fetchTags());
@@ -49,8 +56,8 @@ const SearchBar = () => {
     }, [dispatch, history, isSearchDataUpdated, searchData]);
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (tagInputRef.current && !tagInputRef.current.contains(event.target)) {
+        const handleClickOutside = (event:MouseEvent) => {
+            if (tagInputRef.current && !tagInputRef.current.contains(event.target as Node)) {
                 setHideTagList(true);
             }
         };
@@ -67,7 +74,7 @@ const SearchBar = () => {
     //     store.dispatch(showModal("LOGIN"));
     // };
     const filterTags = () => {
-        return tags.filter((tag) => {
+        return tags.filter((tag:Tag) => {
             return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
         });
     };
@@ -79,8 +86,8 @@ const SearchBar = () => {
         });
     };
 
-    const handleSearchEvent = (e) => {
-        const { name, value } = e.target;
+    const handleSearchEvent = (e:KeyboardEvent) => {
+        const { name, value } = e.target as HTMLInputElement;
         setSearchData((prevState) => ({
             ...prevState,
             [name]: value,
@@ -97,13 +104,13 @@ const SearchBar = () => {
         }
     };
 
-    const handleTagListClick = (tag) => {
+    const handleTagListClick = (tag:string) => {
         setSelectTag(tag);
         setHideTagList(true);
     };
   
 
-    const handleBusListClick = (bus) => {
+    const handleBusListClick = (bus:string) => {
         setSelectBus(bus);
         setHideBusList(true);
     };
