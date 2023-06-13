@@ -16,7 +16,7 @@ export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
 
 export const getTags = createSelector(
     (state: RootState) => state.tags,
-    (tags) => Object.values(tags)
+    (tags: Record<string, Tag>) => Object.values(tags)
 );
 const initialState: Tag = {};
 
