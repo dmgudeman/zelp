@@ -10,14 +10,16 @@ import BusinessIndex from "./components/Business/BusinessIndex/BusinessIndex";
 import BusinessShow from "./components/Business/BusinessShow/BusinessShow";
 import ReviewNew from "./components/Reviews/ReviewNew/ReviewNew";
 import ReviewEdit from "./components/Reviews/ReviewEdit/ReviewEdit";
-import ReviewModal from "./components/Modals/ReviewModal/ReviewModal";
+import ReviewModalNew from "./components/Modals/ReviewModal/ReviewModalNew/ReviewModalNew";
+import ReviewModalEdit from "./components/Modals/ReviewModal/ReviewModalEdit/ReviewModalEdit";
 
 function App() {
     const isLoggedIn = useSelector(getCurrentUser);
  
     return (
         <>
-            <ReviewModal />
+            <ReviewModalNew />
+            <ReviewModalEdit />
      
             <Switch>
                 <Route path="/login" component={LoginFormPage} />

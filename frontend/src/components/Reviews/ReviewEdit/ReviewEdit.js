@@ -83,11 +83,11 @@ const ReviewEdit = ({ reviewId, handleClose }) => {
         e.stopPropagation();
 
         console.log("Session User", sessionUser);
-        formData.set("review[author_id]", +sessionUser.user.id);
-        formData.set("review[business_id]", +busId);
-        formData.set("review[rating]", +rating);
-        formData.set("review[body]", body);
-        formData.set("review[photoUrl]", photoUrl);
+        formData.append("review[author_id]", +sessionUser.user.id);
+        formData.append("review[business_id]", +busId);
+        formData.append("review[rating]", +rating);
+        formData.append("review[body]", body);
+        formData.append("review[photoUrl]", photoUrl);
         //     console.log(`${key}: ${value}`);
 
         console.log(sessionUser);
@@ -108,6 +108,30 @@ const ReviewEdit = ({ reviewId, handleClose }) => {
             console.error("dispatch redirect did not work");
         }
     };
+
+
+    // const submitHandler = (e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     dispatch(deleteReview(reviewId));
+    //     console.log("Session User", sessionUser);
+    //     formData.set("review[author_id]", +sessionUser.id);
+    //     formData.set("review[business_id]", +busId);
+    //     formData.set("review[rating]", +rating);
+    //     formData.set("review[body]", body);
+    //     formData.set("review[photoUrl]", photoUrl);
+    //     //     console.log(`${key}: ${value}`);
+    //     try {
+    //         dispatch(createReview(formData));
+    //         setFormData(null);
+    //         setBody(null);
+    //         setRating(null);
+    //         handleClose();
+    //         history.push(`/businesses/${busId}`);
+    //     } catch (errors) {
+    //         console.error("dispatch redirect did not work");
+    //     }
+    // };
 
     let preview = null;
     if (photoUrl) preview = <img className="imgRN" src={photoUrl} alt="" />;

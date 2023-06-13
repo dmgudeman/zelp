@@ -5,6 +5,6 @@ export interface IReviewIndexProps {
 }
 
 export interface IReviewNewProps {
-    businessId: number;
+    business: Business;
     handleCloseReviewNew: () => void;
 }

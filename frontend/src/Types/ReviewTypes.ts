@@ -1,3 +1,9 @@
+import type { Business } from './BusinessTypes';
+
+export interface IReviewNewProps {
+    business: Business;
+    handleCloseReviewNew: () => void;
+}
 export interface Review {
     id: number;
     authorId: number;
@@ -11,7 +17,10 @@ export interface Review {
 }
 
 
-export interface IReviewNewProps {
-    businessId: number;
+
+
+
+export interface IReviewEditProps {
+    review: Review;
 }
 

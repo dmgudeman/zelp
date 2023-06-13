@@ -1,8 +1,12 @@
+import type { Business } from './BusinessTypes';
+import type { Review } from './ReviewTypes';
+
+
 export interface UIState {
     showSignup: boolean;
     showLogin: boolean;
-    hideModalFlag: boolean;
-    hideNewReviewModalFlag: boolean;
-    businessId: number | null;
-    reviewId: number | null;
+    hideNewReviewModal: boolean;
+    hideEditReviewModal: boolean;
+    business: Business| null;
+    review: Review | null;
   }

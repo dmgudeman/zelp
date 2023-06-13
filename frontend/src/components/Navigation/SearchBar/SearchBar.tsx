@@ -6,7 +6,6 @@ import {
     fetchBusinessesSearch,
 } from "../../../store/businessesSlice";
 import { fetchTags, getTags } from "../../../store/tagsSlice";
-import { showModal } from "../../../store/uiSlice";
 import SearchBarBus from "./SearchBarBus/SearchBarBus";
 import SearchBarAdd from "./SearchBarAdd/SearchBarAdd";
 import SearchBarTag from "./SearchBarTag/SearchBarTag";
@@ -70,9 +69,7 @@ const SearchBar = () => {
     }, []);
 
 
-    // const handleSearchBarClick = () => {
-    //     store.dispatch(showModal("LOGIN"));
-    // };
+  
     const filterTags = (): Tag[] => {
         return tags.filter(tag => tag.tag.toLowerCase().includes(searchData.tag.toLowerCase()));
         

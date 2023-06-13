@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UIState} from '../Types/UITypes';
+import { Business} from '../Types/BusinessTypes';
+import { Review} from '../Types/ReviewTypes';
 
 const initialState: UIState = {
     showSignup: false,
     showLogin: false,
-    hideModalFlag: true,
-    hideNewReviewModalFlag: true,
-    businessId: null,
-    reviewId: null,
+    hideNewReviewModal: true,
+    hideEditReviewModal: true,
+    business: null,
+    review: null,
   };
 
 const uiSlice = createSlice({
@@ -26,21 +28,21 @@ const uiSlice = createSlice({
       hideLoginModal: (state) => {
         state.showLogin = false;
       },
-      showModal: (state, action: PayloadAction<number>) => {
-        state.hideModalFlag = false;
-        state.reviewId = action.payload;
+      showEditReviewModal: (state, action: PayloadAction<Review>) => {
+        state.hideEditReviewModal = false;
+        state.review = action.payload;
       },
-      hideModal: (state) => {
-        state.hideModalFlag = true;
-        state.reviewId = null;
+      hideEditReviewModal: (state) => {
+        state.hideEditReviewModal = true;
+        state.review = null;
       },
-      showNewReviewModal: (state, action: PayloadAction<number>) => {
-        state.hideNewReviewModalFlag = false;
-        state.businessId = action.payload;
+      showNewReviewModal: (state, action: PayloadAction<Business>) => {
+        state.hideNewReviewModal = false;
+        state.business = action.payload;
       },
       hideNewReviewModal: (state) => {
-        state.hideNewReviewModalFlag = true;
-        state.businessId = null;
+        state.hideNewReviewModal = true;
+        state.business = null;
       },
     },
   });
@@ -50,8 +52,8 @@ const uiSlice = createSlice({
     hideSignupModal,
     showLoginModal,
     hideLoginModal,
-    showModal,
-    hideModal,
+    showEditReviewModal,
+    hideEditReviewModal,
     showNewReviewModal,
     hideNewReviewModal,
   } = uiSlice.actions;

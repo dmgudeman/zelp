@@ -4,7 +4,6 @@ import { useSelector, useDispatch as _useDispatch  } from "react-redux";
 import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import NavBar from "../../Navigation/NavBar/NavBar";
-import ReviewModal from "../../Modals/ReviewModal/ReviewModal";
 import { getBusiness, fetchBusiness } from "../../../store/businessesSlice";
 import { fetchReviewsByBusiness, getReviews } from "../../../store/reviewsSlice";
 import { getTags } from "../../../store/tagsSlice";

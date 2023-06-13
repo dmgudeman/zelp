@@ -15,10 +15,9 @@ import type { IReviewNewProps } from '../../../Types/IComponents/IReviews';
 import type { AppDispatch } from '../../../store/store';
 const useDispatch = () => _useDispatch<AppDispatch>();
 
-const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}) => {
+const ReviewNew: React.FC <IReviewNewProps> = ({business, handleCloseReviewNew}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    let business = useSelector(getBusiness(businessId));
     const session = useSelector(getCurrentUser);
     const currentUser = session?.user;
     const [userId, setUserId] = useState(currentUser?.id || null);
@@ -34,7 +33,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}
     // const flag = formData.get("review[body]");
  
     useEffect(() => {
-        dispatch(fetchReviewsByBusiness(businessId));
+        // dispatch(fetchReviewsByBusiness(business.id));
         setUserId(currentUser?.id || null);
         setRating(rating);
         setBody(body);
@@ -70,7 +69,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}
         if (currentUser  && currentUser.id) {
             try {
         formData.set("review[author_id]", currentUser.id.toString());
-        formData.set("review[business_id]", businessId.toString());
+        formData.set("review[business_id]", business.id.toString());
         formData.set("review[rating]", rating as string);
         
     
@@ -82,7 +81,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}
             setPhotoUrl(null);
             // fileRef?.current?.value = null;
             handleCloseReviewNew();
-            history.push(`/businesses/${businessId}`);
+            history.push(`/businesses/${business.id}`);
 
         } catch (errors) {
             console.error("dispatch redirect did not work");
@@ -94,7 +93,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}
 
     return (
         <>
-            {/* <div id="combinedFormContainerNR" onClick={(e)=> e.stopPropagation()}>
+            <div id="combinedFormContainerNR" onClick={(e)=> e.stopPropagation()}>
                     <form id="formNR">
                         <h2 className="blueTitleBig title">{business?.name}</h2>
                         <h1 className="italic">
@@ -133,7 +132,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}
                             <h2 className="blueTitle">Rate this business</h2>
                         )}
                     </form>
-            </div> */}
+            </div>
         </>
     );
 };

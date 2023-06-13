@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewEdit from "../ReviewEdit/ReviewEdit";
 import DisplayRating from "../RatingDisplay/RatingDisplay";
-import {showModal} from '../../../store/uiSlice'
+import {showEditReviewModal} from '../../../store/uiSlice'
 import {
     deleteReview,
 } from "../../../store/reviewsSlice";
@@ -34,12 +34,12 @@ const ReviewDisplayCard = ({ review }) => {
     };
 
     const editHandler = () => {
-       dispatch(showModal(review.id))
+       dispatch(showEditReviewModal(review))
     };
 
-    const closeEditReviewModal = () => {
-        setEditReviewModal(false);
-    }
+    // const closeEditReviewModal = () => {
+    //     setEditReviewModal(false);
+    // }
     const [date, setDate] = useState(formatDate(review.updatedAt));
     let editButtons;
     if (showButtons) {

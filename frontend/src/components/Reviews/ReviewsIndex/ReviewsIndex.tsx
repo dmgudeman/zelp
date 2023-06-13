@@ -10,6 +10,7 @@ import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 import type { IReviewIndexProps } from "../../../Types/IComponents/IReviews";
+import type { Business } from '../../../Types/BusinessTypes';
 import { AppDispatch } from "../../../store/store";
 
 const useDispatch = () => _useDispatch<AppDispatch>();
@@ -30,7 +31,7 @@ const ReviewsIndex: React.FC<IReviewIndexProps> = ({ business }) => {
     };
 
     const newReviewHandler = () => {
-        dispatch(showNewReviewModal(business.id));
+        dispatch(showNewReviewModal(business));
     };
 
     // not as good as soring on back end but sufficient for this size app
