@@ -1,6 +1,8 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import  useOutsideClick  from '../UseOutsideHook'; 
-const SearchBarTag = (props) => {
+import type { SBTagProps } from '../../../../Types/Components/INavigation'
+
+const SearchBarTag: React.FC<SBTagProps> = (props:SBTagProps) => {
     const {
         searchData,
         selectTag,
@@ -8,12 +10,11 @@ const SearchBarTag = (props) => {
         handleSearchEvent,
         handleTagListClick,
         filterTags,
-        handleInputClick,
         handleHideTagList
     } = { ...props };
 
     const filteredTags = filterTags();
-    const ref = useRef();
+    const ref = useRef<HTMLDivElement>(null);
     useOutsideClick(ref, () => {
         if (!hideTagList) {
             handleHideTagList(); 
@@ -23,7 +24,7 @@ const SearchBarTag = (props) => {
     return (
         <>
             <div className="SBcontainer" ref={ref}>
-                <div className="SBInputWrap" onClick={()=>handleInputClick()}>
+                <div className="SBInputWrap" >
                     <input
                         className="SBInput"
                         type="text"

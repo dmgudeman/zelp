@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef, ChangeEvent} from "react";
 import {  useSelector, useDispatch as _useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
@@ -73,10 +73,9 @@ const SearchBar = () => {
     // const handleSearchBarClick = () => {
     //     store.dispatch(showModal("LOGIN"));
     // };
-    const filterTags = () => {
-        return tags.filter((tag:Tag) => {
-            return tag.tag.toLowerCase().includes(searchData.tag.toLowerCase());
-        });
+    const filterTags = (): Tag[] => {
+        return tags.filter(tag => tag.tag.toLowerCase().includes(searchData.tag.toLowerCase()));
+        
     };
     const filterBusinesses = () => {
         return businesses.filter((business) => {
@@ -86,7 +85,7 @@ const SearchBar = () => {
         });
     };
 
-    const handleSearchEvent = (e:KeyboardEvent) => {
+    const handleSearchEvent = (e: React.SyntheticEvent) => {
         const { name, value } = e.target as HTMLInputElement;
         setSearchData((prevState) => ({
             ...prevState,
@@ -118,13 +117,7 @@ const SearchBar = () => {
     const handleHideTagList = () => {
         setHideTagList(true);
     }
-    const handleInputClick = () => {
-        // if (hideTagList) {
-        //     tagInputRef.current.focus();
-
-        // }
-     
-    };
+  
 
     const handleSearchSubmit = () => {
         if (selectTag) {
@@ -154,7 +147,6 @@ const SearchBar = () => {
                         hideTagList={hideTagList}
                         handleSearchEvent={handleSearchEvent}
                         handleTagListClick={handleTagListClick}
-                        handleInputClick={handleInputClick}
                         handleHideTagList={handleHideTagList}
                         filterTags={filterTags}
                         // tagInputRef={tagInputRef}
