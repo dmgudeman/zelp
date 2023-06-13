@@ -1,17 +1,19 @@
+import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { hideModal, hideNewReviewModal } from "../../../store/uiSlice";
 import ReviewEdit from "../../Reviews/ReviewEdit/ReviewEdit";
 import ReviewNew from '../../Reviews/ReviewNew/ReviewNew';
+import { RootState } from '../../../store/store';
 import "./ReviewModal.css";
 
 function ReviewModal() {
     const dispatch = useDispatch();
-    const hideModalFlag = useSelector((state) => state.ui.hideModalFlag);
-    const reviewId = useSelector((state) => state.ui.reviewId);
+    const hideModalFlag = useSelector((state: RootState) => state.ui.hideModalFlag);
+    const reviewId = useSelector((state: RootState) => state.ui.reviewId);
     const hideModalNewReviewFlag = useSelector(
-        (state) => state.ui.hideNewReviewModalFlag
+        (state: RootState) => state.ui.hideNewReviewModalFlag
     );
-    const businessId = useSelector((state) => state.ui.businessId);
+    const businessId = useSelector((state: RootState) => state.ui.businessId);
     let content;
 
     const handleClose = () => {

@@ -2,6 +2,10 @@ import React, { SyntheticEvent } from "react";
 import { Business } from "../BusinessTypes";
 import { Tag } from "../TagTypes";
 
+
+export interface INavBarProps {
+    showFlag: string | boolean;
+}
 export interface SearchData {
     tag: string;
     bus: string;

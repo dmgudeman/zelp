@@ -1,9 +1,11 @@
+import React from 'react';
 import NavButtons from "../NavButtons/NavButtons";
 import NavLogo from "../NavLogo";
 import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.css";
+import { INavBarProps } from '../../../Types/IComponents/INavigation'
 
-const NavBar = ({ showFlag }) => {
+const NavBar : React.FC<INavBarProps> = ({ showFlag }) => {
     let content;
    
 
