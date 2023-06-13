@@ -80,10 +80,10 @@ const ReviewEdit = ({ reviewId, handleClose}) => {
     };
 
     // creates a new review
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        dispatch(deleteReview(reviewId));
+
         console.log("Session User", sessionUser);
         formData.set("review[author_id]", +sessionUser.id);
         formData.set("review[business_id]", +busId);
@@ -96,7 +96,8 @@ const ReviewEdit = ({ reviewId, handleClose}) => {
         console.log('busId', busId)
         console.log('rating', rating)
         try {
-            dispatch(createReview(formData));
+            await  dispatch(deleteReview(reviewId));
+           await  dispatch(createReview(formData));
             setFormData(null);
             setBody(null);
             setRating(null);

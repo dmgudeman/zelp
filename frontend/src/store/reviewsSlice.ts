@@ -24,7 +24,6 @@ export const fetchReview = createAsyncThunk<Review, string>(
     async (reviewId) => {
         const res = await csrfFetch(`/api/reviews/${reviewId}`);
         const data = await res.json();
-        console.log('DDDDDDDDDDDDD', data)
         if (res.ok) {
             return data;
         } else {
