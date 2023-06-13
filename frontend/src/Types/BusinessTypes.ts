@@ -14,7 +14,7 @@ export interface Business {
     website: string | null;
 }
 
-interface Coordinates {
+export interface Coordinates {
     lat: number;
     lng: number;
   }

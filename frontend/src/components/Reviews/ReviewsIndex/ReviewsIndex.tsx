@@ -1,24 +1,23 @@
+import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch as _useDispatch, useSelector } from "react-redux";
 import {
     fetchReviewsByBusiness,
     getReviews,
-    editReview,
-    deleteReview,
 } from "../../../store/reviewsSlice";
-import {showNewReviewModal} from '../../../store/uiSlice';
-import { useParams, Link, Redirect, useHistory } from "react-router-dom";
+import { showNewReviewModal } from "../../../store/uiSlice";
 import "./ReviewsIndex.css";
 import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
-import ReviewEdit from '../ReviewEdit/ReviewEdit';
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
+import type { IReviewIndexProps } from "../../../Types/IComponents/IReviews";
+import { AppDispatch } from "../../../store/store";
 
-const ReviewsIndex = ({ business }) => {
+const useDispatch = () => _useDispatch<AppDispatch>();
+
+const ReviewsIndex: React.FC<IReviewIndexProps> = ({ business }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const reviews = useSelector(getReviews);
     const [cardTotal, setCardTotal] = useState(6);
-
 
     useEffect(() => {
         if (business?.id) {
@@ -26,34 +25,40 @@ const ReviewsIndex = ({ business }) => {
         }
     }, []);
 
- 
-
     const extendHandler = () => {
         setCardTotal(reviews.length);
     };
 
     const newReviewHandler = () => {
-        dispatch(showNewReviewModal(business.id))
-        
-    }
-   
-  
+        dispatch(showNewReviewModal(business.id));
+    };
+
     // not as good as soring on back end but sufficient for this size app
     let sortedReviews = reviews.slice().sort((a, b) => {
-        // parse the dates and return the comparison
-        return new Date(b.updatedAt) - new Date(a.updatedAt);
+        if (a.updatedAt && b.updatedAt) {
+            const dateA = Date.parse(a.updatedAt);
+            const dateB = Date.parse(b.updatedAt);
+
+            return dateB - dateA;
+        }
+        if (!a.updatedAt) {
+            return -1;
+          }
+          
+          if (!b.updatedAt) {
+            return +1;
+          }
+          
+          return 0;
     });
 
     return (
         <>
-         
-          
             <div id="containerRI">
                 <div className="buttons marginTop">
-                 
-                        <button className="blueButton " onClick={newReviewHandler}>
-                            Leave your opinions, and optional photo
-                        </button>
+                    <button className="blueButton " onClick={newReviewHandler}>
+                        Leave your opinions, and optional photo
+                    </button>
                 </div>
                 <div id="reviewsIndexContainer">
                     {reviews.length ? (
@@ -63,7 +68,6 @@ const ReviewsIndex = ({ business }) => {
                                     <ReviewDisplayCard
                                         review={review}
                                         key={review.id}
-                                      
                                     />
                                 );
                             }

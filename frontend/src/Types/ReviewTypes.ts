@@ -10,3 +10,8 @@ export interface Review {
     updatedAt: string | null;
 }
 
+
+export interface IReviewNewProps {
+    businessId: number;
+}
+

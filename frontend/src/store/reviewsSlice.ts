@@ -49,7 +49,7 @@ export const fetchReviews = createAsyncThunk<Review[]>(
 
 export const fetchReviewsByBusiness = createAsyncThunk(
     "reviews/fetchReviewsByBusiness",
-    async (busId, { dispatch }) => {
+    async (busId:number, { dispatch }) => {
         const res = await csrfFetch(`/api/businesses/${busId}`);
         const data = await res.json();
         if (res.ok) {
@@ -61,7 +61,7 @@ export const fetchReviewsByBusiness = createAsyncThunk(
     }
 );
 
-export const createReview = createAsyncThunk<Review, Review>(
+export const createReview = createAsyncThunk<Review, FormData>(
     "reviews/createReview",
     async (review, { dispatch }) => {
         const res = await csrfFetch("/api/reviews", {

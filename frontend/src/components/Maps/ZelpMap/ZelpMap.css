@@ -9,3 +9,8 @@
     border: var(--one) 4px solid;
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
 }
+
+.custom-marker-label {
+    background-color: #18e75a;
+   
+  }

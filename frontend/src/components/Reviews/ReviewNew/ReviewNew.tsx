@@ -1,5 +1,6 @@
+import React, { ChangeEvent, SyntheticEvent } from 'react';
 import { useEffect, useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch as _useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import ReviewNewForm from "../ReviewForm/ReviewForm";
 import RatingInput from "../RatingInput/RatingInput";
@@ -9,35 +10,40 @@ import { getBusiness } from "../../../store/businessesSlice";
 
 import { createReview, fetchReviewsByBusiness } from "../../../store/reviewsSlice";
 import { getCurrentUser } from "../../../store/sessionSlice";
-import Navigation from "../../Navigation/NavBar/NavBar";
 import "./ReviewNew.css";
+import type { IReviewNewProps } from '../../../Types/IComponents/IReviews';
+import type { AppDispatch } from '../../../store/store';
+const useDispatch = () => _useDispatch<AppDispatch>();
 
-const ReviewNew = ({businessId, handleCloseReviewNew}) => {
+const ReviewNew: React.FC<IReviewNewProps> = ({businessId, handleCloseReviewNew}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     let business = useSelector(getBusiness(businessId));
-    const sessionUser = useSelector(getCurrentUser);
-    const [formData, setFormData] = useState(new FormData());
-    const [userId, setUserId] = useState(sessionUser.id || "");
-    const [body, setBody] = useState("");
-    const [rating, setRating] = useState(0);
-    const fileRef = useRef(null);
-    // photo is an actual file
-    const [photo, setPhoto] = useState(null);
+    const session = useSelector(getCurrentUser);
+    const currentUser = session?.user;
+    const [userId, setUserId] = useState(currentUser?.id || null);
+    const [formData, setFormData] = useState<FormData>(new FormData());
+    const [body, setBody] = useState<string | null>(null);
+    const [rating, setRating] = useState<string | null>(null);
     // photoUrl is for preview
-    const [photoUrl, setPhotoUrl] = useState("");
+    const [photoUrl, setPhotoUrl] = useState<string | null>(null);
+    // photo is an actual file
+    const [photo, setPhoto] = useState<File | null>(null);
+    
+    const fileRef = useRef(null);
     // const flag = formData.get("review[body]");
  
     useEffect(() => {
         dispatch(fetchReviewsByBusiness(businessId));
-        setUserId(sessionUser.id);
+        setUserId(currentUser?.id || null);
         setRating(rating);
         setBody(body);
         setPhoto(photo);
-    }, [sessionUser, rating]);
+    }, [currentUser, rating]);
 
     if (!business) <Redirect to="/home" />;
-    const handleChange = (e) => {
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         formData.set(`review[${name}]`, value);
         setFormData(formData);
@@ -45,38 +51,43 @@ const ReviewNew = ({businessId, handleCloseReviewNew}) => {
         if (name === "body") setBody(value);
     };
 
-    const handleFile = ({ currentTarget }) => {
-        const file = currentTarget.files[0];
+    const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
         formData.append("review[photo]", file);
         setPhoto(file);
         setFormData(formData);
-
-        // to set a preview
-        if (file) {
+      
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
-            fileReader.onload = () => setPhotoUrl(fileReader.result);
+            fileReader.onload = () => setPhotoUrl(fileReader.result as string);
         } else setPhotoUrl(null);
     };
 
-    const submitHandler = (e) => {
+    const submitHandler = (e: SyntheticEvent) => {
         e.preventDefault();
         e.stopPropagation();
-        formData.set("review[author_id]", +sessionUser.id);
-        formData.set("review[business_id]", +businessId);
-        formData.set("review[rating]", +rating);
-        try {
+        if (currentUser  && currentUser.id) {
+            try {
+        formData.set("review[author_id]", currentUser.id.toString());
+        formData.set("review[business_id]", businessId.toString());
+        formData.set("review[rating]", rating as string);
+        
+    
+        
             dispatch(createReview(formData));
-            setFormData(null);
+            // setFormData(null);
             setBody(null);
             setRating(null);
-            fileRef.current.value = null;
+            setPhotoUrl(null);
+            // fileRef?.current?.value = null;
             handleCloseReviewNew();
             history.push(`/businesses/${businessId}`);
 
         } catch (errors) {
             console.error("dispatch redirect did not work");
         }
+    }
     };
     let preview = null;
     if (photoUrl) preview = <img className="imgRN" src={photoUrl} alt="" />;
@@ -85,23 +96,23 @@ const ReviewNew = ({businessId, handleCloseReviewNew}) => {
         <>
             <div id="combinedFormContainerNR" onClick={(e)=> e.stopPropagation()}>
                     <form id="formNR">
-                        <h2 className="blueTitleBig title">{business.name}</h2>
+                        <h2 className="blueTitleBig title">{business?.name}</h2>
                         <h1 className="italic">
                             Leave a Rating, a Review and attach photos if you
                             would like
                         </h1>
                         <RatingInput
-                            className="ratingReview"
+                            // className="ratingReview"
                             name="rating"
-                            value={rating}
+                            // value={rating}
                             rating={rating}
                             handleChange={handleChange}
                         />
 
-                        {rating > 0 ? (
+                        {rating ? (
                             <>
                                 <ReviewNewForm
-                                    id="ratingReview"
+                                    // id="ratingReview"
                                     name="body"
                                     value={body}
                                     handleChange={handleChange}

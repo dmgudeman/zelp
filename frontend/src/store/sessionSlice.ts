@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import csrfFetch from "./csrf";
-import { Session, User, SignupUserData } from "../Types/SessionTypes";
+import { SessionState, User, SignupUserData } from "../Types/SessionTypes";
 import { RootState, AppDispatch } from "./store";
 
-export const getCurrentUser = (state: RootState): Session | null => {
+export const getCurrentUser = (state: RootState): SessionState | null => {
     return state.session.user ? { user: { ...state.session.user } } : null;
 };
 
@@ -80,7 +80,7 @@ const storeCSRFToken = (res: Response) => {
     const csrfToken = res.headers.get("X-CSRF-Token");
     if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
 };
-const initialState: Session = {
+const initialState: SessionState = {
     user: JSON.parse(sessionStorage.getItem("currentUser") || "null"),
 };
 

@@ -94,7 +94,7 @@ export const getBusinesses = (state: {
 };
 
 export const getBusiness =
-    (businessId: string) =>
+    (businessId: number) =>
     (state: { businesses: Record<string, Business> }) => {
         return state.businesses ? state.businesses[businessId] : undefined;
     };

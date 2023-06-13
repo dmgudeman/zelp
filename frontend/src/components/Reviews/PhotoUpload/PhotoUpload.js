@@ -13,7 +13,7 @@ const PhotoUpload = ({ name, value, handleChange, title, fileRef }) => {
                 className="photoInput"
                 type="file"
                 id="profile_pic"
-                ref={fileRef}
+                // ref={fileRef}
                 name={name}
                 onChange={handleChange}
             />
