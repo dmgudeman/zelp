@@ -24,6 +24,7 @@ export const fetchReview = createAsyncThunk<Review, string>(
     async (reviewId) => {
         const res = await csrfFetch(`/api/reviews/${reviewId}`);
         const data = await res.json();
+        console.log('DDDDDDDDDDDDD', data)
         if (res.ok) {
             return data;
         } else {
@@ -122,6 +123,7 @@ const reviewsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchReview.fulfilled, (state, action) => {
+                console.log('ACTIONPAYLOD', action.payload)
                 state[action.payload.id] = action.payload;
             })
             .addCase(fetchReviews.fulfilled, (state, action) => {

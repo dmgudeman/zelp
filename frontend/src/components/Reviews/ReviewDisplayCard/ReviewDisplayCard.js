@@ -8,7 +8,7 @@ import {
 } from "../../../store/reviewsSlice";
 import "./ReviewDisplayCard.css";
 
-const ReviewDisplayCard = ({ review}) => {
+const ReviewDisplayCard = ({ review }) => {
     const { body, photoUrl, rating, businessId, authorId } = { ...review };
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -33,8 +33,8 @@ const ReviewDisplayCard = ({ review}) => {
         dispatch(deleteReview(reviewId));
     };
 
-    const editHandler = (reviewId) => {
-       dispatch(showModal(reviewId))
+    const editHandler = () => {
+       dispatch(showModal(review.id))
     };
 
     const closeEditReviewModal = () => {

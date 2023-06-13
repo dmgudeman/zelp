@@ -18,10 +18,10 @@ import "./ReviewEdit.css";
 const ReviewEdit = ({ reviewId, handleClose}) => {
     const dispatch = useDispatch();
     // const { reviewId } = useParams();
-    // const review = useSelector(getReview(reviewId));
+    const review = useSelector(getReview(reviewId));
     const history = useHistory();
-    const [busId, setBusId] = useState(null);
-    const [rating, setRating] = useState(null);
+    const [busId, setBusId] = useState( null);
+    const [rating, setRating] = useState( null);
     const [body, setBody] = useState(null);
     const [photoUrl, setPhotoUrl] = useState(null);
     const [showPhoto, setShowPhoto] = useState(true);
@@ -30,19 +30,25 @@ const ReviewEdit = ({ reviewId, handleClose}) => {
     const [formData, setFormData] = useState(new FormData());
     const [userId, setUserId] = useState(sessionUser.id || "");
 
-    console.log('ReviewEdit', reviewId)
+    // console.log('ReviewEdit', reviewId)
+    // console.log('busId', busId);
+    // console.log('review', review);
+    // console.log('rating', rating);
+    // console.log('photoUrl', photoUrl)
 
     useEffect(() => {
-        if (reviewId) {
-            dispatch(fetchReview(reviewId))
-                .then((review) => {
-                    setBusId(review.businessId);
-                    setRating(review.rating);
-                    setBody(review.body);
-                    setPhotoUrl(review.photoUrl);
+
+        console.log('UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU', reviewId)
+       dispatch(fetchReview(reviewId)).then((review) => {
+                   console.log("inside",review)
+                    setBusId(review.payload.businessId);
+                    setRating(review.payload.rating);
+                    setBody(review.payload.body);
+                    setPhotoUrl(review.payload.photoUrl);
+      
                 })
                 .catch((error) => console.error(error));
-        }
+        
     }, [reviewId, dispatch]);
 
     useEffect(() => {
@@ -85,6 +91,10 @@ const ReviewEdit = ({ reviewId, handleClose}) => {
         formData.set("review[body]", body);
         formData.set("review[photoUrl]", photoUrl);
         //     console.log(`${key}: ${value}`);
+
+        console.log(sessionUser)
+        console.log('busId', busId)
+        console.log('rating', rating)
         try {
             dispatch(createReview(formData));
             setFormData(null);
