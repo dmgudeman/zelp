@@ -1,11 +1,12 @@
-import './SearchBarButton.css'
+import React from "react";
+import { SBButtonProps } from "../../../../Types/IComponents/INavigation";
+import "./SearchBarButton.css";
 
-const SearchBarButton = ({ handleSearchSubmit }) => {
+const SearchBarButton: React.FC<SBButtonProps> = ({ handleSearchSubmit }) => {
     return (
         <>
             <div>
-                {" "}
-                {/*  NEED THIS OUTER DIV*/}
+                {/*  NEED TO KEEP THIS OUTER DIV*/}
                 <div
                     className="blueButtonSB searchButton "
                     onClick={handleSearchSubmit}

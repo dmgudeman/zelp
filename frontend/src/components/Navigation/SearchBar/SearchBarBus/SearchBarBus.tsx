@@ -1,4 +1,7 @@
-const SearchBarBus = (props) => {
+import React from 'react'
+import { SBBusProps} from '../../../../Types/IComponents/INavigation'
+
+const SearchBarBus: React.FC<SBBusProps>= (props) => {
     const {
         searchData,
         selectBus,

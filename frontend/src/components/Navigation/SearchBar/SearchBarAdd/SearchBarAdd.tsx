@@ -1,6 +1,7 @@
+import React from 'react';
+import { SBAddProps } from '../../../../Types/IComponents/INavigation';
 
-
-const SearchBarAdd = (props) => {
+const SearchBarAdd: React.FC<SBAddProps> = (props) => {
     const { searchData, handleSearchEvent } = { ...props };
     return (
         <>

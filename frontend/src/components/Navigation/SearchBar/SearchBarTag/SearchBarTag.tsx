@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import  useOutsideClick  from '../UseOutsideHook'; 
-import type { SBTagProps } from '../../../../Types/Components/INavigation'
+import type { SBTagProps } from '../../../../Types/IComponents/INavigation'
 
 const SearchBarTag: React.FC<SBTagProps> = (props:SBTagProps) => {
     const {

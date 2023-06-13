@@ -23,7 +23,7 @@ const useDispatch = () => _useDispatch<AppDispatch>();
 const SearchBar = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    let businesses = useSelector(getBusinesses);
+    let businesses: Business[] = useSelector(getBusinesses);
     let tags = useSelector(getTags);
     const [selectTag, setSelectTag] = useState<string | null>(null);
     const [hideTagList, setHideTagList] = useState(true);
@@ -77,7 +77,7 @@ const SearchBar = () => {
         return tags.filter(tag => tag.tag.toLowerCase().includes(searchData.tag.toLowerCase()));
         
     };
-    const filterBusinesses = () => {
+    const filterBusinesses = (): Business[] => {
         return businesses.filter((business) => {
             return business.name
                 .toLowerCase()
@@ -119,7 +119,7 @@ const SearchBar = () => {
     }
   
 
-    const handleSearchSubmit = () => {
+    const handleSearchSubmit = async (): Promise<void> => {
         if (selectTag) {
             setSearchData((prevState) => ({ ...prevState, tag: selectTag }));
         }
@@ -153,7 +153,6 @@ const SearchBar = () => {
                     />
 
                     <SearchBarBus
-                        businesses={businesses}
                         searchData={searchData}
                         selectBus={selectBus}
                         hideBusList={hideBusList}
