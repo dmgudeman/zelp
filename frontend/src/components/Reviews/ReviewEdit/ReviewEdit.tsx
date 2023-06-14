@@ -6,6 +6,7 @@ import ReviewForm from "../ReviewForm/ReviewForm";
 import RatingInput from "../RatingInput/RatingInput";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import { hideEditReviewModal } from "../../../store/uiSlice";
+import { updateReview } from "../../../store/reviewsSlice";
 import { getBusiness } from "../../../store/businessesSlice";
 
 import {
@@ -13,7 +14,7 @@ import {
     fetchReviewsByBusiness,
 } from "../../../store/reviewsSlice";
 import { getCurrentUser } from "../../../store/sessionSlice";
-import type { IReviewEditProps } from "../../../Types/IComponents/IReviews";
+import type { IReviewEditProps} from "../../../Types/IComponents/IReviews";
 import type { AppDispatch } from "../../../store/store";
 import "./ReviewEdit.css";
 
@@ -91,18 +92,20 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
         e.stopPropagation();
         if (currentUser && currentUser.id) {
             try {
+                
                 formData.set("review[author_id]", currentUser.id.toString());
                 formData.set("review[business_id]", (+busId || "").toString());
                 formData.set("review[rating]", rating?.toString() || "");
                 if (photo) {
                     formData.set("review[photo]", photo)
-                }
+                } 
 
                 for (let pair of formData.entries()) {
                     console.log(pair[0] + ", " + pair[1]);
                 }
 
-                dispatch(createReview(formData));
+
+                dispatch(updateReview({reviewId: review.id, formData}));
                 // setFormData(null);
                 // setBody("");
                 // setRating(0);

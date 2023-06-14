@@ -7,6 +7,7 @@ import {
 import csrfFetch from "./csrf";
 import { Review } from "../Types/ReviewTypes";
 import { RootState } from "./store";
+import { IReviewEditPayload } from '../Types/IComponents/IReviews';
 
 export const getReview =
     (reviewId: string) =>
@@ -75,18 +76,31 @@ export const createReview = createAsyncThunk<Review, FormData>(
     }
 );
 
-export const editReview = createAsyncThunk<
-    Review,
-    { review: Review; reviewId: string }
->("reviews/editReview", async ({ review, reviewId }, { dispatch }) => {
-    const res = await csrfFetch(`/api/reviews/${reviewId}`, {
-        method: "PATCH",
-        body: JSON.stringify(review),
-    });
-    const data = await res.json();
-    dispatch(receiveReview(data));
-    return data;
-});
+export const updateReview = createAsyncThunk<Review, IReviewEditPayload>(
+    "reviews/updateReview",
+    async ({reviewId, formData }, { dispatch }) => {
+        const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+            method: "PATCH",
+            body: formData
+        });
+        const data = await res.json();
+        dispatch(receiveReview(data));
+        return data;
+    }
+);
+
+// export const editReview = createAsyncThunk<
+//     Review,
+//     { review: Review; reviewId: string }
+// >("reviews/editReview", async ({ review, reviewId }, { dispatch }) => {
+//     const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+//         method: "PATCH",
+//         body: JSON.stringify(review),
+//     });
+//     const data = await res.json();
+//     dispatch(receiveReview(data));
+//     return data;
+// });
 
 export const deleteReview = createAsyncThunk<void, number>(
     "reviews/deleteReview",
@@ -130,7 +144,7 @@ const reviewsSlice = createSlice({
                     state[review.id] = review;
                 });
             })
-            .addCase(editReview.fulfilled, (state, action) => {
+            .addCase(updateReview.fulfilled, (state, action) => {
                 // Handle the editReview fulfilled state
                 // consider closing modal
             })

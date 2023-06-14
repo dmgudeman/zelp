@@ -20,6 +20,10 @@ export interface IReviewEditProps {
     review: Review;
     handleCloseReviewEdit: () => void;
 }
+export interface IReviewEditPayload {
+    reviewId: number;
+    formData: FormData;
+}
 
 export interface IRatingInputProps {
     className: string;
