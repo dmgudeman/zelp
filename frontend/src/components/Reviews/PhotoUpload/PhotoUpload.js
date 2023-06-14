@@ -1,6 +1,6 @@
 import "./PhotoUpload.css";
 
-const PhotoUpload = ({ name, value, handleChange, title, fileRef }) => {
+const PhotoUpload = ({handleChange, title}) => {
     return (
         <div id="uploadContainer">
             {/* <h3 className="photoTitle blueTitle">{title}</h3> */}
@@ -13,8 +13,6 @@ const PhotoUpload = ({ name, value, handleChange, title, fileRef }) => {
                 className="photoInput"
                 type="file"
                 id="profile_pic"
-                // ref={fileRef}
-                name={name}
                 onChange={handleChange}
             />
         </div>

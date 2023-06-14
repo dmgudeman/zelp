@@ -1,7 +1,7 @@
 import "./RatingDisplay.css";
 
 const DisplayRating = ({rating, starClass}) => {
-    let activeRating = rating || 3
+    let activeRating = parseInt(rating) || 3
     return (
         <>
             <div className="ratingsContainer">

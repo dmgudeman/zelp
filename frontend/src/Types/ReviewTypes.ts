@@ -1,17 +1,17 @@
-import type { Business } from './BusinessTypes';
 
-export interface IReviewNewProps {
-    business: Business;
-    handleCloseReviewNew: () => void;
-}
+
+// this is for the store if it is in a component
+// check IReviews in IComponents
+
+
 export interface Review {
     id: number;
     authorId: number;
     authorName?: string;
-    body: string;
     businessId: number;
-    photoUrl: string | null;
     rating: number;
+    body: string;
+    photoUrl: string | "";
     createdAt: string | null;
     updatedAt: string | null;
 }
@@ -20,7 +20,4 @@ export interface Review {
 
 
 
-export interface IReviewEditProps {
-    review: Review;
-}
 

@@ -27,7 +27,7 @@ function ReviewModalNew() {
             <div
                 id="modalBackgroundRF"
                 className={`modalBackgroundRF ${
-                    hideModalNewReviewFlag ? "" : "hide"
+                    hideModalNewReviewFlag ? "hide" : ""
                 }`}
                 onClick={() => handleCloseReviewNew()}
             >

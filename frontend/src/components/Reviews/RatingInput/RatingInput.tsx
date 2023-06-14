@@ -1,11 +1,17 @@
+import React from 'react';
+import type { IRatingInputProps } from "../../../Types/IComponents/IReviews"
 import "./RatingInput.css";
 
-const RatingInput = ({ name, rating, handleChange }) => {
+
+const RatingInput : React.FC<IRatingInputProps> = ({ name, rating, handleRatingChange}) => {
+
+    const ratingValue = rating || 0;
+    
     return (
         <div id="ratingContainer" className="rating-input">
             <label
                 htmlFor="radioButton1"
-                className={rating >= 1 ? "colored-in" : "not-colored-in"}
+                className={ratingValue >= 1 ? "colored-in" : "not-colored-in"}
             >
                 <i className="fa-solid fa-star star"></i>{" "}
             </label>
@@ -16,12 +22,12 @@ const RatingInput = ({ name, rating, handleChange }) => {
                 name={name}
                 value="1"
                 hidden
-                onClick={handleChange}
+                onChange={handleRatingChange}
             />
 
             <label
                 htmlFor="radioButton2"
-                className={rating >= 2 ? "colored-in" : "not-colored-in"}
+                className={ratingValue >= 2 ? "colored-in" : "not-colored-in"}
             >
                 <i className="fa-solid fa-star star"></i>
             </label>
@@ -31,12 +37,12 @@ const RatingInput = ({ name, rating, handleChange }) => {
                 name={name}
                 value="2"
                 hidden
-                onClick={handleChange}
+                onChange={handleRatingChange}
             />
 
             <label
                 htmlFor="radioButton3"
-                className={rating >= 3 ? "colored-in" : "not-colored-in"}
+                className={ratingValue >= 3 ? "colored-in" : "not-colored-in"}
             >
                 {" "}
                 <i className="fa-solid fa-star star"></i>
@@ -47,12 +53,12 @@ const RatingInput = ({ name, rating, handleChange }) => {
                 name={name}
                 value="3"
                 hidden
-                onClick={handleChange}
+                onChange={handleRatingChange}
             />
 
             <label
                 htmlFor="radioButton4"
-                className={rating >= 4 ? "colored-in" : "not-colored-in"}
+                className={ratingValue >= 4 ? "colored-in" : "not-colored-in"}
             >
                 {" "}
                 <i className="fa-solid fa-star star"></i>
@@ -63,12 +69,12 @@ const RatingInput = ({ name, rating, handleChange }) => {
                 name={name}
                 value="4"
                 hidden
-                onClick={handleChange}
+                onChange={handleRatingChange}
             />
 
             <label
                 htmlFor="radioButton5"
-                className={rating >= 5 ? "colored-in" : "not-colored-in"}
+                className={ratingValue >= 5 ? "colored-in" : "not-colored-in"}
             >
                 {" "}
                 <i className="fa-solid fa-star star"></i>
@@ -79,10 +85,11 @@ const RatingInput = ({ name, rating, handleChange }) => {
                 name={name}
                 value="5"
                 hidden
-                onClick={handleChange}
+                onChange={handleRatingChange}
             />
         </div>
     );
+    
 };
 
 export default RatingInput;

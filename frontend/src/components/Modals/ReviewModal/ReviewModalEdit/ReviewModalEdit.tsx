@@ -10,12 +10,12 @@ function ReviewModalEdit() {
     const hideModalFlag = useSelector(
         (state: RootState) => state.ui.hideEditReviewModal
     );
-    const reviewId = useSelector((state: RootState) => state.ui.review);
+    const review  = useSelector((state: RootState) => state.ui.review);
 
     const handleClose = () => {
         dispatch(hideEditReviewModal());
     };
-    const handleCloseReviewNew = () => {
+    const handleCloseReviewEdit = () => {
         dispatch(hideEditReviewModal());
     };
 
@@ -25,9 +25,9 @@ function ReviewModalEdit() {
             <div
                 id="modalBackgroundRF"
                 className={`modalBackgroundRF ${hideModalFlag ? "hide" : ""}`}
-                onClick={() => handleClose()}
+                onClick={() => handleCloseReviewEdit()}
             >
-                <ReviewEdit reviewId={reviewId} handleClose={handleClose} />
+                { review && <ReviewEdit review={review} handleCloseReviewEdit={handleCloseReviewEdit} />}
             </div>
         </>
     );

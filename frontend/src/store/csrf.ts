@@ -20,7 +20,10 @@ async function csrfFetch(
             headers = { ...options.headers };
         }
     }
+    
 
+    // this is to take care of FormData which needs multipart/form-data headers
+    // sometning that cannot be done manually
     if (options.method.toUpperCase() !== "GET") {
         if (!(options.body instanceof FormData)) {
             headers["Content-Type"] =

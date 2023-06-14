@@ -49,10 +49,10 @@ export const fetchReviews = createAsyncThunk<Review[]>(
 
 export const fetchReviewsByBusiness = createAsyncThunk(
     "reviews/fetchReviewsByBusiness",
-    async (busId:number, { dispatch }) => {
+    async (busId: number, { dispatch }) => {
         const res = await csrfFetch(`/api/businesses/${busId}`);
         const data = await res.json();
-        console.log( 'fetchReviewsByBusiness', data)
+        console.log("fetchReviewsByBusiness", data);
         if (res.ok) {
             dispatch(receiveReviews(data.reviews));
             return data.review;
@@ -67,7 +67,7 @@ export const createReview = createAsyncThunk<Review, FormData>(
     async (review, { dispatch }) => {
         const res = await csrfFetch("/api/reviews", {
             method: "POST",
-            body: JSON.stringify(review),
+            body: review,
         });
         const data = await res.json();
         dispatch(receiveReview(data));
@@ -88,7 +88,7 @@ export const editReview = createAsyncThunk<
     return data;
 });
 
-export const deleteReview = createAsyncThunk<void, string>(
+export const deleteReview = createAsyncThunk<void, number>(
     "reviews/deleteReview",
     async (reviewId, { dispatch }) => {
         const res = await csrfFetch(`/api/reviews/${reviewId}`, {
@@ -115,14 +115,14 @@ const reviewsSlice = createSlice({
         receiveReview: (state, action: PayloadAction<Review>) => {
             state[action.payload.id] = action.payload;
         },
-        removeReview: (state, action: PayloadAction<string>) => {
+        removeReview: (state, action: PayloadAction<number>) => {
             delete state[action.payload];
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchReview.fulfilled, (state, action) => {
-                console.log('ACTIONPAYLOD', action.payload)
+                console.log("ACTIONPAYLOD", action.payload);
                 state[action.payload.id] = action.payload;
             })
             .addCase(fetchReviews.fulfilled, (state, action) => {
@@ -140,6 +140,9 @@ const reviewsSlice = createSlice({
         builder.addCase(fetchReviewsByBusiness.rejected, (state, action) => {
             console.error("Error in fetching reviews:", action.error.message);
         });
+        builder.addCase(deleteReview.rejected, (state, action) => {
+                console.error("Error in deleting review:", action.error.message);
+            });
     },
 });
 
