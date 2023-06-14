@@ -94,6 +94,9 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
                 formData.set("review[author_id]", currentUser.id.toString());
                 formData.set("review[business_id]", (+busId || "").toString());
                 formData.set("review[rating]", rating?.toString() || "");
+                if (photo) {
+                    formData.set("review[photo]", photo)
+                }
 
                 for (let pair of formData.entries()) {
                     console.log(pair[0] + ", " + pair[1]);

@@ -66,5 +66,9 @@
     align-items: center;
     justify-content: center;  
 }
-
+.imgRE {
+    height: 100px;
+    margin-top: 15px;
+    border-radius: 15px;
+}
 
