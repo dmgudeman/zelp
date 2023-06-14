@@ -31,7 +31,7 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
     const [userId, setUserId] = useState(currentUser?.id || null);
     const [busId, setBusId] = useState<number>(review.businessId);
     const [body, setBody] = useState<string | "">(review.body);
-    const [rating, setRating] = useState<number | 0>(review.rating);
+    const [rating, setRating] = useState<number | null >(review.rating);
     // photoUrl is for preview
     const [photoUrl, setPhotoUrl] = useState<string | "">(review.photoUrl);
     // photo is an actual file
@@ -57,13 +57,15 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
     //     if (name === "rating") setRating(value);
     //     if (name === "body") setBody(value);
     // };
-    const handleRatingChange: React.ChangeEventHandler<HTMLInputElement> = (
+    const handleEditRatingChange: React.ChangeEventHandler<HTMLInputElement> = (
         e
     ) => {
+        console.log('IIIMMM  99999999')
         const { value } = e.target;
-        formData.set(`review[rating]`, value);
-        setFormData(formData);
+        console.log('Rating', rating)
+        // formData.set(`review[rating]`, value);
         setRating(parseInt(value));
+        console.log('Rating', rating)
     };
 
     const handleReviewFormChange: React.ChangeEventHandler<
@@ -71,7 +73,7 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
     > = (e) => {
         const { value } = e.target;
         formData.set(`review[body]`, value);
-        setFormData(formData);
+        // setFormData(formData);
         setBody(value);
     };
 
@@ -135,7 +137,7 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
                             name="rating"
                             value={rating}
                             rating={rating}
-                            handleRatingChange={handleRatingChange}
+                            handleEditRatingChange={handleEditRatingChange}
                         />
                     </div>
                     <div id="inputContainerRE">

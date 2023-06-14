@@ -35,31 +35,19 @@ const ReviewNew: React.FC<IReviewNewProps> = ({
     const [photo, setPhoto] = useState<File | null>(null); // this is file from userComputer
 
     const fileRef = useRef(null);
-    // const flag = formData.get("review[body]");
 
     useEffect(() => {
-        // dispatch(fetchReviewsByBusiness(business.id));
         setUserId(currentUser?.id || null);
-        setRating(rating);
-        setBody(body);
-        setPhoto(photo);
     }, [currentUser]);
 
     if (!business) <Redirect to="/home" />;
 
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const { name, value } = e.target;
-    //     formData.set(`review[${name}]`, value);
-    //     setFormData(formData);
-    //     if (name === "rating") setRating(value);
-    //     if (name === "body") setBody(value);
-    // };
-    const handleRatingChange: React.ChangeEventHandler<HTMLInputElement> = (
+    const handleNewRatingChange: React.ChangeEventHandler<HTMLInputElement> = (
         e
     ) => {
+        console.log('IIIMMM  222222222')
         const { value } = e.target;
-        formData.set(`review[rating]`, value);
-        setFormData(formData);
+        // formData.set(`review[rating]`, value);
         setRating(parseInt(value));
     };
 
@@ -67,8 +55,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({
         HTMLTextAreaElement
     > = (e) => {
         const { value } = e.target;
-        formData.set(`review[body]`, value);
-        setFormData(formData);
+        // formData.set(`review[body]`, value);
         setBody(value);
     };
 
@@ -77,7 +64,6 @@ const ReviewNew: React.FC<IReviewNewProps> = ({
         if (file) {
             formData.set("review[photo]", file);
             setPhoto(file);
-            // setFormData(formData);
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
             fileReader.onload = () => setPhotoUrl(fileReader.result as string);
@@ -98,11 +84,9 @@ const ReviewNew: React.FC<IReviewNewProps> = ({
                 }
 
                 dispatch(createReview(formData));
-                // setFormData(null);
                 setBody(null);
                 setRating(null);
                 setPhotoUrl(null);
-                // fileRef?.current?.value = null;
                 handleCloseReviewNew();
                 history.push(`/businesses/${business.id}`);
             } catch (errors) {
@@ -130,7 +114,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({
                         name="rating"
                         value={rating}
                         rating={rating}
-                        handleRatingChange={handleRatingChange}
+                        handleNewRatingChange={handleNewRatingChange}
                     />
 
                     {rating ? (

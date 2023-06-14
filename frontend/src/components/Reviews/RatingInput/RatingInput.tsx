@@ -1,11 +1,21 @@
 import React from 'react';
-import type { IRatingInputProps } from "../../../Types/IComponents/IReviews"
+// import type { IRatingInputProps } from "../../../Types/IComponents/IReviews"
 import "./RatingInput.css";
 
+export interface IRatingInputProps {
+    className: string;
+    name: string;
+    value: number | null;
+    rating: number | null;
+    handleNewRatingChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | null;
+    handleEditRatingChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | null;
+}
 
-const RatingInput : React.FC<IRatingInputProps> = ({ name, rating, handleRatingChange}) => {
+
+const RatingInput : React.FC<IRatingInputProps> = ({ name, rating, handleNewRatingChange, handleEditRatingChange}) => {
 
     const ratingValue = rating || 0;
+    const handleRatingChange = handleNewRatingChange ?? handleEditRatingChange ;
     
     return (
         <div id="ratingContainer" className="rating-input">
@@ -22,7 +32,9 @@ const RatingInput : React.FC<IRatingInputProps> = ({ name, rating, handleRatingC
                 name={name}
                 value="1"
                 hidden
+                // onChange={handleRatingChange}
                 onChange={handleRatingChange}
+            
             />
 
             <label

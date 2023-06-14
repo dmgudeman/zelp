@@ -30,7 +30,8 @@ export interface IRatingInputProps {
     name: string;
     value: number | null;
     rating: number | null;
-    handleRatingChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleNewRatingChange: (e: React.ChangeEvent<HTMLInputElement>) => void | null;
+    handleEditRatingChange: (e: React.ChangeEvent<HTMLInputElement>) => void | null;
 }
 
 export interface IPhotoUploadProps {
@@ -42,4 +43,9 @@ export interface IReviewDisplayCardProps {
 }
 export interface IReviewSubmitProps {
     submitHandler: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+export interface IDisplayRatingProps {
+    rating: number;
+    starClass: string;
 }
