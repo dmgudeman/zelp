@@ -29,6 +29,10 @@ export interface IRatingInputProps {
     handleRatingChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+export interface IPhotoUploadProps {
+    title: string;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 export interface IReviewDisplayCardProps {
     review: Review;
 }

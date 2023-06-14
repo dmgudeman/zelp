@@ -1,6 +1,9 @@
-import "./PhotoUpload.css";
 
-const PhotoUpload = ({handleChange, title}) => {
+import React from 'react';
+import "./PhotoUpload.css";
+import { IPhotoUploadProps } from '../../../Types/IComponents/IReviews';
+
+const PhotoUpload: React.FC<IPhotoUploadProps>= ({handleChange, title}) => {
     return (
         <div id="uploadContainer">
             {/* <h3 className="photoTitle blueTitle">{title}</h3> */}
