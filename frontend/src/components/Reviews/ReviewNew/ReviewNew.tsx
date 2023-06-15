@@ -50,7 +50,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
         HTMLTextAreaElement
     > = (e) => {
         const { value } = e.target;
-        // formData.set(`review[body]`, value);
+        formData.set(`review[body]`, value);
         setBody(value);
     };
 
@@ -73,6 +73,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
                 formData.set("review[author_id]", currentUser.id.toString());
                 formData.set("review[business_id]", business.id.toString());
                 formData.set("review[rating]", rating?.toString() || "");
+                formData.set("review[body]", body || "");
 
                 for (let pair of formData.entries()) {
                     console.log(pair[0] + ", " + pair[1]);
@@ -82,8 +83,8 @@ const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
                 setBody(null);
                 setRating(null);
                 setPhotoUrl(null);
-                hideNewReviewModal();
-                history.push(`/businesses/${business.id}`);
+                dispatch(hideNewReviewModal());
+                // history.push(`/businesses/${business.id}`);
             } catch (errors) {
                 console.error("dispatch redirect did not work");
             }
