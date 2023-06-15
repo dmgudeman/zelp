@@ -15,7 +15,7 @@ const LoginForm = () => {
     const sessionUser = useSelector(getCurrentUser);
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState<string[]>([]);
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -26,21 +26,48 @@ const LoginForm = () => {
 
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
+        if (!credential || !password) {
+            setErrors(["Credential or password is missing"]);
+            return;
+        }
         setErrors([]);
         dispatch(login({ credential, password })).catch(async (res) => {
             let data;
             try {
                 // .clone()  essentially allows you to read the response body twice
                 data = await res.clone().json();
+                dispatch(hideLoginModal());
             } catch {
                 data = [...(await res.text())]; // Will hit this case if the server is down
             }
-            if (data?.errors) setErrors(data.errors);
-            else if (data) setErrors(data);
-            else setErrors(res.statusText);
+            if (data?.errors) {
+                console.error(data.errors);
+            } else if (data) {
+                console.error(data);
+            } else {
+                console.error(res.statusText);
+            }
         });
-        dispatch(hideLoginModal());
     };
+
+    // const submitHandler = (e) => {
+    //     e.preventDefault();
+    //     setErrors([]);
+    //     dispatch(login({ credential, password })).catch(async (res) => {
+    //         let data;
+    //         try {
+    //             // .clone()  essentially allows you to read the response body twice
+    //             data = await res.clone().json();
+    //         } catch {
+    //             data = await res.text(); // Will hit this case if the server is down
+    //         }
+    //         if (data?.errors)
+    //             setErrors(["username or email and/or password were invalid"]);
+    //         else if (data) setErrors([data]);
+    //         else setErrors([res.statusText]);
+    //     });
+    //     dispatch(hideLoginModal())
+    // };
 
     return (
         <>

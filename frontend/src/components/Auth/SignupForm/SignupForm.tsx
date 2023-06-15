@@ -4,7 +4,7 @@ import { useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import { useDispatch as _useDispatch, useSelector} from "react-redux";
 import { signup } from "../../../store/sessionSlice";
-import Navigation from "../../Navigation/NavBar/NavBar";
+import  ErrorAuth from "../../Helpers/Errors/ErrorAuth/ErrorAuth";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
 import { showLoginModal, hideSignupModal} from "../../../store/uiSlice";
 import { RootState, AppDispatch } from '../../../store/store';
@@ -20,7 +20,7 @@ const SignupForm = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [email, setEmail] = useState("");
     const [fullName, setFullName] = useState("");
-    const [errors, setErrors] = useState<string[]>([]);
+    // const [errors, setErrors] = useState<string[]>([]);
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -31,11 +31,16 @@ const SignupForm = () => {
 
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
-        setErrors([]);
+        let errors:string[] = []
+        
+        if (!username) errors.push("missing username")
+        if (!email){
+            errors.push("missing email")
+        }
 
         if (confirmPassword !== password) {
-            setErrors(["passwords do not match"]);
-        } else {
+            errors.push("passwords do not match");
+        }
             return dispatch(signup({ username, password, email, fullName })).catch(
                 async (res) => {
                     let data;
@@ -45,13 +50,13 @@ const SignupForm = () => {
                     } catch {
                         data = await res.text(); // Will hit this case if the server is down
                     }
-                    if (data?.errors) setErrors(data.errors);
-                    else if (data) setErrors([data]);
-                    else setErrors([res.statusText]);
+                    // if (data?.errors) setErrors(data.errors);
+                    // else if (data) setErrors([data]);
+                    // else setErrors([res.statusText]);
                 }
             );
-        }
-        dispatch(hideSignupModal())
+        
+        
     };
 
     return (
@@ -92,18 +97,18 @@ const SignupForm = () => {
                             placeholder="confirm password"
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
-
+                        <ErrorAuth/>
                         <input
                             id="submitSUF"
                             className="inputSUF blueButton"
                             type="submit"
                             value="Sign Up"
                         />
-                        <ul id="errorSUF">
+                        {/* <ul id="errorSUF">
                             {errors.map((error) => (
                                 <li key={error}>{error}</li>
                             ))}
-                        </ul>
+                        </ul> */}
                     </form>
                     <DemoUserForm />
                     <h1>

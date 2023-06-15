@@ -1,6 +1,8 @@
 export interface SessionState {
     user: User | null;
+    error: ServerError | null;
 }
+
 
 export interface User {
     id: number;
@@ -17,3 +19,8 @@ export interface SignupUserData {
     fullName: string | null;
 
 }
+
+export interface ServerError {
+    errors: string[];
+}
+

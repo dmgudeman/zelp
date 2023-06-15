@@ -1,11 +1,18 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+    createAsyncThunk,
+    createSlice,
+    PayloadAction,
+} from "@reduxjs/toolkit";
 import csrfFetch from "./csrf";
 import { SessionState, User, SignupUserData } from "../Types/SessionTypes";
-import { RootState, AppDispatch } from "./store";
+import { hideSignupModal } from "./uiSlice";
+import type { RootState, AppDispatch } from "./store";
+import type { ServerError} from "../Types/SessionTypes"
 
 export const getCurrentUser = (state: RootState): SessionState | null => {
-    return state.session.user ? { user: { ...state.session.user } } : null;
+    return state.session.user ? { user: { ...state.session.user }, error: state.session.error } : null;
 };
+
 
 //   export const getUser = (state:RootState) => {
 //     return state.session?.user ? state.session.user : null;
@@ -37,19 +44,47 @@ const storeCurrentUser = (user: User | null) => {
     }
 };
 
-export const signup = createAsyncThunk<User, SignupUserData>(
+// export const signup = createAsyncThunk<User, SignupUserData,  { rejectValue: ServerError }>(
+//     "session/signup",
+//     async (user, { dispatch, rejectWithValue}) => {
+//         const { username, password, email } = user;
+//         const res = await csrfFetch("/api/users", {
+//             method: "POST",
+//             body: JSON.stringify({ username, password, email }),
+//         });
+
+//         if (res.ok) {
+//             const data = await res.json();
+//             storeCurrentUser(data.user);
+//             dispatch(setSessionUser(data.user));
+//             dispatch(hideSignupModal);
+//             return data.user;
+//         } else {
+//             let errorData = await res.json(); // Parse the error response
+//             return rejectWithValue(errorData);
+//         }
+//     }
+// );
+
+export const signup = createAsyncThunk<User, SignupUserData, { rejectValue: ServerError }>(
     "session/signup",
-    async (user, { dispatch }) => {
+    async (user, thunkAPI) => {
         const { username, password, email } = user;
         const res = await csrfFetch("/api/users", {
             method: "POST",
             body: JSON.stringify({ username, password, email }),
         });
 
-        const data = await res.json();
-        storeCurrentUser(data.user);
-        dispatch(setSessionUser(data.user));
-        return data.user;
+        if (res.ok) {
+            const data = await res.json();
+            storeCurrentUser(data.user);
+            thunkAPI.dispatch(setSessionUser(data.user));
+            thunkAPI.dispatch(hideSignupModal());
+            return data.user;
+        } else {
+            const errorData = await res.json(); // Parse the error response
+            return thunkAPI.rejectWithValue(errorData);
+        }
     }
 );
 
@@ -82,6 +117,7 @@ const storeCSRFToken = (res: Response) => {
 };
 const initialState: SessionState = {
     user: JSON.parse(sessionStorage.getItem("currentUser") || "null"),
+    error: null
 };
 
 const sessionSlice = createSlice({
@@ -98,17 +134,28 @@ const sessionSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(login.fulfilled, (state, action) => {
-                //consider closing modal here?
+                // consider closing modal here
             })
-            .addCase(signup.fulfilled, (state) => {
-                //consider closing modal here?
+            .addCase(signup.fulfilled, (state, { payload }) => {
+                state.user = payload;
+                state.error = null; // reset the error
             })
-            .addCase(restoreSession.fulfilled, (state, action) => {
-                // Handle restore session fulfillment
-            })
+            .addCase(restoreSession.fulfilled, (state, action) => {})
             .addCase(logout.fulfilled, (state) => {
                 // Reset the session state after successful logout
                 state.user = null;
+            });
+        builder
+            .addCase(login.rejected, (state, action) => {
+                console.error("login rejected");
+            })
+            .addCase(signup.rejected, (state, { payload }) => {
+                state.user = null;
+                if (payload) {
+                    state.error = payload; // set the error
+                } else {
+                    state.error = { errors: ['An unknown error occurred. Please try again.'] };
+                }
             });
     },
 });
