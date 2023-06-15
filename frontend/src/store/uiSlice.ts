@@ -45,6 +45,14 @@ const uiSlice = createSlice({
         state.modalFlag = null;
         state.business = null;
       },
+      showReadReviewModal: (state, action: PayloadAction<Review>) => {
+        state.modalFlag = "ReviewRead";
+        state.review = action.payload;
+      },
+      hideReadReviewModal: (state) => {
+        state.modalFlag = null;
+        state.review = null;
+      },
     },
   });
   
@@ -57,6 +65,8 @@ const uiSlice = createSlice({
     hideEditReviewModal,
     showNewReviewModal,
     hideNewReviewModal,
+    showReadReviewModal,
+    hideReadReviewModal,
   } = uiSlice.actions;
   
   export default uiSlice.reducer;

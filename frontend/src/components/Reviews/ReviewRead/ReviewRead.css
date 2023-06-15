@@ -1,0 +1,77 @@
+#combinedFormContainerRR {
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:35rem;
+    height:50rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--two);
+    border-radius: 1rem;
+    background-color: white;
+    background-color: var(--one);
+    background-color: brown;
+
+}
+
+#formRR {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 34rem;
+}
+#titleBigRR {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+    height: 3rem;
+    font-size: 1.75rem;
+    font-weight: bolder;
+    color: var(--two);
+}
+#ratingContainerRR {
+    margin-bottom: 20px;
+
+}
+
+.inputRR {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.italic {
+    font-style:italic
+}
+
+#inputContainerRR {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 29rem;
+}
+
+/* .reviewButton {
+    /* width: 250px; */
+
+
+#photoContainerRR {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+}
+.imgRR {
+    height: 100px;
+    margin-top: 15px;
+    border-radius: 15px;
+}
+.submitRR {
+    margin-top: 20px;
+}
+

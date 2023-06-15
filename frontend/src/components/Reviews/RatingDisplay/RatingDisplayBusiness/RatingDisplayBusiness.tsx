@@ -9,7 +9,6 @@ interface IRatingDisplayBusinessProps {
 
 
 const RatingDisplayBusiness: React.FC<IRatingDisplayBusinessProps> = ({rating}) => {
-    console.log('Rating', rating)
     return (
         <Stack spacing={1}>
           <Rating 

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
 import ReviewEdit from "../ReviewEdit/ReviewEdit";
 import DisplayRatingBusSmall from "../RatingDisplay/RatingDisplayBusSmall/RatingDisplayBusSmall";
-import { showEditReviewModal } from "../../../store/uiSlice";
+import { showEditReviewModal, showReadReviewModal } from "../../../store/uiSlice";
 import type { IReviewDisplayCardProps } from "../../../Types/IComponents/IReviews";
 import type { RootState, AppDispatch } from "../../../store/store";
 import { deleteReview, getReview } from "../../../store/reviewsSlice";
@@ -42,6 +42,10 @@ const ReviewDisplayCard: React.FC<IReviewDisplayCardProps> = ({ reviewId }) => {
     const editHandler = () => {
         if (review) dispatch(showEditReviewModal(review));
     };
+
+    const readHandler = () => {
+        if (review) dispatch(showReadReviewModal(review));
+    }
     if (!review) {
         return null; // or a loading spinner, etc.
     }
@@ -71,7 +75,17 @@ const ReviewDisplayCard: React.FC<IReviewDisplayCardProps> = ({ reviewId }) => {
             </div>
         );
     } else {
-        editButtons = null;
+        editButtons = (
+            <div className="miniButtonContainer">
+            <button
+                className="editButton miniButton"
+                onClick={() => editHandler()}
+            >
+                full
+            </button>
+            
+        </div>
+        )
     }
 
     return (
