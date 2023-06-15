@@ -1,17 +1,16 @@
-
-import React from 'react';
+import React from "react";
 import "./PhotoUpload.css";
-import { IPhotoUploadProps } from '../../../Types/IComponents/IReviews';
+import { IPhotoUploadProps } from "../../../Types/IComponents/IReviews";
 
-const PhotoUpload: React.FC<IPhotoUploadProps>= ({handleChange, title}) => {
+const PhotoUpload: React.FC<IPhotoUploadProps> = ({ handleChange, title }) => {
     return (
         <div id="uploadContainer">
-            {/* <h3 className="photoTitle blueTitle">{title}</h3> */}
-
-            <label htmlFor="profile_pic" className="blueButton customFileUpload ">
+            <label
+                htmlFor="profile_pic"
+                className="blueButton customFileUpload "
+            >
                 {title}
             </label>
-
             <input
                 className="photoInput"
                 type="file"

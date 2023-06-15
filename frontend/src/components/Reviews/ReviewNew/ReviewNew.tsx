@@ -121,13 +121,13 @@ const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
                             />
                             <button
                                 type="submit"
-                                className="newReviewSubmit blueButton"
+                                className="submitRN blueButton"
                             >
                                 Submit Review
                             </button>
                         </>
                     ) : (
-                        <h2 className="blueTitle">Rate this business</h2>
+                        <h2 className="blueTitle titleRN">Rate this business</h2>
                     )}
                 </form>
             </div>

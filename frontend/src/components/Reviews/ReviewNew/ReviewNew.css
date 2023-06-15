@@ -11,10 +11,7 @@
     transform: translate(-50%, -50%);
     border: 2px solid var(--two);
     border-radius: 1rem;
-    /* background-color: white; */
     background-color: var(--one);
-    background-color: red;
-
 }
 
 #formNR {
@@ -60,4 +57,12 @@
     height: 100px;
     margin-top: 15px;
     border-radius: 15px;
+}
+
+.titleRN {
+    background-color: transparent;
+}
+
+.submitRN {
+    margin-top: 20px;
 }
