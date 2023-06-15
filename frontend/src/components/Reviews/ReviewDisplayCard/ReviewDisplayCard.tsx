@@ -79,7 +79,7 @@ const ReviewDisplayCard: React.FC<IReviewDisplayCardProps> = ({ reviewId }) => {
             <div className="miniButtonContainer">
             <button
                 className="editButton miniButton"
-                onClick={() => editHandler()}
+                onClick={() => readHandler()}
             >
                 full
             </button>

@@ -12,6 +12,7 @@ import ReviewNew from "./components/Reviews/ReviewNew/ReviewNew";
 import ReviewEdit from "./components/Reviews/ReviewEdit/ReviewEdit";
 import ReviewModalNew from "./components/Modals/ReviewModal/ReviewModalNew/ReviewModalNew";
 import ReviewModalEdit from "./components/Modals/ReviewModal/ReviewModalEdit/ReviewModalEdit";
+import ReviewModalRead from "./components/Modals/ReviewModal/ReviewModalRead/ReviewModalRead";
 import type { RootState } from './store/store';
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
             return <ReviewModalNew/>;
           case 'ReviewEdit':
             return <ReviewModalEdit/>;
+            case 'ReviewRead':
+                return <ReviewModalRead/>;
           default:
             return null;
         }

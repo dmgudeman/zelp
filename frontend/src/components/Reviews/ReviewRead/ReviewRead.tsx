@@ -9,7 +9,7 @@ import { updateReview } from "../../../store/reviewsSlice";
 import { getCurrentUser } from "../../../store/sessionSlice";
 import type { IReviewEditProps } from "../../../Types/IComponents/IReviews";
 import type { AppDispatch } from "../../../store/store";
-import "./ReviewEdit.css";
+import "./ReviewRead.css";
 
 const useDispatch = () => _useDispatch<AppDispatch>();
 
