@@ -1,0 +1,28 @@
+.star-ratings {
+    position: relative;
+    display: inline-block;
+}
+
+.star-ratings::before,
+.star-ratings-top::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: FontAwesome;
+}
+
+.star-ratings::before {
+    color: #ccc;
+}
+
+.star-ratings-top {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    color: #f5b301; /* change to your preferred star color */
+    z-index: 1;
+}
+
+.star-ratings-bottom {
+    z-index: 0;
+}

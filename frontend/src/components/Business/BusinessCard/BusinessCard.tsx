@@ -1,7 +1,7 @@
 import React from "react";
 import "./BusinessCard.css";
 import { Link } from "react-router-dom";
-import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
+import RatingDisplayBusSmall from "../../Reviews/RatingDisplay/RatingDisplayBusSmall/RatingDisplayBusSmall";
 import { IBusinessCardProps } from "../../../Types/IComponents/IBusiness";
 
 const BusinessCard: React.FC<IBusinessCardProps> = ({ business }) => {
@@ -22,10 +22,10 @@ const BusinessCard: React.FC<IBusinessCardProps> = ({ business }) => {
                             <p>{business.name}</p>
                         </Link>
                     </div>
-                    <RatingDisplay
-                        rating={business.rating || null}
-                        starClass="starDisplaySmall"
-                    />
+                    {business.rating && <RatingDisplayBusSmall
+                        rating={business.rating}
+                        // starClass="starDisplaySmall"
+                    />}
                 </div>
             </div>
         </>

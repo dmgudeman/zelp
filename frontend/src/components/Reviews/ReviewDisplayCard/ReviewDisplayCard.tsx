@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
 import ReviewEdit from "../ReviewEdit/ReviewEdit";
-import DisplayRating from "../RatingDisplay/RatingDisplay";
+import DisplayRatingBusSmall from "../RatingDisplay/RatingDisplayBusSmall/RatingDisplayBusSmall";
 import { showEditReviewModal } from "../../../store/uiSlice";
 import type { IReviewDisplayCardProps } from "../../../Types/IComponents/IReviews";
 import type { RootState, AppDispatch } from "../../../store/store";
@@ -80,9 +80,9 @@ const ReviewDisplayCard: React.FC<IReviewDisplayCardProps> = ({ reviewId }) => {
                 <div id="bodyContainer">
                     <div id="bodyCell">
                         <div id="ratingDateContainer">
-                            <DisplayRating
+                            <DisplayRatingBusSmall
                                 rating={review.rating}
-                                starClass="starCard"
+                                // starClass="starCard"
                             />
                             <div id="reviewDate">
                                 {review.updatedAt
