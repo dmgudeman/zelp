@@ -1,18 +1,11 @@
-import React, { ChangeEvent, SyntheticEvent } from "react";
-import { useEffect, useState, useRef } from "react";
+import React, { ChangeEvent } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import RatingInputEdit from "../RatingInput/RatingInputEdit";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import { hideEditReviewModal } from "../../../store/uiSlice";
 import { updateReview } from "../../../store/reviewsSlice";
-import { getBusiness } from "../../../store/businessesSlice";
-
-import {
-    createReview,
-    fetchReviewsByBusiness,
-} from "../../../store/reviewsSlice";
 import { getCurrentUser } from "../../../store/sessionSlice";
 import type { IReviewEditProps } from "../../../Types/IComponents/IReviews";
 import type { AppDispatch } from "../../../store/store";
@@ -22,7 +15,6 @@ const useDispatch = () => _useDispatch<AppDispatch>();
 
 const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const session = useSelector(getCurrentUser);
     const currentUser = session?.user;
     const [userId, setUserId] = useState(currentUser?.id || null);
@@ -35,11 +27,7 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
     const [photo, setPhoto] = useState<File | null>(null); // this is file from userComputer
     const [formData, setFormData] = useState<FormData>(new FormData());
 
-    // const fileRef = useRef(null);
-    // const flag = formData.get("review[body]");
-
     useEffect(() => {
-        // dispatch(fetchReviewsByBusiness(business.id));
         setUserId(currentUser?.id || null);
         setRating(rating);
         setBody(body);
@@ -54,22 +42,12 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
         formData.set("review[body]", body || "");
     }, [body]);
 
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const { name, value } = e.target;
-    //     formData.set(`review[${name}]`, value);
-    //     setFormData(formData);
-    //     if (name === "rating") setRating(value);
-    //     if (name === "body") setBody(value);
-    // };
     const handleEditRatingChange: React.ChangeEventHandler<HTMLInputElement> = (
         e
     ) => {
-        console.log("IIIMMM  99999999");
         const { value } = e.target;
-        console.log("Rating", rating);
-        // formData.set(`review[rating]`, value);
+        formData.set(`review[rating]`, value);
         setRating(parseInt(value));
-        console.log("Rating", rating);
     };
 
     const handleReviewFormChange: React.ChangeEventHandler<
@@ -77,7 +55,6 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
     > = (e) => {
         const { value } = e.target;
         formData.set(`review[body]`, value);
-        // setFormData(formData);
         setBody(value);
     };
 
@@ -86,7 +63,6 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
         if (file) {
             formData.set("review[photo]", file);
             setPhoto(file);
-            // setFormData(formData);
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
             fileReader.onload = () => setPhotoUrl(fileReader.result as string);
@@ -109,15 +85,8 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
                 for (let pair of formData.entries()) {
                     console.log(pair[0] + ", " + pair[1]);
                 }
-
                 dispatch(updateReview({ reviewId: review.id, formData }));
-                // setFormData(null);
-                // setBody("");
-                // setRating(0);
-                // setPhotoUrl("");
-                // fileRef?.current?.value = null;
                 dispatch(hideEditReviewModal());
-                history.push(`/businesses/${busId}`);
             } catch (errors) {
                 console.error("dispatch redirect did not work");
             }
@@ -153,9 +122,6 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
                     <div id="photoContainerRE">
                         {preview}
                         <PhotoUpload
-                            // name="photo"
-                            // photoUrl={photoUrl}
-                            // setPhotoUrl={setPhotoUrl}
                             title="Change Photo"
                             handleChange={handleFile}
                         />

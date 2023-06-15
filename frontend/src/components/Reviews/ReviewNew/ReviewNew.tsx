@@ -1,7 +1,7 @@
-import React, { ChangeEvent, SyntheticEvent } from "react";
-import { useEffect, useState, useRef } from "react";
+import React, { ChangeEvent } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import RatingInputNew from "../RatingInput/RatingInputNew";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
@@ -10,13 +10,12 @@ import { createReview } from "../../../store/reviewsSlice";
 import { getCurrentUser } from "../../../store/sessionSlice";
 import "./ReviewNew.css";
 import type { IReviewNewProps } from "../../../Types/IComponents/IReviews";
-import type { AppDispatch } from "../../../store/store";
+import type { AppDispatch } from "../../../store/store"; 
 
 const useDispatch = () => _useDispatch<AppDispatch>();
 
 const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const session = useSelector(getCurrentUser);
     const currentUser = session?.user;
     const [userId, setUserId] = useState(currentUser?.id || null);
@@ -24,9 +23,9 @@ const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
     const [body, setBody] = useState<string | null>(null);
     const [rating, setRating] = useState<number | null>(0);
     // photoUrl is for preview
-    const [photoUrl, setPhotoUrl] = useState<string | null>(null);
+    const [photoUrl, setPhotoUrl] = useState<string | null>(null); // info from the review
     // photo is an actual file
-    const [photo, setPhoto] = useState<File | null>(null); // this is file from userComputer
+    const [photo, setPhoto] = useState<File | null>(null); // this is file from users Computer to provide to AWS S3
 
     useEffect(() => {
         setUserId(currentUser?.id || null);
@@ -40,9 +39,8 @@ const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
     const handleNewRatingChange: React.ChangeEventHandler<HTMLInputElement> = (
         e
     ) => {
-        console.log("IIIMMM  222222222");
         const { value } = e.target;
-        // formData.set(`review[rating]`, value);
+        formData.set(`review[rating]`, value);
         setRating(parseInt(value));
     };
 
@@ -75,16 +73,11 @@ const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
                 formData.set("review[rating]", rating?.toString() || "");
                 formData.set("review[body]", body || "");
 
-                for (let pair of formData.entries()) {
-                    console.log(pair[0] + ", " + pair[1]);
-                }
-
                 dispatch(createReview(formData));
                 setBody(null);
                 setRating(null);
                 setPhotoUrl(null);
                 dispatch(hideNewReviewModal());
-                // history.push(`/businesses/${business.id}`);
             } catch (errors) {
                 console.error("dispatch redirect did not work");
             }
