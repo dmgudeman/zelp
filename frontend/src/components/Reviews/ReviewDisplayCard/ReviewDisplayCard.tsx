@@ -92,7 +92,7 @@ const ReviewDisplayCard: React.FC<IReviewDisplayCardProps> = ({ reviewId }) => {
                         </div>
                         <div id="truncWidth">
                             {review && review.body && review.body.length > 80
-                                ? `${review.body.substring(0, 80)}...`
+                                ? `${review.body.substring(0, 60)}...`
                                 : review.body}
                         </div>
 

@@ -9,7 +9,7 @@ import "./BusinessShowDisplay.css";
 
 const BusinessShowDisplay : React.FC<IBusinessShowDisplayProps>  = ({ business }) => {
     let hoursArray = Object.entries(business.hours);
-  
+  console.log('business.rating', business)
     const [coords, setCoords] = useState(JSON.parse(business.latlng as string))
     useEffect(()=>{
         setCoords(JSON.parse(business.latlng as string))

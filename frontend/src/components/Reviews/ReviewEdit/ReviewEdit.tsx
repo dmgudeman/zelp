@@ -129,7 +129,7 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
                     <div className="reviewButton">
                         <button
                             type="submit"
-                            className="newReviewSubmit blueButton"
+                            className="submitRE blueButton"
                         >
                             Submit Review
                         </button>
