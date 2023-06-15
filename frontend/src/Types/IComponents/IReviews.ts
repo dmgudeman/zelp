@@ -13,13 +13,12 @@ export interface IReviewIndexProps {
 
 export interface IReviewNewProps {
     business: Business;
-    handleCloseReviewNew: () => void;
 }
 
 export interface IReviewEditProps {
     review: Review;
-    handleCloseReviewEdit: () => void;
 }
+
 export interface IReviewEditPayload {
     reviewId: number;
     formData: FormData;

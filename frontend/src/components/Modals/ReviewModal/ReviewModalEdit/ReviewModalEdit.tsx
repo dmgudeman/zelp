@@ -7,14 +7,9 @@ import "./ReviewModalEdit.css";
 
 function ReviewModalEdit() {
     const dispatch = useDispatch();
-    // const hideModalFlag = useSelector(
-    //     (state: RootState) => state.ui.hideEditReviewModal
-    // );
-    const review  = useSelector((state: RootState) => state.ui.review);
+   
+    const review = useSelector((state: RootState) => state.ui.review);
 
-    const handleClose = () => {
-        dispatch(hideEditReviewModal());
-    };
     const handleCloseReviewEdit = () => {
         dispatch(hideEditReviewModal());
     };
@@ -25,10 +20,10 @@ function ReviewModalEdit() {
             <div
                 id="modalBackgroundRF"
                 // className={`modalBackgroundRF ${hideModalFlag ? "hide" : ""}`}
-                className = "modalBackgroundRF"
+                className="modalBackgroundRF"
                 onClick={() => handleCloseReviewEdit()}
             >
-                { review && <ReviewEdit review={review} handleCloseReviewEdit={handleCloseReviewEdit} />}
+                {review && <ReviewEdit review={review} />}
             </div>
         </>
     );

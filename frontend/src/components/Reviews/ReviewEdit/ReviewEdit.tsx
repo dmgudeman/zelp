@@ -14,16 +14,13 @@ import {
     fetchReviewsByBusiness,
 } from "../../../store/reviewsSlice";
 import { getCurrentUser } from "../../../store/sessionSlice";
-import type { IReviewEditProps} from "../../../Types/IComponents/IReviews";
+import type { IReviewEditProps } from "../../../Types/IComponents/IReviews";
 import type { AppDispatch } from "../../../store/store";
 import "./ReviewEdit.css";
 
 const useDispatch = () => _useDispatch<AppDispatch>();
 
-const ReviewEdit: React.FC<IReviewEditProps> = ({
-    review,
-    handleCloseReviewEdit,
-}) => {
+const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const session = useSelector(getCurrentUser);
@@ -31,14 +28,14 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
     const [userId, setUserId] = useState(currentUser?.id || null);
     const [busId, setBusId] = useState<number>(review.businessId);
     const [body, setBody] = useState<string | "">(review.body);
-    const [rating, setRating] = useState<number | null >(review.rating);
+    const [rating, setRating] = useState<number | null>(review.rating);
     // photoUrl is for preview
     const [photoUrl, setPhotoUrl] = useState<string | "">(review.photoUrl);
     // photo is an actual file
     const [photo, setPhoto] = useState<File | null>(null); // this is file from userComputer
     const [formData, setFormData] = useState<FormData>(new FormData());
 
-    const fileRef = useRef(null);
+    // const fileRef = useRef(null);
     // const flag = formData.get("review[body]");
 
     useEffect(() => {
@@ -53,10 +50,9 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
         formData.set("review[rating]", rating?.toString() || "");
     }, [rating]);
     useEffect(() => {
-        console.log('body', body)
+        console.log("body", body);
         formData.set("review[body]", body || "");
     }, [body]);
-
 
     // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //     const { name, value } = e.target;
@@ -68,12 +64,12 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
     const handleEditRatingChange: React.ChangeEventHandler<HTMLInputElement> = (
         e
     ) => {
-        console.log('IIIMMM  99999999')
+        console.log("IIIMMM  99999999");
         const { value } = e.target;
-        console.log('Rating', rating)
+        console.log("Rating", rating);
         // formData.set(`review[rating]`, value);
         setRating(parseInt(value));
-        console.log('Rating', rating)
+        console.log("Rating", rating);
     };
 
     const handleReviewFormChange: React.ChangeEventHandler<
@@ -102,21 +98,19 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
         e.stopPropagation();
         if (currentUser && currentUser.id) {
             try {
-                
                 formData.set("review[author_id]", currentUser.id.toString());
                 formData.set("review[business_id]", (+busId || "").toString());
                 formData.set("review[rating]", rating?.toString() || "");
                 formData.set("review[body]", body || "");
                 if (photo) {
-                    formData.set("review[photo]", photo)
-                } 
+                    formData.set("review[photo]", photo);
+                }
 
                 for (let pair of formData.entries()) {
                     console.log(pair[0] + ", " + pair[1]);
                 }
 
-
-                dispatch(updateReview({reviewId: review.id, formData}));
+                dispatch(updateReview({ reviewId: review.id, formData }));
                 // setFormData(null);
                 // setBody("");
                 // setRating(0);

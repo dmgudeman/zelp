@@ -1,26 +1,20 @@
 import React, { ChangeEvent, SyntheticEvent } from "react";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import RatingInputNew from "../RatingInput/RatingInputNew";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
-import { getBusiness } from "../../../store/businessesSlice";
-
-import {
-    createReview,
-    fetchReviewsByBusiness,
-} from "../../../store/reviewsSlice";
+import { hideNewReviewModal } from "../../../store/uiSlice";
+import { createReview } from "../../../store/reviewsSlice";
 import { getCurrentUser } from "../../../store/sessionSlice";
 import "./ReviewNew.css";
 import type { IReviewNewProps } from "../../../Types/IComponents/IReviews";
 import type { AppDispatch } from "../../../store/store";
+
 const useDispatch = () => _useDispatch<AppDispatch>();
 
-const ReviewNew: React.FC<IReviewNewProps> = ({
-    business,
-    handleCloseReviewNew,
-}) => {
+const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const session = useSelector(getCurrentUser);
@@ -34,18 +28,19 @@ const ReviewNew: React.FC<IReviewNewProps> = ({
     // photo is an actual file
     const [photo, setPhoto] = useState<File | null>(null); // this is file from userComputer
 
-    const fileRef = useRef(null);
-
     useEffect(() => {
         setUserId(currentUser?.id || null);
     }, [currentUser]);
+    useEffect(() => {
+        formData.set("review[rating]", rating?.toString() || "");
+    }, [rating]);
 
     if (!business) <Redirect to="/home" />;
 
     const handleNewRatingChange: React.ChangeEventHandler<HTMLInputElement> = (
         e
     ) => {
-        console.log('IIIMMM  222222222')
+        console.log("IIIMMM  222222222");
         const { value } = e.target;
         // formData.set(`review[rating]`, value);
         setRating(parseInt(value));
@@ -87,7 +82,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({
                 setBody(null);
                 setRating(null);
                 setPhotoUrl(null);
-                handleCloseReviewNew();
+                hideNewReviewModal();
                 history.push(`/businesses/${business.id}`);
             } catch (errors) {
                 console.error("dispatch redirect did not work");

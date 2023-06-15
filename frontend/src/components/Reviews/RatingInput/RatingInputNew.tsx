@@ -1,6 +1,6 @@
 import React from 'react';
 // import type { IRatingInputProps } from "../../../Types/IComponents/IReviews"
-import "./RatingInput.css";
+import "./RatingInputNew.css";
 
 export interface IRatingInputProps {
     className: string;
@@ -16,7 +16,7 @@ const RatingInputNew : React.FC<IRatingInputProps> = ({ name, rating, handleNewR
     const ratingValue = rating || 0;
     return (
        
-        <div id="ratingContainerN" className="rating-input">
+        <div id="ratingContainer" className="rating-input">
             <label
                 htmlFor="radioButton1"
                 className={ratingValue >= 1 ? "colored-in-N" : "not-colored-in-N"}
@@ -84,7 +84,7 @@ const RatingInputNew : React.FC<IRatingInputProps> = ({ name, rating, handleNewR
 
             <label
                 htmlFor="radioButton5"
-                className={ratingValue >= 5 ? "colored-in-N" : "not-colored-in-N"}
+                className={ratingValue >= 5 ? "colored-in" : "not-colored-in-N"}
             >
                 {" "}
                 <i className="fa-solid fa-star star"></i>

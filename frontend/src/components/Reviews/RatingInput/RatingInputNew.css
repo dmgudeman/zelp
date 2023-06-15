@@ -9,13 +9,7 @@
     width: 100%;
    
 }
-.colored-in-N {
-    color: var(--two);
-}
 
-.not-colored-in-N {
-    color: gray;
-}
 
 #ratingContainerN input[type="radio"] {
     display: none;

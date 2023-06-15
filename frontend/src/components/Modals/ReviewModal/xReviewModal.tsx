@@ -10,9 +10,9 @@
 //     const dispatch = useDispatch();
 //     const hideModalFlag = useSelector((state: RootState) => state.ui.hideModalFlag);
 //     const reviewId = useSelector((state: RootState) => state.ui.reviewId);
-//     const hideModalNewReviewFlag = useSelector(
-//         (state: RootState) => state.ui.hideNewReviewModalFlag
-//     );
+//     // const hideModalNewReviewFlag = useSelector(
+//     //     (state: RootState) => state.ui.hideNewReviewModalFlag
+//     // );
 //     const businessId = useSelector((state: RootState) => state.ui.businessId);
 //     let content = null;
 
