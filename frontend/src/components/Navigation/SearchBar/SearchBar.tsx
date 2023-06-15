@@ -128,7 +128,6 @@ const SearchBar = () => {
             }));
         }
         setIsSearchDataUpdated(true);
-
         dispatch(fetchBusinessesSearch(searchData)).then(() => {
             history.push("/businesses");
         });

@@ -1,12 +1,38 @@
+import React from 'react';
 import { useState } from "react";
+import { useDispatch as _useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import {
+    fetchBusinessesSearch,
+} from "../../../../store/businessesSlice";
+import type { AppDispatch } from '../../../../store/store';
 import car1 from "../../../../assets/images/car1.jpeg";
 import "../../Caroursel/Carousel.css";
 
+
+const useDispatch = () => _useDispatch<AppDispatch>();
+
 const Splash1 = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [isLoaded, setIsLoaded] = useState(false);
+
+    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        console.log(' this is pressed')
+        e.preventDefault();
+        dispatch(fetchBusinessesSearch({
+            "tag": "Lawn Services",
+            "bus": "",
+            "add": ""
+        })).then(() => {
+            history.push("/businesses");
+        });
+
+    }
+    
     return (
         <>
-            <div className="businessShowContainer1">
+            <div className="businessShowContainer1" onClick={(e)=> handleClick(e)}>
                 <img
                     src={car1}
                     alt=""

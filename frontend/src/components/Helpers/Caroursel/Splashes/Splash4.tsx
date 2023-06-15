@@ -1,12 +1,36 @@
+import React from 'react';
 import { useState } from "react";
+import { useDispatch as _useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import {
+    fetchBusinessesSearch,
+} from "../../../../store/businessesSlice";
+import type { AppDispatch } from '../../../../store/store';
 import car4 from "../../../../assets/images/car4.jpeg";
 import "../../Caroursel/Carousel.css";
 
+const useDispatch = () => _useDispatch<AppDispatch>();
+
 const Splash4 = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [isLoaded, setIsLoaded] = useState(false);
+
+    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        console.log(' this is pressed')
+        e.preventDefault();
+        dispatch(fetchBusinessesSearch({
+            "tag": "Restaurant",
+            "bus": "",
+            "add": ""
+        })).then(() => {
+            history.push("/businesses");
+        });
+
+    }
     return (
         <>
-            <div id="businessShowContainer1">
+            <div id="businessShowContainer1" onClick={(e)=> handleClick(e)}>
                 <img
                     src={car4}
                     alt=""
@@ -29,7 +53,7 @@ const Splash4 = () => {
                             zIndex: -1,
                         }}
                     >
-                        <div className="carTitle44">Cuisine Type</div>
+                        <div className="carTitle44">Fine Cuisine</div>
                         <div className="carTitleSpace"></div>
                         <div className="carTitle1">Eat Well</div>
                         <div className="carTitleSpace"></div>

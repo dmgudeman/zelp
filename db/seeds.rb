@@ -300,6 +300,100 @@ ApplicationRecord.transaction do
     hours: { "Mon": { "time": '8:00 AM - 5:00 PM' }, "Tue": { "time": '8:00 AM - 5:00 PM' }, "Wed": { "time": '8:00 AM - 5:00 PM' },
              "Thu": { "time": '8:00 AM - 5:00 PM' }, "Fri": { "time": '8:00 AM - 5:00 PM' }, "Sat": { "time": 'Closed' }, "Sun": { "time": 'Closed' } }
   )
+  Business.create!(
+    name: 'Bay Area Lawn Care',
+    address: '250 Kearny Street, San Francisco, CA 94108',
+    phone: '(415) 555-1234',
+    website: 'https://www.bayarealawncare.com/',
+    cost: '$$$',
+    rating: 3,
+    latlng: make_coord('37.7903, -122.4036'),
+    hours: {
+      "Mon": { "time": '8:00 AM - 5:00 PM' },
+      "Tue": { "time": '8:00 AM - 5:00 PM' },
+      "Wed": { "time": '8:00 AM - 5:00 PM' },
+      "Thu": { "time": '8:00 AM - 5:00 PM' },
+      "Fri": { "time": '8:00 AM - 5:00 PM' },
+      "Sat": { "time": 'Closed' },
+      "Sun": { "time": 'Closed' }
+    }
+  )
+
+  Business.create!(
+    name: 'Golden Gate Greenery',
+    address: '401 Van Ness Ave, San Francisco, CA 94102',
+    phone: '(415) 555-5678',
+    website: 'https://www.goldengategreenery.com/',
+    cost: '$$$',
+    rating: 4,
+    latlng: make_coord('37.7792, -122.4191'),
+    hours: {
+      "Mon": { "time": '8:00 AM - 5:00 PM' },
+      "Tue": { "time": '8:00 AM - 5:00 PM' },
+      "Wed": { "time": '8:00 AM - 5:00 PM' },
+      "Thu": { "time": '8:00 AM - 5:00 PM' },
+      "Fri": { "time": '8:00 AM - 5:00 PM' },
+      "Sat": { "time": 'Closed' },
+      "Sun": { "time": 'Closed' }
+    }
+  )
+
+  Business.create!(
+    name: 'Citywide Lawn and Landscape',
+    address: '3281 22nd Street, San Francisco, CA 94110',
+    phone: '(415) 555-9012',
+    website: 'https://www.citywidelawn.com/',
+    cost: '$$',
+    rating: 5,
+    latlng: make_coord('37.7556, -122.4189'),
+    hours: {
+      "Mon": { "time": '8:00 AM - 5:00 PM' },
+      "Tue": { "time": '8:00 AM - 5:00 PM' },
+      "Wed": { "time": '8:00 AM - 5:00 PM' },
+      "Thu": { "time": '8:00 AM - 5:00 PM' },
+      "Fri": { "time": '8:00 AM - 5:00 PM' },
+      "Sat": { "time": '8:00 AM - 5:00 PM' },
+      "Sun": { "time": 'Closed' }
+    }
+  )
+
+  Business.create!(
+    name: 'SF Lawn Leaders',
+    address: '2237 Lombard Street, San Francisco, CA 94123',
+    phone: '(415) 555-3456',
+    website: 'https://www.sflawnleaders.com/',
+    cost: '$$$',
+    rating: 3,
+    latlng: make_coord('37.8002, -122.4382'),
+    hours: {
+      "Mon": { "time": '8:00 AM - 5:00 PM' },
+      "Tue": { "time": '8:00 AM - 5:00 PM' },
+      "Wed": { "time": '8:00 AM - 5:00 PM' },
+      "Thu": { "time": '8:00 AM - 5:00 PM' },
+      "Fri": { "time": '8:00 AM - 5:00 PM' },
+      "Sat": { "time": 'Closed' },
+      "Sun": { "time": 'Closed' }
+    }
+  )
+
+  Business.create!(
+    name: 'Presidio Lawn Pros',
+    address: '100 Montgomery Street, San Francisco, CA 94129',
+    phone: '(415) 555-7890',
+    website: 'https://www.presidiolawnpros.com/',
+    cost: '$$$',
+    rating: 4,
+    latlng: make_coord('37.8013, -122.4580'),
+    hours: {
+      "Mon": { "time": '8:00 AM - 5:00 PM' },
+      "Tue": { "time": '8:00 AM - 5:00 PM' },
+      "Wed": { "time": '8:00 AM - 5:00 PM' },
+      "Thu": { "time": '8:00 AM - 5:00 PM' },
+      "Fri": { "time": '8:00 AM - 5:00 PM' },
+      "Sat": { "time": '8:00 AM - 5:00 PM' },
+      "Sun": { "time": 'Closed' }
+    }
+  )
 
   puts 'Done with Businesses'
   # 10.times do
@@ -434,19 +528,41 @@ def preprocessName(name)
   modName.gsub("'", '__')
 end
 
+# this checks to see if the photos exist in the AWS s3 bucket
+def url_exists?(url_string)
+  url = URI.parse(url_string)
+  req = Net::HTTP.new(url.host, url.port)
+  req.use_ssl = (url.scheme == 'https')
+  path = url.path unless url.path.empty?
+  res = req.request_head(path || '/')
+  if res.is_a?(Net::HTTPRedirection)
+    url_exists?(res['location']) # Go after any redirect and make sure you can access the redirected URL
+  else
+    !%w[4 5].include?(res.code[0]) # Not from 4xx or 5xx families
+  end
+rescue Errno::ENOENT, SocketError, Errno::ECONNREFUSED, URI::InvalidURIError
+  false # false if URL is invalid or it can't be reached
+end
+
+# this gets the photos from the s3 bucket if existant and attaches them
 Business.all.each do |bus|
   business = Business.find_by(name: bus.name)
   (1..5).each do |i|
     next unless business.images
 
-    begin
-      business.images.attach(
-        io: URI.open("https://zelp99-seeds.s3.us-west-1.amazonaws.com/#{preprocessName(business.name)}_a#{i}.jpeg"),
-        filename: "#{preprocessName(business.name)}_a#{i}.jpeg"
-      )
-      puts "Attached photo for #{business.name} (#{i})"
-    rescue StandardError => e
-      puts "Error attaching photo for #{business.name} (#{i}): #{e.message}"
+    url = "https://zelp99-seeds.s3.us-west-1.amazonaws.com/#{preprocessName(business.name)}_a#{i}.jpeg"
+    if url_exists?(url)
+      begin
+        business.images.attach(
+          io: URI.open(url),
+          filename: "#{preprocessName(business.name)}_a#{i}.jpeg"
+        )
+        puts "Attached photo for #{business.name} (#{i})"
+      rescue StandardError => e
+        puts "Error attaching photo for #{business.name} (#{i}): #{e.message}"
+      end
+    else
+      puts "No image file for #{business.name} (#{i})"
     end
   end
 end
@@ -457,10 +573,11 @@ puts 'creating tags...'
 
 tags = [
   'Appliances',
-  'Gardening',
+  'Gardening Supplies',
+  'Gardening Services',
   'Grocery',
   'Hardware',
-  'Lawn Service',
+  'Lawn Services',
   'Lumber',
   'Plumbing Services',
   'Plumbing Supplies',
@@ -517,12 +634,12 @@ all_tags = [
   ['Nijiya Market', 'Grocery'],
   ['The Home Depot', 'Lumber'],
   ['The Home Depot', 'Appliances'],
-  ['The Home Depot', 'Gardening'],
+  ['The Home Depot', 'Gardening Supplies'],
   ['The Home Depot', 'Plumbing Supplies'],
   ['The Home Depot', 'Hardware'],
   ['Lowes', 'Lumber'],
   ['Lowes', 'Appliances'],
-  ['Lowes', 'Gardening'],
+  ['Lowes', 'Gardening Supplies'],
   ['Lowes', 'Plumbing Supplies'],
   ['Lowes', 'Hardware'],
   ['Restoration Hardware', 'Furnishings'],
@@ -532,7 +649,17 @@ all_tags = [
   ['Asian Box', 'Restaurant'],
   ['Asian Box', 'Asian Cuisine'],
   ['Advanced Plumbing', 'Plumbing Services'],
-  ['Advanced Plumbing', 'Services']
+  ['Advanced Plumbing', 'Services'],
+  ['Golden Gate Greenery', 'Lawn Services'],
+  ['Golden Gate Greenery', 'Gardening Services'],
+  ['SF Lawn Leaders', 'Lawn Services'],
+  ['SF Lawn Leaders', 'Gardening Services'],
+  ['Citywide Lawn and Landscape', 'Lawn Services'],
+  ['Citywide Lawn and Landscape', 'Gardening Services'],
+  ['Presidio Lawn Pros', 'Lawn Services'],
+  ['Presidio Lawn Pros', 'Gardening Services'],
+  ['Bay Area Lawn Care', 'Lawn Services'],
+  ['Bay Area Lawn Care', 'Gardening Services']
 
 ]
 

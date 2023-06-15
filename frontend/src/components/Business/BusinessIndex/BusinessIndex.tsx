@@ -19,11 +19,11 @@ const BusinessIndex = () => {
                 <NavBar showFlag={true} />
                 <div id="bannerContainer">
                     <BannerBackground businesses={businesses} />
-                    <div className="containerCAR1">
-                        <div className="carTitle1 greenText">
+                    <div className="bannerTextBI">
+                        <div className=" greenText">
                             Review A Business
                         </div>
-                        <div className="carTitle1 greenText">
+                        <div className="greenText">
                             Of Your Choice
                         </div>
                     </div>
