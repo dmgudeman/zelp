@@ -10,7 +10,7 @@ import { RootState } from "./store";
 import { IReviewEditPayload } from '../Types/IComponents/IReviews';
 
 export const getReview =
-    (reviewId: string) =>
+    (reviewId: number) =>
     (state: RootState): Review | undefined => {
         return state.reviews[reviewId];
     };

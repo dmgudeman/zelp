@@ -67,7 +67,7 @@ const ReviewsIndex: React.FC<IReviewIndexProps> = ({ business }) => {
                             if (idx < cardTotal) {
                                 return (
                                     <ReviewDisplayCard
-                                        review={review}
+                                        reviewId={review.id}
                                         key={review.id}
                                     />
                                 );

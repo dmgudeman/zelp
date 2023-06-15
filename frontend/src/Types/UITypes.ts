@@ -6,8 +6,8 @@ export interface UIState {
     modalFlag: string | null;
     showSignup: boolean;
     showLogin: boolean;
-    hideNewReviewModal: boolean;
-    hideEditReviewModal: boolean;
+    // hideNewReviewModal: boolean;
+    // hideEditReviewModal: boolean;
     business: Business| null;
     review: Review | null;
   }

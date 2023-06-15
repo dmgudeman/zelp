@@ -9,9 +9,9 @@ import "./ReviewModalNew.css";
 function ReviewModalNew() {
     const dispatch = useDispatch();
   
-    const hideModalNewReviewFlag = useSelector(
-        (state: RootState) => state.ui.hideNewReviewModal
-    );
+    // const hideModalNewReviewFlag = useSelector(
+    //     (state: RootState) => state.ui.hideNewReviewModal
+    // );
     const business = useSelector((state: RootState) => state.ui.business as Business);
 
     const handleClose = () => {

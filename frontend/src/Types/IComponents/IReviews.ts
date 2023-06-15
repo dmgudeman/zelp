@@ -39,7 +39,7 @@ export interface IPhotoUploadProps {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export interface IReviewDisplayCardProps {
-    review: Review;
+    reviewId: number;
 }
 export interface IReviewSubmitProps {
     submitHandler: (e: React.FormEvent<HTMLFormElement>) => void;

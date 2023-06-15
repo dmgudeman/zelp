@@ -7,9 +7,9 @@ import "./ReviewModalEdit.css";
 
 function ReviewModalEdit() {
     const dispatch = useDispatch();
-    const hideModalFlag = useSelector(
-        (state: RootState) => state.ui.hideEditReviewModal
-    );
+    // const hideModalFlag = useSelector(
+    //     (state: RootState) => state.ui.hideEditReviewModal
+    // );
     const review  = useSelector((state: RootState) => state.ui.review);
 
     const handleClose = () => {

@@ -7,8 +7,8 @@ const initialState: UIState = {
     modalFlag: null,
     showSignup: false,
     showLogin: false,
-    hideNewReviewModal: true,
-    hideEditReviewModal: true,
+    // hideNewReviewModal: true,
+    // hideEditReviewModal: true,
     business: null,
     review: null,
   };

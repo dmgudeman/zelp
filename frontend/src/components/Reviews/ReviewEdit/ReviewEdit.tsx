@@ -49,6 +49,14 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
         setPhoto(photo);
     }, [currentUser]);
 
+    useEffect(() => {
+        formData.set("review[rating]", rating?.toString() || "");
+    }, [rating]);
+    useEffect(() => {
+        console.log('body', body)
+        formData.set("review[body]", body || "");
+    }, [body]);
+
 
     // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //     const { name, value } = e.target;
@@ -98,6 +106,7 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
                 formData.set("review[author_id]", currentUser.id.toString());
                 formData.set("review[business_id]", (+busId || "").toString());
                 formData.set("review[rating]", rating?.toString() || "");
+                formData.set("review[body]", body || "");
                 if (photo) {
                     formData.set("review[photo]", photo)
                 } 
