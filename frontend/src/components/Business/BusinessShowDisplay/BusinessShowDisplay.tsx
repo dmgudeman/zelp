@@ -1,16 +1,18 @@
+import React from 'react';
 import {useState, useEffect} from 'react';
 import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
 import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
 import DisplayHours from "../../Helpers/DisplayHours/DisplayHours";
+import type { IBusinessShowDisplayProps } from '../../../Types/IComponents/IBusiness';
 import "./BusinessShowDisplay.css";
 
 
-const BusinessShowDisplay = ({ business }) => {
+const BusinessShowDisplay : React.FC<IBusinessShowDisplayProps>  = ({ business }) => {
     let hoursArray = Object.entries(business.hours);
   
-    const [coords, setCoords] = useState(JSON.parse(business.latlng))
+    const [coords, setCoords] = useState(JSON.parse(business.latlng as string))
     useEffect(()=>{
-        setCoords(JSON.parse(business.latlng))
+        setCoords(JSON.parse(business.latlng as string))
     },[business])
    
     if (!business) return null;
@@ -20,7 +22,7 @@ const BusinessShowDisplay = ({ business }) => {
                 <div id="BSDLgutter"></div>
                 <div id="BSDCenter">
                     <div id="InfoContainer">
-                        <RatingDisplay starClass="starDisplay" />
+                        <RatingDisplay rating={business.rating} starClass="starDisplay" />
                         <div className="displayText" id="div1">
                             {business.cost}
                         </div>

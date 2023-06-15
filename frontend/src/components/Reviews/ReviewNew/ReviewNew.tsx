@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import ReviewForm from "../ReviewForm/ReviewForm";
-import RatingInput from "../RatingInput/RatingInput";
+import RatingInputNew from "../RatingInput/RatingInputNew";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import { getBusiness } from "../../../store/businessesSlice";
 
@@ -109,7 +109,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({
                         Leave a Rating, a Review and attach photos if you would
                         like
                     </h1>
-                    <RatingInput
+                    <RatingInputNew
                         className="ratingReview"
                         name="rating"
                         value={rating}

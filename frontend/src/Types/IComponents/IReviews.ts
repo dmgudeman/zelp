@@ -46,6 +46,6 @@ export interface IReviewSubmitProps {
 }
 
 export interface IDisplayRatingProps {
-    rating: number;
+    rating: number | null;
     starClass: string;
 }

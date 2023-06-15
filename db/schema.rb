@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_06_175957) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_221623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_06_175957) do
     t.datetime "updated_at", null: false
     t.json "hours"
     t.json "latlng", default: "(37.7879,m -122.4075)"
+    t.integer "rating"
     t.index ["name"], name: "index_businesses_on_name", unique: true
   end
 
@@ -89,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_06_175957) do
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.string "full_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

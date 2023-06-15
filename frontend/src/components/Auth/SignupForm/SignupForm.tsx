@@ -1,21 +1,26 @@
-import { useState } from "react";
 
+import React from 'react';
+import { useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch as _useDispatch, useSelector} from "react-redux";
 import { signup } from "../../../store/sessionSlice";
 import Navigation from "../../Navigation/NavBar/NavBar";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
 import { showLoginModal, hideSignupModal} from "../../../store/uiSlice";
+import { RootState, AppDispatch } from '../../../store/store';
 import "./SignupForm.css";
 
-const SignupForm = (props) => {
+const useDispatch = () => _useDispatch<AppDispatch>();
+
+const SignupForm = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
+    const sessionUser = useSelector((state: RootState) => state.session.user);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [errors, setErrors] = useState([]);
+    const [fullName, setFullName] = useState("");
+    const [errors, setErrors] = useState<string[]>([]);
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -24,14 +29,14 @@ const SignupForm = (props) => {
         dispatch(showLoginModal())
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
         setErrors([]);
 
         if (confirmPassword !== password) {
             setErrors(["passwords do not match"]);
         } else {
-            return dispatch(signup({ username, password, email })).catch(
+            return dispatch(signup({ username, password, email, fullName })).catch(
                 async (res) => {
                     let data;
                     try {

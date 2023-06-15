@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "./store/sessionSlice";
 import { Route, Switch } from "react-router-dom";
-import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
+import PrivateRouteTypescript from "./components/Auth/PrivateRoute/PrivateRouteTypescript";
 import LoginFormPage from "./components/Auth/LoginForm/LoginForm";
 import SignupFormPage from "./components/Auth/SignupForm/SignupForm";
 import Home from "./components/Home/Home";
@@ -14,8 +14,8 @@ import ReviewModalNew from "./components/Modals/ReviewModal/ReviewModalNew/Revie
 import ReviewModalEdit from "./components/Modals/ReviewModal/ReviewModalEdit/ReviewModalEdit";
 
 function App() {
-    const isLoggedIn = useSelector(getCurrentUser);
- 
+    const sessionState = useSelector(getCurrentUser);
+    const isLoggedIn = sessionState !== null;
     return (
         <>
             <ReviewModalNew />
@@ -24,22 +24,22 @@ function App() {
             <Switch>
                 <Route path="/login" component={LoginFormPage} />
                 <Route path="/signup" component={SignupFormPage} />
-                <PrivateRoute
+                <PrivateRouteTypescript
                     path="/businesses/:busId"
                     component={BusinessShow}
                     isLoggedIn={isLoggedIn}
                 />
-                <PrivateRoute
+                <PrivateRouteTypescript
                     path="/businesses"
                     component={BusinessIndex}
                     isLoggedIn={isLoggedIn}
                 />
-                <PrivateRoute
+                <PrivateRouteTypescript
                     path="/reviewNew/:busId"
                     component={ReviewNew}
                     isLoggedIn={isLoggedIn}
                 />
-                <PrivateRoute
+                <PrivateRouteTypescript
                     path="/reviewEdit/:reviewId"
                     component={ReviewEdit}
                     isLoggedIn={isLoggedIn}

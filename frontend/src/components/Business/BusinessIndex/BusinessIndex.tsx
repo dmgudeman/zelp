@@ -1,12 +1,14 @@
+import React from 'react';
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getBusinesses } from "../../../store/businessesSlice";
 import BusinessIndexDisplay from "../BusinessIndexDisplay/BusinessIndexDisplay";
 import NavBar from "../../Navigation/NavBar/NavBar";
+import type { IBackgroundBannerProps } from '../../../Types/IComponents/IBusiness';
 import SearchBar from "../../Navigation/SearchBar/SearchBar";
 import "./BusinessIndex.css";
 
-const BusinessIndex = (props) => {
+const BusinessIndex = () => {
     let businesses = useSelector(getBusinesses);
 
     const [cardTotal, setCardTotal] = useState(6);
@@ -17,7 +19,7 @@ const BusinessIndex = (props) => {
                 <NavBar showFlag={true} />
                 <div id="bannerContainer">
                     <BannerBackground businesses={businesses} />
-                    <div classNmae="containerCAR1">
+                    <div className="containerCAR1">
                         <div className="carTitle1 greenText">
                             Review A Business
                         </div>
@@ -40,7 +42,9 @@ const BusinessIndex = (props) => {
 
 export default BusinessIndex;
 
-const BannerBackground = ({ businesses }) => {
+
+
+const BannerBackground: React.FC<IBackgroundBannerProps> = ({ businesses }) => {
     const imgUrl = businesses[0]?.imageUrls
         ? businesses[0].imageUrls[0]
         : "https://zelp99-seeds.s3.us-west-1.amazonaws.com/Sprouts_a1.jpeg";

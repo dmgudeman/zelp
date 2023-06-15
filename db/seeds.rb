@@ -25,105 +25,105 @@ ApplicationRecord.transaction do
     username: 'Demo-lition',
     email: 'demo@user.io',
     password: 'password',
-    name: 'Steve Garvey'
+    full_name: 'Steve Garvey'
   )
 
   User.create!(
     username: 'RubyFan',
     email: 'rubyfan@example.com',
     password: 'password',
-    name: 'Emma Lee'
+    full_name: 'Emma Lee'
   )
 
   User.create!(
     username: 'CodeWizard',
     email: 'codewizard@example.com',
     password: 'password',
-    name: 'Maxwell Wong'
+    full_name: 'Maxwell Wong'
   )
 
   User.create!(
     username: 'JavaScripter',
     email: 'javascripter@example.com',
     password: 'password',
-    name: 'Lucy Chen'
+    full_name: 'Lucy Chen'
   )
 
   User.create!(
     username: 'RailsGuru',
     email: 'railsguru@example.com',
     password: 'password',
-    name: 'John Smith'
+    full_name: 'John Smith'
   )
 
   User.create!(
     username: 'DesignQueen',
     email: 'designqueen@example.com',
     password: 'password',
-    name: 'Mia Johnson'
+    full_name: 'Mia Johnson'
   )
 
   User.create!(
     username: 'FrontendDev',
     email: 'frontenddev@example.com',
     password: 'password',
-    name: 'Aiden Chen'
+    full_name: 'Aiden Chen'
   )
 
   User.create!(
     username: 'BackendDev',
     email: 'backenddev@example.com',
     password: 'password',
-    name: 'Leah Brown'
+    full_name: 'Leah Brown'
   )
 
   User.create!(
     username: 'Pythonista',
     email: 'pythonista@example.com',
     password: 'password',
-    name: 'Oliver Davis'
+    full_name: 'Oliver Davis'
   )
 
   User.create!(
     username: 'NodeNinja',
     email: 'nodeninja@example.com',
     password: 'password',
-    name: 'Ella Lee'
+    full_name: 'Ella Lee'
   )
 
   User.create!(
     username: 'ReactLover',
     email: 'reactlover@example.com',
     password: 'password',
-    name: 'Andrew Kim'
+    full_name: 'Andrew Kim'
   )
 
   User.create!(
     username: 'VueFan',
     email: 'vuefan@example.com',
     password: 'password',
-    name: 'Sophie Wang'
+    full_name: 'Sophie Wang'
   )
 
   User.create!(
     username: 'FullStackDev',
     email: 'fullstackdev@example.com',
     password: 'password',
-    name: 'Ryan Lee'
+    full_name: 'Ryan Lee'
   )
 
   User.create!(
     username: 'JavaDeveloper',
     email: 'javaddeveloper@example.com',
     password: 'password',
-    name: 'Grace Chen'
+    full_name: 'Grace Chen'
   )
 
   User.create!(
     username: 'PHPPro',
     email: 'phppro@example.com',
     password: 'password',
-    name: 'Daniel Kim'
+    full_name: 'Daniel Kim'
   )
 
   # More users
@@ -159,6 +159,7 @@ ApplicationRecord.transaction do
     phone: '(415) 325-1091',
     website: 'https://www.sprouts.com',
     cost: '$$',
+    rating: 4,
     latlng: make_coord('37.66899405144818, -122.46662690296195'),
     hours: { "Mon": { "time": '7:00 AM - 10:00 PM' }, "Tue": { "time": '7:00 AM - 10:00 PM' },
              "Wed": { "time": '7:00 AM - 10:00 PM' }, "Thu": { "time": '7:00 AM - 10:00 PM' }, "Fri": { "time": '7:00 AM - 10:00 PM' }, "Sat": { "time": '7:00 AM - 10:00 PM' }, "Sun": { "time": '7:00 AM - 10:00 PM' } }
@@ -170,6 +171,7 @@ ApplicationRecord.transaction do
     phone: '(415) 861-7660',
     website: 'http://safeway.com',
     cost: '$$',
+    rating: 4,
     latlng: make_coord('37.726793002132965, -122.4762884452887'),
     hours: { "Mon": { "time": '6:00 AM - 9:00 PM' }, "Tue": { "time": '6:00 AM - 9:00 PM' }, "Wed": { "time": '6:00 AM - 9:00 PM' },
              "Thu": { "time": '6:00 AM - 9:00 PM' }, "Fri": { "time": '6:00 AM - 9:00 PM' }, "Sat": { "time": '6:00 AM - 9:00 PM' }, "Sun": { "time": '6:00 AM - 9:00 PM' } }
@@ -181,6 +183,7 @@ ApplicationRecord.transaction do
     phone: '(415) 346-9964',
     website: 'http://www.traderjoes.com',
     cost: '$$',
+    rating: 5,
     latlng: make_coord('37.72695423288699, -122.47623480111044'),
     hours: { "Mon": { "time": '8:00 AM - 9:00 PM' }, "Tue": { "time": '8:00 AM - 9:00 PM' }, "Wed": { "time": '8:00 AM - 9:00 PM' },
              "Thu": { "time": '8:00 AM - 9:00 PM' }, "Fri": { "time": '8:00 AM - 9:00 PM' }, "Sat": { "time": '8:00 AM - 9:00 PM' }, "Sun": { "time": '8:00 AM - 9:00 PM' } }
@@ -192,6 +195,7 @@ ApplicationRecord.transaction do
     phone: '(408) 374-5065',
     website: 'https://www.luckysupermarkets.com/',
     cost: '$$',
+    rating: 4,
     latlng: make_coord('37.287455950172295, -121.95481244340749'),
     hours: { "Mon": { "time": '6:00 AM - 12:00 AM' }, "Tue": { "time": '6:00 AM - 12:00 AM' },
              "Wed": { "time": '6:00 AM - 12:00 AM' }, "Thu": { "time": '6:00 AM - 12:00 AM' }, "Fri": { "time": '6:00 AM - 12:00 AM' }, "Sat": { "time": '6:00 AM - 12:00 AM' }, "Sun": { "time": '6:00 AM - 12:00 AM' } }
@@ -203,6 +207,7 @@ ApplicationRecord.transaction do
     phone: '(415) 563-1901',
     website: 'https://www.nijiya.com/',
     cost: '$$$',
+    rating: 4,
     latlng: make_coord('37.78472936082476, -122.42987330310264'),
     hours: { "Mon": { "time": '9:00 AM - 9:00 PM' }, "Tue": { "time": '9:00 AM - 9:00 PM' },
              "Wed": { "time": '9:00 AM - 9:00 PM' }, "Thu": { "time": '9:00 AM - 9:00 PM' }, "Fri": { "time": '9:00 AM - 9:00 PM' }, "Sat": { "time": '9:00 AM - 9:00 PM' }, "Sun": { "time": '9:00 AM - 9:00 PM' } }
@@ -214,6 +219,7 @@ ApplicationRecord.transaction do
     phone: '(650) 755-0178',
     website: 'https://www.homedepot.com',
     cost: '$$',
+    rating: 4,
     latlng: make_coord('37.69900782936481, -122.48302795878271'),
     hours: { "Mon": { "time": '6:00 AM - 10:00 PM' }, "Tue": { "time": '6:00 AM - 10:00 PM' }, "Wed": { "time": '6:00 AM - 10:00 PM' },
              "Thu": { "time": '6:00 AM - 10:00 PM' }, "Fri": { "time": '6:00 AM - 10:00 PM' }, "Sat": { "time": '6:00 AM - 10:00 PM' }, "Sun": { "time": '7:00 AM - 8:00 PM' } }
@@ -225,6 +231,7 @@ ApplicationRecord.transaction do
     phone: '(559) 739-7195',
     website: 'https://www.lowes.com',
     cost: '$$',
+    rating: 4,
     latlng: make_coord('36.31240681985834, -119.31515220293288'),
     hours: { "Mon": { "time": '6:00 AM - 9:00 PM' }, "Tue": { "time": '6:00 AM - 9:00 PM' },
              "Wed": { "time": '6:00 AM - 9:00 PM' }, "Thu": { "time": '6:00 AM - 9:00 PM' },
@@ -238,6 +245,7 @@ ApplicationRecord.transaction do
     phone: '(310) 652-0323',
     website: 'https://www.restorationhardware.com',
     cost: '$$$',
+    rating: 3,
     latlng: make_coord('34.07659670841554, -118.37635411303434'),
     hours: {
       "Mon": { "time": '10:00 AM - 7:00 PM' },
@@ -256,6 +264,7 @@ ApplicationRecord.transaction do
     phone: '(415) 648-0406',
     website: 'https://www.olivegarden.com',
     cost: '$$',
+    rating: 3,
     latlng: make_coord('37.72701908211721, -122.40307634149791'),
     hours: { "Mon": { "time": '11:00 AM - 10:00 PM' }, "Tue": { "time": '11:00 AM - 10:00 PM' },
              "Wed": { "time": '11:00 AM - 10:00 PM' }, "Thu": { "time": '11:00 AM - 10:00 PM' }, "Fri": { "time": '11:00 AM - 11:00 PM' }, "Sat": { "time": '11:00 AM - 11:00 PM' }, "Sun": { "time": '11:00 AM - 10:00 PM' } }
@@ -267,6 +276,7 @@ ApplicationRecord.transaction do
     phone: '(650) 391-9305',
     website: 'https://www.asianbox.com/',
     cost: '$$',
+    rating: 4,
     latlng: make_coord('37.442046, -122.161495'),
     hours: {
       "Mon": { "time": '11:00 AM - 9:00 PM' },
@@ -285,6 +295,7 @@ ApplicationRecord.transaction do
     phone: '(415) 555-1234',
     website: 'http://www.advancedplumbing.com',
     cost: '$$$',
+    rating: 5,
     latlng: make_coord('37.7749, -122.4194'),
     hours: { "Mon": { "time": '8:00 AM - 5:00 PM' }, "Tue": { "time": '8:00 AM - 5:00 PM' }, "Wed": { "time": '8:00 AM - 5:00 PM' },
              "Thu": { "time": '8:00 AM - 5:00 PM' }, "Fri": { "time": '8:00 AM - 5:00 PM' }, "Sat": { "time": 'Closed' }, "Sun": { "time": 'Closed' } }

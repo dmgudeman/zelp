@@ -26,11 +26,12 @@
     height: 100vh;
 }
 
-#ratingReview {
+#ratingReviewN {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-left: 50px;
+    background-color: blueviolet;
 }
 .title {
     background-color: transparent;

@@ -16,3 +16,7 @@
     transform: scale(3);
     margin: 25px;
 }
+
+.starDisplaySmall {
+    transform: scale(1)
+;}

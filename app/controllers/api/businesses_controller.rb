@@ -8,13 +8,11 @@ class Api::BusinessesController < ApplicationController
                     Business.all
                   end
 
-     if params[:bus]
-    @businesses = @businesses.where('name LIKE ?', "%#{params[:bus]}%") 
-     end
+    @businesses = @businesses.where('name LIKE ?', "%#{params[:bus]}%") if params[:bus]
 
-if params[:add]
+    return unless params[:add]
+
     @businesses = @businesses.where('address LIKE ?', "%#{params[:add]}%")
-end
   end
 
   def show
@@ -27,7 +25,7 @@ end
   private
 
   def business_params
-    params.require(:business).permit(:name, :reviews, :address, :phone, :website, :cost, :latlng, :hours, :bus, :add,
+    params.require(:business).permit(:name, :reviews, :address, :phone, :website, :cost, :rating, :latlng, :hours, :bus, :add,
                                      :tag, images: [])
   end
 end

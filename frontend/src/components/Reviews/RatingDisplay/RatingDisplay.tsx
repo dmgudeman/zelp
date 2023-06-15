@@ -3,6 +3,7 @@ import type { IDisplayRatingProps } from "../../../Types/IComponents/IReviews";
 import "./RatingDisplay.css";
 
 const DisplayRating: React.FC<IDisplayRatingProps> = ({rating, starClass}) => {
+    if( rating === null) rating = 0;
     return (
         <>
             <div className="ratingsContainer">

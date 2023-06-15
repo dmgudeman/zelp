@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import ReviewForm from "../ReviewForm/ReviewForm";
-import RatingInput from "../RatingInput/RatingInput";
+import RatingInputEdit from "../RatingInput/RatingInputEdit";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import { hideEditReviewModal } from "../../../store/uiSlice";
 import { updateReview } from "../../../store/reviewsSlice";
@@ -132,7 +132,7 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({
                 <form id="formRE" onSubmit={submitHandler}>
                     <h2 id="titleBigRE">Edit Your Review</h2>
                     <div id="ratingContainerRE">
-                        <RatingInput
+                        <RatingInputEdit
                             className="ratingReview"
                             name="rating"
                             value={rating}

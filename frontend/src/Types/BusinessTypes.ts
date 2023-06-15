@@ -6,7 +6,8 @@ export interface Business {
     hours: WeekHours;
     id: number;
     imageUrls: string[] | null;
-    latlng: Coordinates;
+    rating: number | null;
+    latlng: Coordinates | string;
     name: string;
     phone: string;
     reviews: Review[] | null;

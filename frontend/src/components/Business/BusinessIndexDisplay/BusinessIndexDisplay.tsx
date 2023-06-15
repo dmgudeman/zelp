@@ -1,7 +1,9 @@
+import React from 'react';
 import BusinessCard from "../BusinessCard/BusinessCard";
+import type { IBuisnessDisplayProps } from '../../../Types/IComponents/IBusiness';
 import "./BusinessIndexDisplay.css";
 
-const BusinessIndexDisplay = ({ businesses, cardTotal }) => {
+const BusinessIndexDisplay: React.FC<IBuisnessDisplayProps> = ({ businesses, cardTotal }) => {
     return (
         <>
         <div id="displayContainer">

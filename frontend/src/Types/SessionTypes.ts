@@ -14,6 +14,6 @@ export interface SignupUserData {
     username: string;
     email: string;
     password: string;
-    name: string | null;
+    fullName: string | null;
 
 }

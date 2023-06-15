@@ -1,0 +1,40 @@
+#frumpy {
+    background-color: yellow;
+    width: 200px;
+}
+
+#ratingContainerE {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    align-items: center;
+    width: 100%;
+    background-color: blueviolet;
+}
+.colored-in-E {
+    color: var(--two);
+}
+
+.not-colored-in-E {
+    color: gray;
+}
+
+#ratingContainerE input[type="radio"] {
+    display: none;
+}
+#ratingContainerE label:hover {
+    color: #59a1e0;
+}
+.star {
+    transform: scale(1.5);
+    margin: 7px;
+}
+
+.colored-in-E {
+    color: var(--two);
+}
+
+.not-colored-in-E {
+    color: gray;
+}
