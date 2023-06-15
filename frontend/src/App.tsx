@@ -18,7 +18,6 @@ function App() {
     const sessionState = useSelector(getCurrentUser);
     const isLoggedIn = sessionState !== null;
     const  modalFlag = useSelector((state: RootState) => state.ui.modalFlag);
-    console.log('MODAL FLAG', modalFlag)
 
     const renderModal = () => {
         switch (modalFlag) {
@@ -32,8 +31,7 @@ function App() {
       };
     return (
         <>
-            {/* <ReviewModalNew /> */}
-            {/* <ReviewModalEdit /> */}
+        
             {renderModal()}
      
             <Switch>

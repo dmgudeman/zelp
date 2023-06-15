@@ -2,6 +2,7 @@ import { Business } from "../BusinessTypes";
 
 export interface IBusinessCardProps {
     business: Business;
+    rating: number;
 }
 
 export interface IBuisnessDisplayProps {

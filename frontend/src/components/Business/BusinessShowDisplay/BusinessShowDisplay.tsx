@@ -1,16 +1,18 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import {useSelector } from 'react-redux';
 import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
 import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
 import RatingDisplayBusiness from '../../Reviews/RatingDisplay/RatingDisplayBusiness/RatingDisplayBusiness';
 import DisplayHours from "../../Helpers/DisplayHours/DisplayHours";
 import type { IBusinessShowDisplayProps } from '../../../Types/IComponents/IBusiness';
+import { getReviewsByBusiness } from '../../../store/reviewsSlice';
 import "./BusinessShowDisplay.css";
 
 
 const BusinessShowDisplay : React.FC<IBusinessShowDisplayProps>  = ({ business }) => {
     let hoursArray = Object.entries(business.hours);
-  console.log('business.rating', business)
+    
     const [coords, setCoords] = useState(JSON.parse(business.latlng as string))
     useEffect(()=>{
         setCoords(JSON.parse(business.latlng as string))

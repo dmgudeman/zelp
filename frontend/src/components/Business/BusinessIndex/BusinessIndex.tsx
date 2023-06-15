@@ -1,17 +1,23 @@
 import React from 'react';
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { getBusinesses } from "../../../store/businessesSlice";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch as _useDispatch } from "react-redux";
+import { getBusinesses, getAverageRatingForBusiness } from "../../../store/businessesSlice";
 import BusinessIndexDisplay from "../BusinessIndexDisplay/BusinessIndexDisplay";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import type { IBackgroundBannerProps } from '../../../Types/IComponents/IBusiness';
-import SearchBar from "../../Navigation/SearchBar/SearchBar";
+import { AppDispatch } from '../../../store/store';
 import "./BusinessIndex.css";
 
+const useDispatch = () => _useDispatch<AppDispatch>();
+
 const BusinessIndex = () => {
+    const dispatch = useDispatch()
     let businesses = useSelector(getBusinesses);
+ 
 
     const [cardTotal, setCardTotal] = useState(6);
+
+ 
 
     return (
         <>

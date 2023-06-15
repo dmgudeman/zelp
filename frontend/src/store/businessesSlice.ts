@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import csrfFetch from "./csrf";
 // import { receiveReviews } from './reviewsSlice';
-import { Business } from "../Types/BusinessTypes";
-import { Review } from "../Types/ReviewTypes";
+import type { Business } from "../Types/BusinessTypes";
+import type { Review } from "../Types/ReviewTypes";
+import type {RootState } from './store';
 
 // Define async thunks
 export const fetchBusinesses = createAsyncThunk<Record<string, Business>>(
@@ -61,6 +62,50 @@ export const fetchBusinessesWithTag = createAsyncThunk<
         throw new Error(`Error fetching businesses: ${error}`);
     }
 });
+
+// export const updateBusinessRating = createAsyncThunk<void, number>(
+//     "businesses/updateBusinessRating",
+//     async (busId, { getState }) => {
+//         const state = getState() as RootState;
+//         const reviews: Review[] = Object.values(state.reviews).filter((review: any) => review.businessId === busId);
+        
+//         if (reviews.length === 0) {
+//             console.error("No reviews found for business with id:", busId);
+//             return;
+//         }
+
+//         const avgRating = reviews.reduce((sum, review) => sum + (review.rating || 0), 0) / reviews.length;
+//         console.log('Average Rating:', avgRating);
+
+//         // Check if avgRating is a valid number
+//         if (isNaN(avgRating)) {
+//             console.error("Average rating calculation resulted in NaN");
+//             return;
+//         }
+//         const res = await csrfFetch(`/api/businesses/${busId}`, {
+//             method: "PATCH",
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify({ business: { rating: avgRating }}),
+//         });
+
+//         if (res.ok) {
+//             // You might need to dispatch an action to update the business rating in your redux state here
+//             // This depends on how you've set up your businesses slice
+//         } else {
+//             console.error("Error updating business rating");
+//         }
+//     }
+// );
+export const getAverageRatingForBusiness = (busId: number) => {
+    return (state: RootState) => {
+      const reviews: Review[] = Object.values(state.reviews).filter((review: any) => review.businessId === busId);
+      if (reviews.length === 0) return 0;
+      const avgRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+      return avgRating;
+    }
+  };
+  
+
 
 // Create the slice
 const businessesSlice = createSlice({

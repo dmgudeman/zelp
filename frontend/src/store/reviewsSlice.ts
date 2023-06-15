@@ -8,6 +8,9 @@ import csrfFetch from "./csrf";
 import { Review } from "../Types/ReviewTypes";
 import { RootState } from "./store";
 import { IReviewEditPayload } from '../Types/IComponents/IReviews';
+import { getAverageRatingForBusiness } from "../store/businessesSlice";
+
+type ReviewsState = Record<string, Review>;
 
 export const getReview =
     (reviewId: number) =>
@@ -19,6 +22,12 @@ export const getReviews = createSelector(
     (state: RootState) => state.reviews,
     (reviews) => Object.values(reviews)
 );
+
+export const getReviewsByBusiness = createSelector(
+    (state: RootState, businessId: number) => ({ reviews: state.reviews, businessId }),
+    ({ reviews, businessId }) => Object.values(reviews).filter((review: Review) => review.businessId === businessId)
+);
+
 
 export const fetchReview = createAsyncThunk<Review, string>(
     "reviews/fetchReview",
@@ -72,6 +81,7 @@ export const createReview = createAsyncThunk<Review, FormData>(
         });
         const data = await res.json();
         dispatch(receiveReview(data));
+        // dispatch(updateBusinessRating(data.businessId)); 
         return data;
     }
 );
@@ -85,22 +95,11 @@ export const updateReview = createAsyncThunk<Review, IReviewEditPayload>(
         });
         const data = await res.json();
         dispatch(receiveReview(data));
+        // dispatch(updateBusinessRating(data.businessId)); 
         return data;
     }
 );
 
-// export const editReview = createAsyncThunk<
-//     Review,
-//     { review: Review; reviewId: string }
-// >("reviews/editReview", async ({ review, reviewId }, { dispatch }) => {
-//     const res = await csrfFetch(`/api/reviews/${reviewId}`, {
-//         method: "PATCH",
-//         body: JSON.stringify(review),
-//     });
-//     const data = await res.json();
-//     dispatch(receiveReview(data));
-//     return data;
-// });
 
 export const deleteReview = createAsyncThunk<void, number>(
     "reviews/deleteReview",
@@ -108,18 +107,19 @@ export const deleteReview = createAsyncThunk<void, number>(
         const res = await csrfFetch(`/api/reviews/${reviewId}`, {
             method: "DELETE",
         });
-
+        const data = await res.json();
         if (res.ok) {
             dispatch(removeReview(reviewId));
+            // dispatch(updateBusinessRating(data.businessId)); 
         } else {
             console.error("Error in deleting review");
         }
     }
 );
-
+const initialState: ReviewsState = {};
 const reviewsSlice = createSlice({
     name: "reviews",
-    initialState: {} as Record<string, Review>,
+    initialState,
     reducers: {
         receiveReviews: (state, action: PayloadAction<Review[]>) => {
             action.payload.forEach((review) => {

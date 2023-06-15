@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import RatingDisplayBusSmall from "../../Reviews/RatingDisplay/RatingDisplayBusSmall/RatingDisplayBusSmall";
 import { IBusinessCardProps } from "../../../Types/IComponents/IBusiness";
 
-const BusinessCard: React.FC<IBusinessCardProps> = ({ business }) => {
+const BusinessCard: React.FC<IBusinessCardProps> = ({ business, rating }) => {
     if (!business) return null;
+    console.log("RATING", rating)
     return (
         <>
             <div id="businessCardContainer">
@@ -23,7 +24,7 @@ const BusinessCard: React.FC<IBusinessCardProps> = ({ business }) => {
                         </Link>
                     </div>
                     {business.rating && <RatingDisplayBusSmall
-                        rating={business.rating}
+                        rating={rating}
                         // starClass="starDisplaySmall"
                     />}
                 </div>

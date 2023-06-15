@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_221623) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_15_135241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_221623) do
     t.datetime "updated_at", null: false
     t.json "hours"
     t.json "latlng", default: "(37.7879,m -122.4075)"
-    t.integer "rating"
+    t.decimal "rating", precision: 3, scale: 2
     t.index ["name"], name: "index_businesses_on_name", unique: true
   end
 

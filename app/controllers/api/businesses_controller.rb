@@ -7,19 +7,23 @@ class Api::BusinessesController < ApplicationController
                   else
                     Business.all
                   end
-
     @businesses = @businesses.where('name LIKE ?', "%#{params[:bus]}%") if params[:bus]
-
     return unless params[:add]
-
     @businesses = @businesses.where('address LIKE ?', "%#{params[:add]}%")
   end
 
   def show
     @business = Business.find(params[:id])
-    # @reviews = @business.reviews
     @reviews = @business.reviews.order(created_at: :desc)
     @tags = @business.tags
+  end
+  def update
+    @business = Business.find(params[:id])
+    if @business.update(business_params)
+      render json: @business
+    else
+      render json: @business.errors, status: :unprocessable_entity
+    end
   end
 
   private
