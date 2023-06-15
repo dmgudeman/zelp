@@ -63,39 +63,37 @@ export const fetchBusinessesWithTag = createAsyncThunk<
     }
 });
 
-// export const updateBusinessRating = createAsyncThunk<void, number>(
-//     "businesses/updateBusinessRating",
-//     async (busId, { getState }) => {
-//         const state = getState() as RootState;
-//         const reviews: Review[] = Object.values(state.reviews).filter((review: any) => review.businessId === busId);
+export const updateBusinessRating = createAsyncThunk<void, number>(
+    "businesses/updateBusinessRating",
+    async (busId, { getState }) => {
+        const state = getState() as RootState;
+        const reviews: Review[] = Object.values(state.reviews).filter((review: any) => review.businessId === busId);
         
-//         if (reviews.length === 0) {
-//             console.error("No reviews found for business with id:", busId);
-//             return;
-//         }
+        if (reviews.length === 0) {
+            console.error("No reviews found for business with id:", busId);
+            return;
+        }
 
-//         const avgRating = reviews.reduce((sum, review) => sum + (review.rating || 0), 0) / reviews.length;
-//         console.log('Average Rating:', avgRating);
+        const avgRating = reviews.reduce((sum, review) => sum + (review.rating || 0), 0) / reviews.length;
+        console.log('Average Rating:', avgRating);
 
-//         // Check if avgRating is a valid number
-//         if (isNaN(avgRating)) {
-//             console.error("Average rating calculation resulted in NaN");
-//             return;
-//         }
-//         const res = await csrfFetch(`/api/businesses/${busId}`, {
-//             method: "PATCH",
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ business: { rating: avgRating }}),
-//         });
-
-//         if (res.ok) {
-//             // You might need to dispatch an action to update the business rating in your redux state here
-//             // This depends on how you've set up your businesses slice
-//         } else {
-//             console.error("Error updating business rating");
-//         }
-//     }
-// );
+        if (isNaN(avgRating)) {
+            console.error("Average rating calculation resulted in NaN");
+            return;
+        }
+        const res = await csrfFetch(`/api/businesses/${busId}`, {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ business: { rating: avgRating }}),
+        });
+            const updatedBusiness = await res.json();
+        if (res.ok) {
+            updateBusinessRatingState({busId, avgRating:  updatedBusiness.rating})
+        } else {
+            console.error("Error updating business rating");
+        }
+    }
+);
 export const getAverageRatingForBusiness = (busId: number) => {
     return (state: RootState) => {
       const reviews: Review[] = Object.values(state.reviews).filter((review: any) => review.businessId === busId);
@@ -111,7 +109,15 @@ export const getAverageRatingForBusiness = (busId: number) => {
 const businessesSlice = createSlice({
     name: "businesses",
     initialState: {} as Record<string, Business>,
-    reducers: {},
+    reducers: {
+        updateBusinessRatingState: (state, action: PayloadAction<{ busId: number, avgRating: number }>) => {
+            const { busId, avgRating } = action.payload;
+            const business = state[busId];
+            if (business) {
+              business.rating = avgRating;
+            }
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchBusinesses.fulfilled, (state, action) => {
@@ -131,6 +137,7 @@ const businessesSlice = createSlice({
             });
     },
 });
+export const { updateBusinessRatingState } = businessesSlice.actions;
 
 export const getBusinesses = (state: {
     businesses: Record<string, Business>;

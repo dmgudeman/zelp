@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch as _useDispatch } from "react-redux";
 import { getBusinesses } from "../../../store/businessesSlice";
-import { getReviewsByBusiness } from '../../../store/reviewsSlice';
 import BusinessCard from "../BusinessCard/BusinessCard";
 import type { IBuisnessDisplayProps } from '../../../Types/IComponents/IBusiness';
 import type { RootState, AppDispatch } from '../../../store/store';

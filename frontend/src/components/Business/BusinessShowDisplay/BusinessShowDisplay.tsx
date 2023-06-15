@@ -6,7 +6,6 @@ import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
 import RatingDisplayBusiness from '../../Reviews/RatingDisplay/RatingDisplayBusiness/RatingDisplayBusiness';
 import DisplayHours from "../../Helpers/DisplayHours/DisplayHours";
 import type { IBusinessShowDisplayProps } from '../../../Types/IComponents/IBusiness';
-import { getReviewsByBusiness } from '../../../store/reviewsSlice';
 import "./BusinessShowDisplay.css";
 
 
@@ -14,9 +13,15 @@ const BusinessShowDisplay : React.FC<IBusinessShowDisplayProps>  = ({ business }
     let hoursArray = Object.entries(business.hours);
     
     const [coords, setCoords] = useState(JSON.parse(business.latlng as string))
+    const [rating, setRating] = useState(business.rating)
     useEffect(()=>{
         setCoords(JSON.parse(business.latlng as string))
     },[business])
+
+    useEffect(()=> {
+        console.log('business RRRATTTTTING', business.rating)
+       setRating(business.rating)
+    }, [ business.rating])
    
     if (!business) return null;
     return (
