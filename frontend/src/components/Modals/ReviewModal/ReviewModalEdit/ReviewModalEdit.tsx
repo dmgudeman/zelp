@@ -24,7 +24,8 @@ function ReviewModalEdit() {
             {" "}
             <div
                 id="modalBackgroundRF"
-                className={`modalBackgroundRF ${hideModalFlag ? "hide" : ""}`}
+                // className={`modalBackgroundRF ${hideModalFlag ? "hide" : ""}`}
+                className = "modalBackgroundRF"
                 onClick={() => handleCloseReviewEdit()}
             >
                 { review && <ReviewEdit review={review} handleCloseReviewEdit={handleCloseReviewEdit} />}

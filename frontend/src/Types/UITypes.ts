@@ -3,6 +3,7 @@ import type { Review } from './ReviewTypes';
 
 
 export interface UIState {
+    modalFlag: string | null;
     showSignup: boolean;
     showLogin: boolean;
     hideNewReviewModal: boolean;

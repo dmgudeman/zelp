@@ -12,14 +12,29 @@ import ReviewNew from "./components/Reviews/ReviewNew/ReviewNew";
 import ReviewEdit from "./components/Reviews/ReviewEdit/ReviewEdit";
 import ReviewModalNew from "./components/Modals/ReviewModal/ReviewModalNew/ReviewModalNew";
 import ReviewModalEdit from "./components/Modals/ReviewModal/ReviewModalEdit/ReviewModalEdit";
+import type { RootState } from './store/store';
 
 function App() {
     const sessionState = useSelector(getCurrentUser);
     const isLoggedIn = sessionState !== null;
+    const  modalFlag = useSelector((state: RootState) => state.ui.modalFlag);
+    console.log('MODAL FLAG', modalFlag)
+
+    const renderModal = () => {
+        switch (modalFlag) {
+          case 'ReviewNew':
+            return <ReviewModalNew/>;
+          case 'ReviewEdit':
+            return <ReviewModalEdit/>;
+          default:
+            return null;
+        }
+      };
     return (
         <>
-            <ReviewModalNew />
-            <ReviewModalEdit />
+            {/* <ReviewModalNew /> */}
+            {/* <ReviewModalEdit /> */}
+            {renderModal()}
      
             <Switch>
                 <Route path="/login" component={LoginFormPage} />

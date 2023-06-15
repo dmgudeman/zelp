@@ -4,6 +4,7 @@ import { Business} from '../Types/BusinessTypes';
 import { Review} from '../Types/ReviewTypes';
 
 const initialState: UIState = {
+    modalFlag: null,
     showSignup: false,
     showLogin: false,
     hideNewReviewModal: true,
@@ -29,19 +30,19 @@ const uiSlice = createSlice({
         state.showLogin = false;
       },
       showEditReviewModal: (state, action: PayloadAction<Review>) => {
-        state.hideEditReviewModal = false;
+        state.modalFlag = "ReviewEdit";
         state.review = action.payload;
       },
       hideEditReviewModal: (state) => {
-        state.hideEditReviewModal = true;
+        state.modalFlag = null;
         state.review = null;
       },
       showNewReviewModal: (state, action: PayloadAction<Business>) => {
-        state.hideNewReviewModal = false;
+        state.modalFlag = "ReviewNew"
         state.business = action.payload;
       },
       hideNewReviewModal: (state) => {
-        state.hideNewReviewModal = true;
+        state.modalFlag = null;
         state.business = null;
       },
     },
