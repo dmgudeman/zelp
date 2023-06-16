@@ -1,8 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {useSelector } from 'react-redux';
 import ZelpMap from "../../Maps/ZelpMap/ZelpMap";
-import RatingDisplay from "../../Reviews/RatingDisplay/RatingDisplay";
 import RatingDisplayBusiness from '../../Reviews/RatingDisplay/RatingDisplayBusiness/RatingDisplayBusiness';
 import DisplayHours from "../../Helpers/DisplayHours/DisplayHours";
 import type { IBusinessShowDisplayProps } from '../../../Types/IComponents/IBusiness';
