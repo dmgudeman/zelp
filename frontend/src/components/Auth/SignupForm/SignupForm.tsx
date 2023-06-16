@@ -80,6 +80,7 @@ const SignupForm = () => {
                             type="password"
                             value={password}
                             placeholder="password"
+                            onChange={(e) => setPassword(e.target.value)}
                             onFocus={clearErrors}
                         />
 
