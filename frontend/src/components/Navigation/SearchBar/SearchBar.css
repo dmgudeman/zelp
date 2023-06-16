@@ -26,6 +26,7 @@
     flex-grow: 1;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 .SBInputWrap {
@@ -38,6 +39,7 @@
     width: 170px;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 .SBInput::placeholder {
     color: var(--one)
@@ -56,6 +58,7 @@
     border: none;
     background-color: var(--two);
     margin-top: 30px;
+    cursor: pointer;
 }
 .SBDropDown.hidden {
     display: none;
@@ -66,4 +69,5 @@
     width: 100%;
     height: 100%;
     flex-grow: 1;
+    cursor: pointer;
 }
