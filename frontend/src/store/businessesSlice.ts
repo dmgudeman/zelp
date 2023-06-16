@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import csrfFetch from "./csrf";
-// import { receiveReviews } from './reviewsSlice';
 import type { Business } from "../Types/BusinessTypes";
 import type { Review } from "../Types/ReviewTypes";
 import type {RootState } from './store';
@@ -75,8 +74,7 @@ export const updateBusinessRating = createAsyncThunk<void, number>(
         }
 
         const avgRating = reviews.reduce((sum, review) => sum + (review.rating || 0), 0) / reviews.length;
-        console.log('Average Rating:', avgRating);
-
+        
         if (isNaN(avgRating)) {
             console.error("Average rating calculation resulted in NaN");
             return;
@@ -94,7 +92,6 @@ export const updateBusinessRating = createAsyncThunk<void, number>(
         }
     }
 );
-// export const updateBusinessRatingState = createAction<{busId: number, avgRating: number}>('businesses/updateRatingState');
 
 export const getAverageRatingForBusiness = (busId: number) => {
     return (state: RootState) => {
@@ -104,10 +101,7 @@ export const getAverageRatingForBusiness = (busId: number) => {
       return avgRating;
     }
   };
-  
 
-
-// Create the slice
 const businessesSlice = createSlice({
     name: "businesses",
     initialState: {} as Record<string, Business>,

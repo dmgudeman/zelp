@@ -23,8 +23,6 @@ export const getReviews = createSelector(
     (reviews) => Object.values(reviews)
 );
 
-
-
 export const fetchReview = createAsyncThunk<Review, string>(
     "reviews/fetchReview",
     async (reviewId) => {
@@ -141,7 +139,6 @@ const reviewsSlice = createSlice({
                 });
             })
             .addCase(updateReview.fulfilled, (state, action) => {
-                // Handle the editReview fulfilled state
                 // consider closing modal
             })
             .addCase(createReview.fulfilled, (state, action) => {

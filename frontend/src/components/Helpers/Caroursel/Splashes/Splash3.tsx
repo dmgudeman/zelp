@@ -17,7 +17,6 @@ const Splash3 = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        console.log(' this is pressed')
         e.preventDefault();
         dispatch(fetchBusinessesSearch({
             "tag": "Grocery",

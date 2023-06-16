@@ -6,7 +6,7 @@ import {
 import csrfFetch from "./csrf";
 import { SessionState, User, SignupUserData, LoginUserData} from "../Types/SessionTypes";
 import { hideSignupModal } from "./uiSlice";
-import type { RootState, AppDispatch } from "./store";
+import type { RootState } from "./store";
 import type { ServerError} from "../Types/SessionTypes"
 
 export const getCurrentUser = (state: RootState): SessionState | null => {
@@ -14,7 +14,7 @@ export const getCurrentUser = (state: RootState): SessionState | null => {
 };
 
 
-export const login = createAsyncThunk< User, LoginUserData, { rejectValue: ServerError }>(
+export const login = createAsyncThunk< User, LoginUserData, { rejectValue: ServerError }>( 
     "session/login", 
     async (user, thunkAPI) => {
     const { credential, password } = user;

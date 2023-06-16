@@ -19,7 +19,6 @@ const BusinessShowDisplay : React.FC<IBusinessShowDisplayProps>  = ({ business }
     },[business])
 
     useEffect(()=> {
-        console.log('business RRRATTTTTING', business.rating)
        setRating(business.rating)
     }, [ business.rating])
    

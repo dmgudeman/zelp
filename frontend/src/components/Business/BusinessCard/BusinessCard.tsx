@@ -6,7 +6,6 @@ import { IBusinessCardProps } from "../../../Types/IComponents/IBusiness";
 
 const BusinessCard: React.FC<IBusinessCardProps> = ({ business, rating }) => {
     if (!business) return null;
-    console.log("RATING", rating)
     return (
         <>
             <div id="businessCardContainer">
@@ -25,7 +24,6 @@ const BusinessCard: React.FC<IBusinessCardProps> = ({ business, rating }) => {
                     </div>
                     {business.rating && <RatingDisplayBusSmall
                         rating={rating}
-                        // starClass="starDisplaySmall"
                     />}
                 </div>
             </div>

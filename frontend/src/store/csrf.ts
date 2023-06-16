@@ -23,7 +23,7 @@ async function csrfFetch(
     
 
     // this is to take care of FormData which needs multipart/form-data headers
-    // sometning that cannot be done manually
+    // something that cannot be done manually
     if (options.method.toUpperCase() !== "GET") {
         if (!(options.body instanceof FormData)) {
             headers["Content-Type"] =
@@ -35,8 +35,6 @@ async function csrfFetch(
     }
     options.headers = headers;
     const res = await fetch(url, options);
-    // const responseText = await res.text();
-    // console.log('Response Stream:', responseText);
     // if (res.status >= 400) throw res;
     return res;
 }

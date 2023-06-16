@@ -14,12 +14,6 @@ const reducer = {
   ui: uiReducer
 }
 
-
-
-// if (process.env.NODE_ENV !== 'production') {
-//   middleware = [...middleware, logger];
-// }
-
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
