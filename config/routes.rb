@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :session, only: %i[show create destroy]
   end
   # get '/reviews/:review_id/photo', to: 'reviews#photo', as: 'reviews_photo'
-  get '*path', to: 'static_pages#frontend', constraints: ->(req) { !req.xhr? && req.format.html? }
   # Catch-all route for unknown routes
+  get '*path', to: "static_pages#frontend_index" # Heroku Deployment
+  # get '*path', to: 'static_pages#frontend', constraints: ->(req) { !req.xhr? && req.format.html? } # for Render Deployment
 end

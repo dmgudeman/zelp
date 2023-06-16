@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "./store/sessionSlice";
 import { Route, Switch } from "react-router-dom";
-import PrivateRouteTypescript from "./components/Auth/PrivateRoute/PrivateRouteTypescript";
+import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import LoginFormPage from "./components/Auth/LoginForm/LoginForm";
 import SignupFormPage from "./components/Auth/SignupForm/SignupForm";
 import Home from "./components/Home/Home";
@@ -40,22 +40,22 @@ function App() {
             <Switch>
                 <Route path="/login" component={LoginFormPage} />
                 <Route path="/signup" component={SignupFormPage} />
-                <PrivateRouteTypescript
+                <PrivateRoute
                     path="/businesses/:busId"
                     component={BusinessShow}
                     isLoggedIn={isLoggedIn}
                 />
-                <PrivateRouteTypescript
+                <PrivateRoute
                     path="/businesses"
                     component={BusinessIndex}
                     isLoggedIn={isLoggedIn}
                 />
-                <PrivateRouteTypescript
+                <PrivateRoute
                     path="/reviewNew/:busId"
                     component={ReviewNew}
                     isLoggedIn={isLoggedIn}
                 />
-                <PrivateRouteTypescript
+                <PrivateRoute
                     path="/reviewEdit/:reviewId"
                     component={ReviewEdit}
                     isLoggedIn={isLoggedIn}

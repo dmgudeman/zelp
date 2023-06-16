@@ -2,13 +2,14 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.1"
- gem "faker"
+gem "faker"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "bcrypt"
 gem "jbuilder"
 gem "aws-sdk-s3"
 # gem "ruby-vips"
+gem "pry-rails"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -26,17 +27,15 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
 
   gem "byebug", platforms: %i[ mri mingw x64_mingw ]
- 
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem "annotate"
-  gem "pry-rails"
+
   gem "better_errors"
   gem "binding_of_caller"
   #getting error on testing undefined fetch
-  gem 'capistrano-db-tasks', '~> 0.4', :require => false
+  gem "capistrano-db-tasks", "~> 0.4", :require => false
 end
-
