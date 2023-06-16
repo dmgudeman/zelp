@@ -20,6 +20,11 @@ export interface SignupUserData {
 
 }
 
+export interface LoginUserData {
+    credential: string;
+    password: string;
+}
+
 export interface ServerError {
     errors: string[];
 }

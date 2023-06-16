@@ -4,6 +4,7 @@ import { login, getCurrentUser } from "../../../store/sessionSlice";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
+import ErrorLocal from "../../Helpers/Errors/ErrorLocal/ErrorLocal";
 import { AppDispatch } from "../../../store/store";
 import { hideLoginModal, showSignupModal } from "../../../store/uiSlice";
 import "./LoginForm.css";
@@ -24,50 +25,35 @@ const LoginForm = () => {
         dispatch(hideLoginModal());
     };
 
-    const submitHandler = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!credential || !password) {
-            setErrors(["Credential or password is missing"]);
-            return;
-        }
+    const clearErrors = () => {
         setErrors([]);
-        dispatch(login({ credential, password })).catch(async (res) => {
+    }
+
+    const submitHandler = (e: React.FormEvent) => {
+        setErrors([])
+        e.preventDefault();
+        let isValid = true;
+        if (!credential ) {
+            setErrors((prev)=> [...prev, "username or email is invalid"]);
+            isValid = false;
+        }
+        if (!password ) {
+            setErrors((prev)=> [...prev, "password is invalid"]);
+            isValid = false;
+        }
+        if(!isValid) return;
+       return dispatch(login({ credential, password })).catch(
+        async (res) => {
             let data;
             try {
-                // .clone()  essentially allows you to read the response body twice
+                // .clone() essentially allows you to read the response body twice
                 data = await res.clone().json();
-                dispatch(hideLoginModal());
             } catch {
-                data = [...(await res.text())]; // Will hit this case if the server is down
-            }
-            if (data?.errors) {
-                console.error(data.errors);
-            } else if (data) {
-                console.error(data);
-            } else {
-                console.error(res.statusText);
+                data = await res.text(); // Will hit this case if the server is down
             }
         });
     };
 
-    // const submitHandler = (e) => {
-    //     e.preventDefault();
-    //     setErrors([]);
-    //     dispatch(login({ credential, password })).catch(async (res) => {
-    //         let data;
-    //         try {
-    //             // .clone()  essentially allows you to read the response body twice
-    //             data = await res.clone().json();
-    //         } catch {
-    //             data = await res.text(); // Will hit this case if the server is down
-    //         }
-    //         if (data?.errors)
-    //             setErrors(["username or email and/or password were invalid"]);
-    //         else if (data) setErrors([data]);
-    //         else setErrors([res.statusText]);
-    //     });
-    //     dispatch(hideLoginModal())
-    // };
 
     return (
         <>
@@ -84,6 +70,7 @@ const LoginForm = () => {
                             value={credential}
                             placeholder="username or email"
                             onChange={(e) => setCredential(e.target.value)}
+                            onFocus={clearErrors}
                         />
 
                         <input
@@ -92,19 +79,21 @@ const LoginForm = () => {
                             value={password}
                             placeholder="password"
                             onChange={(e) => setPassword(e.target.value)}
+                            onFocus={clearErrors}
                         />
-
+                        
                         <input
                             id="submitSUF"
                             className="inputSUF blueButton"
                             type="submit"
                             value="Log In"
                         />
-                        <ul id="errorLIF">
+                        <ErrorLocal errors={errors}/>
+                        {/* <ul id="errorLIF">
                             {errors.map((error) => (
                                 <li key={error}>{error}</li>
                             ))}
-                        </ul>
+                        </ul> */}
                     </form>
                     <DemoUserForm />
                 </div>

@@ -19,7 +19,7 @@ const BusinessCard: React.FC<IBusinessCardProps> = ({ business, rating }) => {
                 </div>
                 <div id="reviewContainer">
                     <div className="firstLine">
-                        <Link to={`/businesses/${business.id}`}>
+                        <Link className="businessLink" to={`/businesses/${business.id}`}>
                             <p>{business.name}</p>
                         </Link>
                     </div>

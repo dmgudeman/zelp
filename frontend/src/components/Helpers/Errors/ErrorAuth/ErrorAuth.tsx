@@ -1,24 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../../store/store"; // import your RootState
+import { RootState } from "../../../../store/store";
 import './ErrorAuth.css'
-// const ErrorMessage: React.FC = () => {
-//     const error = useSelector((state: RootState) => state.session.error);
 
-//     return (
-//             <div>
-//                 {error &&
-//                     error.errors.map((errorMessage, index) => (
-//                         <p key={index}>{errorMessage}</p>
-//                     ))}
-//             </div>
-//     );
-// };
-
-const ErrorMessage: React.FC = () => {
+const ErrorAuth: React.FC = () => {
     const error = useSelector((state: RootState) => state.session.error);
-
-
     return (
         <div id="errorMessageContainer">
             {error && error.errors.map((errorMessage, index) => (
@@ -28,5 +14,5 @@ const ErrorMessage: React.FC = () => {
     );
 };
 
-export default ErrorMessage;
+export default ErrorAuth;
  

@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { showSignupModal, hideSignupModal } from "../../../../store/uiSlice";
 import SignupForm from "../../../Auth/SignupForm/SignupForm";
+import { clearSessionError } from "../../../../store/sessionSlice";
 import { RootState } from "../../../../store/store";
 import "./ModalSignup.css";
 
@@ -13,11 +14,9 @@ function ModalSignup() {
         e.preventDefault();
         e.stopPropagation();
         dispatch(hideSignupModal());
+        dispatch(clearSessionError())
     };
 
-    const handleOpenSignupModal = () => {
-        dispatch(showSignupModal());
-    };
     if (showSignup) {
         content = (
             <div

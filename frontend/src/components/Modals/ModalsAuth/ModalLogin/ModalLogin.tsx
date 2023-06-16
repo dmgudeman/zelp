@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { hideLoginModal } from "../../../../store/uiSlice";
 import LoginForm from "../../../Auth/LoginForm/LoginForm";
+import { hideLoginModal } from "../../../../store/uiSlice";
+import { clearSessionError } from "../../../../store/sessionSlice";
 import { RootState } from "../../../../store/store";
 import "./ModalLogin.css";
 
@@ -15,6 +16,7 @@ function ModalLogin() {
     const handleCloseLogin = (e: React.SyntheticEvent) => {
         e.preventDefault();
         e.stopPropagation();
+        dispatch(clearSessionError()); 
         dispatch(hideLoginModal());
     };
 

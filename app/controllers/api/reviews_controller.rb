@@ -2,15 +2,7 @@ class Api::ReviewsController < ApplicationController
   wrap_parameters :review, include: Review.attribute_names + [:photo]
 
   def index
-  
-    # @reviews = Review.all.sort { |a, b| b.created_at <=> a.created_at }
-    # @reviews = Review.all.sort { |a, b| b.created_at <=> a.created_at }
     @reviews = Review.order(created_at: :desc)
- 
-
-    
-    # puts @reviews
-    # @reviews = Review.where(business_id: desired_business_id)
   end
 
   def show
@@ -19,9 +11,7 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-   
     if @review.save
-      # render partial: 'api/reviews/review', locals: { review: @review }
       render :show
     else
       render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
@@ -31,7 +21,6 @@ class Api::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      # render partial: 'api/reviews/review', locals: { review: @review }
       render :show
     else
       render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity

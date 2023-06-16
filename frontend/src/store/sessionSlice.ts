@@ -4,7 +4,7 @@ import {
     PayloadAction,
 } from "@reduxjs/toolkit";
 import csrfFetch from "./csrf";
-import { SessionState, User, SignupUserData } from "../Types/SessionTypes";
+import { SessionState, User, SignupUserData, LoginUserData} from "../Types/SessionTypes";
 import { hideSignupModal } from "./uiSlice";
 import type { RootState, AppDispatch } from "./store";
 import type { ServerError} from "../Types/SessionTypes"
@@ -14,24 +14,31 @@ export const getCurrentUser = (state: RootState): SessionState | null => {
 };
 
 
-//   export const getUser = (state:RootState) => {
-//     return state.session?.user ? state.session.user : null;
-// };
-
-export const login = createAsyncThunk<
-    User,
-    { credential: string; password: string }
->("session/login", async (user, { dispatch }) => {
+export const login = createAsyncThunk< User, LoginUserData, { rejectValue: ServerError }>(
+    "session/login", 
+    async (user, thunkAPI) => {
     const { credential, password } = user;
+    try {
     const res = await csrfFetch("/api/session", {
         method: "POST",
         body: JSON.stringify({ credential, password }),
     });
+    if (res.ok) {
+        const data = await res.json();
+        storeCurrentUser(data.user);
+        thunkAPI.dispatch(setSessionUser(data.user));
+        thunkAPI.dispatch(hideSignupModal());
+        return data.user;
+    } else {
+        const errorData = await res.json();
+        console.error('Error data:', errorData); // Log error data
+        return thunkAPI.rejectWithValue(errorData);
+    }
 
-    const data = await res.json();
-    storeCurrentUser(data.user);
-    dispatch(setSessionUser(data.user));
-    return data.user;
+} catch (err) {
+    console.error('Error occurred:', err); // Log error
+    return thunkAPI.rejectWithValue({ errors: ['An unknown error occurred. Please try again.'] });
+}
 });
 
 // Helper function puts user in session storage
@@ -44,27 +51,6 @@ const storeCurrentUser = (user: User | null) => {
     }
 };
 
-// export const signup = createAsyncThunk<User, SignupUserData,  { rejectValue: ServerError }>(
-//     "session/signup",
-//     async (user, { dispatch, rejectWithValue}) => {
-//         const { username, password, email } = user;
-//         const res = await csrfFetch("/api/users", {
-//             method: "POST",
-//             body: JSON.stringify({ username, password, email }),
-//         });
-
-//         if (res.ok) {
-//             const data = await res.json();
-//             storeCurrentUser(data.user);
-//             dispatch(setSessionUser(data.user));
-//             dispatch(hideSignupModal);
-//             return data.user;
-//         } else {
-//             let errorData = await res.json(); // Parse the error response
-//             return rejectWithValue(errorData);
-//         }
-//     }
-// );
 
 export const signup = createAsyncThunk<User, SignupUserData, { rejectValue: ServerError }>(
     "session/signup",
@@ -77,9 +63,7 @@ export const signup = createAsyncThunk<User, SignupUserData, { rejectValue: Serv
             });
 
             if (res.ok) {
-                
                 const data = await res.json();
-                console.log('DAAAATTTTAAAA', data)
                 storeCurrentUser(data.user);
                 thunkAPI.dispatch(setSessionUser(data.user));
                 thunkAPI.dispatch(hideSignupModal());
@@ -140,6 +124,9 @@ const sessionSlice = createSlice({
         removeSessionUser: (state) => {
             state.user = null;
         },
+        clearSessionError: (state) => {
+            state.error = null;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -158,11 +145,15 @@ const sessionSlice = createSlice({
         builder
             .addCase(login.rejected, (state, action) => {
                 console.error("login rejected");
+                if (action.payload) {
+                    state.error = action.payload; 
+                } else {
+                    state.error = { errors: ['An unknown error occurred. Please try again.'] };
+                }
             })
             .addCase(signup.rejected, (state, action) => {
-                console.log('ACTION', action)
                 if (action.payload) {
-                    state.error = action.payload; // set the error
+                    state.error = action.payload; 
                 } else {
                     state.error = { errors: ['An unknown error occurred. Please try again.'] };
                 }
@@ -170,6 +161,6 @@ const sessionSlice = createSlice({
     },
 });
 
-export const { setSessionUser, removeSessionUser } = sessionSlice.actions;
+export const { setSessionUser, removeSessionUser, clearSessionError } = sessionSlice.actions;
 
 export default sessionSlice.reducer;

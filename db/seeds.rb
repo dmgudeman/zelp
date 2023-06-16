@@ -377,11 +377,11 @@ ApplicationRecord.transaction do
   )
 
   Business.create!(
-    name: 'Presidio Lawn Pros',
-    address: '100 Montgomery Street, San Francisco, CA 94129',
+    name: 'True Green',
+    address: '3950 Lauar Alice Way, Concord, CA 94520',
     phone: '(415) 555-7890',
     website: 'https://www.presidiolawnpros.com/',
-    cost: '$$$',
+    cost: '$$',
     rating: 0,
     latlng: make_coord('37.8013, -122.4580'),
     hours: {
@@ -676,8 +676,8 @@ all_tags = [
   ['SF Lawn Leaders', 'Gardening Services'],
   ['Citywide Lawn and Landscape', 'Lawn Services'],
   ['Citywide Lawn and Landscape', 'Gardening Services'],
-  ['Presidio Lawn Pros', 'Lawn Services'],
-  ['Presidio Lawn Pros', 'Gardening Services'],
+  ['True Green', 'Lawn Services'],
+  ['True Green', 'Gardening Services'],
   ['Bay Area Lawn Care', 'Lawn Services'],
   ['Bay Area Lawn Care', 'Gardening Services']
 
