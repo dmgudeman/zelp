@@ -129,7 +129,6 @@ const reviewsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchReview.fulfilled, (state, action) => {
-                console.log("ACTIONPAYLOD", action.payload);
                 state[action.payload.id] = action.payload;
             })
             .addCase(fetchReviews.fulfilled, (state, action) => {
