@@ -1,5 +1,4 @@
 import React from 'react';
-// import type { IRatingInputProps } from "../../../Types/IComponents/IReviews"
 import "./RatingInputNew.css";
 
 export interface IRatingInputProps {
@@ -12,7 +11,6 @@ export interface IRatingInputProps {
 
 
 const RatingInputNew : React.FC<IRatingInputProps> = ({ name, rating, handleNewRatingChange}) => {
-     console.log('rating in RatingInputNew', rating)
     const ratingValue = rating || 0;
     return (
        
@@ -30,9 +28,7 @@ const RatingInputNew : React.FC<IRatingInputProps> = ({ name, rating, handleNewR
                 name={name}
                 value="1"
                 hidden
-                // onChange={handleRatingChange}
                 onChange={handleNewRatingChange}
-            
             />
 
             <label

@@ -38,7 +38,6 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
         formData.set("review[rating]", rating?.toString() || "");
     }, [rating]);
     useEffect(() => {
-        console.log("body", body);
         formData.set("review[body]", body || "");
     }, [body]);
 
@@ -82,9 +81,6 @@ const ReviewEdit: React.FC<IReviewEditProps> = ({ review }) => {
                     formData.set("review[photo]", photo);
                 }
 
-                for (let pair of formData.entries()) {
-                    console.log(pair[0] + ", " + pair[1]);
-                }
                 dispatch(updateReview({ reviewId: review.id, formData }));
                 dispatch(hideEditReviewModal());
             } catch (errors) {

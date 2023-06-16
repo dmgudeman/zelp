@@ -11,7 +11,6 @@ function ModalLogin() {
 
     const showLogin = useSelector((state: RootState) => state.ui.showLogin);
     let content;
-    console.log("showLogin", showLogin);
 
     const handleCloseLogin = (e: React.SyntheticEvent) => {
         e.preventDefault();

@@ -56,7 +56,6 @@ export const fetchReviewsByBusiness = createAsyncThunk(
     async (busId: number, { dispatch }) => {
         const res = await csrfFetch(`/api/businesses/${busId}`);
         const data = await res.json();
-        console.log("fetchReviewsByBusiness", data);
         if (res.ok) {
             dispatch(receiveReviews(data.reviews));
             return data.review;
