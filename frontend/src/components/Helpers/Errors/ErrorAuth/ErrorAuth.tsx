@@ -18,6 +18,7 @@ import { RootState } from "../../../../store/store"; // import your RootState
 const ErrorMessage: React.FC = () => {
     const error = useSelector((state: RootState) => state.session.error);
 
+
     return (
         <div>
             {error && error.errors.map((errorMessage, index) => (

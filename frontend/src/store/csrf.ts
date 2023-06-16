@@ -35,7 +35,9 @@ async function csrfFetch(
     }
     options.headers = headers;
     const res = await fetch(url, options);
-    if (res.status >= 400) throw res;
+    // const responseText = await res.text();
+    // console.log('Response Stream:', responseText);
+    // if (res.status >= 400) throw res;
     return res;
 }
 

@@ -70,23 +70,33 @@ export const signup = createAsyncThunk<User, SignupUserData, { rejectValue: Serv
     "session/signup",
     async (user, thunkAPI) => {
         const { username, password, email } = user;
-        const res = await csrfFetch("/api/users", {
-            method: "POST",
-            body: JSON.stringify({ username, password, email }),
-        });
+        try {
+            const res = await csrfFetch("/api/users", {
+                method: "POST",
+                body: JSON.stringify({ username, password, email }),
+            });
 
-        if (res.ok) {
-            const data = await res.json();
-            storeCurrentUser(data.user);
-            thunkAPI.dispatch(setSessionUser(data.user));
-            thunkAPI.dispatch(hideSignupModal());
-            return data.user;
-        } else {
-            const errorData = await res.json(); // Parse the error response
-            return thunkAPI.rejectWithValue(errorData);
+            if (res.ok) {
+                
+                const data = await res.json();
+                console.log('DAAAATTTTAAAA', data)
+                storeCurrentUser(data.user);
+                thunkAPI.dispatch(setSessionUser(data.user));
+                thunkAPI.dispatch(hideSignupModal());
+                return data.user;
+            } else {
+                const errorData = await res.json();
+                console.error('Error data:', errorData); // Log error data
+                return thunkAPI.rejectWithValue(errorData);
+            }
+        } catch (err) {
+            console.error('Error occurred:', err); // Log error
+            return thunkAPI.rejectWithValue({ errors: ['An unknown error occurred. Please try again.'] });
         }
     }
 );
+
+
 
 export const logout = createAsyncThunk<void, void>(
     "session/logout",
@@ -149,10 +159,10 @@ const sessionSlice = createSlice({
             .addCase(login.rejected, (state, action) => {
                 console.error("login rejected");
             })
-            .addCase(signup.rejected, (state, { payload }) => {
-                state.user = null;
-                if (payload) {
-                    state.error = payload; // set the error
+            .addCase(signup.rejected, (state, action) => {
+                console.log('ACTION', action)
+                if (action.payload) {
+                    state.error = action.payload; // set the error
                 } else {
                     state.error = { errors: ['An unknown error occurred. Please try again.'] };
                 }
