@@ -3,3 +3,5 @@
 this worked for the Render deployment in the root package json scripts:
    "test": "echo \"Error: no test specified\" && exit 1",
    "build": "npm install --prefix ./frontend && npm run build --prefix ./frontend"
+
+   "npm install --prefix frontend && npm run build --prefix frontend"
