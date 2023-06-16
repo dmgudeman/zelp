@@ -6,9 +6,7 @@
     "lib": "lib"
   },
   "scripts": {
- 
     "build": "npm install --prefix ./frontend && npm run build --prefix ./frontend"
-  
   },
   "repository": {
     "type": "git",
@@ -32,7 +30,8 @@
     "jquery": "^3.6.4",
     "lodash": "^4.17.21",
     "react-dropzone": "^14.2.3",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3"
