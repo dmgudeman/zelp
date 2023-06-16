@@ -1,4 +1,4 @@
-import { configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import sessionReducer from './sessionSlice';
 import businessesReducer from './businessesSlice';
@@ -11,14 +11,22 @@ const reducer = {
   businesses: businessesReducer,
   reviews: reviewsReducer,
   tags: tagsReducer,
-  ui: uiReducer
+  ui: uiReducer,
 }
 
 export const store = configureStore({
   reducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) => {
+    if (process.env.NODE_ENV !== 'production') {
+      return getDefaultMiddleware().concat(logger);
+    } else {
+      return getDefaultMiddleware();
+    }
+  },
   devTools: process.env.NODE_ENV !== 'production',
 });
+
 export default store;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
