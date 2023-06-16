@@ -1,12 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import { login, getCurrentUser } from "../../../store/sessionSlice";
+import React, { useState } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
-import { Redirect, NavLink } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
 import ErrorLocal from "../../Helpers/Errors/ErrorLocal/ErrorLocal";
-import { AppDispatch } from "../../../store/store";
+import { login, getCurrentUser } from "../../../store/sessionSlice";
 import { hideLoginModal, showSignupModal } from "../../../store/uiSlice";
+import { AppDispatch } from "../../../store/store";
 import "./LoginForm.css";
 
 const useDispatch = () => _useDispatch<AppDispatch>();

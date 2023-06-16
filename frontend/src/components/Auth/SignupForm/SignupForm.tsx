@@ -1,10 +1,9 @@
-import React from "react";
-import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useState } from "react";
 import { useDispatch as _useDispatch, useSelector } from "react-redux";
-import { signup } from "../../../store/sessionSlice";
+import { Redirect } from "react-router-dom";
 import ErrorAuth from "../../Helpers/Errors/ErrorAuth/ErrorAuth";
 import DemoUserForm from "../DemoUserForm/DemoUserForm";
+import { signup } from "../../../store/sessionSlice";
 import { showLoginModal, hideSignupModal } from "../../../store/uiSlice";
 import { clearSessionError } from "../../../store/sessionSlice";
 import { RootState, AppDispatch } from "../../../store/store";
@@ -28,8 +27,8 @@ const SignupForm = () => {
         dispatch(showLoginModal());
     };
     const clearErrors = () => {
-        dispatch(clearSessionError())
-    }
+        dispatch(clearSessionError());
+    };
 
     const submitHandler = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -72,7 +71,6 @@ const SignupForm = () => {
                             placeholder="email"
                             onChange={(e) => setEmail(e.target.value)}
                             onFocus={clearErrors}
-
                         />
 
                         <input
@@ -92,14 +90,14 @@ const SignupForm = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             onFocus={clearErrors}
                         />
-                       
+
                         <input
                             id="submitSUF"
                             className="inputSUF blueButton"
                             type="submit"
                             value="Sign Up"
                         />
-                         <ErrorAuth />
+                        <ErrorAuth />
                     </form>
                     <DemoUserForm />
                     <h1>
