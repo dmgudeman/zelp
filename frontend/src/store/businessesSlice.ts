@@ -65,7 +65,7 @@ export const fetchBusinessesWithTag = createAsyncThunk<
 
 export const updateBusinessRating = createAsyncThunk<void, number>(
     "businesses/updateBusinessRating",
-    async (busId, { getState }) => {
+    async (busId, { dispatch, getState }) => {
         const state = getState() as RootState;
         const reviews: Review[] = Object.values(state.reviews).filter((review: any) => review.businessId === busId);
         
@@ -88,12 +88,14 @@ export const updateBusinessRating = createAsyncThunk<void, number>(
         });
             const updatedBusiness = await res.json();
         if (res.ok) {
-            updateBusinessRatingState({busId, avgRating:  updatedBusiness.rating})
+            dispatch(updateBusinessRatingState({busId, avgRating:  updatedBusiness.rating}))
         } else {
             console.error("Error updating business rating");
         }
     }
 );
+// export const updateBusinessRatingState = createAction<{busId: number, avgRating: number}>('businesses/updateRatingState');
+
 export const getAverageRatingForBusiness = (busId: number) => {
     return (state: RootState) => {
       const reviews: Review[] = Object.values(state.reviews).filter((review: any) => review.businessId === busId);
@@ -117,6 +119,7 @@ const businessesSlice = createSlice({
               business.rating = avgRating;
             }
         }
+
     },
     extraReducers: (builder) => {
         builder

@@ -11,13 +11,13 @@ import ReviewDisplayCard from "../ReviewDisplayCard/ReviewDisplayCard";
 import ExtendIndex from "../../Helpers/ExtendIndex/ExtendIndex.js";
 import type { IReviewIndexProps } from "../../../Types/IComponents/IReviews";
 import type { Business } from '../../../Types/BusinessTypes';
-import { AppDispatch } from "../../../store/store";
+import { RootState, AppDispatch } from "../../../store/store";
 
 const useDispatch = () => _useDispatch<AppDispatch>();
 
 const ReviewsIndex: React.FC<IReviewIndexProps> = ({ business }) => {
     const dispatch = useDispatch();
-    const reviews = useSelector(getReviews);
+    const reviews = useSelector((state: RootState) => getReviews(state)).filter(review => review.businessId === business.id);
     const [cardTotal, setCardTotal] = useState(6);
 
     useEffect(() => {

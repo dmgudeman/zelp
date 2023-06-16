@@ -5,6 +5,7 @@ import BusinessShowDisplay from "../BusinessShowDisplay/BusinessShowDisplay";
 import ReviewsIndex from "../../Reviews/ReviewsIndex/ReviewsIndex";
 import NavBar from "../../Navigation/NavBar/NavBar";
 import { getBusiness, fetchBusiness } from "../../../store/businessesSlice";
+import { getReviews } from "../../../store/reviewsSlice";
 import type { RootState, AppDispatch } from "../../../store/store";
 import type { Review } from "../../../Types/ReviewTypes";
 import "./BusinessShow.css";
@@ -15,18 +16,13 @@ const BusinessShow = () => {
     const dispatch = useDispatch();
     const { busId } = useParams();
     let business = useSelector((state: RootState) => getBusiness(busId)(state));
-    const [localReviews, setLocalReviews] = useState<Review[]>([]);
+    const reviews = useSelector((state: RootState) => getReviews(state)).filter(review => review.businessId === busId);
     useEffect(() => {
         if (busId) {
             dispatch(fetchBusiness(busId));
         }
     }, [dispatch, busId]);
-
-    useEffect(() => {
-        if (business && business.reviews) {
-            setLocalReviews(business.reviews);
-        }
-    }, [business]);
+  
 
     if (!business) return null;
 
