@@ -47,9 +47,15 @@ const SearchBar = () => {
 
     useEffect(() => {
         if (isSearchDataUpdated) {
+            if (!searchData.tag.trim() && !searchData.bus.trim() && !searchData.add.trim()) {
+                // Redirect to the home page
+                history.push('/');
+                return;
+            } else {
             dispatch(fetchBusinessesSearch(searchData)).then(() => {
                 history.push("./businesses");
             });
+        }
             setIsSearchDataUpdated(false);
         }
     }, [dispatch, history, isSearchDataUpdated, searchData]);
