@@ -7,7 +7,7 @@ export interface IBusinessCardProps {
 
 export interface IBuisnessDisplayProps {
     businesses: Business[]; 
-    cardTotal: number;
+    // cardTotal: number;
 }
 
 export interface IBackgroundBannerProps {

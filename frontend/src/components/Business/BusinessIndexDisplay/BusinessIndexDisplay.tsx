@@ -1,29 +1,26 @@
-import React from 'react';
-import { useSelector, useDispatch as _useDispatch } from "react-redux";
-import { getBusinesses } from "../../../store/businessesSlice";
+import React from "react";
+import { useDispatch as _useDispatch } from "react-redux";
 import BusinessCard from "../BusinessCard/BusinessCard";
-import type { IBuisnessDisplayProps } from '../../../Types/IComponents/IBusiness';
-import type { RootState, AppDispatch } from '../../../store/store';
-import type {Review } from '../../../Types/ReviewTypes';
+import type { IBuisnessDisplayProps } from "../../../Types/IComponents/IBusiness";
 import "./BusinessIndexDisplay.css";
 
-const useDispatch = () => _useDispatch<AppDispatch>();
+const BusinessIndexDisplay: React.FC<IBuisnessDisplayProps> = ({
+    businesses,
+}) => {
 
-const BusinessIndexDisplay: React.FC<IBuisnessDisplayProps> = ({ businesses, cardTotal }) => {
-    const dispatch = useDispatch();
+    businesses.sort((a, b) => a.name.localeCompare(b.name));
+
     return (
         <>
             <div id="displayContainer">
-                {businesses.map((business, idx) => {
-                    if (idx < cardTotal) {
-                        return (
-                         <BusinessCard 
-                                business={business}
-                                key={business.id} 
-                                rating={business.rating ? business.rating : 0}
-                            />
-                        );
-                    }
+                {businesses.map((business) => {
+                    return (
+                        <BusinessCard
+                            business={business}
+                            key={business.id}
+                            rating={business.rating ? business.rating : 0}
+                        />
+                    );
                 })}
             </div>
         </>
@@ -31,4 +28,3 @@ const BusinessIndexDisplay: React.FC<IBuisnessDisplayProps> = ({ businesses, car
 };
 
 export default BusinessIndexDisplay;
-

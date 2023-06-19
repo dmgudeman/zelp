@@ -9,8 +9,8 @@ class Api::BusinessesController < ApplicationController
                   end
     @businesses = @businesses.where('name LIKE ?', "%#{params[:bus]}%") if params[:bus]
     return unless params[:add]
-
     @businesses = @businesses.where('address LIKE ?', "%#{params[:add]}%")
+    @businesses = @businesses.order(:name)
   end
 
   def show

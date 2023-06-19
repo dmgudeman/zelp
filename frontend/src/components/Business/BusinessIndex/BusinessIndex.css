@@ -5,8 +5,8 @@
     width: 100vw;
     height: 100vh;
     background-color: transparent;
-    overflow-y: scroll;
 }
+
 #bannerContainer {
     position: relative;
     display: flex;
@@ -34,6 +34,7 @@
     align-items: start;
     width: 100vw;
     height: 100%;
+    /* background-color: blue; */
 }
 
 .bannerTextBI {

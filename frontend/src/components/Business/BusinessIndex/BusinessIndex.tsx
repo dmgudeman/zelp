@@ -15,7 +15,7 @@ const BusinessIndex = () => {
     let businesses = useSelector(getBusinesses);
  
 
-    const [cardTotal, setCardTotal] = useState(6);
+    // const [cardTotal, setCardTotal] = useState(6);
 
  
 
@@ -38,7 +38,7 @@ const BusinessIndex = () => {
                 <div className="cardContainer">
                     <BusinessIndexDisplay
                         businesses={businesses}
-                        cardTotal={cardTotal}
+                        // cardTotal={cardTotal}
                     />
                 </div>
             </div>
