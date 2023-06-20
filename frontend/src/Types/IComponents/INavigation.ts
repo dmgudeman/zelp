@@ -23,8 +23,8 @@ export interface SBTagProps {
             | SyntheticEvent
     ) => void;
     handleTagListClick: (tag: string) => void;
-    filterTags: () => Tag[];
     handleHideTagList: () => void;
+    filterTags: () => Tag[];
 }
 
 export interface SBBusProps {
@@ -38,6 +38,7 @@ export interface SBBusProps {
             | SyntheticEvent
     ) => void;
     handleBusListClick: (bus: string) => void;
+    handleHideBusList: () => void;
     filterBusinesses: () => Business[];
 }
 

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useRef } from "react";
+import  useOutsideClick  from '../UseOutsideHook'; 
 import { SBBusProps} from '../../../../Types/IComponents/INavigation'
 
 const SearchBarBus: React.FC<SBBusProps>= (props) => {
@@ -8,12 +9,20 @@ const SearchBarBus: React.FC<SBBusProps>= (props) => {
         hideBusList,
         handleSearchEvent,
         handleBusListClick,
+        handleHideBusList,
         filterBusinesses,
     } = { ...props };
 
+    const ref = useRef<HTMLDivElement>(null);
+    useOutsideClick(ref, () => {
+        if (!hideBusList) {
+            handleHideBusList(); 
+        }
+    });
+
     return (
         <>
-            <div className="SBcontainer">
+            <div className="SBcontainer" ref={ref}>
                 <div className="SBInputWrap">
                     <input
                         className="SBInput"

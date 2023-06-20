@@ -112,14 +112,19 @@ const SearchBar = () => {
     };
   
 
-    const handleBusListClick = (bus:string) => {
-        setSelectBus(bus);
-        setHideBusList(true);
-    };
+    
 
     const handleHideTagList = () => {
         setHideTagList(true);
     }
+
+    const handleBusListClick = (bus:string) => {
+        setSelectBus(bus);
+        setHideBusList(true);
+    };
+    const handleHideBusList = () => {
+        setHideBusList(true);
+    };
   
 
     const handleSearchSubmit = async (): Promise<void> => {
@@ -160,6 +165,7 @@ const SearchBar = () => {
                         hideBusList={hideBusList}
                         handleSearchEvent={handleSearchEvent}
                         handleBusListClick={handleBusListClick}
+                        handleHideBusList={handleHideBusList}
                         filterBusinesses={filterBusinesses}
                     />
 

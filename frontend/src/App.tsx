@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "./store/sessionSlice";
 import { Route, Switch } from "react-router-dom";
@@ -13,30 +13,34 @@ import ReviewEdit from "./components/Reviews/ReviewEdit/ReviewEdit";
 import ReviewModalNew from "./components/Modals/ReviewModal/ReviewModalNew/ReviewModalNew";
 import ReviewModalEdit from "./components/Modals/ReviewModal/ReviewModalEdit/ReviewModalEdit";
 import ReviewModalRead from "./components/Modals/ReviewModal/ReviewModalRead/ReviewModalRead";
-import type { RootState } from './store/store';
+import type { RootState } from "./store/store";
+import ReactGA from "react-ga";
+import RouteChangeTracker from "./components/Helpers/GoogleAnalytics/RouteChangeTracker";
 
 function App() {
     const sessionState = useSelector(getCurrentUser);
     const isLoggedIn = sessionState !== null;
-    const  modalFlag = useSelector((state: RootState) => state.ui.modalFlag);
+    const modalFlag = useSelector((state: RootState) => state.ui.modalFlag);
+    const TRACKING_ID = "G-RQN2VPGN4E";
+    ReactGA.initialize(TRACKING_ID);
 
     const renderModal = () => {
         switch (modalFlag) {
-          case 'ReviewNew':
-            return <ReviewModalNew/>;
-          case 'ReviewEdit':
-            return <ReviewModalEdit/>;
-            case 'ReviewRead':
-                return <ReviewModalRead/>;
-          default:
-            return null;
+            case "ReviewNew":
+                return <ReviewModalNew />;
+            case "ReviewEdit":
+                return <ReviewModalEdit />;
+            case "ReviewRead":
+                return <ReviewModalRead />;
+            default:
+                return null;
         }
-      };
+    };
     return (
         <>
-        
+            <RouteChangeTracker />
             {renderModal()}
-     
+
             <Switch>
                 <Route path="/login" component={LoginFormPage} />
                 <Route path="/signup" component={SignupFormPage} />
