@@ -672,14 +672,19 @@ all_tags = [
   ['Advanced Plumbing', 'Services'],
   ['Golden Gate Greenery', 'Lawn Services'],
   ['Golden Gate Greenery', 'Gardening Services'],
+  ['Golden Gate Greenery', 'Services'],
   ['SF Lawn Leaders', 'Lawn Services'],
   ['SF Lawn Leaders', 'Gardening Services'],
+  ['SF Lawn Leaders', 'Services'],
   ['Citywide Lawn and Landscape', 'Lawn Services'],
   ['Citywide Lawn and Landscape', 'Gardening Services'],
+  ['Citywide Lawn and Landscape', 'Services'],
   ['True Green', 'Lawn Services'],
   ['True Green', 'Gardening Services'],
+  ['True Green', 'Services'],
   ['Bay Area Lawn Care', 'Lawn Services'],
-  ['Bay Area Lawn Care', 'Gardening Services']
+  ['Bay Area Lawn Care', 'Gardening Services'],
+  ['Bay Area Lawn Care', 'Services']
 
 ]
 
