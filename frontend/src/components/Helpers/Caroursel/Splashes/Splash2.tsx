@@ -7,7 +7,7 @@ import {
 } from "../../../../store/businessesSlice";
 import type { AppDispatch } from '../../../../store/store';
 import car2 from "../../../../assets/images/car2.jpeg";
-import "../../Caroursel/Carousel.css";
+import "../Carousel.css";
 
 const useDispatch = () => _useDispatch<AppDispatch>();
 

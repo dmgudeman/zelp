@@ -94,7 +94,7 @@ const ReviewNew: React.FC<IReviewNewProps> = ({ business }) => {
             >
                 <form id="formNR" onSubmit={submitHandler}>
                     <h2 className="blueTitleBig title">{business?.name}</h2>
-                    <h1 className="italic">
+                    <h1 className="italic marginRN">
                         Leave a Rating, a Review and attach photos if you would
                         like
                     </h1>

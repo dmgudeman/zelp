@@ -1,23 +1,13 @@
-import React from 'react';
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch as _useDispatch } from "react-redux";
-import { getBusinesses, getAverageRatingForBusiness } from "../../../store/businessesSlice";
+import React from "react";
+import { useSelector } from "react-redux";
+import { getBusinesses } from "../../../store/businessesSlice";
 import BusinessIndexDisplay from "../BusinessIndexDisplay/BusinessIndexDisplay";
 import NavBar from "../../Navigation/NavBar/NavBar";
-import type { IBackgroundBannerProps } from '../../../Types/IComponents/IBusiness';
-import { AppDispatch } from '../../../store/store';
+import type { IBackgroundBannerProps } from "../../../Types/IComponents/IBusiness";
 import "./BusinessIndex.css";
 
-const useDispatch = () => _useDispatch<AppDispatch>();
-
 const BusinessIndex = () => {
-    const dispatch = useDispatch()
     let businesses = useSelector(getBusinesses);
- 
-
-    // const [cardTotal, setCardTotal] = useState(6);
-
- 
 
     return (
         <>
@@ -26,20 +16,12 @@ const BusinessIndex = () => {
                 <div id="bannerContainer">
                     <BannerBackground businesses={businesses} />
                     <div className="bannerTextBI">
-                        <div className=" greenText">
-                            Review A Business
-                        </div>
-                        <div className="greenText">
-                            Of Your Choice
-                        </div>
+                        <div className=" greenText">Review A Business</div>
+                        <div className="greenText">Of Your Choice</div>
                     </div>
                 </div>
-
                 <div className="cardContainer">
-                    <BusinessIndexDisplay
-                        businesses={businesses}
-                        // cardTotal={cardTotal}
-                    />
+                    <BusinessIndexDisplay businesses={businesses} />
                 </div>
             </div>
         </>
@@ -47,8 +29,6 @@ const BusinessIndex = () => {
 };
 
 export default BusinessIndex;
-
-
 
 const BannerBackground: React.FC<IBackgroundBannerProps> = ({ businesses }) => {
     const imgUrl = businesses[0]?.imageUrls
@@ -69,4 +49,3 @@ const BannerBackground: React.FC<IBackgroundBannerProps> = ({ businesses }) => {
         </>
     );
 };
-
