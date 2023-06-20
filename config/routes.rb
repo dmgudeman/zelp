@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   end
   # get '/reviews/:review_id/photo', to: 'reviews#photo', as: 'reviews_photo'
   # Catch-all route for unknown routes
-  # get '*path', to: "static_pages#frontend_index" # Heroku Deployment
-  # get '*path', to: 'static_pages#frontend', constraints: ->(req) { !req.xhr? && req.format.html? } # for Render Deployment
   get '*path', to: 'static_pages#frontend', constraints: ->(request){ request.format.html? } #Heroku Deployment 6/20/2023
   root to: 'static_pages#frontend'
 
