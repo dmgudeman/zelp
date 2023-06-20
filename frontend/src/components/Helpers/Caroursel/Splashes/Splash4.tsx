@@ -29,7 +29,7 @@ const Splash4 = () => {
     }
     return (
         <>
-            <div id="businessShowContainer1" onClick={(e)=> handleClick(e)}>
+            <div id="businessShowContainer1" >
                 <img
                     src={car4}
                     alt=""
@@ -52,7 +52,7 @@ const Splash4 = () => {
                             zIndex: -1,
                         }}
                     >
-                        <div className="carTitle44">Fine Cuisine</div>
+                        <div className="carTitle44" onClick={(e)=> handleClick(e)}>Fine Cuisine</div>
                         <div className="carTitleSpace"></div>
                         <div className="carTitle1">Eat Well</div>
                         <div className="carTitleSpace"></div>
