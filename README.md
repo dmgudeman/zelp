@@ -27,7 +27,7 @@ any part of the address.  So a person if could remember that he/she saw a lumbar
 on Lake street, the could use the 'Lumber' category and 'Lake' in the address and 
 'The Home Depot' on Lake street is yielded. 
 
-<div style="display: flex; flex-direction: column; align-items: flex-start;"> 
+<div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;"> 
    <img src='/frontend/src/assets/searchBar.png' alt="rootReducer" width="700" >
    <img src='/frontend/src/assets/searchBarActive.png' alt="rootReducer" width="700" >
    <img src='/frontend/src/assets/searchSnippet.png' alt="rootReducer" width="700" >
