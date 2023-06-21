@@ -1,22 +1,29 @@
-import React from 'react';
-// import type { IRatingInputProps } from "../../../Types/IComponents/IReviews"
-import "./RatingInput.css";
+import React from "react";
+import "./RatingInputEdit.css";
 
 export interface IRatingInputProps {
     className: string;
     name: string;
     value: number | null;
     rating: number | null;
-    handleEditRatingChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | null;
+    handleEditRatingChange?: (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => void | null;
 }
 
-
-const RatingInputEdit : React.FC<IRatingInputProps> = ({ name, rating,  handleEditRatingChange}) => {
-
+const RatingInputEdit: React.FC<IRatingInputProps> = ({
+    name,
+    rating,
+    handleEditRatingChange,
+}) => {
     const ratingValue = rating || 0;
-    
+
     return (
-        <div id="ratingContainerE" className="rating-input" onClick={(e)=>e.stopPropagation()}>
+        <div
+            id="ratingContainerE"
+            className="rating-input"
+            onClick={(e) => e.stopPropagation()}
+        >
             <label
                 htmlFor="radioButton1"
                 className={ratingValue >= 1 ? "colored-in" : "not-colored-in"}
@@ -30,9 +37,7 @@ const RatingInputEdit : React.FC<IRatingInputProps> = ({ name, rating,  handleEd
                 name={name}
                 value="1"
                 hidden
-                // onChange={handleRatingChange}
                 onChange={handleEditRatingChange}
-            
             />
 
             <label
@@ -99,7 +104,6 @@ const RatingInputEdit : React.FC<IRatingInputProps> = ({ name, rating,  handleEd
             />
         </div>
     );
-    
 };
 
 export default RatingInputEdit;

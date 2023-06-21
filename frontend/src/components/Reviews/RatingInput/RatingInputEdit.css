@@ -1,29 +1,23 @@
-#frumpy {
-    background-color: yellow;
-    width: 200px;
-}
-
-#ratingContainerE {
+#ratingContainer {
     display: flex;
     flex-direction: row;
     margin-top: 30px;
     margin-bottom: 10px;
     align-items: center;
     width: 100%;
-    background-color: blueviolet;
 }
-.colored-in-E {
+.colored-in {
     color: var(--two);
 }
 
-.not-colored-in-E {
+.not-colored-in {
     color: gray;
 }
 
-#ratingContainerE input[type="radio"] {
+#ratingContainer input[type="radio"] {
     display: none;
 }
-#ratingContainerE label:hover {
+#ratingContainer label:hover {
     color: #59a1e0;
 }
 .star {
@@ -31,12 +25,10 @@
     margin: 7px;
 }
 
-.colored-in-E {
+.colored-in {
     color: var(--two);
-    cursor: pointer;
 }
 
-.not-colored-in-E {
+.not-colored-in {
     color: gray;
-    cursor: pointer;
 }
