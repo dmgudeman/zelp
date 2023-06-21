@@ -26,14 +26,11 @@ search constraints from pre-determined categories, the title of the business and
 any part of the address.  So a person if could remember that he/she saw a lumbar yard
 on Lake street, the could use the 'Lumber' category and 'Lake' in the address and 
 'The Home Depot' on Lake street is yielded. 
-![SearchBar](/frontend/src/assets/SearchBar.png)
-![SearchBar](/frontend/src/assets/SearchBarActive.png)
-![Code Snippet](/frontend/src/assets/searchSnippet.png)
 
-<div style="display: flex flex-direction: column align-items: flex-start"> 
+<div style="display: flex; flex-direction: column; align-items: flex-start;"> 
    <img src='/frontend/src/assets/SearchBar.png' alt="rootReducer" width="700" >
    <img src='/frontend/src/assets/SearchBarActive.png' alt="rootReducer" width="700" >
-   <img src='/frontend/src/assets/SearchBarSnippet.png' alt="rootReducer" width="700" >
+   <img src='/frontend/src/assets/SearchSnippet.png' alt="rootReducer" width="700" >
 </div>
 
 I wrote a large part of the app in Javascript prior to converting to Typescript. The static 
@@ -43,7 +40,7 @@ what for the data was in all aspects of the codebase.  I rewrote the redux store
 and the proved to be insctructive of the advanced abstraction of the action creators that the 
 library provides.
 
-<div style="display:flex align-items: flex-start"> 
+<div style="display:flex; align-items: flex-start;"> 
    <img src='/frontend/src/assets/ReduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
    <img src='/frontend/src/assets/ToolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
 </div>
