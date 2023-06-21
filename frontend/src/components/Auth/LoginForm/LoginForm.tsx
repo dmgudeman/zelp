@@ -98,7 +98,7 @@ const LoginForm = () => {
                 </div>
                 <h1 id="lastLineLIF">
                     New to Zelp?{" "}
-                    <button onClick={() => handleShowSignupModal()}>
+                    <button className="blueButton" onClick={() => handleShowSignupModal()}>
                         Sign Up
                     </button>
                 </h1>

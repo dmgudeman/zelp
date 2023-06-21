@@ -4,7 +4,7 @@ import { hideNewReviewModal } from "../../../../store/uiSlice";
 import ReviewNew from "../../../Reviews/ReviewNew/ReviewNew";
 import { RootState } from "../../../../store/store";
 import type { Business } from "../../../../Types/BusinessTypes";
-import "./ReviewModalNew.css";
+import "../ReviewModal.css";
 
 function ReviewModalNew() {
     const dispatch = useDispatch();

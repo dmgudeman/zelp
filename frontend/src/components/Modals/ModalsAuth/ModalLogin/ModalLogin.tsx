@@ -4,7 +4,7 @@ import LoginForm from "../../../Auth/LoginForm/LoginForm";
 import { hideLoginModal } from "../../../../store/uiSlice";
 import { clearSessionError } from "../../../../store/sessionSlice";
 import { RootState } from "../../../../store/store";
-import "./ModalLogin.css";
+import "../ModalAuth.css";
 
 function ModalLogin() {
     const dispatch = useDispatch();

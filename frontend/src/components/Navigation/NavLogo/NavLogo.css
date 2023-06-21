@@ -13,6 +13,6 @@
     width: calc(var(--nbh) * 0.7);
     border-radius: calc(var(--nbh) * 0.5);
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
-    /* background-color: blue; */
+    cursor: pointer;
 
 }

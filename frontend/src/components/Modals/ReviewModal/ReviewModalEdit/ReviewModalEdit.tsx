@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { hideEditReviewModal } from "../../../../store/uiSlice";
 import ReviewEdit from "../../../Reviews/ReviewEdit/ReviewEdit";
 import { RootState } from "../../../../store/store";
-import "./ReviewModalEdit.css";
+import "../ReviewModal.css";
 
 function ReviewModalEdit() {
     const dispatch = useDispatch();

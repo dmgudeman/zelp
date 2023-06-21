@@ -23,7 +23,7 @@ const DemoUserForm = () => {
             <div id="formContainerDUF">
                 <form id="inputFormDUF" onSubmit={submitHandler}>
                     <h2 id="titleDUF">Demo User</h2>
-                    <input id="submitDUF" className="inputDUF" type="submit" value="Demo User" />
+                    <input id="submitDUF" className="blueButton inputDUF" type="submit" value="Demo User" />
                 </form>
             </div>
         </>

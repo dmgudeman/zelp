@@ -102,7 +102,7 @@ const SignupForm = () => {
                     <DemoUserForm />
                     <h1>
                         Already a Zelp user?{" "}
-                        <button onClick={() => handleShowLoginModal()}>
+                        <button className="blueButton" onClick={() => handleShowLoginModal()}>
                             Log In
                         </button>
                     </h1>

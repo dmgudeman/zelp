@@ -8,7 +8,11 @@ const BusinessCard: React.FC<IBusinessCardProps> = ({ business, rating }) => {
     if (!business) return null;
     return (
         <>
-            <div id="businessCardContainer">
+            <Link
+                id="businessCardContainer"
+                className="businessLink"
+                to={`/businesses/${business.id}`}
+            >
                 <div id="imageContainer">
                     <img
                         id="busPic"
@@ -18,15 +22,13 @@ const BusinessCard: React.FC<IBusinessCardProps> = ({ business, rating }) => {
                 </div>
                 <div id="reviewContainer">
                     <div className="firstLine">
-                        <Link className="businessLink" to={`/businesses/${business.id}`}>
-                            <p>{business.name}</p>
-                        </Link>
+                        <p>{business.name}</p>
                     </div>
-                    {business.rating && <RatingDisplayBusSmall
-                        rating={rating}
-                    />}
+                    {business.rating && (
+                        <RatingDisplayBusSmall rating={rating} />
+                    )}
                 </div>
-            </div>
+            </Link>
         </>
     );
 };

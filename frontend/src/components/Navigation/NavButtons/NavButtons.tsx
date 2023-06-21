@@ -41,7 +41,7 @@ const NavButtons = () => {
                 >
                     Log In
                 </button>
-                <button onClick={() => openSignupModal()}>Sign Up</button>
+                <button className="blueButton" onClick={() => openSignupModal()}>Sign Up</button>
                 <a href="https://github.com/dmgudeman" className="git">
                     <FaGithub size={40} />
                 </a>

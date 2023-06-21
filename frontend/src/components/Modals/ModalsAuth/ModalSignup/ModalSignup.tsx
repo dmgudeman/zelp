@@ -4,7 +4,7 @@ import { showSignupModal, hideSignupModal } from "../../../../store/uiSlice";
 import SignupForm from "../../../Auth/SignupForm/SignupForm";
 import { clearSessionError } from "../../../../store/sessionSlice";
 import { RootState } from "../../../../store/store";
-import "./ModalSignup.css";
+import "../ModalAuth.css";
 
 function ModalSignup() {
     const dispatch = useDispatch();

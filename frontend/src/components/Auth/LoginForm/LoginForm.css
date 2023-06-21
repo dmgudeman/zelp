@@ -14,6 +14,7 @@
     border: 2px solid var(--two);
     border-radius: 1rem;
     background-color: var(--one);
+    cursor: auto;
 }
 
 #formContainerLIF {
