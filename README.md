@@ -50,19 +50,19 @@ library provides.
 </div>
 
 Converting a significant codebase to Typescript was enormously instructive and built confidence
-in codebase design and debugging. Developing the search functionality allowed me to see some of the full capabilities
-of the query string when interfacing with a sql database. The utility of this allows for
-creative, deterministic access to subsets of data. Implementing the search bar from scratch
-allowed me to explore challenges of utilizing the input element for inputing partial data 
-as well as updating from a predetermined list.  During its construction I explored useRef and
+in codebase design and debugging. Developing the search functionality allowed me to see some of 
+the full capabilitiesof the query string when interfacing with a sql database. The utility of 
+this allows for creative, deterministic access to subsets of data. Implementing the search bar 
+from scratch allowed me to explore challenges of utilizing the input element for inputing partial 
+data as well as updating from a predetermined list.  During its construction I explored useRef and
 useMemo hooks.  I implemented a custom hook to hide the drop down when the user defocusses 
 from the input.
 
 This is a full CRUD app with capabilities to read, write, update and delete reviews. Authorization
 is implemented with user feedback The reviews can have custom images of your choice attached.  
-This functionality utilizes the AWS S3 service to store uploaded images. The reviews, including the attached 
-photos may be updated or deleted by the user who authored them. The reviews for the business
-can be seen by anyone who is signed in. 
+This functionality utilizes the AWS S3 service to store uploaded images to take the burden of file
+storage off the databse. The reviews, including the attached photos may be updated or deleted by 
+the user who authored them. The reviews for the business can be seen by anyone who is signed in. 
 
 Custom modals controlled through redux are used for Login, Signup, review create, review edit and review show.
 
