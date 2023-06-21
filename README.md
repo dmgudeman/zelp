@@ -1,6 +1,6 @@
 [See Zelp live](https://zelp1.onrender.com)
 
-![ScreenShot](/frontend/src/assets/ScreenshotApp.png)
+![ScreenShot](/frontend/src/assets/screenshotApp.png)
 <div>
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" title="TypeScript" alt="TypeScript" width="40" height="40"/>&nbsp;
     <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="40" height="40"/>&nbsp;
@@ -45,6 +45,10 @@ library provides.
    <img src='/frontend/src/assets/reduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
    <img src='/frontend/src/assets/toolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
 </div>
+
+<hr style="border: none; border-top: 1px solid black;">
+Comparing standard redux reducer with a Redux Toolkit slice
+<hr style="border: none; border-top: 1px solid black;">
 
 This is a full CRUD app with capabilities to read, write, update and delete reviews. Authorization
 is implemented with user feedback The reviews can have custom images of your choice attached.  
