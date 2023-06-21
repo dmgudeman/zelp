@@ -28,9 +28,9 @@ on Lake street, the could use the 'Lumber' category and 'Lake' in the address an
 'The Home Depot' on Lake street is yielded. 
 
 <div style="display: flex; flex-direction: column; align-items: flex-start;"> 
-   <img src='/frontend/src/assets/SearchBar.png' alt="rootReducer" width="700" >
-   <img src='/frontend/src/assets/SearchBarActive.png' alt="rootReducer" width="700" >
-   <img src='/frontend/src/assets/SearchSnippet.png' alt="rootReducer" width="700" >
+   <img src='/frontend/src/assets/searchBar.png' alt="rootReducer" width="700" >
+   <img src='/frontend/src/assets/searchBarActive.png' alt="rootReducer" width="700" >
+   <img src='/frontend/src/assets/searchSnippet.png' alt="rootReducer" width="700" >
 </div>
 
 I wrote a large part of the app in Javascript prior to converting to Typescript. The static 
@@ -41,8 +41,8 @@ and the proved to be insctructive of the advanced abstraction of the action crea
 library provides.
 
 <div style="display:flex; align-items: flex-start;"> 
-   <img src='/frontend/src/assets/ReduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
-   <img src='/frontend/src/assets/ToolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
+   <img src='/frontend/src/assets/reduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
+   <img src='/frontend/src/assets/toolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
 </div>
 
 This is a full CRUD app with capabilities to read, write, update and delete reviews. Authorization
