@@ -35,6 +35,8 @@ rating for the business was not being updated. In general it made me disciplined
 what for the data was in all aspects of the codebase.  I rewrote the redux store with Redux Toolkit
 and the proved to be insctructive of the advanced abstraction of the action creators that the 
 library provides.  
+![Redux Store](/frontend/src/assets/ReduxReducer.png)
+![Redux Store](/frontend/src/assets/ToolKitSlice.png)
 
 This is a full CRUD app with capabilities to read, write, update and delete reviews. Authorization
 is implemented with user feedback The reviews can have custom images of your choice attached.  
