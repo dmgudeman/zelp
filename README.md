@@ -64,10 +64,6 @@ This functionality utilizes the AWS S3 service to store uploaded images. The rev
 photos may be updated or deleted by the user who authored them. The reviews for the business
 can be seen by anyone who is signed in. 
 
-<div style="display:flex; align-items: flex-start;"> 
-   <img src='/frontend/src/assets/modal.png' alt="rootReducer" width="800" ">
-</div>
-
 Custom modals controlled through redux are used for Login, Signup, review create, review edit and review show.
 
 The rails backend was very nice to use and when I needed to change the shape of the database, even late
