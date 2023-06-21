@@ -26,6 +26,8 @@ search constraints from pre-determined categories, the title of the business and
 any part of the address.  So a person if could remember that he/she saw a lumbar yard
 on Lake street, the could use the 'Lumber' category and 'Lake' in the address and 
 'The Home Depot' on Lake street is yielded. 
+![SearchBar](/frontend/src/assets/SearchBar.png)
+![Code Snippet](/frontend/src/assets/searchSnippet.png)
 
 I wrote a large part of the app in Javascript prior to converting to Typescript. The static 
 typing of typescript allowed me to identify issues that were not identified before such as the
@@ -64,4 +66,4 @@ allowed me to explore challenges of utilizing the input element for inputing par
 as well as updating from a predetermined list.  During its construction I explored useRef and
 useMemo hooks.  I implemented a custom hook to hide the drop down when the user defocusses 
 from the input.
-![Code Snippet](/frontend/src/assets/searchSnippet.png)
+
