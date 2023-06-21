@@ -27,6 +27,7 @@ any part of the address.  So a person if could remember that he/she saw a lumbar
 on Lake street, the could use the 'Lumber' category and 'Lake' in the address and 
 'The Home Depot' on Lake street is yielded. 
 ![SearchBar](/frontend/src/assets/SearchBar.png)
+![SearchBar](/frontend/src/assets/SearchBarActive.png)
 ![Code Snippet](/frontend/src/assets/searchSnippet.png)
 
 I wrote a large part of the app in Javascript prior to converting to Typescript. The static 
@@ -34,9 +35,12 @@ typing of typescript allowed me to identify issues that were not identified befo
 rating for the business was not being updated. In general it made me disciplined about thinking
 what for the data was in all aspects of the codebase.  I rewrote the redux store with Redux Toolkit
 and the proved to be insctructive of the advanced abstraction of the action creators that the 
-library provides.  
-![Redux Store](/frontend/src/assets/ReduxReducer.png)
-![Redux Store](/frontend/src/assets/ToolKitSlice.png)
+library provides.
+
+<div style="display:flex"> 
+   <img src='/frontend/src/assets/ReduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
+   <img src='/frontend/src/assets/ToolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
+</div>
 
 This is a full CRUD app with capabilities to read, write, update and delete reviews. Authorization
 is implemented with user feedback The reviews can have custom images of your choice attached.  
