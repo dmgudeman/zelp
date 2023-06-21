@@ -40,6 +40,7 @@ what for the data was in all aspects of the codebase.  I rewrote the redux store
 and the proved to be insctructive of the advanced abstraction of the action creators that the 
 library provides.
 
+
 <div style="display:flex; align-items: flex-start;"> 
    <img src='/frontend/src/assets/reduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
    <img src='/frontend/src/assets/toolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
