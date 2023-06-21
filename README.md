@@ -42,9 +42,10 @@ library provides.
 <div style="display:flex; align-items: flex-start;"> 
    <img src='/frontend/src/assets/reduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
    <img src='/frontend/src/assets/toolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
+   <p>Comparing standard redux reducer with a Redux Toolkit slice</p>
+   <hr style="border: none; border-top: 1px solid black;">
 </div>
-Comparing standard redux reducer with a Redux Toolkit slice
-<hr style="border: none; border-top: 1px solid black;">
+
 
 This is a full CRUD app with capabilities to read, write, update and delete reviews. Authorization
 is implemented with user feedback The reviews can have custom images of your choice attached.  
