@@ -15,7 +15,6 @@
     <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
 </div>
 
-<!-- [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=dmgudeman)](https://git.io/streak-stats) -->
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=dmgudeman&exclude_days=Sun%2CSat)](https://git.io/streak-stats)
 
 
@@ -40,13 +39,10 @@ what for the data was in all aspects of the codebase.  I rewrote the redux store
 and the proved to be insctructive of the advanced abstraction of the action creators that the 
 library provides.
 
-
 <div style="display:flex; align-items: flex-start;"> 
    <img src='/frontend/src/assets/reduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
    <img src='/frontend/src/assets/toolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
 </div>
-
-<hr style="border: none; border-top: 1px solid black;">
 Comparing standard redux reducer with a Redux Toolkit slice
 <hr style="border: none; border-top: 1px solid black;">
 
