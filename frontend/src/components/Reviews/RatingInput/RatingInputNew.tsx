@@ -14,7 +14,7 @@ const RatingInputNew : React.FC<IRatingInputProps> = ({ name, rating, handleNewR
     const ratingValue = rating || 0;
     return (
        
-        <div id="ratingContainer" className="rating-input">
+        <div id="ratingContainerN" className="rating-input">
             <label
                 htmlFor="radioButton1"
                 className={ratingValue >= 1 ? "colored-in-N" : "not-colored-in-N"}

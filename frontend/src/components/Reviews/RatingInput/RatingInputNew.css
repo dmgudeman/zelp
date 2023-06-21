@@ -24,8 +24,10 @@
 
 .colored-in-N {
     color: var(--two);
+    cursor: pointer;
 }
 
 .not-colored-in-N {
     color: gray;
+    cursor: pointer;
 }

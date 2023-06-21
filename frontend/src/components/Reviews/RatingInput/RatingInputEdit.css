@@ -33,8 +33,10 @@
 
 .colored-in-E {
     color: var(--two);
+    cursor: pointer;
 }
 
 .not-colored-in-E {
     color: gray;
+    cursor: pointer;
 }

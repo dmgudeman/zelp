@@ -16,7 +16,7 @@ const RatingInputEdit : React.FC<IRatingInputProps> = ({ name, rating,  handleEd
     const ratingValue = rating || 0;
     
     return (
-        <div id="ratingContainer" className="rating-input" onClick={(e)=>e.stopPropagation()}>
+        <div id="ratingContainerE" className="rating-input" onClick={(e)=>e.stopPropagation()}>
             <label
                 htmlFor="radioButton1"
                 className={ratingValue >= 1 ? "colored-in" : "not-colored-in"}
