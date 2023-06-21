@@ -30,6 +30,12 @@ on Lake street, the could use the 'Lumber' category and 'Lake' in the address an
 ![SearchBar](/frontend/src/assets/SearchBarActive.png)
 ![Code Snippet](/frontend/src/assets/searchSnippet.png)
 
+<div style="display: flex flex-direction: column align-items: flex-start"> 
+   <img src='/frontend/src/assets/SearchBar.png' alt="rootReducer" width="700" >
+   <img src='/frontend/src/assets/SearchBarActive.png' alt="rootReducer" width="700" >
+   <img src='/frontend/src/assets/SearchBarSnippet.png' alt="rootReducer" width="700" >
+</div>
+
 I wrote a large part of the app in Javascript prior to converting to Typescript. The static 
 typing of typescript allowed me to identify issues that were not identified before such as the
 rating for the business was not being updated. In general it made me disciplined about thinking
@@ -37,7 +43,7 @@ what for the data was in all aspects of the codebase.  I rewrote the redux store
 and the proved to be insctructive of the advanced abstraction of the action creators that the 
 library provides.
 
-<div style="display:flex justify-contents: start"> 
+<div style="display:flex align-items: flex-start"> 
    <img src='/frontend/src/assets/ReduxReducer.png' alt="rootReducer" width="400" style="margin-right: 20px">
    <img src='/frontend/src/assets/ToolKitSlice.png' alt="rootReducer" width="400" style="margin-left: 10px">
 </div>
