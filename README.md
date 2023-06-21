@@ -28,9 +28,9 @@ on Lake street, the could use the 'Lumber' category and 'Lake' in the address an
 'The Home Depot' on Lake street is yielded. 
 
 <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;"> 
-   <img src='/frontend/src/assets/searchBar.png' alt="rootReducer" width="700" >
-   <img src='/frontend/src/assets/searchBarActive.png' alt="rootReducer" width="700" style="display: flex; align-items: flex-start; justify-content: flex-start;" >
-   <img src='/frontend/src/assets/searchSnippet.png' alt="rootReducer" width="700" >
+   <img src='/frontend/src/assets/searchBar.png' alt="rootReducer" width="800" >
+   <img src='/frontend/src/assets/searchBarActive.png' alt="rootReducer" width="800" style="display: flex; align-items: flex-start; justify-content: flex-start;" >
+   <img src='/frontend/src/assets/searchSnippet.png' alt="rootReducer" width="800" >
 </div>
 
 I wrote a large part of the app in Javascript prior to converting to Typescript. The static 
@@ -61,6 +61,10 @@ is another area that the discipline of Typescript is welcomed.
 
 Full user authorization functionality, with communication to the user of missing data, 
 is implemented. The Demo User button is to facilitate showing the site.
+
+<div style="display:flex; align-items: flex-start;"> 
+   <img src='/frontend/src/assets/homeDepot.png' alt="rootReducer" width="800" style="margin-right: 20px">
+</div>
 
 The app integrates the Google Maps api and shows the location of the business with a 
 custom pointer on the business show page. 
